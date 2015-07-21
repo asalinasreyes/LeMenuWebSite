@@ -4,6 +4,8 @@ angular.module('leMeNuApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};
+    $scope.info1 = {};
+    $scope.info2 = {};
 
     $scope.login = function(form) {
       $scope.submitted = true;
@@ -15,7 +17,7 @@ angular.module('leMeNuApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          $location.path('/wellcome');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
