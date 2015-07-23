@@ -1,0 +1,19 @@
+esto es la <table></table>
+<table class="table table-hover" ng-controller="MyRestaurantOwnerListCtrl">
+	<thead>
+		<tr>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in ListRestaurants">
+			<td>{{item.name}} </td>
+			<td>{{item.address}} </td>
+			<td>{{item.country}} </td>
+			<td>{{item.city}} </td>
+			<td>{{item.language}} </td>
+			<td>{{item.urlgoogleMap}} </td>
+			<td> <button ng-click="edit(item)">editar</button></td>
+		</tr>
+	</tbody>
+</table>

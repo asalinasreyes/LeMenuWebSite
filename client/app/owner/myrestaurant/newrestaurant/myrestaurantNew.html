@@ -1,0 +1,28 @@
+<form  class="form" role="form" ng-controller="MyRestaurantOwnerNewCtrl">
+	<div class="form-group">
+		<label class="sr-only" for="">Nombre</label>
+		<input type="input" class="form-control" id="" placeholder="Nombre" ng-model="restaurante.name">
+	</div>
+	<div class="form-group">
+		<label class="sr-only" for="">Direccion</label>
+		<input type="input" class="form-control" id="" placeholder="Direccion"  ng-model="restaurante.address">
+	</div>
+	<div class="form-group">
+		<label class="sr-only" for="">country</label>
+		<input type="input" class="form-control" id="" placeholder="country"  ng-model="restaurante.country">
+	</div>
+	<div class="form-group">
+		<label class="sr-only" for="">city</label>
+		<input type="input" class="form-control" id="" placeholder="city"  ng-model="restaurante.city">
+	</div>
+	<div class="form-group">
+		<label class="sr-only" for="">language</label>
+		<input type="input" class="form-control" id="" placeholder="language"  ng-model="restaurante.language">
+	</div>
+	<div class="form-group">
+		<label class="sr-only" for="">String</label>
+		<input type="input" class="form-control" id="" placeholder="String"  ng-model="restaurante.urlgoogleMap">
+	</div>
+	<button class="btn btn-primary pull-left" ng-click="back()"> <i class="fa fa-arrow-left">Volver</i></button>
+	<button type="submit" class="btn btn-primary pull-right" ng-click="SaveNewRestaurant()">Submit</button>
+</form>
