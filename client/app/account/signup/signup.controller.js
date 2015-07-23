@@ -16,7 +16,7 @@ angular.module('leMeNuApp')
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          $location.path('/wellcome');
         })
         .catch( function(err) {
           err = err.data;
