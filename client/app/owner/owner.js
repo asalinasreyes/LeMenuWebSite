@@ -18,6 +18,11 @@ angular.module('leMeNuApp')
                 templateUrl: 'app/owner/myrestaurant/myrestaurant.html',
                 controller: 'MyRestaurantOwnerCtrl'
             })
+            .state('owner.mymenu', {
+                url: '/mymenu',
+                templateUrl: 'app/owner/mymenu/mymenu.html',
+                controller: 'MyRestaurantOwnerMenuCtrl'
+            })
             .state('owner.payment', {
                 url: '/payment',
                 templateUrl: 'app/owner/payment/payment.html',

@@ -20,4 +20,6 @@ describe('Controller: WellcomeCtrl', function () {
   it('Default instacion redirect /', function () {
     expect(mylocation.path()).toEqual('/');
   });
+
+  
 });
