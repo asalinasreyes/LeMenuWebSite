@@ -1,17 +1,17 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('MyRestaurantOwnerNewMenuCtrl', function($scope, $state, Restaurant) {
-        $scope.restaurante = {};
-        $scope.SaveNewRestaurant = function() {
-            Restaurant.save($scope.restaurante, function(info) {
-            	$scope.restaurante = {};
-            	$state.go('owner.myrestaurant', {}, {reload: true});
+    .controller('MyRestaurantOwnerNewMenuCtrl', function($scope, $state, RestaurantMenu) {
+        $scope.restaurantemenu = {};
+        $scope.SaveNewRestaurantMenu = function() {
+            RestaurantMenu.save($scope.restaurantemenu, function(info) {
+            	$scope.restaurantemenu = {};
+            	$state.go('owner.mymenu.listmenu', {}, {reload: true});
             });
         };
 
         $scope.back= function(){
-        	$state.go('owner.myrestaurant', {}, {reload: true});
+        	$state.go('owner.mymenu.listmenu', {}, {reload: true});
         };
 
     });
