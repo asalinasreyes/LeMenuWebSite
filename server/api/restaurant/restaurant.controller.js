@@ -14,7 +14,6 @@ exports.index = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        //console.log("Encontrados ", restaurants);
         return res.json(200, restaurants);
     });
 

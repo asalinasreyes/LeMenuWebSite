@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('MyRestaurantOwnerNewCtrl', function($scope, $state, Restaurant) {
+    .controller('MyRestaurantOwnerNewCtrl', function($scope, $state, Restaurant, mySharedService ) {
         $scope.restaurante = {};
         $scope.SaveNewRestaurant = function() {
             Restaurant.save($scope.restaurante, function(info) {
             	$scope.restaurante = {};
+                mySharedService.prepForBroadcast(info);
             	$state.go('owner.mymenu', {}, {reload: true});
             });
         };

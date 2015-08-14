@@ -29,8 +29,10 @@ var newMenuOfRestaurant = {
   language: ['es', 'en', 'fr']
 };
 
+var PathToService= '/api/restaurant/menu';
 
-describe('GET /API/Restaurants/MenuOfRestaurant', function() {
+
+describe('GET /api/restaurants/menu', function() {
 
   ///Limpia tablas de Restaurantes y Menus
   before(function(done) {
@@ -44,9 +46,9 @@ describe('GET /API/Restaurants/MenuOfRestaurant', function() {
 
   UserOwner.authorize();
 
-  it('Lista vacia de restaurantes/menuofrestaurant No Autorizado', function(done) {
+  it('Lista vacia de restaurants/menu No Autorizado', function(done) {
     request(app)
-      .get('/api/restaurants/menuofrestaurant')
+      .get(PathToService)
       .expect(401)
       .end(function(err, res) {
         if (err) return done(err);
@@ -57,7 +59,7 @@ describe('GET /API/Restaurants/MenuOfRestaurant', function() {
 
   it('Lista vacia de restaurantes', function(done) {
     UserOwner
-      .get('/api/restaurants/menuofrestaurant')
+      .get(PathToService)
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
@@ -86,7 +88,7 @@ describe('GET /API/Restaurants/MenuOfRestaurant', function() {
     newMenuOfRestaurant.restaurantid = restaurantCreated._id;
     newMenuOfRestaurant.userid = restaurantCreated.userid;
     UserOwner
-      .post('/api/restaurants/menuofrestaurant')
+      .post(PathToService)
       .send(newMenuOfRestaurant)
       .expect(201)
       .end(function(err, res) {
@@ -102,7 +104,7 @@ describe('GET /API/Restaurants/MenuOfRestaurant', function() {
     newMenuOfRestaurant.restaurantid = restaurantCreated._id;
     newMenuOfRestaurant.userid = restaurantCreated.userid;
     UserOwner
-      .post('/api/restaurants/menuofrestaurant')
+      .post(PathToService)
       .send(newMenuOfRestaurant)
       .expect(201)
       .end(function(err, res) {
@@ -115,7 +117,7 @@ describe('GET /API/Restaurants/MenuOfRestaurant', function() {
 
   it('Lista con 2 Menu Asociada', function(done) {
     UserOwner
-      .get('/api/restaurants/menuofrestaurant')
+      .get(PathToService)
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
