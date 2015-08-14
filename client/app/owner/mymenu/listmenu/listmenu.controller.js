@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('MyMenuOwnerListCtrl', function($scope, $state, RestaurantMenu, mySharedService) {
+    .controller('MyMenuOwnerListCtrl', function($scope, $state, $filter, RestaurantMenu, mySharedService) {
         $scope.ListRestaurantMenus = [];
         $scope.SelectedRestaurant = [];
+        $scope.restaurant = mySharedService.message;
+
         $scope.GetListRestaurants = function() {
             RestaurantMenu.query({}, function(listrestaurantMenus) {
-                $scope.ListRestaurantMenus = listrestaurantMenus;
+                $scope.ListRestaurantMenus = $filter('filter')(listrestaurantMenus, { restaurantid: $scope.restaurant.restaurantid });    
             });
         };
 

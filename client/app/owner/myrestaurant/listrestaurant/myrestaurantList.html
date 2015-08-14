@@ -1,6 +1,6 @@
 <h1>lista de restaurantes</h1>
 <div class="row" ng-controller="MyRestaurantOwnerListCtrl">
-    <div >
+    <div>
         <div class="col-xs-18 col-sm-6 col-md-3" ng-repeat="item in ListRestaurants">
             <div class="thumbnail">
                 <h1>{{item.name}}</h1>
@@ -8,14 +8,13 @@
                     <h4>Listado de Menus</h4>
                     <div class="row">
                         <div class="col-md-sub-3">
+                            <button ng-click="addMenu(item)" class="btn btn-primary btn-">Agregar Menu</button>
+                        </div>
+                        <div class="col-md-sub-3" ng-repeat="menu in item.ListMenu">
                             <div class="thumbnail">
-                                <h2>tres</h2>
+                                <h2> {{menu.name}} </h2>
                                 <div class="caption">
                                     <h4>Thumbnail label</h4>
-                                    <ul>
-                                        <li>1</li>
-                                        <li>1</li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
