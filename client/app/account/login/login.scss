@@ -16,9 +16,11 @@ $btnGithubBackgroundHighlight:      #ccc;
 
 .btn-facebook {
   @include button-variant($btnText, $btnFacebookBackgroundHighlight, $btnFacebookBackgroundHighlight);
+    font-size: smaller;
 }
 .btn-google-plus {
   @include button-variant($btnText, $btnGooglePlusBackground, $btnGooglePlusBackgroundHighlight);
+    font-size: smaller;
 }
 .btn-github {
   @include button-variant($btnTextAlt, $btnGithubBackground, $btnGithubBackgroundHighlight);

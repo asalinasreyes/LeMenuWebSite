@@ -25,7 +25,9 @@
     "connect-mongo": "^0.4.1"
   },
   "devDependencies": {
+    "cloudinary": "^1.2.4",
     "connect-livereload": "~0.4.0",
+    "connect-multiparty": "^2.0.0",
     "grunt": "~0.4.4",
     "grunt-angular-templates": "^0.5.4",
     "grunt-asset-injector": "^0.1.0",
