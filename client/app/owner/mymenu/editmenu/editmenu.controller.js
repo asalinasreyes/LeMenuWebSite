@@ -2,34 +2,35 @@
 
 angular.module('leMeNuApp')
 
-.controller('MyRestaurantOwnerNewMenuCtrl', function($scope, $state, $modal, Upload, RestaurantMenu, mySharedService) {
-    $scope.cartMenu = {};
+.controller('MyRestaurantOwnerEditMenuCtrl', function($scope, $state, $modal, Upload, RestaurantMenu, mySharedService) {
+
+    $scope.RestaurantSelectedInfo = mySharedService.message;
     $scope.progressUpload = '';
     $scope.listFilesPhotoUpload = [];
     $scope.isUploading = false;
 
+    $scope.RestaurantSelectedInfo = $scope.RestaurantSelectedInfo;
+    $scope.cartMenuSelected = $scope.RestaurantSelectedInfo.ItemMenuSelected;
+    $scope.listFilesPhotoUpload = $scope.RestaurantSelectedInfo.ItemMenuSelected.files;
 
-    $scope.cartMenu.namemenu = '';
-    $scope.cartMenu.language = [];
-
-    $scope.RestaurantSelectedInfo = mySharedService.message;
 
 
     $scope.showRequiredLanguages = function() {
         var styperesult = true;
-        if ($scope.cartMenu.hasOwnProperty('language')) {
-            if ($scope.cartMenu.language.hasOwnProperty('length')) {
-                styperesult = $scope.cartMenu.language.length == 0;
+        if ($scope.cartMenuSelected.hasOwnProperty('language')) {
+            if ($scope.cartMenuSelected.language.hasOwnProperty('length')) {
+                styperesult = $scope.cartMenuSelected.language.length == 0;
             };
         }
+
         return styperesult;
     };
 
     $scope.SaveNewRestaurantMenu = function() {
-        $scope.cartMenu.restaurantid = $scope.RestaurantSelectedInfo._id;
-        $scope.cartMenu.files = $scope.listFilesPhotoUpload;
-        RestaurantMenu.save($scope.cartMenu, function(info) {
-            $scope.cartMenu = {};
+        $scope.cartMenuSelected.restaurantid = $scope.RestaurantSelectedInfo._id;
+        $scope.cartMenuSelected.files = $scope.listFilesPhotoUpload;
+        RestaurantMenu.PUT($scope.cartMenuSelected, function(info) {
+            $scope.cartMenuSelected = {};
             $state.go('owner.mymenu.listmenu', {}, {
                 reload: true
             });
@@ -42,7 +43,7 @@ angular.module('leMeNuApp')
                 var file = files[i];
                 var modalInstance = $modal.open({
                     templateUrl: 'myModalContent.html',
-                     backdrop : 'static'
+                    backdrop: 'static'
                 });
                 Upload.upload({
                     url: '/api/photomenus',
@@ -70,10 +71,10 @@ angular.module('leMeNuApp')
 
     $scope.isEnableButtonSave = function() {
         var statusButtonSave = true;
-        if (!$scope.cartMenu.$invalid) {
-                if (!$scope.isUploading) {
-                    statusButtonSave = false;
-                };
+        if (!$scope.cartMenuSelected.$invalid) {
+            if (!$scope.isUploading) {
+                statusButtonSave = false;
+            };
         }
         return statusButtonSave;
     };

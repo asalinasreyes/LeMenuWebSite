@@ -1,26 +1,39 @@
 <h1>lista de restaurantes</h1>
 <div class="row" ng-controller="MyRestaurantOwnerListCtrl">
     <div>
-        <div class="col-xs-18 col-sm-6 col-md-3" ng-repeat="item in ListRestaurants">
-            <div class="thumbnail text-center" >
-                <h1>{{item.name}}</h1>
-                <div class="caption">
+        <div class="col-xs-18 col-sm-6 col-md-3" ng-repeat="onerestaurant in ListRestaurants">
+            <div class="thumbnail text-center">
+                <div ng-click="addMenu(onerestaurant)" class="btn">
+                    <h1>{{onerestaurant.name}}<i class="fa fa-edit"></i></h1>
+                </div>
+                <div class="wellListMenu">
                     <div class="row">
-                        <button ng-click="addMenu(item)" class="btn btn-primary btn-info">Agregar Menu</button>
+                        <button ng-click="addMenu(onerestaurant)" class="btn btn-xs btn-info pull-left">
+                            <i class="fa fa-plus"></i>Menu
+                        </button>
+                        <button ng-click="goListMenus(onerestaurant)" class="btn btn-xs pull-right">
+                            <i class="fa fa-list"></i> Menu
+                        </button>
                     </div>
                     <div class="row">
-                         <h4>Listado de Menus</h4>
-                        <div class="col-md-sub-3 well" ng-repeat="menu in item.ListMenu">
-                            <div class="thumbnail">
-                            <h2> {{menu.name}} </h2>
-                                <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="file in menu.files">{{file.filename}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p class="text-center">
-                            <button ng-click="edit(item)" class="btn btn-primary">editar</button>
-                        </p>
+                        <h4>Listado de Menus</h4>
+                        <table class="table table-striped">
+                            <tr ng-repeat="menu in onerestaurant.ListMenu" class="$index % 2 == 0? 'event' : 'odd'">
+                                <td>
+                                    <div ng-click="goEditMenu(onerestaurant, menu)" class="btn">
+                                        <div class="row">
+                                            {{menu.name}}
+                                            <div class="pull-right"><i class="fa fa-edit"></i></div>
+                                        </div>
+                                        <div class="row">
+                                            <ul>
+                                                <li class="" ng-repeat="file in menu.files">{{file.filename}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
