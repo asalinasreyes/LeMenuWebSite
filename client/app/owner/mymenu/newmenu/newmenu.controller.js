@@ -42,7 +42,7 @@ angular.module('leMeNuApp')
                 var file = files[i];
                 var modalInstance = $modal.open({
                     templateUrl: 'myModalContent.html',
-                     backdrop : 'static'
+                    backdrop: 'static'
                 });
                 Upload.upload({
                     url: '/api/photomenus',
@@ -71,9 +71,12 @@ angular.module('leMeNuApp')
     $scope.isEnableButtonSave = function() {
         var statusButtonSave = true;
         if (!$scope.cartMenu.$invalid) {
-                if (!$scope.isUploading) {
+            if (!$scope.isUploading) {
+                if ($scope.listFilesPhotoUpload.length > 0) {
                     statusButtonSave = false;
+
                 };
+            };
         }
         return statusButtonSave;
     };
