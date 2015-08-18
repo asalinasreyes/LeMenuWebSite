@@ -7,9 +7,8 @@ angular.module('leMeNuApp')
         $scope.restaurant = mySharedService.message;
 
         $scope.GetListRestaurants = function() {
-            RestaurantMenu.query({}, function(listrestaurantMenus) {
-                $scope.ListRestaurantMenus = $filter('filter')(listrestaurantMenus, { restaurantid: $scope.restaurant.restaurantid });    
-            });
+            $scope.ListRestaurantMenus = $filter('filter')($scope.restaurant.ListMenu, { restaurantid: $scope.restaurant.restaurantid });    
+            
         };
 
         $scope.edit = function(itemSelected) {

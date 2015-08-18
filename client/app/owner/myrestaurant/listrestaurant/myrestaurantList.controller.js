@@ -37,7 +37,8 @@ angular.module('leMeNuApp')
             $state.go('owner.mymenu.new');
         };
 
-        $scope.goListMenus = function() {
+        $scope.goListMenus = function(itemSelected) {
+            mySharedService.prepForBroadcast(itemSelected);
             $state.go('owner.mymenu.listmenu', {}, {
                 reload: true
             });
