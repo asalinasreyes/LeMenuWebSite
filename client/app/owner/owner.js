@@ -22,10 +22,5 @@ angular.module('leMeNuApp')
                 url: '/mymenu',
                 templateUrl: 'app/owner/mymenu/mymenu.html',
                 controller: 'MyRestaurantOwnerMenuCtrl'
-            })
-            .state('owner.payment', {
-                url: '/payment',
-                templateUrl: 'app/owner/payment/payment.html',
-                controller: 'PaymentownerCtrl'
             });
     });
