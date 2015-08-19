@@ -44,6 +44,12 @@ angular.module('leMeNuApp')
             });
         };
 
+        $scope.goPayment = function(onerestaurant, ItemMenuSelected) {
+            onerestaurant.ItemMenuSelected = ItemMenuSelected;
+            mySharedService.prepForBroadcast(onerestaurant);
+            $state.go('owner.payment');
+        };
+
 
 
         $scope.GetListRestaurants();
