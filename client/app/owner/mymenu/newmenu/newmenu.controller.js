@@ -2,7 +2,7 @@
 
 angular.module('leMeNuApp')
 
-.controller('MyRestaurantOwnerNewMenuCtrl', function($scope, $state, $modal, Upload, RestaurantMenu, mySharedService) {
+.controller('MyRestaurantOwnerNewMenuCtrl', function($scope, $state, $modal, $filter , $translate, Upload, RestaurantMenu, mySharedService, ListAllow) {
     $scope.cartMenu = {};
     $scope.progressUpload = '';
     $scope.listFilesPhotoUpload = [];
@@ -13,7 +13,7 @@ angular.module('leMeNuApp')
     $scope.cartMenu.language = [];
 
     $scope.RestaurantSelectedInfo = mySharedService.message;
-
+    $scope.listPossibleLang  =  $filter('filter')(ListAllow.LanguagesAllow, { code: '!' + $translate.use() });
 
     $scope.showRequiredLanguages = function() {
         var styperesult = true;

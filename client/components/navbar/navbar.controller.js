@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('leMeNuApp')
-  .controller('NavbarCtrl', function ($scope, $location, $translate, $filter, $locale,tmhDynamicLocale, Auth, ListAllow) {
+  .controller('NavbarCtrl', function ($scope, $location, $translate, $filter,tmhDynamicLocale, Auth, ListAllow) {
     $scope.menu = [{
       'title': 'navbar.lhome',
       'link': '/'

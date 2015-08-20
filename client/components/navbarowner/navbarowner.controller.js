@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('leMeNuApp')
-  .controller('NavbarOwnerCtrl', function($scope, $location,$filter,$translate, Auth, ListAllow) {
+  .controller('NavbarOwnerCtrl', function($scope, $location,$filter, tmhDynamicLocale,$translate, Auth, ListAllow) {
     $scope.menu = [{
       'title': 'navbarowner.lhome',
-      'link': '/'
+      'link': '/owner'
     }];
 
     $scope.languageEnable = {};
@@ -12,6 +12,7 @@ angular.module('leMeNuApp')
     $scope.languageEnable = $filter('filter')(ListAllow.LanguagesAllow, {
       code: $translate.use()
     })[0];
+    tmhDynamicLocale.set($scope.languageEnable.locale);
 
     $scope.getcssFlag = 'flag-icon-' + $scope.languageEnable.flag;
 
@@ -24,6 +25,7 @@ angular.module('leMeNuApp')
         code: selectLanguage.code
       })[0];
       $scope.getcssFlag = 'flag-icon-' + $scope.languageEnable.flag;
+      tmhDynamicLocale.set(selectLanguage.locale);
     };
 
     $scope.isCollapsed = true;

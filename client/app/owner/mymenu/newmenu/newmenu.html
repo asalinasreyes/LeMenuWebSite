@@ -18,10 +18,9 @@
                             </label>
                             <div class="col-sm-8">
                                 <select class="form-control" ng-model="cartMenu.language" required multiple="">
-                                    <option value="ES" selected>Espanol</option>
-                                    <option value="EN">Ingles</option>
-                                    <option value="FR">Frances</option>
-                                    <option value="PT">Portuges</option>
+                                    
+                                    <option ng-repeat="option in listPossibleLang" value="{{option.flag}}">{{option.name}}</option>
+
                                 </select>
                                 <span class="label label-danger" ng-show="showRequiredLanguages()">Required!</span>
                             </div>
