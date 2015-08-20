@@ -1,0 +1,71 @@
+{
+    "empty": "",
+    "navbar": {
+        "lsignup": "Registrarme",
+        "llogin": "Ingresar",
+        "lhello": "Hola!",
+        "lhome": "Inicio"
+    },
+    "navbarowner": {
+        "lsignup": "Registrarme",
+        "llogin": "Ingresar",
+        "llogout":"Salir",
+        "lhello": "Hola!",
+        "lhome": "Inicio",
+        "ldashboard":"Escritorio",
+        "lmyrestaurants":"Mis Restaurantes",
+        "lmypays":"Mis Pagos"
+    },
+    "account": {
+        "login": {
+            "title": "Inicio sesion",
+            "lemail": "Complete su Email",
+            "lpassword": "Complete password",
+            "phemail": " Your Email yourEmail@dominio.com ",
+            "phpassword": " Your  password",
+            "lrequireds": "Please enter your email and password.",
+            "lrequireemail": "El email parece incorrecto, favor validar",
+            "bsubmit": "Ingresar",
+            "register": "Registrarme",
+            "fblogin": "Connect with Facebook",
+            "gmlogin": "Connect with Google+"
+        },
+        "signup": {
+            "title": "Inicio sesion",
+            "yourname": "Tu nombre",
+            "phyourname": "Completa con tu nombre completo",
+            "lrequirename": "Tu nombre es obligatorio",
+            "lemailwrong": "El email parece incorrecto, favor validar",
+            "lemail": "Complete su Email",
+            "lpassword": "Complete password",
+            "lpasswordreq3": "Largo minimo 3 characteres",
+            "phemail": " Tu email yourEmail@dominio.com ",
+            "phpassword": " Tu password ",
+            "bsubmit": "Ingresar",
+            "register": "Registrarme",
+            "fblogin": "Connect with Facebook",
+            "gmlogin": "Connect with Google+"
+        }
+    },
+    "myresto":{
+        "badd":"Agregar",
+        "new":{
+            "ltitle":"Nuevo Restaurante",
+            "lname":"Nombre",
+            "phnameresto":"Nombre completo del restaurante",
+            "laddress":"Direccion",
+            "phaddress":"Direccion completa",
+            "lcountry":"Pais",
+            "phcountry":"Selecione Pais",
+            "lcity":"Ciudad",
+            "phcity":"Ingrese Ciudad",
+            "llangbase":"Idioma Materno",
+            "phlangbase":"Complete idioma materno",
+            "lgoogleurl":"Url Google Map",
+            "bback":"Volver",
+            "save":"Guardar",
+            "lfieldrequired":"Campo obligatorio"
+
+        }
+    }
+}

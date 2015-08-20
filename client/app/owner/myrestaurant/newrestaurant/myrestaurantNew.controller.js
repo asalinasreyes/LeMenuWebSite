@@ -3,6 +3,7 @@
 angular.module('leMeNuApp')
     .controller('MyRestaurantOwnerNewCtrl', function($scope, $state, Restaurant, mySharedService ) {
         $scope.restaurante = {};
+        $scope.restaurante.name='';
         $scope.SaveNewRestaurant = function() {
             Restaurant.save($scope.restaurante, function(info) {
             	$scope.restaurante = {};
@@ -15,4 +16,7 @@ angular.module('leMeNuApp')
         	$state.go('owner.myrestaurant', {}, {reload: true});
         };
 
+        $scope.readyForSave = function  () {
+
+        }
     });
