@@ -15,6 +15,9 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding: 0.2em 0;
 }
 
+@import 'flags/flag-icon.scss';
+
+
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';
@@ -31,3 +34,8 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'wellcome/wellcome.scss';
 @import 'modal/modal.scss';
 // endinjector
+
+.languagesAllow {
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}

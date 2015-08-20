@@ -483,7 +483,8 @@ module.exports = function(grunt) {
           loadPath: [
             '<%= yeoman.client %>/bower_components',
             '<%= yeoman.client %>/app',
-            '<%= yeoman.client %>/components'
+            '<%= yeoman.client %>/components',
+            '<%= yeoman.client %>/assets/sass'
           ],
           compass: false
         },
