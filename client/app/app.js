@@ -19,12 +19,14 @@ angular.module('leMeNuApp', [
   })
 
   .config(['$translateProvider', function($translateProvider) {
-    $translateProvider.useSanitizeValueStrategy('sanitize');
     $translateProvider.useStaticFilesLoader({
       prefix: '/app/l10n/',
       suffix: '.json'
     });
+    $translateProvider.useSanitizeValueStrategy(null);
+    $translateProvider.useCookieStorage();
     $translateProvider.preferredLanguage('es');
+
   }])
   
 .factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {

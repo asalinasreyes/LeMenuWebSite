@@ -1,5 +1,9 @@
 {
     "empty": "",
+    "home":{
+        "h1home":"Una Solucion",
+        "h3home":"En Desarrollo"
+    },
     "navbar": {
         "lsignup": "Registrarme",
         "llogin": "Ingresar",
