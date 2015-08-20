@@ -3,7 +3,7 @@
 angular.module('leMeNuApp')
   .controller('NavbarOwnerCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
+      'title': 'navbarowner.lhome',
       'link': '/'
     }];
 
