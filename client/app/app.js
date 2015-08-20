@@ -18,6 +18,15 @@ angular.module('leMeNuApp', [
     $httpProvider.interceptors.push('authInterceptor');
   })
 
+  .config(['$translateProvider', function($translateProvider) {
+    $translateProvider.useSanitizeValueStrategy('sanitize');
+    $translateProvider.useStaticFilesLoader({
+      prefix: '/app/l10n/',
+      suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('es');
+  }])
+  
 .factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
   return {
     // Add authorization token to headers
