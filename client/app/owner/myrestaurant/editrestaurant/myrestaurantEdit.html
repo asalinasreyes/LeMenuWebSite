@@ -1,29 +1,62 @@
-<h1>Estoy editando!</h1>
-<form  class="form" role="form" ng-controller="MyRestaurantOwnerEditCtrl">
-	<div class="form-group">
-		<label class="sr-only" for="">Nombre</label>
-		<input type="input" class="form-control" id="" placeholder="Nombre" ng-model="restauranteedit.name">
-	</div>
-	<div class="form-group">
-		<label class="sr-only" for="">Direccion</label>
-		<input type="input" class="form-control" id="" placeholder="Direccion"  ng-model="restauranteedit.address">
-	</div>
-	<div class="form-group">
-		<label class="sr-only" for="">country</label>
-		<input type="input" class="form-control" id="" placeholder="country"  ng-model="restauranteedit.country">
-	</div>
-	<div class="form-group">
-		<label class="sr-only" for="">city</label>
-		<input type="input" class="form-control" id="" placeholder="city"  ng-model="restauranteedit.city">
-	</div>
-	<div class="form-group">
-		<label class="sr-only" for="">language</label>
-		<input type="input" class="form-control" id="" placeholder="language"  ng-model="restauranteedit.language">
-	</div>
-	<div class="form-group">
-		<label class="sr-only" for="">String</label>
-		<input type="input" class="form-control" id="" placeholder="String"  ng-model="restauranteedit.urlgoogleMap">
-	</div>
-	<button class="btn btn-primary pull-left" ng-click="back()"> <i class="fa fa-arrow-left">Volver</i></button>
-	<button type="submit" class="btn btn-primary pull-right" ng-click="SaveNewRestaurant()">Submit</button>
-</form>
+<section ng-controller="MyRestaurantOwnerEditCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 well">
+                <form class="form-horizontal" role="form" name="formrestaurante">
+                    <fieldset>
+                        <legend>{{'myresto.new.ltitle' | translate}}</legend>
+                        <div class="form-group"  ng-class="{ 'has-error' : formrestaurante.nameresto.$invalid && !formrestaurante.nameresto.$pristine }">
+                            <label class="col-sm-4" for="">{{'myresto.new.lname' | translate}}</label>
+                            <div class="col-sm-8">
+                                <input type="input" class="form-control" name="nameresto" ng-model="restaurante.name" placeholder="{{'myresto.new.phnameresto' | translate}}" required>
+                                <span class="label label-danger" ng-show="formrestaurante.nameresto.$error.required">{{'myresto.new.lfieldrequired' | translate}} </span>
+                            </div>
+                        </div>
+                        <div class="form-group"  ng-class="{ 'has-error' : formrestaurante.addressresto.$invalid && !formrestaurante.addressresto.$pristine }">
+                            <label class="col-sm-4" for="">{{'myresto.new.laddress' | translate}}</label>
+                            <div class="col-sm-8">
+                                <input type="input" required  class="form-control" name="addressresto" placeholder="{{'myresto.new.phaddress' | translate}}" ng-model="restaurante.address"
+                                >
+                                <span class="label label-danger" ng-show="formrestaurante.addressresto.$error.required">{{'myresto.new.lfieldrequired' | translate}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group"  ng-class="{ 'has-error' : formrestaurante.countryresto.$invalid && !formrestaurante.countryresto.$pristine }">
+                            <label class="col-sm-4" for="">{{'myresto.new.lcountry' | translate}}</label>
+                            <div class="col-sm-8">
+                                <input type="input" required class="form-control" name="countryresto" placeholder="{{'myresto.new.phcountry' | translate}}" ng-model="restaurante.country">
+                                <span class="label label-danger" ng-show="formrestaurante.countryresto.$error.required">{{'myresto.new.lfieldrequired' | translate}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group"  ng-class="{ 'has-error' : formrestaurante.countryresto.$invalid && !formrestaurante.countryresto.$pristine }">
+                            <label class="col-sm-4" for="">{{'myresto.new.lcity' | translate}}</label>
+                            <div class="col-sm-8">
+                                <input type="input" required class="form-control" name="cityresto" placeholder= "{{'myresto.new.phcity' | translate}}" ng-model="restaurante.city">
+                                <span class="label label-danger" ng-show="formrestaurante.cityresto.$error.required">{{'myresto.new.lfieldrequired' | translate}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : formrestaurante.langresto.$invalid && !formrestaurante.langresto.$pristine }">
+                            <label class="col-sm-4" for="">{{'myresto.new.llangbase' | translate}}</label>
+                            <div class="col-sm-8">
+                                <input type="input" required class="form-control" name="langresto" placeholder="{{'myresto.new.phlangbase' | translate}}" ng-model="restaurante.language">
+                                <span class="label label-danger" ng-show="formrestaurante.langresto.$error.required">{{'myresto.new.lfieldrequired' | translate}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group"  ng-class="{ 'has-error' : formrestaurante.googmapresto.$invalid && !formrestaurante.googmapresto.$pristine }">
+                            <label class="col-sm-4" for="">{{'myresto.new.lgoogleurl' | translate}}</label>
+                            <div class="col-sm-8">
+                                <input type="input" required class="form-control" name="googmapresto" placeholder="{{'myresto.new.phaddress' | translate}}" ng-model="restaurante.urlgoogleMap">
+                                <span class="label label-danger" ng-show="formrestaurante.googmapresto.$error.required">{{'myresto.new.lfieldrequired' | translate}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-info pull-left" ng-click="back()"> <i class="fa fa-arrow-left">{{'myresto.new.bback' | translate}}</i></button>
+                            <button type="submit" class="btn btn-primary pull-right" ng-click="SaveNewRestaurant()" ng-disabled="formrestaurante.$invalid">
+                            <i class="fa fa-save">{{'myresto.new.save' | translate}}</i>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

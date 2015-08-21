@@ -2,27 +2,28 @@
 
 angular.module('leMeNuApp')
 
-.controller('MyRestaurantOwnerNewMenuCtrl', function($scope, $state, $modal, $filter , $translate, Upload, RestaurantMenu, mySharedService, ListAllow) {
-    $scope.cartMenu = {};
+.controller('MyRestaurantOwnerNewMenuCtrl', function($scope, $state, $modal, $filter , $translate, Upload, RestaurantMenu, myCache, ListAllow) {
+    $scope.cartMenu = {namemenu:'', language :[] };
     $scope.progressUpload = '';
     $scope.listFilesPhotoUpload = [];
     $scope.isUploading = false;
 
+    var languageEnabled = $translate.use();
 
-    $scope.cartMenu.namemenu = '';
-    $scope.cartMenu.language = [];
-
-    $scope.RestaurantSelectedInfo = mySharedService.message;
-    $scope.listPossibleLang  =  $filter('filter')(ListAllow.LanguagesAllow, { code: '!' + $translate.use() });
+    $scope.RestaurantSelectedInfo = myCache.get("oneresto");
+    $scope.listPossibleLang  =ListAllow.LanguagesAllow;
 
     $scope.showRequiredLanguages = function() {
-        var styperesult = true;
-        if ($scope.cartMenu.hasOwnProperty('language')) {
-            if ($scope.cartMenu.language.hasOwnProperty('length')) {
-                styperesult = $scope.cartMenu.language.length == 0;
-            };
+
+        if (!$scope.cartMenu.hasOwnProperty('language')) {
+            return true;
         }
-        return styperesult;
+       return $scope.cartMenu.language.length ==0 ;
+    };
+
+
+    $scope.disableLang = function(oneOption){
+        return oneOption.locale == languageEnabled ;
     };
 
     $scope.SaveNewRestaurantMenu = function() {

@@ -1,8 +1,9 @@
 {
+    "required": "Campo Obligatorio!",
     "empty": "",
-    "home":{
-        "h1home":"Una Solucion",
-        "h3home":"En Desarrollo"
+    "home": {
+        "h1home": "Una Solucion",
+        "h3home": "En Desarrollo"
     },
     "navbar": {
         "lsignup": "Registrarme",
@@ -13,12 +14,12 @@
     "navbarowner": {
         "lsignup": "Registrarme",
         "llogin": "Ingresar",
-        "llogout":"Salir",
+        "llogout": "Salir",
         "lhello": "Hola!",
         "lhome": "Inicio",
-        "ldashboard":"Escritorio",
-        "lmyrestaurants":"Mis Restaurantes",
-        "lmypays":"Mis Pagos"
+        "ldashboard": "Escritorio",
+        "lmyrestaurants": "Mis Restaurantes",
+        "lmypays": "Mis Pagos"
     },
     "account": {
         "login": {
@@ -51,25 +52,72 @@
             "gmlogin": "Connect with Google+"
         }
     },
-    "myresto":{
-        "badd":"Agregar",
-        "new":{
-            "ltitle":"Nuevo Restaurante",
-            "lname":"Nombre",
-            "phnameresto":"Nombre completo del restaurante",
-            "laddress":"Direccion",
-            "phaddress":"Direccion completa",
-            "lcountry":"Pais",
-            "phcountry":"Selecione Pais",
-            "lcity":"Ciudad",
-            "phcity":"Ingrese Ciudad",
-            "llangbase":"Idioma Materno",
-            "phlangbase":"Complete idioma materno",
-            "lgoogleurl":"Url Google Map",
-            "bback":"Volver",
-            "save":"Guardar",
-            "lfieldrequired":"Campo obligatorio"
-
+    "myresto": {
+        "badd": "Agregar",
+        "new": {
+            "ltitle": "Nuevo Restaurante",
+            "lname": "Nombre",
+            "phnameresto": "Nombre completo del restaurante",
+            "laddress": "Direccion",
+            "phaddress": "Direccion completa",
+            "lcountry": "Pais",
+            "phcountry": "Selecione Pais",
+            "lcity": "Ciudad",
+            "phcity": "Ingrese Ciudad",
+            "llangbase": "Idioma Materno",
+            "phlangbase": "Complete idioma materno",
+            "lgoogleurl": "Url Google Map",
+            "bback": "Volver",
+            "save": "Guardar",
+            "lfieldrequired": "Campo obligatorio"
+        },
+        "list": {
+            "ltitle": "Menus Creados",
+            "bedit": "Editar",
+            "bpaypal": "Paga con Paypal",
+            "badd": "Agregar",
+            "blist": "Lista"
         }
+    },
+    "menu": {
+        "badd": "Agregar Menu",
+        "edit": {
+            "ltitle": "Edicion del menu",
+            "lname": "Nombre del Menu",
+            "phname": "Ejemplo: Menu Verano 2015, Menu Otono",
+            "bupload": "Subir Imagen",
+            "bsave": "Guardar",
+            "lproccesing": "Subiendo Imagen al servidor",
+            "llangallow": "Traducir a  "
+        },
+        "new": {
+            "ltitle": "Edicion del menu",
+            "lname": "Nombre del Menu",
+            "phname": "Ejemplo: Menu Verano 2015, Menu Otono",
+            "bupload": "Subir Imagen",
+            "bsave": "Guardar",
+            "lproccesing": "Subiendo Imagen al servidor",
+            "llangallow": "Traducir a "
+        },
+        "list": {
+            "ltitle": "Menus en Restaurante ",
+            "battachfiles": "Adjuntar Archivos",
+            "bcountfiles": "Cantidad Archivos "
+        }
+    },
+    "preinvoice": {
+        "invoice": "Detalle Cobro",
+        "from": "A nombre de :",
+        "paymethod": "Metodo Pago:",
+        "date": "Fecha:",
+        "descripcions": "Detalle del cobro",
+        "item": "Descripcion",
+        "price": "Precio Unitario",
+        "qty": "Cantidad",
+        "linetotal": "Total",
+        "date":"Fecha Pago"
+
+
     }
+
 }

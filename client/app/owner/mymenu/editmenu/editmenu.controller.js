@@ -2,9 +2,9 @@
 
 angular.module('leMeNuApp')
 
-.controller('MyRestaurantOwnerEditMenuCtrl', function($scope, $state, $modal, Upload, RestaurantMenu, mySharedService) {
+.controller('MyRestaurantOwnerEditMenuCtrl', function($scope, $state, $modal, $translate, Upload, myCache, ListAllow, RestaurantMenu) {
 
-    $scope.RestaurantSelectedInfo = mySharedService.message;
+    $scope.RestaurantSelectedInfo = myCache.get("oneresto");
     $scope.progressUpload = '';
     $scope.listFilesPhotoUpload = [];
     $scope.isUploading = false;
@@ -13,17 +13,19 @@ angular.module('leMeNuApp')
     $scope.cartMenuSelected = $scope.RestaurantSelectedInfo.ItemMenuSelected;
     $scope.listFilesPhotoUpload = $scope.RestaurantSelectedInfo.ItemMenuSelected.files;
 
+    $scope.listPossibleLang = ListAllow.LanguagesAllow;
+    var languageEnabled = $translate.use();
 
+    $scope.disableLang = function(oneOption){
+
+        return oneOption.locale == languageEnabled ;
+    };
 
     $scope.showRequiredLanguages = function() {
-        var styperesult = true;
-        if ($scope.cartMenuSelected.hasOwnProperty('language')) {
-            if ($scope.cartMenuSelected.language.hasOwnProperty('length')) {
-                styperesult = $scope.cartMenuSelected.language.length == 0;
-            };
+        if (!$scope.cartMenuSelected.hasOwnProperty('language')) {
+            return true;
         }
-
-        return styperesult;
+        return $scope.cartMenuSelected.language.length == 0;
     };
 
     $scope.SaveNewRestaurantMenu = function() {
@@ -31,7 +33,7 @@ angular.module('leMeNuApp')
         $scope.cartMenuSelected.files = $scope.listFilesPhotoUpload;
         RestaurantMenu.PUT($scope.cartMenuSelected, function(info) {
             $scope.cartMenuSelected = {};
-            $state.go('owner.mymenu.listmenu', {}, {
+            $state.go('owner.myrestaurant.listrestaurant', {}, {
                 reload: true
             });
         });

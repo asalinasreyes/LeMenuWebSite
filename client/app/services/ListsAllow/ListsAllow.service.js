@@ -2,7 +2,6 @@
 
 angular.module('leMeNuApp')
 	.service('ListAllow', function() {
-		var pathtoimage = '/assets/flags/4x1/';
 		var languagesAllow = [{
 			id: 1,
 			name: 'Español',
@@ -37,7 +36,6 @@ angular.module('leMeNuApp')
 
 		
 			return {
-				PathToImage: pathtoimage,
 				LanguagesAllow: languagesAllow,
 				CountryAllow: languagesAllow
 			};
