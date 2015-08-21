@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('MyRestaurantOwnerListCtrl', function($scope, $state, $filter, Restaurant, RestaurantMenu, mySharedService) {
+    .controller('MyRestaurantOwnerListCtrl', function($scope, $state, $filter, Restaurant, RestaurantMenu, myCache) {
         $scope.ListRestaurants = [];
         $scope.SelectedRestaurant = [];
 
@@ -19,26 +19,24 @@ angular.module('leMeNuApp')
             });
         };
 
-
-
         $scope.editrestaurant = function(itemSelected) {
-            mySharedService.prepForBroadcast(itemSelected);
+            myCache.set("oneresto", itemSelected);
             $state.go('owner.myrestaurant.editrestaurant');
         };
 
         $scope.goEditMenu = function(onerestaurant, ItemMenuSelected) {
             onerestaurant.ItemMenuSelected = ItemMenuSelected;
-            mySharedService.prepForBroadcast(onerestaurant);
+            myCache.set("oneresto", onerestaurant);
             $state.go('owner.mymenu.edit');
         }
 
         $scope.addMenu = function(itemSelected) {
-            mySharedService.prepForBroadcast(itemSelected);
+            myCache.set("oneresto", itemSelected);
             $state.go('owner.mymenu.new');
         };
 
         $scope.goListMenus = function(itemSelected) {
-            mySharedService.prepForBroadcast(itemSelected);
+            myCache.set("oneresto", itemSelected);
             $state.go('owner.mymenu.listmenu', {}, {
                 reload: true
             });
@@ -46,7 +44,7 @@ angular.module('leMeNuApp')
 
         $scope.goPayment = function(onerestaurant, ItemMenuSelected) {
             onerestaurant.ItemMenuSelected = ItemMenuSelected;
-            mySharedService.prepForBroadcast(onerestaurant);
+            myCache.set("oneresto", onerestaurant);
             $state.go('owner.payment');
         };
 

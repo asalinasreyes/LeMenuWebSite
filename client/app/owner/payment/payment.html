@@ -1,43 +1,32 @@
 
 <div class="container" ng-controller="PaymentownerCtrl">
-{{paymentMenuSeleted}}
-
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-                <h2>Invoice</h2><h3 class="pull-right">Order # 12345</h3>
+                <h2>{{'preinvoice.invoice' | translate}}</h2>
             </div>
             <hr>
             <div class="row">
                 <div class="col-xs-6">
                     <address>
-                    <strong>Billed To:</strong><br>
-                        John Smith<br>
-                        1234 Main<br>
-                        Apt. 4B<br>
-                        Springfield, ST 54321
+                    <strong>{{'preinvoice.invoice' | translate}}</strong><br>
+                        Name<br>
+                        Email<br>
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
-                    <address>
-                    <strong>Shipped To:</strong><br>
-                        Jane Smith<br>
-                        1234 Main<br>
-                        Apt. 4B<br>
-                        Springfield, ST 54321
-                    </address>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6">
                     <address>
-                        <strong>Payment Method:</strong><br>
+                        <strong>{{'preinvoice.paymethod' | translate}}</strong><br>
                         Paypal<br>
                     </address>
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>
-                        <strong>Order Date:</strong><br>
+                        <strong>{{'preinvoice.date' | translate}}</strong><br>
                         {{infoInformation.date | date : format : shortDate}}<br><br>
                     </address>
                 </div>
@@ -49,17 +38,17 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Order summary</strong></h3>
+                    <h3 class="panel-title"><strong>{{'preinvoice.descripcions' | translate}}</strong></h3>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <td><strong>Item</strong></td>
-                                    <td class="text-center"><strong>Price</strong></td>
-                                    <td class="text-center"><strong>Quantity</strong></td>
-                                    <td class="text-right"><strong>Totals</strong></td>
+                                    <td><strong>{{'preinvoice.item' | translate}}</strong></td>
+                                    <td class="text-center"><strong>{{'preinvoice.price' | translate}}</strong></td>
+                                    <td class="text-center"><strong>{{'preinvoice.qty' | translate}}</strong></td>
+                                    <td class="text-right"><strong>{{'preinvoice.linetotal' | translate}}</strong></td>
                                 </tr>
                             </thead>
                             <tbody>

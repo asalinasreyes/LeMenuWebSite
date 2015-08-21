@@ -4,31 +4,30 @@
             <div class="col-md-4 col-md-offset-4 well">
                 <form class="form-horizontal" role="form" name="cartMenu" novalidate="novalidate">
                     <fieldset>
-                        <!-- Form Name -->
-                        <legend>Agrega nuevo menu al restaurante {{RestaurantSelectedInfo.name}}</legend>
+                        <legend align="center">{{'menu.new.ltitle' | translate}} {{RestaurantSelectedInfo.name}}</legend>
                         <div class="form-group" ng-class="{ 'has-error' : cartMenu.namemenu.$invalid && !cartMenu.namemenu.$pristine }">
-                            <label class="col-sm-4" for="namemenu">Nombre del menu</label>
+                            <label class="col-sm-4" for="namemenu">{{'menu.new.lname' | translate}}</label>
                             <div class="col-sm-8">
-                                <input type="text" name="namemenu" placeholder="nameMenu" class="form-control" required ng-model="cartMenu.name">
-                                <span class="label label-danger" ng-show="cartMenu.namemenu.$error.required">Required!</span>
+                                <input type="text" name="namemenu" placeholder="{{'menu.new.phname' | translate}}" class="form-control" required ng-model="cartMenu.name">
+                                <span class="label label-danger" ng-show="cartMenu.namemenu.$error.required">{{'required' | translate}}</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="language" class="col-sm-4"> Idiomas Disponibles</span>
+                            <label for="language" class="col-sm-4">{{'menu.new.llangallow' | translate}}</span>
                             </label>
                             <div class="col-sm-8">
                                 <select class="form-control" ng-model="cartMenu.language" required multiple="">
                                     
-                                    <option ng-repeat="option in listPossibleLang" value="{{option.flag}}">{{option.name}}</option>
+                                    <option ng-repeat="option in listPossibleLang" ng-disabled="disableLang(option)" value="{{option.flag}}">{{option.name}}</option>
 
                                 </select>
-                                <span class="label label-danger" ng-show="showRequiredLanguages()">Required!</span>
+                                <span class="label label-danger" ng-show="showRequiredLanguages()">{{'required' | translate}}</span>
                             </div>
                         </div>
                         <div class="form-group text-center">
                             <div class="col-sm-12 ">
                                 <div class="btn btn-primary" ngf-select ngf-change="uploadFileToServe($files)" ng-disabled="isUploading">
-                                    Subir Foto<i class="fa fa-upload"></i> {{progressPercentage}}
+                                    {{'menu.new.bupload' | translate}}<i class="fa fa-upload"></i> {{progressPercentage}}
                                 </div>
                             </div>
                         </div>
@@ -38,7 +37,9 @@
                             </ul>
                         </div>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-default btn-lg submit" ng-disabled="isEnableButtonSave()" ng-click="SaveNewRestaurantMenu()">Save</button>
+                            <button type="submit" class="btn btn-default btn-lg submit" ng-disabled="isEnableButtonSave()" ng-click="SaveNewRestaurantMenu()">
+                                 {{'menu.new.bsave' | translate}}
+                            </button>
                         </div>
                     </fieldset>
                 </form>
@@ -49,7 +50,7 @@
         <div class="modal-body">
              <div class="text-center">
                     <img src="http://www.travislayne.com/images/loading.gif" class="icon" />
-                    <h4>Processing... </h4>
+                    <h4>{{'menu.new.lproccesing' | translate}} </h4>
                 </div>
         </div>
     </script>

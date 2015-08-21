@@ -7,13 +7,13 @@
             <div class="list-group">
                 <div class="row">
                     <button ng-click="addMenu(onerestaurant)" class="btn  btn-info pull-left btnaddmenu">
-                        <i class="fa fa-plus"></i>Menu
+                        <i class="fa fa-plus"></i>{{'myresto.list.badd' | translate}}
                     </button>
                     <button ng-click="goListMenus(onerestaurant)" class="btn pull-right btnlistmenu">
-                        <i class="fa fa-list"></i> Menu
+                        <i class="fa fa-list"></i> {{'myresto.list.blist' | translate}}
                     </button>
                 </div>
-                <h4>Listado de Menus</h4>
+                <h4>{{'myresto.list.ltitle' | translate}}</h4>
                 <div class="list-group" ng-repeat="menu in onerestaurant.ListMenu">
                     <div class="list-group-item list-group-item-success"> <span class="badge pull-left">{{$index + 1}}</span> {{menu.name}}
                     </div>
@@ -24,10 +24,10 @@
                         </div>
                         <div class="row">
                             <div class="pull-left">
-                                <div ng-click="goEditMenu(onerestaurant, menu)" class="btn btn-success">Editar</div>
+                                <div ng-click="goEditMenu(onerestaurant, menu)" class="btn btn-success">{{'myresto.list.bedit' | translate}}</div>
                             </div>
                             <div class="pull-right">
-                                <div ng-click="goPayment(onerestaurant, menu)" class="btn btn-info">Pagar Paypal</div>
+                                <div ng-click="goPayment(onerestaurant, menu)" class="btn btn-info">{{'myresto.list.bpaypal' | translate}}</div>
                             </div>
                         </div>
                     </div>
