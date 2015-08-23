@@ -26,7 +26,7 @@
                             <div class="pull-left">
                                 <div ng-click="goEditMenu(onerestaurant, menu)" class="btn btn-success">{{'myresto.list.bedit' | translate}}</div>
                             </div>
-                            <div class="pull-right">
+                            <div class="pull-right" ng-hide="isPayed(menu)">
                                 <div ng-click="goPayment(onerestaurant, menu)" class="btn btn-info">{{'myresto.list.bpaypal' | translate}}</div>
                             </div>
                         </div>

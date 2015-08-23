@@ -1,6 +1,5 @@
 'use strict';
 
 angular.module('leMeNuApp')
-  .controller('OwnerCtrl', function ($scope) {
-    
+  .controller('OwnerCtrl', function ($scope, $state) {
   });

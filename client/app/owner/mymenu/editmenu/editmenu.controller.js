@@ -8,10 +8,18 @@ angular.module('leMeNuApp')
     $scope.progressUpload = '';
     $scope.listFilesPhotoUpload = [];
     $scope.isUploading = false;
+    $scope.disabledAll = false;
 
     $scope.RestaurantSelectedInfo = $scope.RestaurantSelectedInfo;
     $scope.cartMenuSelected = $scope.RestaurantSelectedInfo.ItemMenuSelected;
+    
+    if ($scope.cartMenuSelected.hasOwnProperty('status') && $scope.cartMenuSelected.status=='success') {
+        $scope.disabledAll = true;
+        $scope.isUploading = true;
+    };
+
     $scope.listFilesPhotoUpload = $scope.RestaurantSelectedInfo.ItemMenuSelected.files;
+
 
     $scope.listPossibleLang = ListAllow.LanguagesAllow;
     var languageEnabled = $translate.use();

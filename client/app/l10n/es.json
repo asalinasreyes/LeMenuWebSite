@@ -115,7 +115,8 @@
         "price": "Precio Unitario",
         "qty": "Cantidad",
         "linetotal": "Total",
-        "date":"Fecha Pago"
+        "date":"Fecha Pago",
+        "lproccesing":"Procesando Pago"
 
 
     }
