@@ -1,12 +1,14 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./payment.controller');
+var paypalcontroller = require('./paypal/paypal.controller');
 var auth = require('../auth/auth.service');
 
 var router = express.Router();
 
-router.get('/',  controller.startPayment);
-router.get('/orderExecute', controller.orderExecute);
+router.post('/paypal/startPayment',  paypalcontroller.startPayment);
+router.get('/paypal/orderExecute',  paypalcontroller.orderExecute);
+router.get('/paypal/cancelUrl',  paypalcontroller.cancelUrl);
+
 
 module.exports = router;

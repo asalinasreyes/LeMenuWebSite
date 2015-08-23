@@ -5,7 +5,7 @@ angular.module('leMeNuApp')
         $stateProvider
             .state('owner.payment', {
                 url: '/payment',
-                templateUrl: 'app/owner/payment/payment.html'
-            })
-
+                templateUrl: 'app/owner/payment/payment.html',
+                controller:'PaymentownerCtrl'
+            });
     });

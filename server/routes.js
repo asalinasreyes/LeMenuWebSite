@@ -11,7 +11,8 @@ module.exports = function(app) {
     // Insert routes below
     app.use('/api/restaurants', require('./api/restaurant'));
     app.use('/api/restaurant/menu', require('./api/menuofrestaurant'));
-    app.use('/payment', require('./payment'));
+    app.use('/api/payment', require('./payment'));
+    app.use('/api/payments', require('./api/payment'));
 
 
     app.use('/api/photomenus', require('./api/photomenu'));

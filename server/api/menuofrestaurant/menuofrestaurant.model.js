@@ -15,6 +15,7 @@ var MenuofrestaurantSchema = new Schema({
 	active: Boolean,
 	language: [String],
 	files: [FileUploadSchema],
+	status:String,
 	restaurantid: {
 		type: Schema.ObjectId,
 		ref: 'RestaurantSchema'

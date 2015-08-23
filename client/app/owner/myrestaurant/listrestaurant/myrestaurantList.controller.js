@@ -19,6 +19,12 @@ angular.module('leMeNuApp')
             });
         };
 
+
+        $scope.isPayed = function(menu){
+            if (menu.status=='success') {
+                return true;
+            };
+        }
         $scope.editrestaurant = function(itemSelected) {
             myCache.set("oneresto", itemSelected);
             $state.go('owner.myrestaurant.editrestaurant');

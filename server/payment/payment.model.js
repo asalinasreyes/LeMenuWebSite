@@ -8,7 +8,6 @@ var mongoose = require('mongoose'),
 var PaymentSchema = new Schema({
 
   order_id: String,
-  user_id: String,
   payment_id: String,
   state: String,
   amount: String,
@@ -17,7 +16,9 @@ var PaymentSchema = new Schema({
   restaurantid: { type: Schema.ObjectId, ref: 'RestaurantSchema' },
   menuid: { type: Schema.ObjectId, ref: 'MenuSchema' },
   created_time: { type: Date, default: Date.now },
-  created_Finished: Date
+  created_success: Date,
+  created_cancel: Date
 });
 
 module.exports = mongoose.model('Payment', PaymentSchema);
+
