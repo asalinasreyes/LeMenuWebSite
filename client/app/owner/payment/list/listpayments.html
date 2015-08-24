@@ -1,4 +1,20 @@
 <div>
-	{{list}}
-	hoaaaaaa
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>{{'payment.list.hdatecreate' | translate}} </th>
+			<th>{{'payment.list.hdescription' | translate}} </th>
+			<th>{{'payment.list.hstatus' | translate}} </th>
+			<th>{{'payment.list.hamount' | translate}} </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="pay in listpayments">
+			<td>{{pay.created_success}}</td>
+			<td>{{pay.menuid}}</td>
+			<td>{{pay.state}}</td>
+			<td>{{pay._id}}</td>
+		</tr>
+	</tbody>
+</table>
 </div>

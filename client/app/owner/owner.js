@@ -13,8 +13,8 @@ angular.module('leMeNuApp')
                 templateUrl: 'app/owner/dashboard/dashboard.html',
                 controller: 'dashboardCtrl'
             })
-            .state('owner.myrestaurant', {
-                url: '/myrestaurant',
+            .state('owner.resto', {
+                url: '/resto',
                 templateUrl: 'app/owner/myrestaurant/myrestaurant.html',
                 controller: 'MyRestaurantOwnerCtrl'
             })

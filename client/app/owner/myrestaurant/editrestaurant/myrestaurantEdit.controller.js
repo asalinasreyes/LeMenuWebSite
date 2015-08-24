@@ -8,14 +8,14 @@ angular.module('leMeNuApp')
         $scope.SaveNewRestaurant = function() {
             Restaurant.PUT($scope.restaurante, function(info) {
                 $scope.restaurante = {};
-                $state.go('owner.myrestaurant', {}, {
+                $state.go('owner.resto', {}, {
                     reload: true
                 });
             });
         };
 
         $scope.back = function() {
-            $state.go('owner.myrestaurant', {}, {
+            $state.go('owner.resto', {}, {
                 reload: true
             });
         };

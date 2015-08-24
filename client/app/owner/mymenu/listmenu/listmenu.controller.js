@@ -12,7 +12,7 @@ angular.module('leMeNuApp')
 
         $scope.goeditResto = function(itemSelected) {
             myCache.set("onemenu", itemSelected);
-            $state.go('owner.myrestaurant.editrestaurant');
+            $state.go('owner.resto.edit');
         };
 
         $scope.GetListRestaurants();

@@ -13,7 +13,7 @@ angular.module('leMeNuApp')
         };
 
         $scope.back= function(){
-        	$state.go('owner.myrestaurant', {}, {reload: true});
+        	$state.go('owner.resto', {}, {reload: true});
         };
 
         $scope.readyForSave = function  () {

@@ -6,21 +6,25 @@ angular.module('leMeNuApp')
         $scope.RestaurantSelectedInfo = myCache.get("oneresto");
         $scope.showError = false;
         $scope.getCurrentUser = Auth.getCurrentUser;
-        if ($scope.RestaurantSelectedInfo.ItemMenuSelected != undefined) {
-            $scope.paymentMenuSeleted = $scope.RestaurantSelectedInfo.ItemMenuSelected;
-            var numberFiles = $scope.paymentMenuSeleted.files.length;
 
-            $scope.infoInformation = {
-                date: new Date(),
-                price: 10,
-                countpage: numberFiles,
-                priceTotal: numberFiles * 10,
-                menuid: $scope.paymentMenuSeleted._id,
-                restaurantid: $scope.RestaurantSelectedInfo._id,
-                methodpayment: 'paypal',
-                user: $scope.getCurrentUser()
+        if ($scope.RestaurantSelectedInfo) {
+
+            if ($scope.RestaurantSelectedInfo.ItemMenuSelected != undefined) {
+                $scope.paymentMenuSeleted = $scope.RestaurantSelectedInfo.ItemMenuSelected;
+                var numberFiles = $scope.paymentMenuSeleted.files.length;
+
+                $scope.infoInformation = {
+                    date: new Date(),
+                    price: 10,
+                    countpage: numberFiles,
+                    priceTotal: numberFiles * 10,
+                    menuid: $scope.paymentMenuSeleted._id,
+                    restaurantid: $scope.RestaurantSelectedInfo._id,
+                    methodpayment: 'paypal',
+                    user: $scope.getCurrentUser()
+                };
+
             };
-
         };
 
 
