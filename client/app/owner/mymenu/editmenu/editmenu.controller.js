@@ -41,7 +41,7 @@ angular.module('leMeNuApp')
         $scope.cartMenuSelected.files = $scope.listFilesPhotoUpload;
         RestaurantMenu.PUT($scope.cartMenuSelected, function(info) {
             $scope.cartMenuSelected = {};
-            $state.go('owner.myrestaurant.listrestaurant', {}, {
+            $state.go('owner.resto.list', {}, {
                 reload: true
             });
         });

@@ -27,7 +27,7 @@ angular.module('leMeNuApp')
         }
         $scope.editrestaurant = function(itemSelected) {
             myCache.set("oneresto", itemSelected);
-            $state.go('owner.myrestaurant.editrestaurant');
+            $state.go('owner.resto.edit');
         };
 
         $scope.goEditMenu = function(onerestaurant, ItemMenuSelected) {
@@ -53,8 +53,6 @@ angular.module('leMeNuApp')
             myCache.set("oneresto", onerestaurant);
             $state.go('owner.payment');
         };
-
-
-
+        
         $scope.GetListRestaurants();
     });

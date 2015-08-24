@@ -117,8 +117,14 @@
         "linetotal": "Total",
         "date":"Fecha Pago",
         "lproccesing":"Procesando Pago"
+    },
+    "payment":{
+        "list":{
+            "hdatecreate":"Fecha Pago",
+            "hdescription":"Descripcion",
+            "hstatus":"Estado",
+            "hamount":"Monto"
 
-
+        }
     }
-
 }

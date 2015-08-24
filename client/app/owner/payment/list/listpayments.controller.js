@@ -1,13 +1,9 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('PaymentownerListCtrl', function($scope, Payments, Auth) {
-    	$scope.user =  Auth.getCurrentUser;
+    .controller('PaymentownerListCtrl', function($scope, Payments) {
     	Payments.query({}, function(data){
-    		$scope.list = data;	
+    		$scope.listpayments = data;	
     	});
-
-
-
     	
     });

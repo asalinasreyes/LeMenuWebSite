@@ -31,7 +31,7 @@ angular.module('leMeNuApp')
         $scope.cartMenu.files = $scope.listFilesPhotoUpload;
         RestaurantMenu.save($scope.cartMenu, function(info) {
             $scope.cartMenu = {};
-            $state.go('owner.myrestaurant.listrestaurant', {}, {
+            $state.go('owner.resto.list', {}, {
                 reload: true
             });
         });
