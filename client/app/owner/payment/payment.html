@@ -1,4 +1,5 @@
 <div class="container" ng-controller="PaymentownerCtrl">
+{{infopayment}}
 <div ui-view>
     <div class="row">
         <div class="col-xs-12">
@@ -54,15 +55,15 @@
                             <tbody>
                                 <tr ng-repeat="language in paymentMenuSeleted.language">
                                     <td>{{language}} </td>
-                                    <td class="text-center">{{ infoInformation.price }} </td>
-                                    <td class="text-center">{{ infoInformation.countpage }} </td>
-                                    <td class="text-right">{{ infoInformation.priceTotal }}</td>
+                                    <td class="text-center">{{ infopayment.priceBypage }} </td>
+                                    <td class="text-center">{{ infopayment.numberPage }} </td>
+                                    <td class="text-right">{{ infopayment.TotalLine }}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="4">
-                                        <button class="btn btn-primary pull-right" ng-click="startPayment()">Pagar con Paypal</button>
+                                        <button class="btn btn-primary pull-right" ng-click="startPayment()">Pagar con Paypal<br>{{ infopayment.TotalPrice }} USD</button>
                                     </td>
                                 </tr>
                             </tfoot>

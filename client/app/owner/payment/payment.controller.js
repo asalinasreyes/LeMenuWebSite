@@ -1,23 +1,26 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('PaymentownerCtrl', function($scope, $http, myCache, Auth, $modal) {
+    .controller('PaymentownerCtrl', function($scope, $http, myCache, Auth, $modal, InvoiceInfo) {
         $scope.PriceSubTotal = 12;
         $scope.RestaurantSelectedInfo = myCache.get("oneresto");
         $scope.showError = false;
         $scope.getCurrentUser = Auth.getCurrentUser;
 
+
         if ($scope.RestaurantSelectedInfo) {
 
             if ($scope.RestaurantSelectedInfo.ItemMenuSelected != undefined) {
                 $scope.paymentMenuSeleted = $scope.RestaurantSelectedInfo.ItemMenuSelected;
-                var numberFiles = $scope.paymentMenuSeleted.files.length;
 
+
+                $scope.infopayment  =  InvoiceInfo.get({menuid: $scope.paymentMenuSeleted._id}, function(){});
+                
                 $scope.infoInformation = {
                     date: new Date(),
-                    price: 10,
-                    countpage: numberFiles,
-                    priceTotal: numberFiles * 10,
+                    price: $scope.infopayment.priceBypage,
+                    countpage: $scope.infopayment.numberPage, 
+                    priceTotal: $scope.infopayment.TotalPrice,
                     menuid: $scope.paymentMenuSeleted._id,
                     restaurantid: $scope.RestaurantSelectedInfo._id,
                     methodpayment: 'paypal',

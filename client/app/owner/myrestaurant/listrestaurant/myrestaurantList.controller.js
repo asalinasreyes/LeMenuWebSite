@@ -5,6 +5,10 @@ angular.module('leMeNuApp')
         $scope.ListRestaurants = [];
         $scope.SelectedRestaurant = [];
 
+        $scope.goNew = function(){
+            $state.go('owner.resto.new');
+       };
+
         $scope.GetListRestaurants = function() {
             Restaurant.query({}, function(listrestaurants) {
                 $scope.ListRestaurants = listrestaurants;
