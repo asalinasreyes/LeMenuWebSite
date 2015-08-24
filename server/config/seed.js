@@ -10,6 +10,8 @@ var Restaurant = require('../api/restaurant/restaurant.model');
 var MenuOfrestaurant = require('../api/menuofrestaurant/menuofrestaurant.model');
 var Payment = require('../payment/payment.model');
 
+var PriceList = require('../payment/price.model');
+
 
 var uuid = require('node-uuid');
 
@@ -53,7 +55,7 @@ MenuOfrestaurant.find({}).remove(function() {
   console.log('Borro todos los Menus');
 });
 
-Payment.find({}).remove(function(){
+Payment.find({}).remove(function() {
   console.log('Se borran todos los pagos');
 });
 
@@ -79,9 +81,9 @@ User.create({
   console.log('Creo Owner default');
   newRestaurant.userid = data._id;
   Restaurant.create(newRestaurant, function(err, data) {
-    newMenuOfRestaurant.userid =  data.userid
-    newMenuOfRestaurant.restaurantid =  data._id;
-    MenuOfrestaurant.create(newMenuOfRestaurant, function(err, data){
+    newMenuOfRestaurant.userid = data.userid
+    newMenuOfRestaurant.restaurantid = data._id;
+    MenuOfrestaurant.create(newMenuOfRestaurant, function(err, data) {
       console.log('Creo Menu default en resto default');
     });
   });
@@ -98,11 +100,24 @@ User.create({
   console.log('Creo Owner default');
   newRestaurant.userid = data._id;
   Restaurant.create(newRestaurant, function(err, data) {
-    newMenuOfRestaurant.userid =  data.userid
-    newMenuOfRestaurant.restaurantid =  data._id;
-    MenuOfrestaurant.create(newMenuOfRestaurant, function(err, data){
+    newMenuOfRestaurant.userid = data.userid
+    newMenuOfRestaurant.restaurantid = data._id;
+    MenuOfrestaurant.create(newMenuOfRestaurant, function(err, data) {
       console.log('Creo Menu default en resto default');
     });
   });
+});
+
+PriceList.find({}).remove(function() {
+  console.log('se borra lista de precio');
+});
+
+PriceList.create({
+  price: 11,
+  typeserviceid: '1',
+  typeservicedescription: 'todos',
+  validFrom: new Date(),
+  validTo: new Date()
+}, function(err, data) {
 
 });

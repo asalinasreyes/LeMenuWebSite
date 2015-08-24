@@ -13,6 +13,7 @@ module.exports = function(app) {
     app.use('/api/restaurant/menu', require('./api/menuofrestaurant'));
     app.use('/api/payment', require('./payment'));
     app.use('/api/payments', require('./api/payment'));
+    app.use('/api/invoice' , require('./api/invoice'));
 
 
     app.use('/api/photomenus', require('./api/photomenu'));
