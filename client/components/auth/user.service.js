@@ -1,22 +1,25 @@
 'use strict';
 
 angular.module('leMeNuApp')
-  .factory('User', function ($resource) {
+  .factory('User', function($resource) {
     return $resource('/api/users/:id/:controller', {
       id: '@_id'
-    },
-    {
+    }, {
       changePassword: {
         method: 'PUT',
         params: {
-          controller:'password'
+          controller: 'password'
         }
       },
       get: {
         method: 'GET',
         params: {
-          id:'me'
+          id: 'me'
         }
+      },
+      saveTranslate: {
+        method: 'POST',
+        url: '/api/users/translate'
       }
-	  });
+    });
   });

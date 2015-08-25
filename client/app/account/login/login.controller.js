@@ -2,14 +2,13 @@
 
 angular.module('leMeNuApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {email:'owner@owner.com', password:'owner'};
+    $scope.user = {email:'admin@admin.com', password:'admin'};
     $scope.errors = {};
     $scope.info1 = {};
     $scope.info2 = {};
 
     $scope.login = function(form) {
       $scope.submitted = true;
-
       if(form.$valid) {
         Auth.login({
           email: $scope.user.email,

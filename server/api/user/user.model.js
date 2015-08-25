@@ -87,7 +87,7 @@ UserSchema
       }
       respond(true);
     });
-}, 'The specified email address is already in use.');
+}, 'errores.emailalreayinuse');
 
 var validatePresenceOf = function(value) {
   return value && value.length;

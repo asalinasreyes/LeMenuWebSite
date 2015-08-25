@@ -1,5 +1,6 @@
 {
     "required": "Campo Obligatorio!",
+    "terrormessage":"Error",
     "empty": "",
     "home": {
         "h1home": "Una Solucion",
@@ -9,6 +10,7 @@
         "lsignup": "Registrarme",
         "llogin": "Ingresar",
         "lhello": "Hola!",
+        "llogout":"Salir",
         "lhome": "Inicio"
     },
     "navbarowner": {
@@ -115,20 +117,43 @@
         "price": "Precio Unitario",
         "qty": "Cantidad",
         "linetotal": "Total",
-        "date":"Fecha Pago",
-        "lproccesing":"Procesando Pago"
+        "date": "Fecha Pago",
+        "lproccesing": "Procesando Pago"
     },
-    "payment":{
-        "list":{
-            "hdatecreatepay":"Fecha Pago",
-            "hdatecreatemenu":"Fecha Menu",
-            "hdescription":"Descripcion",
-            "hstatus":"Estado",
-            "hamount":"Monto",
-            "translate":"Traduccion de  ",
-            "numberpage":", paginas",
-            "to":"a los siguientes idiomas"
+    "payment": {
+        "list": {
+            "hdatecreatepay": "Fecha Pago",
+            "hdatecreatemenu": "Fecha Menu",
+            "hdescription": "Descripcion",
+            "hstatus": "Estado",
+            "hamount": "Monto",
+            "translate": "Traduccion de  ",
+            "numberpage": ", paginas",
+            "to": "a los siguientes idiomas"
 
         }
+    },
+    "admin": {
+        "navbar": {
+            "adminuser": "Usuarios"
+        },
+        "newtranslator": {
+            "title": "Nuevo Traductor",
+            "yourname": "Nombre",
+            "phyourname": "Completar con el nombre completo",
+            "lrequirename": "Nombre es obligatorio",
+            "lemailwrong": "El email parece incorrecto, favor validar",
+            "lemail": "Complete el Email",
+            "lpassword": "Complete password",
+            "lpasswordreq3": "Largo minimo 3 characteres",
+            "phemail": " Email Traductor Email@dominio.com ",
+            "phpassword": " Asignar Password  ",
+            "bsubmit": "Crear",
+            "msgSuccess":"Usuario Creado",
+            "msgError":"Se produjo un error"
+        }
+    },
+    "errores":{
+        "emailalreayinuse":"El email especificado ya se encuentra creado."
     }
 }

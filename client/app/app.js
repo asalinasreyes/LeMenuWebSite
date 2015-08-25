@@ -10,7 +10,8 @@ angular.module('leMeNuApp', [
     'pascalprecht.translate',
     'angularMoment',
     'tmh.dynamicLocale',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'toaster', 'ngAnimate'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

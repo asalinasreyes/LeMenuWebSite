@@ -1,3 +1,6 @@
-<div class="col-md-12">
-This is the translator view.
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container">
+  <div ui-view>
+  	<div ng-include="'app/translator/list/listpending.html'"></div>
+  </div>
 </div>
