@@ -44,8 +44,16 @@ exports.startPayment = function(req, res) {
         }
 
         if (!PriceList) {
-            return res.send(500, {
-                status: 'required ID'
+            PriceListModel.create({
+                price: 11,
+                typeserviceid: '1',
+                typeservicedescription: 'todos',
+                validFrom: new Date(),
+                validTo: new Date()
+            }, function(err, PriceList) {
+                 if (err) {
+                    res.send(500, err);
+                }   
             });
         }
 
@@ -53,7 +61,7 @@ exports.startPayment = function(req, res) {
 
             if (!MenuInformation) {
                 return res.send(500, {
-                    status: 'No Menu Encontrado'    
+                    status: 'No Menu Encontrado'
                 });
             }
 
