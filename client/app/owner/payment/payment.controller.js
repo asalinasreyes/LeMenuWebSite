@@ -7,25 +7,28 @@ angular.module('leMeNuApp')
         $scope.showError = false;
         $scope.getCurrentUser = Auth.getCurrentUser;
 
-
         if ($scope.RestaurantSelectedInfo) {
-
             if ($scope.RestaurantSelectedInfo.ItemMenuSelected != undefined) {
                 $scope.paymentMenuSeleted = $scope.RestaurantSelectedInfo.ItemMenuSelected;
+                try {
+                    $scope.infopayment = InvoiceInfo.get({
+                        menuid: $scope.paymentMenuSeleted._id
+                    });
 
+                    $scope.infoInformation = {
+                        date: new Date(),
+                        price: $scope.infopayment.priceBypage,
+                        countpage: $scope.infopayment.numberPage,
+                        priceTotal: $scope.infopayment.TotalPrice,
+                        menuid: $scope.paymentMenuSeleted._id,
+                        restaurantid: $scope.RestaurantSelectedInfo._id,
+                        methodpayment: 'paypal',
+                        user: $scope.getCurrentUser()
+                    };
+                } catch (e) {
 
-                $scope.infopayment  =  InvoiceInfo.get({menuid: $scope.paymentMenuSeleted._id}, function(){});
-                
-                $scope.infoInformation = {
-                    date: new Date(),
-                    price: $scope.infopayment.priceBypage,
-                    countpage: $scope.infopayment.numberPage, 
-                    priceTotal: $scope.infopayment.TotalPrice,
-                    menuid: $scope.paymentMenuSeleted._id,
-                    restaurantid: $scope.RestaurantSelectedInfo._id,
-                    methodpayment: 'paypal',
-                    user: $scope.getCurrentUser()
-                };
+                }
+
 
             };
         };
