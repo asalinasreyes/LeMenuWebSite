@@ -12,7 +12,7 @@ var RestaurantSchema = new Schema({
   Tags:[String],
   urlgoogleMap:String,
   userid: { type: Schema.ObjectId, ref: 'UserSchema' },
-  created_at    : { type: Date, required: true, default: Date.now }
+  createdat    : { type: Date, required: true, default: Date.now }
 });
 
-module.exports = mongoose.model('restaurant', RestaurantSchema);
+module.exports = mongoose.model('Restaurant', RestaurantSchema);

@@ -2,7 +2,8 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th>{{'payment.list.hdatecreate' | translate}} </th>
+			<th>{{'payment.list.hdatecreatepay' | translate}} </th>
+			<th>{{'payment.list.hdatecreatemenu' | translate}} </th>
 			<th>{{'payment.list.hdescription' | translate}} </th>
 			<th>{{'payment.list.hstatus' | translate}} </th>
 			<th>{{'payment.list.hamount' | translate}} </th>
@@ -10,10 +11,14 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="pay in listpayments">
-			<td>{{pay.created_success}}</td>
-			<td>{{pay.menuid}}</td>
+			<td>{{pay.createdat | date : format : shortDate }}</td>
+			<td>{{pay.menuid.createdat | date : format : shortDate }}</td>
+			<td>{{'payment.list.translate' | translate}} {{pay.menuid.files.length}}
+			{{'payment.list.numberpage' | translate}}
+			{{'payment.list.to' | translate}}
+			 {{pay.menuid.language.toString()}}</td>
 			<td>{{pay.state}}</td>
-			<td>{{pay._id}}</td>
+			<td>{{pay.amount}}</td>
 		</tr>
 	</tbody>
 </table>

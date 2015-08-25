@@ -120,10 +120,14 @@
     },
     "payment":{
         "list":{
-            "hdatecreate":"Fecha Pago",
+            "hdatecreatepay":"Fecha Pago",
+            "hdatecreatemenu":"Fecha Menu",
             "hdescription":"Descripcion",
             "hstatus":"Estado",
-            "hamount":"Monto"
+            "hamount":"Monto",
+            "translate":"Traduccion de  ",
+            "numberpage":", paginas",
+            "to":"a los siguientes idiomas"
 
         }
     }

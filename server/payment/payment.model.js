@@ -12,10 +12,10 @@ var PaymentSchema = new Schema({
   state: String,
   amount: String,
   description: String,
-  userid: { type: Schema.ObjectId, ref: 'UserSchema' },
-  restaurantid: { type: Schema.ObjectId, ref: 'RestaurantSchema' },
-  menuid: { type: Schema.ObjectId, ref: 'MenuSchema' },
-  created_time: { type: Date, default: Date.now },
+  userid: { type: Schema.ObjectId, ref: 'User' },
+  restaurantid: { type: Schema.ObjectId, ref: 'Restaurant' },
+  menuid: { type: Schema.ObjectId, ref: 'Menu' },
+  createdat: { type: Date, default: Date.now },
   created_success: Date,
   created_cancel: Date
 });

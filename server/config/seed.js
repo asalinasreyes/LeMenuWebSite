@@ -77,18 +77,34 @@ User.create({
   name: 'owner',
   email: 'owner@owner.com',
   password: 'owner'
-}, function(err, data) {
+}, function(err, userinfo) {
   console.log('Creo Owner default');
-  newRestaurant.userid = data._id;
-  Restaurant.create(newRestaurant, function(err, data) {
-    newMenuOfRestaurant.userid = data.userid
-    newMenuOfRestaurant.restaurantid = data._id;
-    MenuOfrestaurant.create(newMenuOfRestaurant, function(err, data) {
+  newRestaurant.userid = userinfo._id;
+  Restaurant.create(newRestaurant, function(err, restaurant) {
+    newMenuOfRestaurant.userid = restaurant.userid
+    newMenuOfRestaurant.restaurantid = restaurant._id;
+    MenuOfrestaurant.create(newMenuOfRestaurant, function(err, menu) {
       console.log('Creo Menu default en resto default');
+      Payment.create({
+        order_id: 'String2',
+        payment_id: 'String1',
+        state: 'succes',
+        amount: 232342,
+        description: 'invento de description',
+        userid: userinfo._id,
+        restaurantid: restaurant._id,
+        menuid: menu._id,
+        created_success: new Date(),
+        created_cancel: new Date()
+      }, function(err, pago) {
+        console.log('informacon de pago', pago);
+
+      });
     });
   });
-
 });
+
+
 
 User.create({
   provider: 'local',

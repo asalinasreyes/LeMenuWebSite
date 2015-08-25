@@ -10,7 +10,7 @@ var FileUploadSchema = new Schema({
 	url: String
 });
 
-var MenuofrestaurantSchema = new Schema({
+var MenuSchema = new Schema({
 	name: String,
 	active: Boolean,
 	language: [String],
@@ -24,11 +24,11 @@ var MenuofrestaurantSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'UserSchema'
 	},
-	created_at: {
+	createdat: {
 		type: Date,
 		required: true,
 		default: Date.now
 	}
 });
 
-module.exports = mongoose.model('Menuofrestaurant', MenuofrestaurantSchema);
+module.exports = mongoose.model('Menu', MenuSchema);
