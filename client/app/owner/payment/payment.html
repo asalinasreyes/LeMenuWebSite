@@ -1,0 +1,86 @@
+<div class="container" ng-controller="PaymentownerCtrl">
+<div ui-view>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="invoice-title">
+                <h2>{{'preinvoice.invoice' | translate}}</h2>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-6">
+                    <address>
+                    <strong>{{'preinvoice.invoice' | translate}}</strong><br>
+                        Name<br>
+                        Email<br>
+                    </address>
+                </div>
+                <div class="col-xs-6 text-right">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <address>
+                        <strong>{{'preinvoice.paymethod' | translate}}</strong><br>
+                        Paypal<br>
+                    </address>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <address>
+                        <strong>{{'preinvoice.date' | translate}}</strong><br>
+                        {{infoInformation.date | date : format : shortDate}}<br><br>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>{{'preinvoice.descripcions' | translate}}</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><strong>{{'preinvoice.item' | translate}}</strong></td>
+                                    <td class="text-center"><strong>{{'preinvoice.price' | translate}}</strong></td>
+                                    <td class="text-center"><strong>{{'preinvoice.qty' | translate}}</strong></td>
+                                    <td class="text-right"><strong>{{'preinvoice.linetotal' | translate}}</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="language in paymentMenuSeleted.language">
+                                    <td>{{language}} </td>
+                                    <td class="text-center">{{ infopayment.priceBypage }} </td>
+                                    <td class="text-center">{{ infopayment.numberPage }} </td>
+                                    <td class="text-right">{{ infopayment.TotalLine }}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">
+                                        <button class="btn btn-primary pull-right" ng-click="startPayment()">Pagar con Paypal<br>{{ infopayment.TotalPrice }} USD</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <script type="text/ng-template" id="myModalContentPayment.html">
+        <div class="modal-body">
+            <div class="text-center" ><i class="fa fa-paypal fa-6"></i>
+                <img src="http://www.travislayne.com/images/loading.gif" class="icon" />
+                <h4>{{'preinvoice.lproccesing' | translate}}</h4>
+            </div>
+        </div>
+    </script>
+</div>
+
+</div>

@@ -8,7 +8,9 @@ angular.module('leMeNuApp', [
     'ui.bootstrap',
     'ngFileUpload',
     'pascalprecht.translate',
-    'angularMoment'
+    'angularMoment',
+    'tmh.dynamicLocale',
+    'LocalStorageModule'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -17,7 +19,24 @@ angular.module('leMeNuApp', [
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
-
+  .config(['$translateProvider', function($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+      prefix: '/app/l10n/',
+      suffix: '.json'
+    });
+    $translateProvider.useSanitizeValueStrategy(null);
+    $translateProvider.useCookieStorage();
+    $translateProvider.preferredLanguage('es');
+  }])
+  .config(function(tmhDynamicLocaleProvider) {
+    tmhDynamicLocaleProvider.localeLocationPattern('/bower_components/angular-i18n/angular-locale_{{locale}}.js');
+  })
+  .config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('myApp')
+    .setStorageType('sessionStorage')
+    .setNotify(true, true)
+})
 .factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
   return {
     // Add authorization token to headers

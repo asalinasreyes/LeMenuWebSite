@@ -15,14 +15,27 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding: 0.2em 0;
 }
 
+@import 'flags/flag-icon.scss';
+
+
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
 @import 'main/main.scss';
+@import 'owner/mymenu/editmenu/editmenu.scss';
+@import 'owner/mymenu/listmenu/listmenu.scss';
+@import 'owner/mymenu/newmenu/newmenu.scss';
+@import 'owner/myrestaurant/listrestaurant/myrestaurantList.scss';
 @import 'owner/owner.scss';
+@import 'owner/payment/payment.scss';
 @import 'translator/translator.scss';
 @import 'user/user.scss';
 @import 'wellcome/wellcome.scss';
 @import 'modal/modal.scss';
 // endinjector
+
+.languagesAllow {
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}
