@@ -9,31 +9,46 @@
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <div>
-                            
-                        <h4>
+                            <h4>
                             {{oneresto.name}}</h4>
-                        <small><cite title="">{{oneresto.address}}</small>
-                        <br>
-                        <small><cite title="">{{oneresto.city}}, {{ oneresto.country }} <i class="glyphicon glyphicon-map-marker">
-                        </i></cite></small>
-                        <p>
-                            <i class="glyphicon glyphicon-maps"></i>{{oneresto.emailcontact}}
+                            <small><cite title="">{{oneresto.address}}</small>
                             <br>
-                            <i class="glyphicon glyphicon-globe"></i><a href="{{oneresto.urlsite}}">{{oneresto.urlsite}}</a>
-                            <br>
-                            <i class="glyphicon glyphicon-gift"></i>{{oneresto.createdat | date:'fullDate' }}</p>
+                            <small>
+                                <cite title="">{{oneresto.city}}, {{ oneresto.country }} 
+                                    <i class="glyphicon glyphicon-map-marker"></i>
+                                </cite>
+                            </small>
+                            <p>
+                                <i class="glyphicon glyphicon-maps"></i>{{oneresto.emailcontact}}
+                                <br>
+                                <i class="glyphicon glyphicon-globe"></i><a href="{{oneresto.urlsite}}">{{oneresto.urlsite}}</a>
+                                <br>
+                                <i class="glyphicon glyphicon-gift"></i>{{oneresto.createdat | date:'fullDate' }}</p>
                         </div>
-                        <!-- Split button -->
                         <div class="btn-group">
                             <div class="btn-group" dropdown is-open="status.isopen">
                                 <button type="button" class="btn btn-primary btn-options" dropdown-toggle ng-disabled="disabled">
                                     {{'myresto.list.boptions' | translate}} <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
-                                    <li role="menuitem"><a href="#" ng-click="editrestaurant(oneresto)"><i class="fa fa-edit"></i>{{'myresto.list.bedit' | translate}}</a></li>
-                                    <li role="menuitem"><a href="#" ng-click="addMenu(oneresto)"><i class="fa fa-plus"></i>{{'myresto.list.baddmenu' | translate}}</a></li>
+                                    <li role="menuitem">
+                                        <a href="#" ng-click="editrestaurant(oneresto)">
+                                        <i class="fa fa-edit"></i>
+                                        {{'myresto.list.bedit' | translate}}</a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#" ng-click="addMenu(oneresto)">
+                                            <i class="fa fa-plus"></i>
+                                            {{'myresto.list.baddmenu' | translate}}
+                                        </a>
+                                    </li>
                                     <li class="divider"></li>
-                                    <li role="menuitem"><a href="#" ng-click="goListMenus(oneresto)">{{'myresto.list.blistmenu' | translate}}<i class="fa fa-list"></i></a></li>
+                                    <li role="menuitem" ng-hide="existMenus(oneresto)">
+                                        <a href="#" ng-click="goListMenus(oneresto)">
+                                            {{'myresto.list.blistmenu' | translate}}
+                                            <i class="fa fa-list"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

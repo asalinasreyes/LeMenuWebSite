@@ -7,37 +7,37 @@ angular.module('leMeNuApp')
 			name: 'Español',
 			flag: 'es',
 			code: 'es',
-			locale:'es'
+			locale: 'es'
 		}, {
 			id: 2,
 			name: 'Français',
 			flag: 'fr',
 			code: 'fr',
-			locale:'fr'
+			locale: 'fr'
 		}, {
 			id: 3,
 			name: 'English',
 			flag: 'us',
 			code: 'en',
-			locale:'en'
+			locale: 'en'
 		}, {
 			id: 4,
 			name: 'Português',
 			flag: 'br',
 			code: 'pt',
-			locale:'pt'
+			locale: 'pt'
 		}, {
 			id: 4,
 			name: 'Chileno',
 			flag: 'cl',
 			code: 'cl',
-			locale:'es'
+			locale: 'es'
 		}];
+	
+		return {
+			LanguagesAllow: languagesAllow,
+			CountryAllow: languagesAllow,
+			Countries:Countries
+		};
 
-		
-			return {
-				LanguagesAllow: languagesAllow,
-				CountryAllow: languagesAllow
-			};
-		
 	});

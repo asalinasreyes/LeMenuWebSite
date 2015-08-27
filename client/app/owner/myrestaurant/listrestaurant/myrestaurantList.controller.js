@@ -22,9 +22,20 @@ angular.module('leMeNuApp')
             });
         };
 
+        $scope.existMenus = function(resto) {
+            var emptyNotMenu = true;
+            if (resto.ListMenu && resto.ListMenu.length > 0) {
+                emptyNotMenu = false;
+            };
+            return emptyNotMenu;
+        };
+
         $scope.goListMenus = function(itemSelected) {
-            myCache.set("oneresto", itemSelected);
-            $state.go('owner.mymenu.listmenu');
+
+            if (itemSelected.ListMenu && itemSelected.ListMenu.length > 0) {
+                myCache.set("oneresto", itemSelected);
+                $state.go('owner.mymenu.listmenu');
+            }
         };
         $scope.oneImage = function(resto) {
             var defaultImgLogo = 'https://placehold.it/380x500';

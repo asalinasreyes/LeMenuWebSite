@@ -6,11 +6,7 @@ angular.module('leMeNuApp')
         $scope.SelectedRestaurant = [];
         $scope.restaurant = myCache.get("oneresto");
         $scope.messageToaster = '';
-        if (!$scope.restaurant.ListMenu) {
-            ShowmessageEmptyMenu();
-        }else if ($scope.restaurant.ListMenu.length == 0) {
-                ShowmessageEmptyMenu();
-            };
+
 
         $scope.GetListRestaurants = function() {
             $scope.ListRestaurantMenus = $filter('filter')($scope.restaurant.ListMenu, {
@@ -41,17 +37,4 @@ angular.module('leMeNuApp')
             };
         };
         $scope.GetListRestaurants();
-
-        function ShowmessageEmptyMenu() {
-            toaster.pop({
-                type: 'info',
-                bodyOutputType: 'template',
-                body: 'notification.html'
-            });
-            $scope.messageToaster = 'menu.list.empty';
-            $timeout(function() {
-                $state.go('owner.mymenu.new');
-            }, 2000);
-
-        };
     });

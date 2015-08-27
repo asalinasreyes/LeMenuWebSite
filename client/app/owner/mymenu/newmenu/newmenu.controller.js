@@ -31,6 +31,9 @@ angular.module('leMeNuApp')
         $scope.cartMenu.files = $scope.listFilesPhotoUpload;
         RestaurantMenu.save($scope.cartMenu, function(info) {
             $scope.cartMenu = {};
+            if (!$scope.RestaurantSelectedInfo.ListMenu) {
+                    $scope.RestaurantSelectedInfo.ListMenu=[];
+            };
             $scope.RestaurantSelectedInfo.ListMenu.push(info);
             myCache.set("oneresto", $scope.RestaurantSelectedInfo);
             $state.go('owner.mymenu.listmenu');
@@ -75,7 +78,6 @@ angular.module('leMeNuApp')
             if (!$scope.isUploading) {
                 if ($scope.listFilesPhotoUpload.length > 0) {
                     statusButtonSave = false;
-
                 };
             };
         }

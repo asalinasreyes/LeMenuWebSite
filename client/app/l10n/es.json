@@ -56,12 +56,13 @@
     },
     "myresto": {
         "badd": "Agregar",
+        "edit":{"ltitle":"Editando"},
         "new": {
             "ltitle": "Nuevo Restaurante",
             "lname": "Nombre",
             "phnameresto": "Nombre completo del restaurante",
             "laddress": "Direccion",
-            "phaddress": "Direccion completa",
+            "phaddress": "Calle numero Ciudad, pais",
             "lcountry": "Pais",
             "phcountry": "Selecione Pais",
             "lcity": "Ciudad",
@@ -71,7 +72,14 @@
             "lgoogleurl": "Url Google Map",
             "bback": "Volver",
             "save": "Guardar",
-            "lfieldrequired": "Campo obligatorio"
+            "lfieldrequired": "Campo obligatorio",
+            "lemailcontact":"Email Info",
+            "phemailcontact":"Email Contacto/Informacion Restaurant",
+            "lurllogo":"Url Logo",
+            "phurllogo":"Full Url al logo",
+            "lurlsite":"Url Restaurante",
+            "phurlsite":"Url de su sitio Web"
+
         },
         "list": {
             "ltitle": "Menus Creados",
