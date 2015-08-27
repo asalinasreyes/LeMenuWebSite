@@ -5,9 +5,9 @@ angular.module('leMeNuApp')
         $scope.ListRestaurants = [];
         $scope.SelectedRestaurant = [];
 
-        $scope.goNew = function(){
+        $scope.goNew = function() {
             $state.go('owner.resto.new');
-       };
+        };
 
         $scope.GetListRestaurants = function() {
             Restaurant.query({}, function(listrestaurants) {
@@ -22,10 +22,14 @@ angular.module('leMeNuApp')
             });
         };
 
-        $scope.oneImage = function(resto){
-            var defaultImgLogo='https://placehold.it/380x500';
-            if (resto.imglogo) 
-                defaultImgLogo = resto.imglogo; 
+        $scope.goListMenus = function(itemSelected) {
+            myCache.set("oneresto", itemSelected);
+            $state.go('owner.mymenu.listmenu');
+        };
+        $scope.oneImage = function(resto) {
+            var defaultImgLogo = 'https://placehold.it/380x500';
+            if (resto.imglogo)
+                defaultImgLogo = resto.imglogo;
             return defaultImgLogo;
         };
 
