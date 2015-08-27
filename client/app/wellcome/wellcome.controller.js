@@ -3,6 +3,10 @@
 angular.module('leMeNuApp')
   .controller('WellcomeCtrl', ['$scope', '$location','User',function ($scope, $location,User) {
   	User.get({}, function(data){
-  		$location.path(data.role);
+  		if (data.role=='owner') {
+  			$location.path(data.role+'/resto/list');
+  		}else{
+  		$location.path(data.role);	
+  		}
   	});
   }]);
