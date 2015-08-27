@@ -1,21 +1,35 @@
 <div ng-controller="MyMenuOwnerListCtrl">
+alexis.salinas.reyes-buyer-1@gmail.com
     <div class="container">
         <div class="row">
             <h1 class="text-center">{{'menu.list.ltitle' | translate}} {{restaurant.name}} </h1>
-            <div class="list-group">
-                <a href="#" class="list-group-item" ng-repeat="item in ListRestaurantMenus">
-                    <div class="col-md-6" ng-click="goeditResto(item)">
-                        <h4 class="list-group-item-heading"> {{item.name}} </h4>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <h2> {{item.created_at | date : format : shortDate  }}</h2>
-                        <button type="button" class="btn btn-default btn-lg btn-block">
-                        {{'menu.list.battachfiles' | translate}}
-                        </button>
-                        <p> {{'menu.list.bcountfiles' | translate}} {{item.files.length}} </p>
-                    </div>
-                </a>
+            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <ul class="event-list">
+                    <li ng-repeat="onemenu in ListRestaurantMenus">
+                        <time datetime="2014-07-20 2000">
+                            <span class="day">{{onemenu.createdat | date :  'd'  }}</span>
+                            <span class="month">{{onemenu.createdat | date:  'MMM'  }}</span>
+                            <span class="year">{{onemenu.createdat | date:  'yy'  }}</span>
+                        </time>
+                        <div class="info">
+                            <label  class="title">{{onemenu.name}} </label>
+                            <p class="desc">
+                                <img class="viewupload" ng-src="{{image.url}}" ng-repeat="image in onemenu.files">
+                            </p>
+                            <ul ng-hide="isPayed(onemenu)">
+                                <li style="width:33%;" ng-click="goeditmenu(onemenu)">Editar</span>
+                                </li>
+                                <li style="width:33%;" ng-click="goPayment(onemenu)">Pagar</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+<script type="text/ng-template" id="notification.html">
+        <h4>{{messageToaster | translate}}</h4>
+</script>
+    <toaster-container></toaster-container>
 </div>

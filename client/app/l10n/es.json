@@ -75,10 +75,12 @@
         },
         "list": {
             "ltitle": "Menus Creados",
-            "bedit": "Editar",
+            "bedit": "info Restaurante",
             "bpaypal": "Paga con Paypal",
-            "badd": "Agregar",
-            "blist": "Lista"
+            "badd": "Agregar uno",
+            "baddmenu": "Agregar Menu",
+            "blistmenu": "Lista Menu",
+            "boptions":"Optiones"
         }
     },
     "menu": {
@@ -104,7 +106,8 @@
         "list": {
             "ltitle": "Menus en Restaurante ",
             "battachfiles": "Adjuntar Archivos",
-            "bcountfiles": "Cantidad Archivos "
+            "bcountfiles": "Cantidad Archivos ",
+            "empty":"No existe un menu... vamos a crear uno"
         }
     },
     "preinvoice": {

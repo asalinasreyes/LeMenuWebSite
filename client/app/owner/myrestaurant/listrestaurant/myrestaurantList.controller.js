@@ -19,44 +19,24 @@ angular.module('leMeNuApp')
                         });;
                     });
                 });
-
             });
         };
 
+        $scope.oneImage = function(resto){
+            var defaultImgLogo='https://placehold.it/380x500';
+            if (resto.imglogo) 
+                defaultImgLogo = resto.imglogo; 
+            return defaultImgLogo;
+        };
 
-        $scope.isPayed = function(menu){
-            if (menu.status=='success') {
-                return true;
-            };
-        }
         $scope.editrestaurant = function(itemSelected) {
             myCache.set("oneresto", itemSelected);
             $state.go('owner.resto.edit');
         };
 
-        $scope.goEditMenu = function(onerestaurant, ItemMenuSelected) {
-            onerestaurant.ItemMenuSelected = ItemMenuSelected;
-            myCache.set("oneresto", onerestaurant);
-            $state.go('owner.mymenu.edit');
-        }
-
         $scope.addMenu = function(itemSelected) {
             myCache.set("oneresto", itemSelected);
             $state.go('owner.mymenu.new');
         };
-
-        $scope.goListMenus = function(itemSelected) {
-            myCache.set("oneresto", itemSelected);
-            $state.go('owner.mymenu.listmenu', {}, {
-                reload: true
-            });
-        };
-
-        $scope.goPayment = function(onerestaurant, ItemMenuSelected) {
-            onerestaurant.ItemMenuSelected = ItemMenuSelected;
-            myCache.set("oneresto", onerestaurant);
-            $state.go('owner.payment');
-        };
-        
         $scope.GetListRestaurants();
     });

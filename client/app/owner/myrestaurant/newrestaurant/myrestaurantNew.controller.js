@@ -2,6 +2,8 @@
 
 angular.module('leMeNuApp')
     .controller('MyRestaurantOwnerNewCtrl', function($scope, $state, Restaurant, myCache ) {
+
+
         $scope.restaurante = {};
         $scope.restaurante.name='';
         $scope.SaveNewRestaurant = function() {

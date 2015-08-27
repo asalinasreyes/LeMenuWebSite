@@ -20,8 +20,18 @@ exports.index = function(req, res) {
             return handleError(res, err);
         }
         if (!PriceList) {
-            return res.send(500, {
-                status: 'PriceList'
+            PriceListModel.create({
+                price: 11,
+                typeserviceid: '1',
+                typeservicedescription: 'todos',
+                validFrom: new Date(),
+                validTo: new Date()
+            }, function(err, PriceList) {
+                if (err) {
+                    res.send(500, {
+                        status: 'PriceList'
+                    });
+                }
             });
         }
 
