@@ -89,11 +89,7 @@ Countries['es'] = [{
         code: "PF",
         name: "Polinesia Francesa",
         lang:"fr"
-    }, {
-        code: "PL",
-        name: "Polonia",
-        lang:"es"
-    }, {
+    },{
         code: "PT",
         name: "Portugal",
         lang:"pt"
@@ -104,7 +100,7 @@ Countries['es'] = [{
     }, {
         code: "GB",
         name: "Reino Unido",
-        lang:"es"
+        lang:"en"
     }, {
         code: "UY",
         name: "Uruguay",

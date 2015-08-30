@@ -38,25 +38,20 @@
                                 <input type="input" class="form-control" name="urlsiteresto" placeholder="{{'myresto.new.phurlsite' | translate}}" ng-model="restaurante.urlsite">
                             </div>
                         </div>
-                        <div class="form-group" ng-class="{ 'has-error' : formresto.countryresto.$invalid && !formresto.countryresto.$pristine }">
+                        <div class="form-group" ng-class="{ 'has-error' : restaurante.countryresto.$invalid && !restaurante.countryresto.$pristine }">
                             <label class="col-sm-4" for="">{{'myresto.new.lcountry' | translate}}</label>
                             <div class="col-sm-8">
-                                <input type="input" required class="form-control" name="countryresto" placeholder="{{'myresto.new.phcountry' | translate}}" ng-model="restaurante.country">
-                                <span class="label label-danger" ng-show="formresto.countryresto.$error.required">{{'myresto.new.lfieldrequired' | translate}}</span>
+                                <select ng-model="restaurante.country" ng-options="country.code as country.name for country in Countries">
+                                    <option value="">{{'myresto.new.phcountry' | translate}}</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="form-group" ng-class="{ 'has-error' : formresto.countryresto.$invalid && !formresto.countryresto.$pristine }">
+
+                        <div class="form-group" ng-class="{ 'has-error' : formresto.cityresto.$invalid && !formresto.cityresto.$pristine }">
                             <label class="col-sm-4" for="">{{'myresto.new.lcity' | translate}}</label>
                             <div class="col-sm-8">
                                 <input type="input" required class="form-control" name="cityresto" placeholder="{{'myresto.new.phcity' | translate}}" ng-model="restaurante.city">
                                 <span class="label label-danger" ng-show="formresto.cityresto.$error.required">{{'myresto.new.lfieldrequired' | translate}}</span>
-                            </div>
-                        </div>
-                        <div class="form-group" ng-class="{ 'has-error' : formresto.langresto.$invalid && !formresto.langresto.$pristine }">
-                            <label class="col-sm-4" for="">{{'myresto.new.llangbase' | translate}}</label>
-                            <div class="col-sm-8">
-                                <input type="input" required class="form-control" name="langresto" placeholder="{{'myresto.new.phlangbase' | translate}}" ng-model="restaurante.language">
-                                <span class="label label-danger" ng-show="formresto.langresto.$error.required">{{'myresto.new.lfieldrequired' | translate}}</span>
                             </div>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : formresto.googmapresto.$invalid && !formresto.googmapresto.$pristine }">

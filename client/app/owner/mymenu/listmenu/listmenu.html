@@ -17,9 +17,9 @@ alexis.salinas.reyes-buyer-1@gmail.com
                                 <img class="viewupload" ng-src="{{image.url}}" ng-repeat="image in onemenu.files">
                             </p>
                             <ul ng-hide="isPayed(onemenu)">
-                                <li style="width:33%;" ng-click="goeditmenu(onemenu)">Editar</span>
+                                <li style="width:33%;" ng-click="goeditmenu(onemenu)">{{'menu.list.bedit' | translate}} </span>
                                 </li>
-                                <li style="width:33%;" ng-click="goPayment(onemenu)">Pagar</span>
+                                <li style="width:33%;" ng-click="goPayment(onemenu)">{{'menu.list.bpay' | translate}} </span>
                                 </li>
                             </ul>
                         </div>

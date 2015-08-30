@@ -5,7 +5,9 @@ var _ = require('lodash');
 var config = require('../../config/environment');
 var uuid = require('node-uuid');
 var Payment = require('../payment.model');
+var QueueProcess = require('../QueueProcess.model');
 var MenuModel = require('../../api/menuofrestaurant/menuofrestaurant.model');
+var restaurant = require('../../api/restaurant/restaurant.model');
 var ObjectId = require('mongoose').Types.ObjectId;
 var paypal = require('paypal-rest-sdk');
 
@@ -26,6 +28,8 @@ exports.startPayment = function(req, res) {
     var MenuID = new ObjectId(req.body.menuid);
     var restaurant_id = new ObjectId(req.body.restaurantid);
     var order_id = uuid.v1();
+
+
     var paymentOrder = new Payment({
         order_id: order_id,
         userid: user_id,
@@ -51,9 +55,9 @@ exports.startPayment = function(req, res) {
                 validFrom: new Date(),
                 validTo: new Date()
             }, function(err, PriceList) {
-                 if (err) {
+                if (err) {
                     res.send(500, err);
-                }   
+                }
             });
         }
 
@@ -119,16 +123,55 @@ exports.orderExecute = function(req, res) {
         paymentOrderSuccess.save();
 
         MenuModel.findOne({
-            _id: paymentOrderSuccess.menuid
-        }, function(err, oneMenu) {
-            if (err) return res.send(500, {
-                error: err
+                _id: paymentOrderSuccess.menuid
+            })
+            .populate('restaurantid')
+            .exec(function(err, oneMenu) {
+                if (err) return res.send(500, {
+                    error: err
+                });
+                oneMenu.status = '';
+                oneMenu.status = 'success';
+                oneMenu.save();
+
+
+                var FirstTranslate = {
+                    Menuid: oneMenu._id,
+                    LanguagesTo: oneMenu.restaurantid.language,
+                    LanguagesFrom: oneMenu.restaurantid.language,
+                    Restaurantid: oneMenu.restaurantid,
+                    Status: 'NotAssign',
+                    IsReadyToTranslate: true,
+                    IsDoneTranslate:false,
+                    IsParent:true
+                };
+                var queueProcess = new QueueProcess(FirstTranslate);
+
+                queueProcess.save(function(err, Parent) {
+                    
+                    var queueTranslate = [];
+                    oneMenu.language.forEach(function(lang) {
+                        var translateItemQueue = {
+                            Menuid: oneMenu._id,
+                            LanguagesTo: lang,
+                            Restaurantid: oneMenu.restaurantid,
+                            LanguagesFrom: oneMenu.restaurantid.language,
+                            Status: 'NotAssign',
+                            IsReadyToTranslate: false,
+                            IsDoneTranslate:false,
+                            Parentid : Parent._id,
+                            IsParent:false
+                        };
+                        queueTranslate.push(translateItemQueue);
+                    });
+                    QueueProcess.create(queueTranslate, function(err) {
+                        if (err) {
+                            res.send(500, err);
+                        }
+                        res.redirect('/owner/payment/success');
+                    });
+                });
             });
-            oneMenu.status = '';
-            oneMenu.status = 'success';
-            oneMenu.save();
-            res.redirect('/owner/payment/success');
-        });
     });
 
 };

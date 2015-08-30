@@ -22,10 +22,9 @@ angular.module('leMeNuApp')
 
 
     $scope.listPossibleLang = ListAllow.LanguagesAllow;
-    var languageEnabled = $translate.use();
+    var languageEnabled = $scope.RestaurantSelectedInfo.language;
 
     $scope.disableLang = function(oneOption){
-
         return oneOption.locale == languageEnabled ;
     };
 

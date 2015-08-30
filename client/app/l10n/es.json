@@ -1,6 +1,6 @@
 {
     "required": "Campo Obligatorio!",
-    "terrormessage":"Error",
+    "terrormessage": "Error",
     "empty": "",
     "home": {
         "h1home": "Una Solucion",
@@ -10,7 +10,7 @@
         "lsignup": "Registrarme",
         "llogin": "Ingresar",
         "lhello": "Hola!",
-        "llogout":"Salir",
+        "llogout": "Salir",
         "lhome": "Inicio"
     },
     "navbarowner": {
@@ -56,7 +56,9 @@
     },
     "myresto": {
         "badd": "Agregar",
-        "edit":{"ltitle":"Editando"},
+        "edit": {
+            "ltitle": "Editando"
+        },
         "new": {
             "ltitle": "Nuevo Restaurante",
             "lname": "Nombre",
@@ -73,12 +75,12 @@
             "bback": "Volver",
             "save": "Guardar",
             "lfieldrequired": "Campo obligatorio",
-            "lemailcontact":"Email Info",
-            "phemailcontact":"Email Contacto/Informacion Restaurant",
-            "lurllogo":"Url Logo",
-            "phurllogo":"Full Url al logo",
-            "lurlsite":"Url Restaurante",
-            "phurlsite":"Url de su sitio Web"
+            "lemailcontact": "Email Info",
+            "phemailcontact": "Email Contacto/Informacion Restaurant",
+            "lurllogo": "Url Logo",
+            "phurllogo": "Full Url al logo",
+            "lurlsite": "Url Restaurante",
+            "phurlsite": "Url de su sitio Web"
 
         },
         "list": {
@@ -88,7 +90,7 @@
             "badd": "Agregar uno",
             "baddmenu": "Agregar Menu",
             "blistmenu": "Lista Menu",
-            "boptions":"Optiones"
+            "boptions": "Optiones"
         }
     },
     "menu": {
@@ -115,7 +117,9 @@
             "ltitle": "Menus en Restaurante ",
             "battachfiles": "Adjuntar Archivos",
             "bcountfiles": "Cantidad Archivos ",
-            "empty":"No existe un menu... vamos a crear uno"
+            "empty": "No existe un menu... vamos a crear uno",
+            "bedit": "Editar",
+            "bpay": "Pagar"
         }
     },
     "preinvoice": {
@@ -160,11 +164,26 @@
             "phemail": " Email Traductor Email@dominio.com ",
             "phpassword": " Asignar Password  ",
             "bsubmit": "Crear",
-            "msgSuccess":"Usuario Creado",
-            "msgError":"Se produjo un error"
+            "msgSuccess": "Usuario Creado",
+            "msgError": "Se produjo un error"
         }
     },
-    "errores":{
-        "emailalreayinuse":"El email especificado ya se encuentra creado."
+    "translator": {
+        "list": {
+            "lcreated": "Creado",
+            "llangfrom": "Traducir desde",
+            "llangto": "Traducir A",
+            "llistLang": "Detalle de Idiomas Seleccionados",
+            "lnumberPage": "Numero Total de Paginas",
+            "yourareBusy":"Tienes otra traduccion en proceso",
+            "takesuccess":"Operacion Completada con existo!"
+        },
+        "navbartra":{
+            "workinProgress":"Traducciendo"
+
+        }
+    },
+    "errores": {
+        "emailalreayinuse": "El email especificado ya se encuentra creado."
     }
 }

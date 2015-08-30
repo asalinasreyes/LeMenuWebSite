@@ -20,5 +20,6 @@ var PaymentSchema = new Schema({
   created_cancel: Date
 });
 
+
 module.exports = mongoose.model('Payment', PaymentSchema);
 

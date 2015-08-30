@@ -2,7 +2,9 @@
 
 angular.module('leMeNuApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {email:'admin@admin.com', password:'admin'};
+    //$scope.user = {email:'owner@owner.com', password:'owner'};
+    $scope.user = {email:'uno@uno.com', password:'uno'};
+    
     $scope.errors = {};
     $scope.info1 = {};
     $scope.info2 = {};

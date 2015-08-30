@@ -18,11 +18,11 @@ var MenuSchema = new Schema({
 	status:String,
 	restaurantid: {
 		type: Schema.ObjectId,
-		ref: 'RestaurantSchema'
+		ref: 'Restaurant'
 	},
 	userid: {
 		type: Schema.ObjectId,
-		ref: 'UserSchema'
+		ref: 'User'
 	},
 	createdat: {
 		type: Date,

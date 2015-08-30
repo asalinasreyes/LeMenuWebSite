@@ -1,6 +1,8 @@
 'use strict';
 
 var User = require('./user.model');
+var Translator = require('../translatorlanguage/translatorlanguage.model');
+
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
@@ -38,9 +40,15 @@ exports.create = function (req, res, next) {
 exports.createTranslator = function (req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
-  newUser.role = 'translate';
+  newUser.role = 'translator';
+
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
+    var translator = new Translator({active:true, userid: user._id, languages:req.body.languages});
+    console.log('translator info', translator);
+    translator.save(function(err, translatorinfo){
+      console.log('Creado', translatorinfo);
+    });
     res.json(200,{});
   });
 };

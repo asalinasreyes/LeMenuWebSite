@@ -1,0 +1,38 @@
+<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarTranslatorCtrl">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/owner" class="navbar-brand">LeMenu</a>
+        </div>
+        <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+                    <a ng-href="{{item.link}}">{{item.title | translate}}</a>
+                </li>
+                <li> <a ui-sref="translator.edit" class="">{{'translator.navbartra.workinProgress' | translate}}</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">{{'navbarowner.lsignup' | translate}}</a></li>
+                <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">{{'navbarowner.llogin' | translate}}</a></li>
+                <li ng-show="isLoggedIn()">
+                    <p class="navbar-text">{{'navbarowner.lhello' | translate}} {{ getCurrentUser().name }}</p>
+                </li>
+                <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">{{'navbarowner.llogout' | translate}}</a></li>
+                <li dropdown keyboard-nav>
+                    <a href="#" dropdown-toggle class="languagesAllow">
+                        <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
+                        <span class="fa fa-language fa-3x"></span></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="simple-btn-keyboard-nav">
+                        <li role="menuitem" ng-repeat="allow in LanguagesAllow"><a href="#" ng-click="ChangeLang(allow)"> {{allow.name}} </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

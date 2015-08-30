@@ -11,7 +11,7 @@ var RestaurantSchema = new Schema({
   language: String,
   Tags:[String],
   urlgoogleMap:String,
-  userid: { type: Schema.ObjectId, ref: 'UserSchema' },
+  userid: { type: Schema.ObjectId, ref: 'User' },
   createdat    : { type: Date, required: true, default: Date.now },
   urlsite:String,
   urllogo:String,

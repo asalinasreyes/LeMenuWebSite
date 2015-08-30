@@ -9,7 +9,8 @@ var User = require('../api/user/user.model');
 var Restaurant = require('../api/restaurant/restaurant.model');
 var MenuOfrestaurant = require('../api/menuofrestaurant/menuofrestaurant.model');
 var Payment = require('../payment/payment.model');
-
+var QueueProcess = require('../payment/QueueProcess.model');
+var translator = require('../api/translatorlanguage/translatorlanguage.model');
 var PriceList = require('../payment/price.model');
 
 
@@ -19,9 +20,10 @@ var uuid = require('node-uuid');
 var newRestaurant = {
     name: 'Best Restaurant',
     address: 'street name',
-    country: 'chile',
+    country: 'CL',
     city: 'santiago',
-    language: 'SP',
+    language: 'es',
+    emailcontact: 'asdfasd@conta.cl',
     Tags: ['chile', 'peruana'],
     urlgoogleMap: 'AnyWhere'
 };
@@ -59,6 +61,13 @@ Payment.find({}).remove(function() {
     console.log('Se borran todos los pagos');
 });
 
+translator.find({}).remove(function() {
+    console.log('Se borran todos los Traductor');
+})
+
+QueueProcess.find({}).remove(function() {
+    console.log('Se borran todos los QueueProcess');
+});
 
 
 User.create({
@@ -99,12 +108,61 @@ User.create({
             }, function(err, pago) {
                 console.log('informacon de pago', pago);
 
+                QueueProcess.create(
+                {
+                    'Menuid': menu._id,
+                    'LanguagesTo': 'es',
+                    'LanguagesFrom': 'es',
+                    'Status': 'NotAssign',
+                    'Restaurantid':restaurant._id,
+                    'IsReadyToTranslate': true,
+                    'IsParent': true,
+                    'IsDoneTranslate':false
+                },
+                {
+                    'Menuid': menu._id,
+                    'LanguagesTo': 'fr',
+                    'LanguagesFrom': 'es',
+                    'Status': 'NotAssign',
+                    'IsReadyToTranslate': true,
+                    'Restaurantid':restaurant._id,
+                    'IsParent': false,
+                    'IsDoneTranslate':false,
+                },{
+                    'Menuid': menu._id,
+                    'LanguagesTo': 'en',
+                    'Restaurantid':restaurant._id,
+                    'LanguagesFrom': 'es',
+                    'Status': 'NotAssign',
+                    'IsReadyToTranslate': false,
+                    'IsParent': false,
+                    'IsDoneTranslate':false
+                },function(err, data){
+                    console.log('Se crea Queue In Process');
+                });
+
+
             });
         });
     });
 });
 
+User.create({
+    provider: 'local',
+    role: 'translator',
+    name: 'translate uno',
+    email: 'uno@uno.com',
+    password: 'uno'
+}, function(err, usernew) {
 
+    translator.create({
+        active: true,
+        userid: usernew._id,
+        languages: ['es', 'en', 'pt', 'fr']
+    }, function(err, newtranslator) {
+        console.log('Traductor Creado', usernew, newtranslator);
+    })
+});
 
 User.create({
     provider: 'local',

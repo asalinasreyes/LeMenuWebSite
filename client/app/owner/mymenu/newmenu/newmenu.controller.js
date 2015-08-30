@@ -8,9 +8,9 @@ angular.module('leMeNuApp')
     $scope.listFilesPhotoUpload = [];
     $scope.isUploading = false;
 
-    var languageEnabled = $translate.use();
-
     $scope.RestaurantSelectedInfo = myCache.get("oneresto");
+    var languageEnabled = $scope.RestaurantSelectedInfo.language;
+    
     $scope.listPossibleLang  =ListAllow.LanguagesAllow;
 
     $scope.showRequiredLanguages = function() {

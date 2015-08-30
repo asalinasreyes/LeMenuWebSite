@@ -1,18 +1,47 @@
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>Lista pendientes</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>11</td>
-		</tr>
-		<tr>
-			<td>11</td>
-		</tr>
-		<tr>
-			<td>11</td>
-		</tr>
-	</tbody>
-</table>
+<div >
+<!-- Start your code here -->
+<div class="panel panel-default event" ng-show= "showInprocess()">
+  <div class="panel-body">
+    <div class="rsvp col-xs-2 col-sm-2">
+                <i>{{InProcess[0].Createdat | date :  'd'  }}</i>
+                <i>{{InProcess[0].Createdat | date:  'MMM'  }}</i>
+      <div class="hidden-xs">
+       <button class="btn btn-primary">ir a editar</button>
+      </div>
+    </div>
+    <div class="info col-xs-8 col-sm-7">
+    {{InProcess[0].Restaurantid.name}}
+      <div class="visible-xs">{{InProcess[0].Restaurantid.name}}</div>
+
+    </div>
+  </div>
+</div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> {{'translator.list.lcreated' | translate}} </th>
+                <th> {{'translator.list.llangfrom' | translate}} </th>
+                <th> {{'translator.list.llangto' | translate}} </th>
+                <th> {{'translator.list.llistLang' | translate}} </th>
+                <th> {{'translator.list.lnumberPage' | translate}} </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="queue in ListQueue">
+                <td>{{queue.Createdat}}</td>
+                <td>{{queue.LanguagesFrom}}</td>
+                <td>{{queue.LanguagesTo}}</td>
+                <td>{{queue.Menuid.language.toString()}}</td>
+                <td>{{queue.Menuid.files.length}}</td>
+                <td>
+                    <button ng-click="take(queue, $index)">tomar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/ng-template" id="notification.html">
+        <h4>{{messageToaster | translate}}</h4>
+    </script>
+    <toaster-container></toaster-container>
+</div>

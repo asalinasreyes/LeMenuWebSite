@@ -15,7 +15,7 @@ Countries['fr'] = [{
         lang:"pt"
     }, {
         code: "CL",
-        name: "Chile",
+        name: "Chili",
         lang:"es"
     }, {
         code: "CO",
