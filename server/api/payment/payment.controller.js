@@ -8,7 +8,7 @@ exports.index = function(req, res) {
     var ObjectId = require('mongoose').Types.ObjectId;
     var user_id = new ObjectId(req.user._id);
 
-    Payment.find()
+    Payment.find({userid:user_id})
         .populate('Restaurantid', 'name city createdat' )
         .populate('menuid', 'files language createdat')
         .exec(function(err, listPayments) {
