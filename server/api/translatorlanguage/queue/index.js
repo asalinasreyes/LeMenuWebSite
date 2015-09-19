@@ -10,7 +10,10 @@ router.get('/', auth.hasRole('translate') , controller.index);
 router.get('/ImWorkingOnIt', auth.hasRole('translate') , controller.ImWorkingOnIt);
 
 
-router.post('/:id',auth.hasRole('translate'), controller.update);
-router.patch('/:id', auth.hasRole('translate'), controller.update);
+router.post('/menuAndItems',auth.hasRole('translate'), controller.updateTranslateMenuAndItemTranslate);
+
+
+router.post('/:id',auth.hasRole('translate'), controller.updateAndTakeTranslatoasOwn);
+router.patch('/:id', auth.hasRole('translate'), controller.updateAndTakeTranslatoasOwn);
 
 module.exports = router;

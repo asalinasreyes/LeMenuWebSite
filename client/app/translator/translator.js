@@ -18,5 +18,10 @@ angular.module('leMeNuApp')
         templateUrl: 'app/translator/edittranslation/edittranslation.html',
         controller:'TranslatorEditCtrl'
       })
+      .state('translator.edit.item', {
+        url: '/editmenu/:index',
+        templateUrl: 'app/translator/edittranslation/edititemmenu.html',
+        controller:'TranslatorEditItemMenuCtrl'
+      })
       ;
   });

@@ -1,48 +1,72 @@
-<div class="container">
 <div class="row">
-    <h1>Article Thumbnails</h1>
-    <p>Use it to your news site, feature a article.</p>
+    <h1>{{TranslateItem.Restaurantid.name}} </h1>
+    <p>{{TranslateItem.Menuid.name}} </p>
 </div>
-    <div class="row">
-		<div class="col-md-5 col-lg-5">
-			<!-- artigo em destaque -->
-			<div class="featured-article">
-				<a href="#">
-					<img src="http://placehold.it/482x350" alt="" class="thumb">
-				</a>
-				<div class="block-title">
-					<h2>Lorem ipsum dolor asit amet</h2>
-					<p class="by-author"><small>By Jhon Doe</small></p>
-				</div>
-			</div>
-			<!-- /.featured-article -->
-		</div>
-		<div class="col-md-7 col-lg-7">
-			<ul class="media-list main-list">
-			  <li class="media">
-			    <div class="media-body">
-			      <h4 class="media-heading">Lorem ipsum dolor asit amet</h4>
-			      <p class="by-author">By Jhon Doe</p>
-			    </div>
-			  </li>
-			  <li class="media">
-			    <a class="pull-left" href="#">
-			      <img class="media-object" src="http://placehold.it/150x90" alt="...">
-			    </a>
-			    <div class="media-body">
-			      <h4 class="media-heading">Lorem ipsum dolor asit amet</h4>
-			      <p class="by-author">By Jhon Doe</p>
-			    </div>
-			  </li>
-			  <li class="media">
-			    <a class="pull-left" href="#">
-			      <img class="media-object" src="http://placehold.it/150x90" alt="...">
-			    </a>
-			    <div class="media-body">
-			      <h4 class="media-heading">Lorem ipsum dolor asit amet</h4>
-			      <p class="by-author">By Jhon Doe</p>
-			    </div>
-			  </li>
-			</ul>
-		</div>
-	</div>
+<div class="row">
+    <div class="col-md-5 col-lg-5">
+        <div class="featured-article">
+            <img ng-src="{{selectedImage}}"  style="width:100%">
+            <div class="block-title">
+                <h2>{{TranslateItem.Createdat | date: dateSmall}}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-lg-2">
+        <ul class="media-list main-list">
+            <li class="media" ng-repeat="itemImage in TranslateItem.Menuid.files">
+                <a class="pull-left" href="#" ng-click="showImage(itemImage)">
+                    <img class="media-object smallerImage" ng-src="{{itemImage.url}}" alt="...">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-5">
+        <div ui-view="">
+            <table class="table table-bordered table-hover table-condensed">
+                <caption>
+                    <h2>{{'translator.edit.hsections' | translate}}</h2>
+                </caption>
+                <thead>
+                    <tr style="font-weight: bold">
+                        <td width="40%">
+                            <span class="text-center">{{'translator.edit.lnamesection' | translate}}
+                        </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-default pull-right" ng-click="addGroud()">
+                                <span class="fa fa-plus "></span> {{'translator.edit.baddGroup' | translate}} </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="group in TranslateItem.MenuDetail">
+                        <td>
+                            <span editable-text="group.NameGroupInMenu" e-name="NameGroupInMenu" e-form="rowform" e-required> 
+                                {{ group.NameGroupInMenu || '-----' }}
+                            </span>
+                        </td>
+                        <td style="white-space: nowrap">
+                            <form editable-form name="rowform" onbeforesave="saveGroup($data, group.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == group">
+                                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-warning" style="width: 50%;">
+                                    <span class="fa fa-undo pull-left"></span>{{'translator.edit.bcancelGroup' | translate}}
+                                </button>
+                                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary pull-right">
+                                    <span class="fa fa-save "></span>{{'translator.edit.bsaveGroup' | translate}}
+                                </button>
+                            </form>
+                            <div class="buttons" ng-show="!rowform.$visible">
+                                <button class="btn btn-primary pull-right" ng-click="rowform.$show()"><span class="fa fa-edit "></span>{{'translator.edit.beditGroup' | translate}}</button>
+                                <button class="btn btn-danger" ng-click="removegroup($index)">{{'translator.edit.bdelGroup' | translate}}<span class="fa fa-trash"></span></button>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn" ng-click="goEditItem($index)"><i class="fa fa-plus"></i> <i class="fa fa-cutlery fa-plus"></i> </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

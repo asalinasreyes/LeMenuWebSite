@@ -10,7 +10,7 @@ angular.module('leMeNuApp')
 
         $scope.GetListRestaurants = function() {
             $scope.ListRestaurantMenus = $filter('filter')($scope.restaurant.ListMenu, {
-                restaurantid: $scope.restaurant.restaurantid
+                Restaurantid: $scope.restaurant.Restaurantid
             });
         };
 

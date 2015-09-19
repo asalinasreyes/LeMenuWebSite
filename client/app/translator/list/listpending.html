@@ -1,13 +1,9 @@
 <div >
-<!-- Start your code here -->
 <div class="panel panel-default event" ng-show= "showInprocess()">
   <div class="panel-body">
     <div class="rsvp col-xs-2 col-sm-2">
                 <i>{{InProcess[0].Createdat | date :  'd'  }}</i>
                 <i>{{InProcess[0].Createdat | date:  'MMM'  }}</i>
-      <div class="hidden-xs">
-       <button class="btn btn-primary">ir a editar</button>
-      </div>
     </div>
     <div class="info col-xs-8 col-sm-7">
     {{InProcess[0].Restaurantid.name}}
@@ -35,7 +31,7 @@
                 <td>{{queue.Menuid.language.toString()}}</td>
                 <td>{{queue.Menuid.files.length}}</td>
                 <td>
-                    <button ng-click="take(queue, $index)">tomar</button>
+                    <button ng-click="take(queue, $index)">{{'translator.list.btake' | translate}} </button>
                 </td>
             </tr>
         </tbody>

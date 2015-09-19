@@ -382,6 +382,11 @@ module.exports = function(grunt) {
           cwd: '<%= yeoman.client %>/assets/images/flags',
           dest: '<%= yeoman.dist %>/public/assets/images/flags',
           src: '**/*'
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.client %>/',
+          dest: '<%= yeoman.dist %>/public/',
+          src: 'google4f6022ebd0f73df0.html'
         }]
       },
       styles: {

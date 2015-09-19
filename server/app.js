@@ -4,6 +4,7 @@
 
 'use strict';
 
+require('newrelic');
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -22,6 +23,7 @@ var app = express();
 var server = require('http').createServer(app);
 require('./config/express')(app);
 require('./routes')(app);
+
 
 // Start server
 server.listen(config.port, config.ip, function () {

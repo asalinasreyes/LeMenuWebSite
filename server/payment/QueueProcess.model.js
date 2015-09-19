@@ -5,6 +5,56 @@ var mongoose = require('mongoose'),
 
 
 
+
+
+var ItemInMenuModellanguageSchema = new Schema({
+    NameItemMenu:String,
+    EnableName:Boolean,
+
+    DescriptionItemMenu:String,
+    EnableDescription:Boolean,
+
+    DescriptionItemsItemMenu:String,
+    EnableDescriptionItems:Boolean,
+
+    PriceItemsItemMenu:String,
+    EnablePrice:Boolean,
+
+    FullDescriptionItemMenu:String,
+    EnableFullDescription:Boolean,
+
+    PositionOrder:Number,
+
+    userid: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
+    createdat: {
+        type: Date,
+        required: true,
+        default: Date.now
+    }
+});
+
+var GroupMenuModellanguageSchema = new Schema({
+    NameGroupInMenu:String,
+    EnableName:Boolean,
+    State:Number,
+    PositionOrder:Number,
+    ItemsInMenu:[ItemInMenuModellanguageSchema],
+    userid: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
+    createdat: {
+        type: Date,
+        required: true,
+        default: Date.now
+    }
+});
+
+
+
 var QueueProcessSchema = new Schema({
 	Menuid: {
 		type: Schema.ObjectId,
@@ -18,6 +68,7 @@ var QueueProcessSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+	MenuDetail:[GroupMenuModellanguageSchema],
 	LanguagesTo: String,
 	LanguagesFrom: String,
 	StartTranslate: Date,
@@ -37,3 +88,5 @@ var QueueProcessSchema = new Schema({
 });
 
 module.exports = mongoose.model('QueueProcess', QueueProcessSchema);
+
+

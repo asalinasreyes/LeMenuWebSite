@@ -43,8 +43,8 @@ exports.ImWorkingOnIt = function(req, res) {
             IsReadyToTranslate: true,
             UserTranslateid: user_id
         })
-        .populate('Menuid', 'files language restaurantid')
-        .populate('Restaurantid', 'name')
+        .populate('Menuid', 'files language mame')
+        .populate('Restaurantid')
         .exec(function(err, ListqueueProcess) {
             if (err) {
                 return handleError(res, err);
@@ -54,8 +54,52 @@ exports.ImWorkingOnIt = function(req, res) {
 };
 
 
-//Take Queue as own, if Im free :-)
-exports.update = function(req, res) {
+exports.updateTranslateMenuAndItemTranslate = function(req, res) {
+
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var user_id = new ObjectId(req.user._id);
+    var menu_id = new ObjectId(req.body.infomenuomenu._id);
+
+    var info = req.body.infomenuomenu;
+
+    console.log(info);
+
+    queueProcess.findById(menu_id, function(err, menu) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!menu) {
+            return res.send(404);
+        }
+        if (info._id) {
+            delete info._id;
+        }
+        if (info.Restaurantid) {
+            delete info.Restaurantid;
+        }
+        
+        menu.MenuDetail =  req.body.infomenuomenu.MenuDetail;
+
+        //var updated = _.extend(menu, req.body.infomenuomenu);
+
+        menu.save(function(err) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, menu);
+        });
+    });
+
+    /*
+        return res.json(200, {result:req.body});
+    */
+
+};
+
+
+
+//Take One Translate from Queue as own, if Im free :-)
+exports.updateAndTakeTranslatoasOwn = function(req, res) {
     var ObjectId = require('mongoose').Types.ObjectId;
     var user_id = new ObjectId(req.user._id);
 

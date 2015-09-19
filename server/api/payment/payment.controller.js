@@ -9,7 +9,7 @@ exports.index = function(req, res) {
     var user_id = new ObjectId(req.user._id);
 
     Payment.find()
-        .populate('restaurantid', 'name city createdat' )
+        .populate('Restaurantid', 'name city createdat' )
         .populate('menuid', 'files language createdat')
         .exec(function(err, listPayments) {
             if (err) {

@@ -36,14 +36,21 @@ var newMenuOfRestaurant = {
     files: []
 };
 
-var file = {
+var fileB = {
     public_id: uuid.v1(),
-    filename: uuid.v1(),
-    url: uuid.v1()
-}
+    filename: 'a',
+    url: 'https://s-media-cache-ak0.pinimg.com/736x/fe/f0/60/fef06047818eaec0550325010de74a09.jpg'
+};
 
-newMenuOfRestaurant.files.push(file);
-newMenuOfRestaurant.files.push(file);
+var fileA = {
+    public_id: uuid.v1(),
+    filename: 'a',
+    url: 'https://s-media-cache-ak0.pinimg.com/236x/0b/61/f3/0b61f3c7defc56272c8eb0f1bdc6f937.jpg'
+};
+
+
+newMenuOfRestaurant.files.push(fileA);
+newMenuOfRestaurant.files.push(fileB);
 
 User.find({}).remove(function() {
     console.log('Borro todos los usuarios');
@@ -91,7 +98,7 @@ User.create({
     newRestaurant.userid = userinfo._id;
     Restaurant.create(newRestaurant, function(err, restaurant) {
         newMenuOfRestaurant.userid = restaurant.userid
-        newMenuOfRestaurant.restaurantid = restaurant._id;
+        newMenuOfRestaurant.Restaurantid = restaurant._id;
         MenuOfrestaurant.create(newMenuOfRestaurant, function(err, menu) {
             console.log('Creo Menu default en resto default');
             Payment.create({
@@ -101,7 +108,7 @@ User.create({
                 amount: 232342,
                 description: 'invento de description',
                 userid: userinfo._id,
-                restaurantid: restaurant._id,
+                Restaurantid: restaurant._id,
                 menuid: menu._id,
                 created_success: new Date(),
                 created_cancel: new Date()
@@ -175,7 +182,7 @@ User.create({
     newRestaurant.userid = data._id;
     Restaurant.create(newRestaurant, function(err, data) {
         newMenuOfRestaurant.userid = data.userid
-        newMenuOfRestaurant.restaurantid = data._id;
+        newMenuOfRestaurant.Restaurantid = data._id;
         MenuOfrestaurant.create(newMenuOfRestaurant, function(err, data) {
             console.log('Creo Menu default en resto default');
         });

@@ -26,14 +26,14 @@ exports.startPayment = function(req, res) {
 
     var user_id = new ObjectId(req.body.user._id);
     var MenuID = new ObjectId(req.body.menuid);
-    var restaurant_id = new ObjectId(req.body.restaurantid);
+    var restaurant_id = new ObjectId(req.body.Restaurantid);
     var order_id = uuid.v1();
 
 
     var paymentOrder = new Payment({
         order_id: order_id,
         userid: user_id,
-        restaurantid: restaurant_id,
+        Restaurantid: restaurant_id,
         menuid: MenuID
     });
 
@@ -125,7 +125,7 @@ exports.orderExecute = function(req, res) {
         MenuModel.findOne({
                 _id: paymentOrderSuccess.menuid
             })
-            .populate('restaurantid')
+            .populate('Restaurantid')
             .exec(function(err, oneMenu) {
                 if (err) return res.send(500, {
                     error: err
@@ -133,29 +133,33 @@ exports.orderExecute = function(req, res) {
                 oneMenu.status = '';
                 oneMenu.status = 'success';
                 oneMenu.save();
+                console.log('pago oneMenu',  oneMenu  );
 
 
                 var FirstTranslate = {
                     Menuid: oneMenu._id,
-                    LanguagesTo: oneMenu.restaurantid.language,
-                    LanguagesFrom: oneMenu.restaurantid.language,
-                    Restaurantid: oneMenu.restaurantid,
+                    LanguagesTo: oneMenu.language,
+                    LanguagesFrom: oneMenu.Restaurantid.language,
+                    Restaurantid: oneMenu.Restaurantid,
                     Status: 'NotAssign',
                     IsReadyToTranslate: true,
                     IsDoneTranslate:false,
                     IsParent:true
                 };
+
+                console.log('pago FirstTranslate', FirstTranslate);
                 var queueProcess = new QueueProcess(FirstTranslate);
 
                 queueProcess.save(function(err, Parent) {
                     
+                    console.log('pago Parent', Parent);
                     var queueTranslate = [];
                     oneMenu.language.forEach(function(lang) {
                         var translateItemQueue = {
                             Menuid: oneMenu._id,
                             LanguagesTo: lang,
-                            Restaurantid: oneMenu.restaurantid,
-                            LanguagesFrom: oneMenu.restaurantid.language,
+                            Restaurantid: oneMenu.Restaurantid,
+                            LanguagesFrom: oneMenu.Restaurantid.language,
                             Status: 'NotAssign',
                             IsReadyToTranslate: false,
                             IsDoneTranslate:false,
@@ -164,6 +168,7 @@ exports.orderExecute = function(req, res) {
                         };
                         queueTranslate.push(translateItemQueue);
                     });
+                    console.log('pago QueueProcess');
                     QueueProcess.create(queueTranslate, function(err) {
                         if (err) {
                             res.send(500, err);

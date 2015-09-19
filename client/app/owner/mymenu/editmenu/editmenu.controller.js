@@ -36,7 +36,7 @@ angular.module('leMeNuApp')
     };
 
     $scope.SaveNewRestaurantMenu = function() {
-        $scope.cartMenuSelected.restaurantid = $scope.RestaurantSelectedInfo._id;
+        $scope.cartMenuSelected.Restaurantid = $scope.RestaurantSelectedInfo._id;
         $scope.cartMenuSelected.files = $scope.listFilesPhotoUpload;
         RestaurantMenu.PUT($scope.cartMenuSelected, function(info) {
             $scope.cartMenuSelected = {};

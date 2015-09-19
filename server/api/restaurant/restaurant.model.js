@@ -16,6 +16,8 @@ var RestaurantSchema = new Schema({
   urlsite:String,
   urllogo:String,
   emailcontact:String,
+  latitude:Number,
+  longitude:Number
 });
 
 module.exports = mongoose.model('Restaurant', RestaurantSchema);

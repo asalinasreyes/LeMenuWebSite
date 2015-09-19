@@ -176,11 +176,26 @@
             "llistLang": "Detalle de Idiomas Seleccionados",
             "lnumberPage": "Numero Total de Paginas",
             "yourareBusy":"Tienes otra traduccion en proceso",
-            "takesuccess":"Operacion Completada con existo!"
+            "takesuccess":"Operacion Completada con existo!",
+            "btake":"Es mio!"
         },
         "navbartra":{
             "workinProgress":"Traducciendo"
-
+        },
+        "edit":{
+            "baddGroup":"Nueva seccion",
+            "beditGroup":"Editar",
+            "bdelGroup":"Borrar",
+            "bsaveGroup":"Guardar",
+            "bcancelGroup":"Cancelar",
+            "hsections":"Secciones en Menu",
+            "lnamesection":"Nombre Seccion"
+        },
+        "newItemMenu":{
+            "pNameItemMenu":"Nombre Plato",
+            "pDescriptionItemMenu":"Descripcion Plato",
+            "pDescriptionItemsItemMenu":"Composicion del plato",
+            "pPriceItemsItemMenu":"Precio"
         }
     },
     "errores": {

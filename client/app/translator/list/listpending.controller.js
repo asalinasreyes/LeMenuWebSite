@@ -2,10 +2,7 @@
 
 angular.module('leMeNuApp')
 	.controller('QueueListCtrl', function($scope, $state, Queue, toaster) {
-
 		$scope.messageToaster = '';
-
-
 
 		Queue.query({}, function(data) {
 			$scope.ListQueue = data;

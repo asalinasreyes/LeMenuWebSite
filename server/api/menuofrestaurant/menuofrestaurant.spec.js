@@ -85,7 +85,7 @@ describe('GET /api/restaurants/menu', function() {
 
   it('Crea 1 Menu Asociada al Restaurante Creado', function(done) {
 
-    newMenuOfRestaurant.restaurantid = restaurantCreated._id;
+    newMenuOfRestaurant.Restaurantid = restaurantCreated._id;
     newMenuOfRestaurant.userid = restaurantCreated.userid;
     UserOwner
       .post(PathToService)
@@ -101,7 +101,7 @@ describe('GET /api/restaurants/menu', function() {
 
   it('Crea 2 Menu Asociada al Restaurante Creado', function(done) {
     newMenuOfRestaurant.name = 'Segundo menu';
-    newMenuOfRestaurant.restaurantid = restaurantCreated._id;
+    newMenuOfRestaurant.Restaurantid = restaurantCreated._id;
     newMenuOfRestaurant.userid = restaurantCreated.userid;
     UserOwner
       .post(PathToService)

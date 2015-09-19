@@ -8,6 +8,11 @@ angular.module('leMeNuApp')
 			PUT: {
 				method: 'PUT'
 			},
+			SaveMenuAndItems:{
+				method: 'POST',
+				url:'/api/queue/menuAndItems/',
+				params:{infomenuomenu:'@info'}
+			},
 			ImWorkingOnIt:{
 				method:'GET',
 				url:'/api/queue/ImWorkingOnIt',isArray: true

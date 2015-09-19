@@ -6,6 +6,7 @@ angular.module('leMeNuApp')
       'title': 'navbar.lhome',
       'link': '/'
     }];
+
     $scope.languageEnable={};
     $scope.LanguagesAllow = ListAllow.LanguagesAllow;
     $scope.languageEnable = $filter('filter')(ListAllow.LanguagesAllow, { code: $translate.use() })[0];
