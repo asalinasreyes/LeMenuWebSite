@@ -5,6 +5,7 @@
 <div class="row" ng-repeat="itemmenu in workingOver.ItemsInMenu">
     <div class="menu well">
         <div class="row">
+            {{itemmenu._id}}
             <div class="col-sm-8">
                 <h4 class="menu-title">
 					<span editable-text="itemmenu.NameItemMenu" e-name="NameItemMenu" e-form="rowform" e-required e-placeholder="{{'translator.newItemMenu.pNameItemMenu' | translate  }}">
@@ -32,7 +33,7 @@
             </div>
         </div>
     
-    <form editable-form name="rowform" onbeforesave="saveItemMenu($data, itemmenu.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == itemmenu">
+    <form editable-form name="rowform" onbeforesave="saveItemMenu($data, itemmenu.PositionOrder)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == itemmenu">
             <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary " style="width: 50%;">
             <span class="fa fa-save "></span>{{'translator.edit.bsaveGroup' | translate}}
         </button>
@@ -46,6 +47,10 @@
         <button class="btn btn-danger" ng-click="removeItemMenu($index)">{{'translator.edit.bdelGroup' | translate}}<span class="fa fa-trash"></span></button>
     </div>
     </div>
+</div>
+<div class="row" ng-show="showBottonButton()">
+    <button type="button" class="btn btn-info pull-left" ng-click="goBack()">back</button>
+    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">New</button>
 </div>
 
 

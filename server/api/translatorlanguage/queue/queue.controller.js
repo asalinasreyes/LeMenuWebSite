@@ -73,7 +73,6 @@ exports.updateTranslateMenuAndItemTranslate = function(req, res) {
             return res.send(404);
         }
         menu.MenuDetail = info.MenuDetail;
-
         menu.save(function(err) {
             if (err) {
                 return handleError(res, err);

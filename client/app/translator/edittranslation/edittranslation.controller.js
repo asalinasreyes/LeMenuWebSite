@@ -2,7 +2,6 @@
 
 angular.module('leMeNuApp')
     .controller('TranslatorEditCtrl', function($scope, Queue, $filter, $http, $state) {
-        $scope.editingItem = false;
 
         Queue.ImWorkingOnIt({}, function(data) {
             $scope.TranslateItem = data[0];
@@ -36,11 +35,14 @@ angular.module('leMeNuApp')
         };
 
         $scope.addGroud = function() {
-            $scope.inserted = {
+
+            var inserted = {
                 NameGroupInMenu: '',
                 PositionOrder: $scope.TranslateItem.MenuDetail.length
             };
-            $scope.TranslateItem.MenuDetail.push($scope.inserted);
+            $scope.TranslateItem.MenuDetail.push(inserted);
+
+            $scope.inserted = inserted;
         };
 
 
