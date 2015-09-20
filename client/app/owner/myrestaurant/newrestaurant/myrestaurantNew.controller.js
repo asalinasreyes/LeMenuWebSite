@@ -39,7 +39,7 @@ angular.module('leMeNuApp')
         };
 
         function updateCountry() {
-            if (Mylocation.fulldata.country) {
+            if (Mylocation.fulldata && Mylocation.fulldata.country) {
                 $scope.restaurant.country = Mylocation.fulldata.country;
                 $scope.restaurant.city = Mylocation.fulldata.city;
                 $scope.restaurant.latitude = Mylocation.fulldata.latitud;
