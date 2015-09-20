@@ -47,4 +47,11 @@ angular.module('leMeNuApp')
         $scope.goEditItem = function(index){
             $state.go('translator.edit.item', {'index':index});
         };
+
+        $scope.FinnishedTranslation = function(){
+            Queue.FinnishedTranslation({infomenuomenu:$scope.TranslateItem}, function( data){
+               console.log('termine');
+               console.log(data);
+            });
+        };
     });

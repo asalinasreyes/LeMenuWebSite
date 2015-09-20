@@ -41,7 +41,8 @@ exports.ImWorkingOnIt = function(req, res) {
 
     queueProcess.find({
             IsReadyToTranslate: true,
-            UserTranslateid: user_id
+            UserTranslateid: user_id,
+            IsDoneTranslate: false
         })
         .populate('Menuid', 'files language mame')
         .populate('Restaurantid')
@@ -61,7 +62,7 @@ exports.updateTranslateMenuAndItemTranslate = function(req, res) {
     var menu_id = new ObjectId(req.body.infomenuomenu._id);
     var info = req.body.infomenuomenu;
 
-    queueProcess.find({
+    queueProcess.findOne({
         _id: menu_id,
         UserTranslateid: user_id
     }, function(err, menu) {
@@ -72,7 +73,7 @@ exports.updateTranslateMenuAndItemTranslate = function(req, res) {
             return res.send(404);
         }
         menu.MenuDetail = info.MenuDetail;
-        
+
         menu.save(function(err) {
             if (err) {
                 return handleError(res, err);
@@ -84,7 +85,7 @@ exports.updateTranslateMenuAndItemTranslate = function(req, res) {
 
 
 
-//Take One Translate from Queue as own, if Im free :-)
+//Take One Translate from Queue as own, if person is free :-)
 exports.updateAndTakeTranslatoasOwn = function(req, res) {
     var ObjectId = require('mongoose').Types.ObjectId;
     var user_id = new ObjectId(req.user._id);
@@ -119,6 +120,7 @@ exports.updateAndTakeTranslatoasOwn = function(req, res) {
     });
 };
 
+// Update status One Item in Queue in process, if is the parent let child ready to translate 
 exports.FinnishedTranslation = function(req, res) {
 
     var ObjectId = require('mongoose').Types.ObjectId;
@@ -127,7 +129,7 @@ exports.FinnishedTranslation = function(req, res) {
 
     var info = req.body.infomenuomenu;
 
-    queueProcess.find({
+    queueProcess.findOne({
         _id: menu_id,
         UserTranslateid: user_id
     }, function(err, menu) {
@@ -138,9 +140,18 @@ exports.FinnishedTranslation = function(req, res) {
             return res.send(404);
         }
 
+        console.log('menu.IsParent  ', menu.IsParent);
         if (menu.IsParent == true) {
-            // Buscar el resto y actualizar IsReadyToTranslate: true
-            //queueProcess.update({IsParent:false, Parentid:menu._id}, { $set: { IsReadyToTranslate: 'true' }} );
+            queueProcess.update({
+                IsParent: false,
+                Parentid: menu._id
+            }, {
+                IsReadyToTranslate: true,
+                MenuDetail : info.MenuDetail
+            }, {
+                upsert: true,
+                multi: true
+            }, function(err, doc) {});
         };
         menu.IsDoneTranslate = true;
 

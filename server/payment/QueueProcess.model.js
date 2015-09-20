@@ -77,7 +77,6 @@ var QueueProcessSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
-	Status: String,
 	Parentid: {
 		type: Schema.ObjectId,
 		ref: 'QueueProcess'

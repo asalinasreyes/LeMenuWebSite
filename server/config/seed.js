@@ -115,37 +115,38 @@ User.create({
             }, function(err, pago) {
                 console.log('informacon de pago', pago);
 
-                QueueProcess.create(
-                {
+                QueueProcess.create({
                     'Menuid': menu._id,
                     'LanguagesTo': 'es',
                     'LanguagesFrom': 'es',
-                    'Status': 'NotAssign',
-                    'Restaurantid':restaurant._id,
+                    'Restaurantid': restaurant._id,
                     'IsReadyToTranslate': true,
                     'IsParent': true,
-                    'IsDoneTranslate':false
-                },
-                {
-                    'Menuid': menu._id,
-                    'LanguagesTo': 'fr',
-                    'LanguagesFrom': 'es',
-                    'Status': 'NotAssign',
-                    'IsReadyToTranslate': true,
-                    'Restaurantid':restaurant._id,
-                    'IsParent': false,
-                    'IsDoneTranslate':false,
-                },{
-                    'Menuid': menu._id,
-                    'LanguagesTo': 'en',
-                    'Restaurantid':restaurant._id,
-                    'LanguagesFrom': 'es',
-                    'Status': 'NotAssign',
-                    'IsReadyToTranslate': false,
-                    'IsParent': false,
-                    'IsDoneTranslate':false
-                },function(err, data){
-                    console.log('Se crea Queue In Process');
+                    'IsDoneTranslate': false
+
+                }, function(err, parentQueue) {
+
+                    QueueProcess.create({
+                        'Menuid': menu._id,
+                        'LanguagesTo': 'fr',
+                        'LanguagesFrom': 'es',
+                        'IsReadyToTranslate': false,
+                        'Restaurantid': restaurant._id,
+                        'IsParent': false,
+                        'IsDoneTranslate': false,
+                        'Parentid':parentQueue._id
+                    }, {
+                        'Menuid': menu._id,
+                        'LanguagesTo': 'en',
+                        'Restaurantid': restaurant._id,
+                        'LanguagesFrom': 'es',
+                        'IsReadyToTranslate': false,
+                        'IsParent': false,
+                        'IsDoneTranslate': false,
+                        'Parentid':parentQueue._id
+                    }, function(err, listquee) {
+
+                    })
                 });
 
 

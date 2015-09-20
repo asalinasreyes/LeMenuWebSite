@@ -11,6 +11,7 @@ router.get('/ImWorkingOnIt', auth.hasRole('translate') , controller.ImWorkingOnI
 
 
 router.post('/menuAndItems',auth.hasRole('translate'), controller.updateTranslateMenuAndItemTranslate);
+router.post('/FinnishedTranslation',auth.hasRole('translate'), controller.FinnishedTranslation);
 
 
 router.post('/:id',auth.hasRole('translate'), controller.updateAndTakeTranslatoasOwn);

@@ -160,7 +160,6 @@ exports.orderExecute = function(req, res) {
                             LanguagesTo: lang,
                             Restaurantid: oneMenu.Restaurantid,
                             LanguagesFrom: oneMenu.Restaurantid.language,
-                            Status: 'NotAssign',
                             IsReadyToTranslate: false,
                             IsDoneTranslate:false,
                             Parentid : Parent._id,

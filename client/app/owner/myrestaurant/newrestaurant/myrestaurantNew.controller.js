@@ -2,7 +2,7 @@
 
 angular.module('leMeNuApp')
     .controller('MyRestaurantOwnerNewCtrl', function($scope, $state, Restaurant, myCache, ListAllow, $translate, Mylocation) {
-    
+
         $scope.restaurant = {};
         var lang = $translate.use();
         $scope.Countries = ListAllow.Countries[lang];
@@ -39,11 +39,12 @@ angular.module('leMeNuApp')
         };
 
         function updateCountry() {
-
-            $scope.restaurant.country = Mylocation.fulldata.country;
-            $scope.restaurant.city = Mylocation.fulldata.city;
-            $scope.restaurant.latitude = Mylocation.fulldata.latitud;
-            $scope.restaurant.longitude = Mylocation.fulldata.longitud;
+            if (Mylocation.fulldata.country) {
+                $scope.restaurant.country = Mylocation.fulldata.country;
+                $scope.restaurant.city = Mylocation.fulldata.city;
+                $scope.restaurant.latitude = Mylocation.fulldata.latitud;
+                $scope.restaurant.longitude = Mylocation.fulldata.longitud;
+            };
 
         };
         updateCountry();
