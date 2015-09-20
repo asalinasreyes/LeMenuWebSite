@@ -138,7 +138,7 @@ exports.orderExecute = function(req, res) {
 
                 var FirstTranslate = {
                     Menuid: oneMenu._id,
-                    LanguagesTo: oneMenu.language,
+                    LanguagesTo: oneMenu.Restaurantid.language,
                     LanguagesFrom: oneMenu.Restaurantid.language,
                     Restaurantid: oneMenu.Restaurantid,
                     Status: 'NotAssign',
