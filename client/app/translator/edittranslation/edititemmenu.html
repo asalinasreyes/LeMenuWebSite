@@ -1,63 +1,68 @@
 <div class="row">
-    <button type="button" class="btn btn-info pull-left" ng-click="goBack()">back</button>
-    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">New</button>
+    <button type="button" class="btn btn-info pull-left" ng-click="goBack()">
+        <span class="fa fa-home "></span> {{'translator.edit.bback' | translate}}
+    </button>
+    <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>   
+    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">
+        <span class="fa fa-plus "></span> {{'translator.edit.bnew' | translate}}
+    </button>
 </div>
 <div class="row" ng-repeat="itemmenu in workingOver.ItemsInMenu">
     <div class="menu well">
         <div class="row">
-            {{itemmenu._id}}
             <div class="col-sm-8">
                 <h4 class="menu-title">
-					<span editable-text="itemmenu.NameItemMenu" e-name="NameItemMenu" e-form="rowform" e-required e-placeholder="{{'translator.newItemMenu.pNameItemMenu' | translate  }}">
-					{{ itemmenu.NameItemMenu || '-----' }}
-					</span>
+                    <span editable-text="itemmenu.NameItemMenu" e-name="NameItemMenu" e-form="rowform" e-required e-placeholder="{{'translator.newItemMenu.pNameItemMenu' | translate  }}">
+                    {{ itemmenu.NameItemMenu || '-----' }}
+                    </span>
 
                 </h4>
                 <div class="menu-detail">
                     <span editable-textarea="itemmenu.DescriptionItemMenu" e-rows="7" e-cols="40" e-name="DescriptionItemMenu" e-form="rowform" e-required e-placeholder="{{'translator.newItemMenu.pDescriptionItemMenu' | translate  }}">
-					    {{ itemmenu.DescriptionItemMenu || '-----' }}
-					</span>
+                        {{ itemmenu.DescriptionItemMenu || '-----' }}
+                    </span>
                 </div>
                 <div class="menu-detail">
                     <span editable-text="itemmenu.DescriptionItemsItemMenu" e-name="DescriptionItemsItemMenu" e-form="rowform" e-required e-required e-placeholder="{{'translator.newItemMenu.pDescriptionItemsItemMenu' | translate  }}">
-					    {{ itemmenu.DescriptionItemsItemMenu || '-----' }}
-					</span>
+                        {{ itemmenu.DescriptionItemsItemMenu || '-----' }}
+                    </span>
                 </div>
             </div>
             <div class="col-sm-1 menu-price-detail">
                 <h4 class="menu-price">
-					<span editable-text="itemmenu.PriceItemsItemMenu" e-name="PriceItemsItemMenu" e-form="rowform" e-required e-required e-placeholder="{{'translator.newItemMenu.pPriceItemsItemMenu' | translate  }}" class="col-xs-2">
-					    {{ itemmenu.PriceItemsItemMenu || '-----' }}
-					</span>
+                    <span editable-text="itemmenu.PriceItemsItemMenu" e-name="PriceItemsItemMenu" e-form="rowform" e-required e-required e-placeholder="{{'translator.newItemMenu.pPriceItemsItemMenu' | translate  }}" class="col-xs-2">
+                        {{ itemmenu.PriceItemsItemMenu || '-----' }}
+                    </span>
                 </h4>
             </div>
         </div>
-    
-    <form editable-form name="rowform" onbeforesave="saveItemMenu($data, itemmenu.PositionOrder)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == itemmenu">
+        <form editable-form name="rowform" onbeforesave="saveItemMenu($data, itemmenu.PositionOrder)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == itemmenu">
             <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary " style="width: 50%;">
-            <span class="fa fa-save "></span>{{'translator.edit.bsaveGroup' | translate}}
-        </button>
-        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-warning pull-right" >
-            <span class="fa fa-undo pull-left"></span>{{'translator.edit.bcancelGroup' | translate}}
-        </button>
-
-    </form>
-    <div class="buttons" ng-show="!rowform.$visible">
-        <button class="btn btn-primary pull-right" ng-click="rowform.$show()"><span class="fa fa-edit "></span>{{'translator.edit.beditGroup' | translate}}</button>
-        <button class="btn btn-danger" ng-click="removeItemMenu($index)">{{'translator.edit.bdelGroup' | translate}}<span class="fa fa-trash"></span></button>
-    </div>
+                <span class="fa fa-save "></span>{{'translator.edit.bsaveGroup' | translate}}
+            </button>
+            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-warning pull-right">
+                <span class="fa fa-undo pull-left"></span>{{'translator.edit.bcancelGroup' | translate}}
+            </button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible">
+            <button class="btn btn-primary pull-right" ng-click="rowform.$show()"><span class="fa fa-edit "></span>{{'translator.edit.beditGroup' | translate}}</button>
+            <button class="btn btn-danger" ng-click="removeItemMenu($index)">{{'translator.edit.bdelGroup' | translate}}<span class="fa fa-trash"></span></button>
+        </div>
     </div>
 </div>
 <div class="row" ng-show="showBottonButton()">
-    <button type="button" class="btn btn-info pull-left" ng-click="goBack()">back</button>
-    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">New</button>
+        <button type="button" class="btn btn-info pull-left" ng-click="goBack()">
+        <span class="fa fa-home "></span> {{'translator.edit.bback' | translate}}
+    </button>
+    <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>   
+    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">
+        <span class="fa fa-plus "></span> {{'translator.edit.bnew' | translate}}
+    </button>
 </div>
-
-
-    <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-body">
-             <div class="text-center">
-                    <img src="http://www.travislayne.com/images/loading.gif" class="icon" />
-                </div>
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-body">
+        <div class="text-center">
+            <img src="http://www.travislayne.com/images/loading.gif" class="icon" />
         </div>
-    </script>
+    </div>
+</script>

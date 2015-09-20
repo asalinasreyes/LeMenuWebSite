@@ -20,7 +20,7 @@
             </li>
         </ul>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5" ng-show="TranslateItem.MenuDetail">
         <div ui-view="">
             <table class="table table-bordered table-hover table-condensed">
                 <caption>
@@ -33,6 +33,7 @@
                         </span>
                         </td>
                         <td>
+                        <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>   
                             <button class="btn btn-default pull-right" ng-click="addGroud()">
                                 <span class="fa fa-plus "></span> {{'translator.edit.baddGroup' | translate}} </button>
                         </td>

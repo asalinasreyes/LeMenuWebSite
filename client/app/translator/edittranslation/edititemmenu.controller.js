@@ -4,17 +4,15 @@ angular.module('leMeNuApp')
     .controller('TranslatorEditItemMenuCtrl', function($scope, $window, Queue, $stateParams, $modal) {
         var modalInstance = null;
 
-
         function getInfoInprocess() {
             Queue.ImWorkingOnIt({}, function(data) {
                 $scope.TranslateItem = data[0];
+                $scope.getcssFlag = 'flag-icon-' + $scope.TranslateItem.LanguagesTo;
                 $scope.workingOver = $scope.TranslateItem.MenuDetail[$stateParams.index];
                 if (!$scope.workingOver.ItemsInMenu) {
                     $scope.workingOver.ItemsInMenu = [];
                 };
-
             });
-
         }
 
         $scope.goBack = function() {
@@ -32,7 +30,6 @@ angular.module('leMeNuApp')
         };
 
         $scope.removeItemMenu = function(idRemove) {
-
             showProcessing();
             var TranslateItem = angular.copy($scope.TranslateItem);
             TranslateItem.MenuDetail[$stateParams.index].ItemsInMenu.splice(idRemove, 1);
@@ -46,7 +43,6 @@ angular.module('leMeNuApp')
         };
 
         $scope.addItemInGroud = function() {
-
             $scope.inserted = {
                 Namedescription: '',
                 DescriptionItemMenu: '',
@@ -55,7 +51,6 @@ angular.module('leMeNuApp')
                 PositionOrder: $scope.workingOver.ItemsInMenu.length
             };
             $scope.workingOver.ItemsInMenu.push($scope.inserted);
-
         };
 
         function showProcessing() {

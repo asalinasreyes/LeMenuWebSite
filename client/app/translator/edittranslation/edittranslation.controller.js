@@ -8,7 +8,7 @@ angular.module('leMeNuApp')
             if (!$scope.TranslateItem.MenuDetail) {
             $scope.TranslateItem.MenuDetail =[];    
             };
-            
+            $scope.getcssFlag = 'flag-icon-' + $scope.TranslateItem.LanguagesTo;
             $scope.selectedImage = $scope.TranslateItem.Menuid.files[0].url;
             console.log('data menu en traduccion', data);
         });
@@ -52,8 +52,7 @@ angular.module('leMeNuApp')
 
         $scope.FinnishedTranslation = function(){
             Queue.FinnishedTranslation({infomenuomenu:$scope.TranslateItem}, function( data){
-               console.log('termine');
-               console.log(data);
+                $state.go('translator.list');      
             });
         };
     });

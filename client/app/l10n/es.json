@@ -189,7 +189,9 @@
             "bsaveGroup":"Guardar",
             "bcancelGroup":"Cancelar",
             "hsections":"Secciones en Menu",
-            "lnamesection":"Nombre Seccion"
+            "lnamesection":"Nombre Seccion",
+            "bback":"Volver",
+            "bnew":"Agregar"
         },
         "newItemMenu":{
             "pNameItemMenu":"Nombre Plato",

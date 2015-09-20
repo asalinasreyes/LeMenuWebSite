@@ -139,14 +139,13 @@ exports.FinnishedTranslation = function(req, res) {
             return res.send(404);
         }
 
-        console.log('menu.IsParent  ', menu.IsParent);
         if (menu.IsParent == true) {
             queueProcess.update({
                 IsParent: false,
                 Parentid: menu._id
             }, {
                 IsReadyToTranslate: true,
-                MenuDetail : info.MenuDetail
+                MenuDetail : menu.MenuDetail
             }, {
                 upsert: true,
                 multi: true
