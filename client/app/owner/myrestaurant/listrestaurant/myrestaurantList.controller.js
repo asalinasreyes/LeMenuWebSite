@@ -14,9 +14,7 @@ angular.module('leMeNuApp')
                 $scope.ListRestaurants = listrestaurants;
                 RestaurantMenu.query({}, function(listmenu) {
                     $scope.ListRestaurants.forEach(function(oneThis) {
-                        oneThis.ListMenu = $filter('filter')(listmenu, {
-                            restaurantid: oneThis._id
-                        });;
+                        oneThis.ListMenu = $filter('filter')(listmenu, {Restaurantid: oneThis._id});;
                     });
                 });
             });
