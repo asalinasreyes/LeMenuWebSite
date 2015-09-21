@@ -15,6 +15,7 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 
 router.post('/translate', auth.hasRole('admin'), controller.createTranslator);
+router.post('/translate/update', auth.hasRole('admin'), controller.UpdateTranslator);
 router.post('/createAdmin', auth.hasRole('admin'), controller.createAdmin);
 
 module.exports = router;

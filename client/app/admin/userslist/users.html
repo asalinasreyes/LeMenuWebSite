@@ -1,12 +1,46 @@
 	
-<div class="container">
+<div class="container" id="userlist">
   
-  <ul class="list-group">
-  	<button class="btn btn-primary" ng-click="addTranslator()"><span class="glyphicon glyphicon-plus"></span>Agregar Tranductor</button>
-    <li class="list-group-item" ng-repeat="user in users">
-        <strong>{{user.name}}</strong><br>
-        <span class="text-muted">{{user.email}}</span>
-        <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-    </li>
-  </ul>
+    <div class="row">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading c-list">
+                    <span class="title">Traductores del Sistema</span>
+                    <ul class="pull-right c-controls">
+                        <li><a href="#"  ng-click="addTranslator()" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-plus"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="input-group c-search">
+                            <input type="text" class="form-control" id="contact-list-search" ng-model="filterAny">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="list-group" id="contact-list">
+                    <li class="list-group-item" ng-repeat="user in users|filter:filterAny">
+                        <div class="col-xs-12 col-sm-3">
+                            <img ng-src="{{ '/assets/images/'+ user.userid.role+ '.png'  }}"  class="img-responsive img-circle" />
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                            <span class="name">{{user.userid.name}}</span><br/>
+                            <span class="name">{{user.userid.email}}</span><br/>
+                            <button class="btn btn-primary" ng-click="goEdit(user)">editar</button>
+                            <button class="btn btn-alert pull-right" ng-click="delete(user)">
+                            	<span class="glyphicon glyphicon-trash pull-right"></span>Borrar
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</div>
+
 </div>
+

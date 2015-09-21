@@ -167,6 +167,10 @@
             "bsubmit": "Crear",
             "msgSuccess": "Usuario Creado",
             "msgError": "Se produjo un error"
+        },
+        "edittranslator":{
+            "msgSuccess":"Traductor Actualizado",
+            "bsubmit": "Actualizar"
         }
     },
     "translator": {

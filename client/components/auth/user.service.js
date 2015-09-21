@@ -17,6 +17,10 @@ angular.module('leMeNuApp')
           id: 'me'
         }
       },
+      UpdateTranslate: {
+        method: 'POST',
+        url: '/api/users/translate/update'
+      },
       saveTranslate: {
         method: 'POST',
         url: '/api/users/translate'

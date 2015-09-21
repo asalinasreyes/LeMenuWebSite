@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('leMeNuApp')
-  .controller('WellcomeCtrl', ['$scope', '$location','User',function ($scope, $location,User) {
+  .controller('WellcomeCtrl', ['$scope', '$state','User',function ($scope, $state,User) {
   	User.get({}, function(data){
-  		if (data.role=='owner') {
-  			$location.path(data.role+'/resto/list');
+  		if (data.role=='admin') {
+  			$state.go(data.role);
   		}else if (data.role=='translator') {
-  			$location.path(data.role+'/list');
+  			$state.go(data.role);
   		}else{
-  		$location.path(data.role);	
+  		  $state.go('owner');
   		}
   	});
   }]);
