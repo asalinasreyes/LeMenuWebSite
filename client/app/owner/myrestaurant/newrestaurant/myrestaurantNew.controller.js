@@ -39,11 +39,12 @@ angular.module('leMeNuApp')
         };
 
         function updateCountry() {
-            if (Mylocation.fulldata && Mylocation.fulldata.country) {
-                $scope.restaurant.country = Mylocation.fulldata.country;
-                $scope.restaurant.city = Mylocation.fulldata.city;
-                $scope.restaurant.latitude = Mylocation.fulldata.latitud;
-                $scope.restaurant.longitude = Mylocation.fulldata.longitud;
+            var mylocation = Mylocation.location()
+            if (mylocation) {
+                $scope.restaurant.country = mylocation.country;
+                $scope.restaurant.city = mylocation.city;
+                $scope.restaurant.latitude = mylocation.latitud;
+                $scope.restaurant.longitude = mylocation.longitud;
             };
 
         };
