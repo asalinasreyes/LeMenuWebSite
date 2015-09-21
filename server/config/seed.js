@@ -105,7 +105,7 @@ User.create({
                 order_id: 'String2',
                 payment_id: 'String1',
                 state: 'succes',
-                amount: 232342,
+                amount: 11,
                 description: 'invento de description',
                 userid: userinfo._id,
                 Restaurantid: restaurant._id,

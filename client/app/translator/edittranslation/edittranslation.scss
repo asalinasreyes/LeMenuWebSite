@@ -1,3 +1,18 @@
 div[ng-app] { margin: 10px; }
 .table {width: 100% }
 form[editable-form] > div {margin: 10px 0;}
+
+.BiggerImage {
+    width: 30vw;
+    height: 30vw;
+}
+
+.smallerImage {
+    width: 10vw;
+    height: 10vw;
+}
+
+
+.menu-price-detail input {
+    width: 100px;
+}

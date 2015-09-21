@@ -2,8 +2,8 @@
 
 angular.module('leMeNuApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
-    //$scope.user = {email:'owner@owner.com', password:'owner'};
-    $scope.user = {email:'uno@uno.com', password:'uno'};
+    
+    $scope.users = [{email:'uno@uno.com', password:'uno'}, {email:'admin@admin.com', password:'admin'}, {email:'owner@owner.com', password:'owner'}];
     
     $scope.errors = {};
     $scope.info1 = {};
@@ -24,6 +24,10 @@ angular.module('leMeNuApp')
           $scope.errors.other = err.message;
         });
       }
+    };
+
+    $scope.creo = function(item){
+      console.log(item);
     };
 
     $scope.loginOauth = function(provider) {

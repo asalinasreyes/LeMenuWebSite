@@ -19,6 +19,11 @@
                      {{'admin.navbar.adminuser' | translate}}   
                     </a>
                 </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/dashboard')}">
+                    <a ui-sref="admin.dashboard">
+                     {{'admin.navbar.dashboard' | translate}}   
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">{{'navbar.lsignup' | translate}}</a></li>

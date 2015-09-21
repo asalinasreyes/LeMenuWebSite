@@ -10,7 +10,7 @@ var PaymentSchema = new Schema({
   order_id: String,
   payment_id: String,
   state: String,
-  amount: String,
+  amount: Number,
   description: String,
   userid: { type: Schema.ObjectId, ref: 'User' },
   Restaurantid: { type: Schema.ObjectId, ref: 'Restaurant' },

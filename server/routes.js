@@ -17,7 +17,7 @@ module.exports = function(app) {
     app.use('/api/payments', require('./api/payment'));
     app.use('/api/invoice' , require('./api/invoice'));
 
-
+    app.use('/api/dashboardinfo' , require('./api/dashboard'));
     app.use('/api/photomenus', require('./api/photomenu'));
 
     app.use('/api/things', require('./api/thing'));

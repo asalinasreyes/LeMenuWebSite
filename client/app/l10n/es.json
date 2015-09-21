@@ -150,7 +150,8 @@
     },
     "admin": {
         "navbar": {
-            "adminuser": "Usuarios"
+            "adminuser": "Usuarios",
+            "dashboard":"dashboard"
         },
         "newtranslator": {
             "title": "Nuevo Traductor",

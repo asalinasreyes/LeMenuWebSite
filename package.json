@@ -30,6 +30,7 @@
     "serve-favicon": "~2.0.1"
   },
   "devDependencies": {
+    "async": "^1.4.2",
     "connect-livereload": "~0.4.0",
     "grunt": "~0.4.4",
     "grunt-angular-templates": "^0.5.4",
