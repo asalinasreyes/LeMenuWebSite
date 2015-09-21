@@ -104,7 +104,7 @@ User.create({
             Payment.create({
                 order_id: 'String2',
                 payment_id: 'String1',
-                state: 'succes',
+                state: 'success',
                 amount: 11,
                 description: 'invento de description',
                 userid: userinfo._id,
@@ -148,8 +148,73 @@ User.create({
 
                     })
                 });
+            });
+        });
+    });
+});
 
 
+User.create({
+    provider: 'local',
+    role: 'owner',
+    name: 'owner2',
+    email: 'owner2@owner2.com',
+    password: 'owner2'
+}, function(err, userinfo) {
+    console.log('Creo Owner2 default');
+    newRestaurant.userid = userinfo._id;
+    Restaurant.create(newRestaurant, function(err, restaurant) {
+        newMenuOfRestaurant.userid = restaurant.userid
+        newMenuOfRestaurant.Restaurantid = restaurant._id;
+        MenuOfrestaurant.create(newMenuOfRestaurant, function(err, menu) {
+            console.log('Creo Menu default en resto default');
+            Payment.create({
+                order_id: 'String2',
+                payment_id: 'String1',
+                state: 'success',
+                amount: 11,
+                description: 'invento de description',
+                userid: userinfo._id,
+                Restaurantid: restaurant._id,
+                menuid: menu._id,
+                created_success: new Date(),
+                created_cancel: new Date()
+            }, function(err, pago) {
+                console.log('informacon de pago', pago);
+
+                QueueProcess.create({
+                    'Menuid': menu._id,
+                    'LanguagesTo': 'es',
+                    'LanguagesFrom': 'es',
+                    'Restaurantid': restaurant._id,
+                    'IsReadyToTranslate': true,
+                    'IsParent': true,
+                    'IsDoneTranslate': false
+
+                }, function(err, parentQueue) {
+
+                    QueueProcess.create({
+                        'Menuid': menu._id,
+                        'LanguagesTo': 'fr',
+                        'LanguagesFrom': 'es',
+                        'IsReadyToTranslate': false,
+                        'Restaurantid': restaurant._id,
+                        'IsParent': false,
+                        'IsDoneTranslate': false,
+                        'Parentid':parentQueue._id
+                    }, {
+                        'Menuid': menu._id,
+                        'LanguagesTo': 'en',
+                        'Restaurantid': restaurant._id,
+                        'LanguagesFrom': 'es',
+                        'IsReadyToTranslate': false,
+                        'IsParent': false,
+                        'IsDoneTranslate': false,
+                        'Parentid':parentQueue._id
+                    }, function(err, listquee) {
+
+                    })
+                });
             });
         });
     });

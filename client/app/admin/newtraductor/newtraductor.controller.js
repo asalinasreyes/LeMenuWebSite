@@ -8,8 +8,6 @@ angular.module('leMeNuApp')
 
         $scope.listPossibleLang = ListAllow.LanguagesAllow;
 
-
-
         $scope.register = function(form) {
             $scope.submitted = true;
             if (form.$valid) {

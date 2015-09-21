@@ -68,8 +68,7 @@ exports.startPayment = function(req, res) {
                     status: 'No Menu Encontrado'
                 });
             }
-
-
+            
             var InformationPayment = {
                 priceBypage: PriceList.price,
                 numberPage: MenuInformation.files.length,
@@ -79,7 +78,8 @@ exports.startPayment = function(req, res) {
             };
 
             var paypalPayment = paypalJsonPayment(cancelUrl, successUrl, InformationPayment.TotalPrice, MenuInformation.language.toString());
-
+            paymentOrder.amount = InformationPayment.TotalPrice;
+            paymentOrder.state = 'pending-paypal';
             paymentOrder.save(function(err) {
                 if (err) {
                     res.send(500, err);
@@ -117,10 +117,12 @@ exports.orderExecute = function(req, res) {
             error: err
         });
 
-        paymentOrderSuccess.state = '';
         paymentOrderSuccess.state = 'success';
         paymentOrderSuccess.created_success = new Date();
-        paymentOrderSuccess.save();
+        paymentOrderSuccess.save(function(err){
+
+        });
+        console.log('paymentOrderSuccess', paymentOrderSuccess);
 
         MenuModel.findOne({
                 _id: paymentOrderSuccess.menuid
@@ -130,12 +132,8 @@ exports.orderExecute = function(req, res) {
                 if (err) return res.send(500, {
                     error: err
                 });
-                oneMenu.status = '';
                 oneMenu.status = 'success';
                 oneMenu.save();
-                console.log('pago oneMenu',  oneMenu  );
-
-
                 var FirstTranslate = {
                     Menuid: oneMenu._id,
                     LanguagesTo: oneMenu.Restaurantid.language,
@@ -146,13 +144,9 @@ exports.orderExecute = function(req, res) {
                     IsDoneTranslate:false,
                     IsParent:true
                 };
-
-                console.log('pago FirstTranslate', FirstTranslate);
                 var queueProcess = new QueueProcess(FirstTranslate);
 
                 queueProcess.save(function(err, Parent) {
-                    
-                    console.log('pago Parent', Parent);
                     var queueTranslate = [];
                     oneMenu.language.forEach(function(lang) {
                         var translateItemQueue = {
