@@ -27,10 +27,10 @@
     "passport-google-oauth": "latest",
     "passport-local": "~0.1.6",
     "paypal-rest-sdk": "*",
-    "serve-favicon": "~2.0.1"
+    "serve-favicon": "~2.0.1",
+    "async": "^1.4.2"
   },
   "devDependencies": {
-    "async": "^1.4.2",
     "connect-livereload": "~0.4.0",
     "grunt": "~0.4.4",
     "grunt-angular-templates": "^0.5.4",

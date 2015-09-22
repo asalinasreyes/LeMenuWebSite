@@ -17,3 +17,4 @@ angular.module('leMeNuApp')
 			return  myCache.get('Mylocation')
 		};
 	});
+
