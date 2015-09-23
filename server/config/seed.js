@@ -116,34 +116,34 @@ User.create({
                 console.log('informacon de pago', pago);
 
                 QueueProcess.create({
-                    'Menuid': menu._id,
-                    'LanguagesTo': 'es',
-                    'LanguagesFrom': 'es',
-                    'Restaurantid': restaurant._id,
-                    'IsReadyToTranslate': true,
-                    'IsParent': true,
-                    'IsDoneTranslate': false
+                    Menuid: menu._id,
+                    LanguagesTo: 'es',
+                    LanguagesFrom: 'es',
+                    Restaurantid: restaurant._id,
+                    IsReadyToTranslate: true,
+                    IsParent: true,
+                    IsDoneTranslate: false
 
                 }, function(err, parentQueue) {
 
                     QueueProcess.create({
-                        'Menuid': menu._id,
-                        'LanguagesTo': 'fr',
-                        'LanguagesFrom': 'es',
-                        'IsReadyToTranslate': false,
-                        'Restaurantid': restaurant._id,
-                        'IsParent': false,
-                        'IsDoneTranslate': false,
-                        'Parentid':parentQueue._id
+                        Menuid: menu._id,
+                        LanguagesTo: 'fr',
+                        LanguagesFrom: 'es',
+                        IsReadyToTranslate: false,
+                        Restaurantid: restaurant._id,
+                        IsParent: false,
+                        IsDoneTranslate: false,
+                        Parentid: parentQueue._id
                     }, {
-                        'Menuid': menu._id,
-                        'LanguagesTo': 'en',
-                        'Restaurantid': restaurant._id,
-                        'LanguagesFrom': 'es',
-                        'IsReadyToTranslate': false,
-                        'IsParent': false,
-                        'IsDoneTranslate': false,
-                        'Parentid':parentQueue._id
+                        Menuid: menu._id,
+                        LanguagesTo: 'en',
+                        Restaurantid: restaurant._id,
+                        LanguagesFrom: 'es',
+                        IsReadyToTranslate: false,
+                        IsParent: false,
+                        IsDoneTranslate: false,
+                        Parentid: parentQueue._id
                     }, function(err, listquee) {
 
                     })
@@ -152,6 +152,33 @@ User.create({
         });
     });
 });
+
+
+var sectionMenu = {
+    NameGroupInMenu: 'Entradas',
+    EnableName: true,
+    State: 'active',
+    PositionOrder: 1,
+    userid: '1',
+    ItemsInMenu: [{
+        NameItemMenu: 'ensalada tomate',
+        DescriptionItemMenu: 'tomate aceite',
+        DescriptionItemsItemMenu: 'ensalada tomate',
+        PriceItemsItemMenu: '1',
+
+        FullDescriptionItemMenu: 'una super ensalada',
+        PositionOrder: 1
+    }, {
+        NameItemMenu: 'ensalada lechuga',
+        DescriptionItemMenu: 'lechuga aceite',
+        DescriptionItemsItemMenu: 'ensalada lechuga',
+        PriceItemsItemMenu: '1',
+
+        FullDescriptionItemMenu: 'una super ensalada lechuga',
+        PositionOrder: 1
+    }]
+};
+
 
 
 User.create({
@@ -163,6 +190,7 @@ User.create({
 }, function(err, userinfo) {
     console.log('Creo Owner2 default');
     newRestaurant.userid = userinfo._id;
+    newRestaurant.name = 'Restaurantes super cool';
     Restaurant.create(newRestaurant, function(err, restaurant) {
         newMenuOfRestaurant.userid = restaurant.userid
         newMenuOfRestaurant.Restaurantid = restaurant._id;
@@ -183,34 +211,66 @@ User.create({
                 console.log('informacon de pago', pago);
 
                 QueueProcess.create({
-                    'Menuid': menu._id,
-                    'LanguagesTo': 'es',
-                    'LanguagesFrom': 'es',
-                    'Restaurantid': restaurant._id,
-                    'IsReadyToTranslate': true,
-                    'IsParent': true,
-                    'IsDoneTranslate': false
-
+                    Menuid: menu._id,
+                    LanguagesTo: 'es',
+                    LanguagesFrom: 'es',
+                    Restaurantid: restaurant._id,
+                    IsReadyToTranslate: true,
+                    IsParent: true,
+                    IsDoneTranslate: false,
+                    MenuDetail: [{
+                        NameGroupInMenu: "dfasdf",
+                        PositionOrder: 0,
+                        ItemsInMenu: [{
+                            DescriptionItemMenu: "sdf",
+                            DescriptionItemsItemMenu: "dsf",
+                            PriceItemsItemMenu: "er",
+                            PositionOrder: 0,
+                            NameItemMenu: "afasd"
+                        }]
+                    }]
                 }, function(err, parentQueue) {
 
                     QueueProcess.create({
-                        'Menuid': menu._id,
-                        'LanguagesTo': 'fr',
-                        'LanguagesFrom': 'es',
-                        'IsReadyToTranslate': false,
-                        'Restaurantid': restaurant._id,
-                        'IsParent': false,
-                        'IsDoneTranslate': false,
-                        'Parentid':parentQueue._id
+                        Menuid: menu._id,
+                        LanguagesTo: 'fr',
+                        LanguagesFrom: 'es',
+                        IsReadyToTranslate: true,
+                        Restaurantid: restaurant._id,
+                        IsParent: false,
+                        IsDoneTranslate: true,
+                        Parentid: parentQueue._id,
+                        MenuDetail: [{
+                            NameGroupInMenu: "ensalada Frances",
+                            PositionOrder: 0,
+                            ItemsInMenu: [{
+                                DescriptionItemMenu: "Ensalada Frances",
+                                DescriptionItemsItemMenu: "dsf",
+                                PriceItemsItemMenu: "1",
+                                PositionOrder: 0,
+                                NameItemMenu: "afasd"
+                            }]
+                        }]
                     }, {
-                        'Menuid': menu._id,
-                        'LanguagesTo': 'en',
-                        'Restaurantid': restaurant._id,
-                        'LanguagesFrom': 'es',
-                        'IsReadyToTranslate': false,
-                        'IsParent': false,
-                        'IsDoneTranslate': false,
-                        'Parentid':parentQueue._id
+                        Menuid: menu._id,
+                        LanguagesTo: 'en',
+                        Restaurantid: restaurant._id,
+                        LanguagesFrom: 'es',
+                        IsReadyToTranslate: true,
+                        IsParent: false,
+                        IsDoneTranslate: true,
+                        Parentid: parentQueue._id,
+                        MenuDetail: [{
+                            NameGroupInMenu: "ensaladas  Ingles",
+                            PositionOrder: 0,
+                            ItemsInMenu: [{
+                                DescriptionItemMenu: "una ensalda en ingles",
+                                DescriptionItemsItemMenu: "dsf",
+                                PriceItemsItemMenu: "1",
+                                PositionOrder: 0,
+                                NameItemMenu: "afasd"
+                            }]
+                        }]
                     }, function(err, listquee) {
 
                     })
