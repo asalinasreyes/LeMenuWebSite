@@ -11,36 +11,69 @@ exports.index = function(req, res) {
     var restaurantsInfo;
     restaurantsInfo = {};
 
+    var filterSearch = {
+        IsDoneTranslate: true,
+        IsParent: false,
+        LanguagesTo: ''
+    }
+    var fieldReturn = {
+        Restaurantid: '',
+        Menuid: ''
+    }
+
+    if (req.query && req.query.language && req.query.language.toLowerCase() != 'all') {
+        filterSearch.LanguagesTo = req.query.language;
+    } else {
+        delete filterSearch.LanguagesTo;
+    }
+
+    var filterCountry=null;
+    if (req.query && req.query.country && req.query.country != '') {
+        filterCountry= req.query.country;
+    }
     async.parallel({
-        Countries: function(callback) {
-            return RestaurantSchema.aggregate([{
-                $group: {
-                    _id: "$country"
-                }
-            }], function(err, result) {
-                return callback(err, result);
-            });
-        },
-        Restaurants: function(callback) {
-            console.log('Body en listar ', req.query );
-            if (req.query && req.query.language) {
-                if (req.query.language.toLowerCase()=="all") {
-                    return QueueSchemaProcess.find({IsDoneTranslate:true,IsParent:false},{Restaurantid:'', MenuDetail:'', LanguagesTo:''}).populate('Restaurantid','name city _id country').exec( function(err, result) {return callback(err, result);});    
-                }else{
-                return QueueSchemaProcess.find({IsDoneTranslate:true,IsParent:false,LanguagesTo:req.query.language},{Restaurantid:'', MenuDetail:'', LanguagesTo:''}).populate('Restaurantid','name city _id country').exec( function(err, result) {return callback(err, result);});    
-                }
-            }else{
-                return QueueSchemaProcess.find({IsDoneTranslate:true,IsParent:false},{Restaurantid:''}).populate('Restaurantid','name city _id country').exec( function(err, result) {return callback(err, result);});    
+            Countries: function(callback) {
+                return RestaurantSchema.aggregate([{
+                    $group: {
+                        _id: "$country"
+                    }
+                }], function(err, result) {
+                    return callback(err, result);
+                });
+            },
+            Restaurants: function(callback) {
+                console.log('filterSearch', filterSearch);
+                return QueueSchemaProcess.find(filterSearch, fieldReturn)
+                    .populate('Restaurantid', 'name city country _id latitude longitude address')
+                    .populate('Menuid', 'language')
+                    .exec(function(err, result) {
+                        var mylist = result.map(function(doc) {
+                            return ({
+                                name: doc.Restaurantid.name,
+                                country: doc.Restaurantid.country,
+                                city: doc.Restaurantid.city,
+                                _id: doc.Restaurantid._id,
+                                address: doc.Restaurantid.address,
+                                language: doc.Menuid.language,
+                                latitude: doc.Restaurantid.latitude,
+                                longitude: doc.Restaurantid.longitude
+                            });
+                        });
+                        if (filterCountry) {
+                            return callback(err,_.where( _.uniq(mylist, '_id'), {country: filterCountry}));
+                        }else{
+                            return callback(err, _.uniq(mylist, '_id'));
+                        }
+                    });
             }
-            
-        }
-    }, function(err, restaurantsInfo) {
-        if (err) {
-            return res.json(200, err);    
-        };
-        console.log('resultado ', restaurantsInfo);
-        return res.json(200, restaurantsInfo);
-    });
+        },
+        function(err, restaurantsInfo) {
+            if (err) {
+                return res.json(200, err);
+            };
+            console.log('resultado ', restaurantsInfo);
+            return res.json(200, restaurantsInfo);
+        });
 
 };
 

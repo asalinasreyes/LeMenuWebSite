@@ -14,43 +14,6 @@ var translator = require('../api/translatorlanguage/translatorlanguage.model');
 var PriceList = require('../payment/price.model');
 
 
-var uuid = require('node-uuid');
-
-
-var newRestaurant = {
-    name: 'Best Restaurant',
-    address: 'street name',
-    country: 'CL',
-    city: 'santiago',
-    language: 'es',
-    emailcontact: 'asdfasd@conta.cl',
-    Tags: ['chile', 'peruana'],
-    urlgoogleMap: 'AnyWhere'
-};
-
-
-var newMenuOfRestaurant = {
-    name: 'Verano - vegetariano 2',
-    active: true,
-    language: ['es', 'en', 'fr'],
-    files: []
-};
-
-var fileB = {
-    public_id: uuid.v1(),
-    filename: 'a',
-    url: 'https://s-media-cache-ak0.pinimg.com/736x/fe/f0/60/fef06047818eaec0550325010de74a09.jpg'
-};
-
-var fileA = {
-    public_id: uuid.v1(),
-    filename: 'a',
-    url: 'https://s-media-cache-ak0.pinimg.com/236x/0b/61/f3/0b61f3c7defc56272c8eb0f1bdc6f937.jpg'
-};
-
-
-newMenuOfRestaurant.files.push(fileA);
-newMenuOfRestaurant.files.push(fileB);
 
 User.find({}).remove(function() {
     console.log('Borro todos los usuarios');
@@ -77,244 +40,6 @@ QueueProcess.find({}).remove(function() {
 });
 
 
-User.create({
-    provider: 'local',
-    role: 'admin',
-    name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
-}, function() {
-    console.log('Creo el admin Default');
-});
-
-User.create({
-    provider: 'local',
-    role: 'owner',
-    name: 'owner',
-    email: 'owner@owner.com',
-    password: 'owner'
-}, function(err, userinfo) {
-    console.log('Creo Owner default');
-    newRestaurant.userid = userinfo._id;
-    Restaurant.create(newRestaurant, function(err, restaurant) {
-        newMenuOfRestaurant.userid = restaurant.userid
-        newMenuOfRestaurant.Restaurantid = restaurant._id;
-        MenuOfrestaurant.create(newMenuOfRestaurant, function(err, menu) {
-            console.log('Creo Menu default en resto default');
-            Payment.create({
-                order_id: 'String2',
-                payment_id: 'String1',
-                state: 'success',
-                amount: 11,
-                description: 'invento de description',
-                userid: userinfo._id,
-                Restaurantid: restaurant._id,
-                menuid: menu._id,
-                created_success: new Date(),
-                created_cancel: new Date()
-            }, function(err, pago) {
-                console.log('informacon de pago', pago);
-
-                QueueProcess.create({
-                    Menuid: menu._id,
-                    LanguagesTo: 'es',
-                    LanguagesFrom: 'es',
-                    Restaurantid: restaurant._id,
-                    IsReadyToTranslate: true,
-                    IsParent: true,
-                    IsDoneTranslate: false
-
-                }, function(err, parentQueue) {
-
-                    QueueProcess.create({
-                        Menuid: menu._id,
-                        LanguagesTo: 'fr',
-                        LanguagesFrom: 'es',
-                        IsReadyToTranslate: false,
-                        Restaurantid: restaurant._id,
-                        IsParent: false,
-                        IsDoneTranslate: false,
-                        Parentid: parentQueue._id
-                    }, {
-                        Menuid: menu._id,
-                        LanguagesTo: 'en',
-                        Restaurantid: restaurant._id,
-                        LanguagesFrom: 'es',
-                        IsReadyToTranslate: false,
-                        IsParent: false,
-                        IsDoneTranslate: false,
-                        Parentid: parentQueue._id
-                    }, function(err, listquee) {
-
-                    })
-                });
-            });
-        });
-    });
-});
-
-
-var sectionMenu = {
-    NameGroupInMenu: 'Entradas',
-    EnableName: true,
-    State: 'active',
-    PositionOrder: 1,
-    userid: '1',
-    ItemsInMenu: [{
-        NameItemMenu: 'ensalada tomate',
-        DescriptionItemMenu: 'tomate aceite',
-        DescriptionItemsItemMenu: 'ensalada tomate',
-        PriceItemsItemMenu: '1',
-
-        FullDescriptionItemMenu: 'una super ensalada',
-        PositionOrder: 1
-    }, {
-        NameItemMenu: 'ensalada lechuga',
-        DescriptionItemMenu: 'lechuga aceite',
-        DescriptionItemsItemMenu: 'ensalada lechuga',
-        PriceItemsItemMenu: '1',
-
-        FullDescriptionItemMenu: 'una super ensalada lechuga',
-        PositionOrder: 1
-    }]
-};
-
-
-
-User.create({
-    provider: 'local',
-    role: 'owner',
-    name: 'owner2',
-    email: 'owner2@owner2.com',
-    password: 'owner2'
-}, function(err, userinfo) {
-    console.log('Creo Owner2 default');
-    newRestaurant.userid = userinfo._id;
-    newRestaurant.name = 'Restaurantes super cool';
-    Restaurant.create(newRestaurant, function(err, restaurant) {
-        newMenuOfRestaurant.userid = restaurant.userid
-        newMenuOfRestaurant.Restaurantid = restaurant._id;
-        MenuOfrestaurant.create(newMenuOfRestaurant, function(err, menu) {
-            console.log('Creo Menu default en resto default');
-            Payment.create({
-                order_id: 'String2',
-                payment_id: 'String1',
-                state: 'success',
-                amount: 11,
-                description: 'invento de description',
-                userid: userinfo._id,
-                Restaurantid: restaurant._id,
-                menuid: menu._id,
-                created_success: new Date(),
-                created_cancel: new Date()
-            }, function(err, pago) {
-                console.log('informacon de pago', pago);
-
-                QueueProcess.create({
-                    Menuid: menu._id,
-                    LanguagesTo: 'es',
-                    LanguagesFrom: 'es',
-                    Restaurantid: restaurant._id,
-                    IsReadyToTranslate: true,
-                    IsParent: true,
-                    IsDoneTranslate: false,
-                    MenuDetail: [{
-                        NameGroupInMenu: "dfasdf",
-                        PositionOrder: 0,
-                        ItemsInMenu: [{
-                            DescriptionItemMenu: "sdf",
-                            DescriptionItemsItemMenu: "dsf",
-                            PriceItemsItemMenu: "er",
-                            PositionOrder: 0,
-                            NameItemMenu: "afasd"
-                        }]
-                    }]
-                }, function(err, parentQueue) {
-
-                    QueueProcess.create({
-                        Menuid: menu._id,
-                        LanguagesTo: 'fr',
-                        LanguagesFrom: 'es',
-                        IsReadyToTranslate: true,
-                        Restaurantid: restaurant._id,
-                        IsParent: false,
-                        IsDoneTranslate: true,
-                        Parentid: parentQueue._id,
-                        MenuDetail: [{
-                            NameGroupInMenu: "ensalada Frances",
-                            PositionOrder: 0,
-                            ItemsInMenu: [{
-                                DescriptionItemMenu: "Ensalada Frances",
-                                DescriptionItemsItemMenu: "dsf",
-                                PriceItemsItemMenu: "1",
-                                PositionOrder: 0,
-                                NameItemMenu: "afasd"
-                            }]
-                        }]
-                    }, {
-                        Menuid: menu._id,
-                        LanguagesTo: 'en',
-                        Restaurantid: restaurant._id,
-                        LanguagesFrom: 'es',
-                        IsReadyToTranslate: true,
-                        IsParent: false,
-                        IsDoneTranslate: true,
-                        Parentid: parentQueue._id,
-                        MenuDetail: [{
-                            NameGroupInMenu: "ensaladas  Ingles",
-                            PositionOrder: 0,
-                            ItemsInMenu: [{
-                                DescriptionItemMenu: "una ensalda en ingles",
-                                DescriptionItemsItemMenu: "dsf",
-                                PriceItemsItemMenu: "1",
-                                PositionOrder: 0,
-                                NameItemMenu: "afasd"
-                            }]
-                        }]
-                    }, function(err, listquee) {
-
-                    })
-                });
-            });
-        });
-    });
-});
-
-User.create({
-    provider: 'local',
-    role: 'translator',
-    name: 'translate uno',
-    email: 'uno@uno.com',
-    password: 'uno'
-}, function(err, usernew) {
-
-    translator.create({
-        active: true,
-        userid: usernew._id,
-        languages: ['es', 'en', 'pt', 'fr']
-    }, function(err, newtranslator) {
-        console.log('Traductor Creado', usernew, newtranslator);
-    })
-});
-
-User.create({
-    provider: 'local',
-    role: 'owner',
-    name: 'Dueno2',
-    email: 'owner2@owner.com',
-    password: 'owner2'
-}, function(err, data) {
-    console.log('Creo Owner default');
-    newRestaurant.userid = data._id;
-    Restaurant.create(newRestaurant, function(err, data) {
-        newMenuOfRestaurant.userid = data.userid
-        newMenuOfRestaurant.Restaurantid = data._id;
-        MenuOfrestaurant.create(newMenuOfRestaurant, function(err, data) {
-            console.log('Creo Menu default en resto default');
-        });
-    });
-});
-
 PriceList.find({}).remove(function() {
     console.log('se borra lista de precio');
 });
@@ -328,3 +53,25 @@ PriceList.create({
 }, function(err, data) {
 
 });
+
+//* Chile Traduccion Ingles Frances
+require('./seed1');
+
+//* Brasil Traduccion Ingles Frances
+var Brasil= require('./seed5');
+Brasil.index();
+Brasil.index();
+Brasil.index(["es","fr"]);
+
+
+//* Chile Traduccion Ingles Portugues
+require('./seed2');
+
+//* Chile Ingles Frances Sin Traduccion
+require('./seed3');
+
+//Menus Upload Sin Pagos No  Grupos
+require('./seed4');
+
+//Creacion de usuarios del Sistema
+require('./seedUsers');
