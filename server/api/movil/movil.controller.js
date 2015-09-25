@@ -65,6 +65,13 @@ exports.index = function(req, res) {
                             return callback(err, _.uniq(mylist, '_id'));
                         }
                     });
+            },
+            Menus: function(callback) {
+                return QueueSchemaProcess.find(filterSearch, 'MenuDetail Restaurantid Menuid LanguagesTo')
+                    .populate('MenuDetail')
+                    .exec(function(err, result) {
+                            return callback(err, result);
+                    });
             }
         },
         function(err, restaurantsInfo) {
