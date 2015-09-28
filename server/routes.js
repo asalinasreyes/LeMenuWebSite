@@ -21,8 +21,6 @@ module.exports = function(app) {
     app.use('/api/photomenus', require('./api/photomenu'));
 
     app.use('/api/movil', require('./api/movil'));    
-
-    app.use('/api/things', require('./api/thing'));
     app.use('/api/users', require('./api/user'));
 
     app.use('/auth', require('./auth'));
