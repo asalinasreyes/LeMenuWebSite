@@ -6,13 +6,13 @@ angular.module('leMeNuApp', [
         'ngSanitize',
         'ui.router',
         'ui.bootstrap',
+        'ngAnimate',
         'ngFileUpload',
         'pascalprecht.translate',
         'angularMoment',
         'tmh.dynamicLocale',
         'LocalStorageModule',
         'toaster',
-        'ngAnimate',
         'xeditable'
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {

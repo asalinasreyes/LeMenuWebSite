@@ -1,20 +1,18 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>{{'home.h1home' | translate}} </h1>
-    <p class="lead">{{'home.h3home' | translate}} </p>
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-  </div>
+<div style="height: 405px">
+    <carousel interval="myInterval" disable-animation="true">
+        <slide ng-repeat="slide in slides" active="slide.active">
+            <img ng-src="{{slide.image}}" style="margin:auto;" class="carouselimage">
+            <div class="carousel-caption">
+                <h4>{{slide.header}}</h4>
+            </div>
+        </slide>
+    </carousel>
 </div>
-  
+
 <footer class="footer">
-  <div class="container">
-      <p>Software desarollo por Alexis Salinas v0.0.1 |
-        <a href="mail:as_asar@hotmail.com">as_asar@hotmail.com</a> |
-  </div>
+    <div class="container">
+        <p>Software desarollo por Alexis Salinas v0.0.1 |
+            <a href="mail:as_asar@hotmail.com">as_asar@hotmail.com</a> |
+    </div>
 </footer>
