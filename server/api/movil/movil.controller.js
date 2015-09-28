@@ -27,9 +27,9 @@ exports.index = function(req, res) {
         delete filterSearch.LanguagesTo;
     }
 
-    var filterCountry=null;
+    var filterCountry = null;
     if (req.query && req.query.country && req.query.country != '') {
-        filterCountry= req.query.country;
+        filterCountry = req.query.country;
     }
     async.parallel({
             Countries: function(callback) {
@@ -60,8 +60,10 @@ exports.index = function(req, res) {
                             });
                         });
                         if (filterCountry) {
-                            return callback(err,_.where( _.uniq(mylist, '_id'), {country: filterCountry}));
-                        }else{
+                            return callback(err, _.where(_.uniq(mylist, '_id'), {
+                                country: filterCountry
+                            }));
+                        } else {
                             return callback(err, _.uniq(mylist, '_id'));
                         }
                     });
@@ -69,8 +71,35 @@ exports.index = function(req, res) {
             Menus: function(callback) {
                 return QueueSchemaProcess.find(filterSearch, 'MenuDetail Restaurantid Menuid LanguagesTo')
                     .populate('MenuDetail')
+                    .populate('MenuDetail.ItemsInMenu')
                     .exec(function(err, result) {
-                            return callback(err, result);
+                        console.log('-----------------------');
+                        console.log(result);
+                        var mylist = result.map(function(doc) {
+                            return ({
+                                _id: doc._id,
+                                Restaurantid: doc.Restaurantid,
+                                LanguagesTo: doc.LanguagesTo,
+                                Groups: doc.MenuDetail.map(function(doc) {
+                                    return ({
+                                        _id: doc._id,
+                                        Name: doc.NameGroupInMenu,
+                                        order: doc.PositionOrder,
+                                        plato: doc.ItemsInMenu.map(function(doc) {
+                                            return ({
+                                                _id: doc._id,
+                                               Description: doc.DescriptionItemMenu,
+                                               DescriptionItems: doc.DescriptionItemsItemMenu,
+                                               Price: doc.PriceItemsItemMenu,
+                                               Order: doc.PositionOrder,
+                                               Name:doc.NameItemMenu
+                                            })
+                                        })
+                                    })
+                                })
+                            });
+                        });
+                        return callback(err, mylist);
                     });
             }
         },

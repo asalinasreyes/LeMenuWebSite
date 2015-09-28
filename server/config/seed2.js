@@ -18,7 +18,7 @@ var StringName = uuid.v1();
 var RestaurantChile = {
     name: 'Chile Seed2 ' + StringName,
     address: 'street name ' + StringName,
-    country: 'CL',
+    country: 'cl',
     city: 'santiago',
     language: 'es',
     emailcontact: 'asdfasd@conta.cl',

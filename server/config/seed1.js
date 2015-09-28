@@ -92,11 +92,33 @@ User.create(newUser, function(err, userinfo) {
                         NameGroupInMenu: StringName + " Grupo Chile Entrada",
                         PositionOrder: 0,
                         ItemsInMenu: [{
-                            DescriptionItemMenu: "sdf",
-                            DescriptionItemsItemMenu: "dsf",
-                            PriceItemsItemMenu: "er",
+                            DescriptionItemMenu: "Tomate cebolla",
+                            DescriptionItemsItemMenu: "tomate Aceite",
+                            PriceItemsItemMenu: "2500",
                             PositionOrder: 0,
-                            NameItemMenu: "afasd"
+                            NameItemMenu: "Chilena"
+                        }, {
+                            DescriptionItemMenu: "Tomate ",
+                            DescriptionItemsItemMenu: "tomate solo",
+                            PriceItemsItemMenu: "2500",
+                            PositionOrder: 0,
+                            NameItemMenu: "Tomate Solo"
+                        }]
+                    }, {
+                        NameGroupInMenu: StringName + " Grupo Chile Plato Fondo",
+                        PositionOrder: 0,
+                        ItemsInMenu: [{
+                            DescriptionItemMenu: "Cazuela",
+                            DescriptionItemsItemMenu: "Cazuela a ",
+                            PriceItemsItemMenu: "2500",
+                            PositionOrder: 0,
+                            NameItemMenu: "Cazuela"
+                        }, {
+                            DescriptionItemMenu: "Humita ",
+                            DescriptionItemsItemMenu: "Humieta 2",
+                            PriceItemsItemMenu: "2500",
+                            PositionOrder: 0,
+                            NameItemMenu: "Humita 3"
                         }]
                     }]
                 }, function(err, parentQueue) {
@@ -111,14 +133,36 @@ User.create(newUser, function(err, userinfo) {
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
                         MenuDetail: [{
-                            NameGroupInMenu: "ensalada Frances",
+                            NameGroupInMenu: "entrée salade ",
                             PositionOrder: 0,
                             ItemsInMenu: [{
                                 DescriptionItemMenu: "Ensalada Frances",
-                                DescriptionItemsItemMenu: "dsf",
-                                PriceItemsItemMenu: "1",
+                                DescriptionItemsItemMenu: "Tomates, oignons, piment, coriandre",
+                                PriceItemsItemMenu: "250",
                                 PositionOrder: 0,
-                                NameItemMenu: "afasd"
+                                NameItemMenu: "salade chilienne"
+                            }, {
+                                DescriptionItemMenu: "Salada du Tomate",
+                                DescriptionItemsItemMenu: "Tomates",
+                                PriceItemsItemMenu: "2500",
+                                PositionOrder: 0,
+                                NameItemMenu: "Salada du Tomate"
+                            }]
+                        }, {
+                            NameGroupInMenu: "Platee du fonde ",
+                            PositionOrder: 0,
+                            ItemsInMenu: [{
+                                DescriptionItemMenu: "Cazuela Frances",
+                                DescriptionItemsItemMenu: "Cazuela Tomates, oignons, piment, coriandre",
+                                PriceItemsItemMenu: "250",
+                                PositionOrder: 0,
+                                NameItemMenu: "Cazuela  chilienne"
+                            }, {
+                                DescriptionItemMenu: "Humita Frances",
+                                DescriptionItemsItemMenu: "Humita Frances Tomates",
+                                PriceItemsItemMenu: "2500",
+                                PositionOrder: 0,
+                                NameItemMenu: "Humita Frances"
                             }]
                         }]
                     }, {
@@ -131,14 +175,36 @@ User.create(newUser, function(err, userinfo) {
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
                         MenuDetail: [{
-                            NameGroupInMenu: "ensaladas  Ingles",
+                            NameGroupInMenu: "Entree Salad",
                             PositionOrder: 0,
                             ItemsInMenu: [{
-                                DescriptionItemMenu: "una ensalda en ingles",
-                                DescriptionItemsItemMenu: "dsf",
+                                DescriptionItemMenu: "Tomates, oignons, piment, coriandre",
+                                DescriptionItemsItemMenu: "Tomates, oignons, piment, coriandre",
                                 PriceItemsItemMenu: "1",
                                 PositionOrder: 0,
-                                NameItemMenu: "afasd"
+                                NameItemMenu: "Tomates, oignons, piment, coriandre"
+                            }, {
+                                DescriptionItemMenu: "Tomates, oignons, piment, coriandre",
+                                DescriptionItemsItemMenu: "Tomates, oignons, piment, coriandre",
+                                PriceItemsItemMenu: "1",
+                                PositionOrder: 0,
+                                NameItemMenu: "Tomates, oignons, piment, coriandre"
+                            }]
+                        }, {
+                            NameGroupInMenu: "Principal",
+                            PositionOrder: 0,
+                            ItemsInMenu: [{
+                                DescriptionItemMenu: "Cazuela Ingles",
+                                DescriptionItemsItemMenu: " Cazuela Ingles  ",
+                                PriceItemsItemMenu: "100",
+                                PositionOrder: 0,
+                                NameItemMenu: "Cazuela Ingles "
+                            }, {
+                                DescriptionItemMenu: "Humita ingles",
+                                DescriptionItemsItemMenu: "Humita ingles",
+                                PriceItemsItemMenu: "100",
+                                PositionOrder: 0,
+                                NameItemMenu: "ingles"
                             }]
                         }]
                     }, function(err, listquee) {})

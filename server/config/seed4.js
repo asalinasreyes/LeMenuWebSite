@@ -20,7 +20,7 @@ var uuid = require('node-uuid');
 var RestaurantChile = {
     name: 'Best Restaurant Chile',
     address: 'street name',
-    country: 'CL',
+    country: 'cl',
     city: 'santiago',
     language: 'es',
     emailcontact: 'asdfasd@conta.cl',
