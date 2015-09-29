@@ -41,6 +41,15 @@ exports.index = function(req, res) {
                     return callback(err, result);
                 });
             },
+            CitiesAndCountries: function(callback) {
+                return RestaurantSchema.aggregate([{
+                    $group: {
+                        _id: {country:"$country", city: "$city"}
+                    }
+                }], function(err, result) {
+                    return callback(err, result);
+                });
+            },
             Restaurants: function(callback) {
                 console.log('filterSearch', filterSearch);
                 return QueueSchemaProcess.find(filterSearch, fieldReturn)
