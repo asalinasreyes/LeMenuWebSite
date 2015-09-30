@@ -47,7 +47,11 @@ exports.index = function(req, res) {
                         _id: {country:"$country", city: "$city"}
                     }
                 }], function(err, result) {
-                    return callback(err, result);
+                    var mylist = result.map(function(doc) {
+                            return ({
+                                country: doc._id.country, city: doc._id.city });});
+
+                    return callback(err, mylist);
                 });
             },
             Restaurants: function(callback) {
