@@ -54,7 +54,7 @@ PriceList.create({
 
 });
 
-//* Chile Traduccion Ingles Frances
+// Chile Traduccion Ingles Frances
 require('./seed1');
 
 //* Brasil Traduccion Ingles Frances

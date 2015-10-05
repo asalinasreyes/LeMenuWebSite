@@ -8,22 +8,19 @@ var mongoose = require('mongoose'),
 
 
 var ItemInMenuModellanguageSchema = new Schema({
+
     NameItemMenu:String,
-    EnableName:Boolean,
-
     DescriptionItemMenu:String,
-    EnableDescription:Boolean,
-
     DescriptionItemsItemMenu:String,
-    EnableDescriptionItems:Boolean,
-
     PriceItemsItemMenu:String,
-    EnablePrice:Boolean,
-
     FullDescriptionItemMenu:String,
-    EnableFullDescription:Boolean,
-
     PositionOrder:Number,
+
+    ParentMenuId: {
+        type: Schema.ObjectId,
+        ref: 'ItemInMenuModellanguageSchema'
+    },
+
 
     userid: {
         type: Schema.ObjectId,

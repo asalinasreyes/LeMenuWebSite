@@ -132,39 +132,7 @@ User.create(newUser, function(err, userinfo) {
                         IsParent: false,
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
-                        MenuDetail: [{
-                            NameGroupInMenu: "entrée salade ",
-                            PositionOrder: 0,
-                            ItemsInMenu: [{
-                                DescriptionItemMenu: "Ensalada Frances",
-                                DescriptionItemsItemMenu: "Tomates, oignons, piment, coriandre",
-                                PriceItemsItemMenu: "250",
-                                PositionOrder: 0,
-                                NameItemMenu: "salade chilienne"
-                            }, {
-                                DescriptionItemMenu: "Salada du Tomate",
-                                DescriptionItemsItemMenu: "Tomates",
-                                PriceItemsItemMenu: "2500",
-                                PositionOrder: 0,
-                                NameItemMenu: "Salada du Tomate"
-                            }]
-                        }, {
-                            NameGroupInMenu: "Platee du fonde ",
-                            PositionOrder: 0,
-                            ItemsInMenu: [{
-                                DescriptionItemMenu: "Cazuela Frances",
-                                DescriptionItemsItemMenu: "Cazuela Tomates, oignons, piment, coriandre",
-                                PriceItemsItemMenu: "250",
-                                PositionOrder: 0,
-                                NameItemMenu: "Cazuela  chilienne"
-                            }, {
-                                DescriptionItemMenu: "Humita Frances",
-                                DescriptionItemsItemMenu: "Humita Frances Tomates",
-                                PriceItemsItemMenu: "2500",
-                                PositionOrder: 0,
-                                NameItemMenu: "Humita Frances"
-                            }]
-                        }]
+                        MenuDetail: parentQueue.MenuDetail
                     }, {
                         Menuid: menu._id,
                         LanguagesTo: 'en',
@@ -174,39 +142,7 @@ User.create(newUser, function(err, userinfo) {
                         IsParent: false,
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
-                        MenuDetail: [{
-                            NameGroupInMenu: "Entree Salad",
-                            PositionOrder: 0,
-                            ItemsInMenu: [{
-                                DescriptionItemMenu: "Tomates, oignons, piment, coriandre",
-                                DescriptionItemsItemMenu: "Tomates, oignons, piment, coriandre",
-                                PriceItemsItemMenu: "1",
-                                PositionOrder: 0,
-                                NameItemMenu: "Tomates, oignons, piment, coriandre"
-                            }, {
-                                DescriptionItemMenu: "Tomates, oignons, piment, coriandre",
-                                DescriptionItemsItemMenu: "Tomates, oignons, piment, coriandre",
-                                PriceItemsItemMenu: "1",
-                                PositionOrder: 0,
-                                NameItemMenu: "Tomates, oignons, piment, coriandre"
-                            }]
-                        }, {
-                            NameGroupInMenu: "Principal",
-                            PositionOrder: 0,
-                            ItemsInMenu: [{
-                                DescriptionItemMenu: "Cazuela Ingles",
-                                DescriptionItemsItemMenu: " Cazuela Ingles  ",
-                                PriceItemsItemMenu: "100",
-                                PositionOrder: 0,
-                                NameItemMenu: "Cazuela Ingles "
-                            }, {
-                                DescriptionItemMenu: "Humita ingles",
-                                DescriptionItemsItemMenu: "Humita ingles",
-                                PriceItemsItemMenu: "100",
-                                PositionOrder: 0,
-                                NameItemMenu: "ingles"
-                            }]
-                        }]
+                        MenuDetail: parentQueue.MenuDetail
                     }, function(err, listquee) {})
                 });
             });

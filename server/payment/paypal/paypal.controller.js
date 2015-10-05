@@ -37,6 +37,7 @@ exports.startPayment = function(req, res) {
         menuid: MenuID
     });
 
+    console.log('paypal config', config.paypal);
     var cancelUrl = config.paypal.cancel_url + order_id;
     var successUrl = config.paypal.return_url + order_id;
 
@@ -78,6 +79,7 @@ exports.startPayment = function(req, res) {
             };
 
             var paypalPayment = paypalJsonPayment(cancelUrl, successUrl, InformationPayment.TotalPrice, MenuInformation.language.toString());
+            console.log('paypalPayment',paypalPayment);
             paymentOrder.amount = InformationPayment.TotalPrice;
             paymentOrder.state = 'pending-paypal';
             paymentOrder.save(function(err) {
@@ -86,17 +88,21 @@ exports.startPayment = function(req, res) {
                 } else {
                     paypal.payment.create(paypalPayment, {},
                         function(err, data) {
+
                             if (err) {
                                 res.status(500).send('Error setting paypal payment');
                                 return;
                             }
+                            console.log('paypal respondio', data);
                             var link = data.links;
                             var urlFromPaypalApproval_url = '';
                             for (var i = 0; i < link.length; i++) {
+                                console.log('link paypal',i,  link[i].rel, link[i].href);
                                 if (link[i].rel === 'approval_url') {
                                     urlFromPaypalApproval_url = link[i].href
                                 }
                             }
+                            console.log('paypal redirect', urlFromPaypalApproval_url);
                             res.send({
                                 redirectUrl: urlFromPaypalApproval_url
                             });

@@ -66,19 +66,10 @@ angular.module('leMeNuApp', [
     })
     .run(function($rootScope) {
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-            console.log('exito cambio de estado');
-            console.log('evento', event);
-            console.log('  toState ', toState);
-            console.log(' fromState', fromState);
-            console.log(' fromParams', fromParams);
         });
 
         $rootScope.$on('$stateNotFound', function(event, unFoundState, fromState, fromParams) {
-            console.log('estado no enconterado');
-            console.log('evento', event);
-            console.log('  toState ', unFoundState);
-            console.log(' fromState', fromState);
-            console.log(' fromParams', fromParams);
+            
         });
     })
     .run(function($rootScope, $location, Auth) {

@@ -140,6 +140,7 @@ exports.FinnishedTranslation = function(req, res) {
         }
 
         if (menu.IsParent == true) {
+            ///agregar aca referencia a node original
             queueProcess.update({
                 IsParent: false,
                 Parentid: menu._id

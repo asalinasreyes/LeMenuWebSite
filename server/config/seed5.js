@@ -114,17 +114,7 @@ exports.index = function(languages) {
                             IsParent: false,
                             IsDoneTranslate: true,
                             Parentid: parentQueue._id,
-                            MenuDetail: [{
-                                NameGroupInMenu: "ensalada "+languages[0],
-                                PositionOrder: 0,
-                                ItemsInMenu: [{
-                                    DescriptionItemMenu: "Ensalada "+ languages[0],
-                                    DescriptionItemsItemMenu: "dsf",
-                                    PriceItemsItemMenu: "1",
-                                    PositionOrder: 0,
-                                    NameItemMenu: "afasd"
-                                }]
-                            }]
+                            MenuDetail: parentQueue.MenuDetail
                         }, {
                             Menuid: menu._id,
                             LanguagesTo: languages[1],
@@ -134,17 +124,7 @@ exports.index = function(languages) {
                             IsParent: false,
                             IsDoneTranslate: true,
                             Parentid: parentQueue._id,
-                            MenuDetail: [{
-                                NameGroupInMenu: "ensaladas "+languages[1],
-                                PositionOrder: 0,
-                                ItemsInMenu: [{
-                                    DescriptionItemMenu: "una ensalda en "+ languages[1],
-                                    DescriptionItemsItemMenu: "dsf",
-                                    PriceItemsItemMenu: "1",
-                                    PositionOrder: 0,
-                                    NameItemMenu: "afasd"
-                                }]
-                            }]
+                            MenuDetail: parentQueue.MenuDetail
                         }, function(err, listquee) {})
                     });
                 });

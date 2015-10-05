@@ -106,17 +106,7 @@ User.create(newUser, function(err, userinfo) {
                         IsParent: false,
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
-                        MenuDetail: [{
-                            NameGroupInMenu: "ensalada Frances",
-                            PositionOrder: 0,
-                            ItemsInMenu: [{
-                                DescriptionItemMenu: "Ensalada Frances",
-                                DescriptionItemsItemMenu: "dsf",
-                                PriceItemsItemMenu: "1",
-                                PositionOrder: 0,
-                                NameItemMenu: "afasd"
-                            }]
-                        }]
+                        MenuDetail: parentQueue.MenuDetail
                     }, {
                         Menuid: menu._id,
                         LanguagesTo: 'en',
@@ -126,17 +116,7 @@ User.create(newUser, function(err, userinfo) {
                         IsParent: false,
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
-                        MenuDetail: [{
-                            NameGroupInMenu: "ensaladas  Ingles",
-                            PositionOrder: 0,
-                            ItemsInMenu: [{
-                                DescriptionItemMenu: "una ensalda en ingles",
-                                DescriptionItemsItemMenu: "dsf",
-                                PriceItemsItemMenu: "1",
-                                PositionOrder: 0,
-                                NameItemMenu: "afasd"
-                            }]
-                        }]
+                        MenuDetail: parentQueue.MenuDetail
                     }, function(err, listquee) {})
                 });
             });

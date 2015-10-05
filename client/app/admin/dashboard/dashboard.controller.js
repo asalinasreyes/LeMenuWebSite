@@ -5,4 +5,10 @@ angular.module('leMeNuApp')
     	DashBoardInfo.get({}, function(data){
     		$scope.information = data;
     	})
+
+    	$scope.clearDatabase = function(){
+    		DashBoardInfo.clearDatabase({}, function(data){
+    		$scope.resultclearDatabase= data;	
+    		});
+    	}
     });

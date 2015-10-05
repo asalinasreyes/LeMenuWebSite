@@ -20,7 +20,17 @@ User.create({
     })
 });
 
+var StringName = 'owner';
+var newUser = {
+    provider: 'local',
+    role: 'owner',
+    name: StringName,
+    email: StringName + '@owner.com',
+    password: StringName
+};
+User.create(newUser, function(err, userinfo) {
 
+});
 
 //Creacion del Administrador
 User.create({
