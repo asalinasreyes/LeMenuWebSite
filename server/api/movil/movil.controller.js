@@ -61,7 +61,6 @@ exports.index = function(req, res) {
                 });
             },
             Restaurants: function(callback) {
-                console.log('filterSearch', filterSearch);
                 return QueueSchemaProcess.find(filterSearch, fieldReturn)
                     .populate('Restaurantid', 'name city country _id latitude longitude address')
                     .populate('Menuid', 'language')
@@ -126,11 +125,13 @@ exports.index = function(req, res) {
                 var listParents =[];
                 return QueueSchemaProcess.find({
                         IsParent: true
-                    }, 'MenuDetail Restaurantid Menuid LanguagesTo Parentid')
+                    }, 'MenuDetail Restaurantid Menuid LanguagesTo Parentid LanguagesFrom')
                     .populate('MenuDetail')
                     .populate('MenuDetail.ItemsInMenu')
                     .exec(function(err, result) {
                         result.map(function(doc) {
+                            var restaurantid =doc.Restaurantid;
+                            var language = doc.LanguagesFrom;
                             return ({
                                 _id: doc._id,
                                 Restaurantid: doc.Restaurantid,
@@ -144,8 +145,10 @@ exports.index = function(req, res) {
                                         plato: doc.ItemsInMenu.map(function(doc) {
                                             listParents.push ({
                                                 _id: doc._id,
-                                                DescriptionItems: doc.DescriptionItemsItemMenu,
+                                                Description: doc.DescriptionItemMenu,
+                                                Restaurantid:restaurantid,
                                                 Price: doc.PriceItemsItemMenu,
+                                                LanguagesFrom:language,
                                                 Name: doc.NameItemMenu
                                             })
                                         })
