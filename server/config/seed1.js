@@ -5,21 +5,20 @@
  */
 
 'use strict';
-
 var User = require('../api/user/user.model');
+var extend = require('util')._extend;
+
 var Restaurant = require('../api/restaurant/restaurant.model');
 var MenuOfrestaurant = require('../api/menuofrestaurant/menuofrestaurant.model');
 var Payment = require('../payment/payment.model');
 var QueueProcess = require('../payment/QueueProcess.model');
-
-
 var uuid = require('node-uuid');
 
 var StringName = uuid.v1();
 
 
 var RestaurantChile = {
-    name: 'Chile Seed1 ' + StringName,
+    name: 'Chile Seed1 ',
     address: 'street name ' + StringName,
     country: 'cl',
     city: 'santiago',
@@ -30,11 +29,10 @@ var RestaurantChile = {
 };
 
 
-
 var MenuRestaurantChile = {
     name: 'Verano - ' + StringName,
     active: true,
-    language: ['en', 'fr'],
+    language: ['pt', 'fr'],
     files: []
 };
 
@@ -51,6 +49,16 @@ var fileA = {
 };
 
 
+var Plato = [];
+
+
+
+ItemMenuA();
+ItemMenuB();
+ItemMenuC();
+ItemMenuD();
+
+
 MenuRestaurantChile.files.push(fileA);
 MenuRestaurantChile.files.push(fileB);
 
@@ -62,6 +70,7 @@ var newUser = {
     email: StringName + '@owner2.com',
     password: StringName
 };
+
 User.create(newUser, function(err, userinfo) {
     RestaurantChile.userid = userinfo._id;
     Restaurant.create(RestaurantChile, function(err, restaurant) {
@@ -89,40 +98,17 @@ User.create(newUser, function(err, userinfo) {
                     IsParent: true,
                     IsDoneTranslate: false,
                     MenuDetail: [{
-                        NameGroupInMenu: StringName + " Grupo Chile Entrada",
+                        NameGroupInMenu: "Entrada",
                         PositionOrder: 0,
-                        ItemsInMenu: [{
-                            DescriptionItemMenu: "Tomate cebolla",
-                            DescriptionItemsItemMenu: "tomate Aceite",
-                            PriceItemsItemMenu: "2500",
-                            PositionOrder: 0,
-                            NameItemMenu: "Chilena"
-                        }, {
-                            DescriptionItemMenu: "Tomate ",
-                            DescriptionItemsItemMenu: "tomate solo",
-                            PriceItemsItemMenu: "2500",
-                            PositionOrder: 0,
-                            NameItemMenu: "Tomate Solo"
-                        }]
+                        ItemsInMenu: [Plato[0].es, Plato[1].es]
                     }, {
-                        NameGroupInMenu: StringName + " Grupo Chile Plato Fondo",
+                        NameGroupInMenu: "Fondo",
                         PositionOrder: 0,
-                        ItemsInMenu: [{
-                            DescriptionItemMenu: "Cazuela",
-                            DescriptionItemsItemMenu: "Cazuela a ",
-                            PriceItemsItemMenu: "2500",
-                            PositionOrder: 0,
-                            NameItemMenu: "Cazuela"
-                        }, {
-                            DescriptionItemMenu: "Humita ",
-                            DescriptionItemsItemMenu: "Humieta 2",
-                            PriceItemsItemMenu: "2500",
-                            PositionOrder: 0,
-                            NameItemMenu: "Humita 3"
-                        }]
+                        ItemsInMenu: [Plato[2].es, Plato[3].es]
                     }]
                 }, function(err, parentQueue) {
-
+                    var copyMenu = extend(parentQueue.MenuDetail,{}); 
+                    translateFR(copyMenu);
                     QueueProcess.create({
                         Menuid: menu._id,
                         LanguagesTo: 'fr',
@@ -132,8 +118,12 @@ User.create(newUser, function(err, userinfo) {
                         IsParent: false,
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
-                        MenuDetail: parentQueue.MenuDetail
-                    }, {
+                        MenuDetail: copyMenu
+                    }, function(err, listquee) {});
+                    
+                    var copyMenu = extend(parentQueue.MenuDetail,{}); 
+                    translatePT(copyMenu);
+                    QueueProcess.create({
                         Menuid: menu._id,
                         LanguagesTo: 'en',
                         Restaurantid: restaurant._id,
@@ -142,10 +132,151 @@ User.create(newUser, function(err, userinfo) {
                         IsParent: false,
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
-                        MenuDetail: parentQueue.MenuDetail
-                    }, function(err, listquee) {})
+                        MenuDetail: copyMenu
+                    }, function(err, listquee) {});
                 });
             });
         });
     })
 });
+
+
+function translateFR(group) {
+    for (var ii = 0; ii < group.length; ii++) {
+        for (var i = 0; i < group[ii].ItemsInMenu.length; i++) {
+            for (var iz = 0; iz < Plato.length; iz++) {
+                if (Plato[iz].es.DescriptionItemMenu == group[ii].ItemsInMenu[i].DescriptionItemMenu) {
+                    group[ii].ItemsInMenu[i].DescriptionItemMenu = Plato[iz].fr.DescriptionItemMenu;
+                    group[ii].ItemsInMenu[i].DescriptionItemsItemMenu = Plato[iz].fr.DescriptionItemsItemMenu;
+                    group[ii].ItemsInMenu[i].NameItemMenu = Plato[iz].fr.NameItemMenu;
+                };
+            };
+        };
+    };
+}
+
+
+function translatePT(group) {
+
+    for (var ii = 0; ii < group.length; ii++) {
+        for (var i = 0; i < group[ii].ItemsInMenu.length; i++) {
+            for (var iz = 0; iz < Plato.length; iz++) {
+                if (Plato[iz].fr.DescriptionItemMenu == group[ii].ItemsInMenu[i].DescriptionItemMenu) {
+                    group[ii].ItemsInMenu[i].DescriptionItemMenu = Plato[iz].pt.DescriptionItemMenu;
+                    group[ii].ItemsInMenu[i].DescriptionItemsItemMenu = Plato[iz].pt.DescriptionItemsItemMenu;
+                    group[ii].ItemsInMenu[i].NameItemMenu = Plato[iz].pt.NameItemMenu;
+                };
+            };
+        };
+    };
+}
+
+function ItemMenuA() {
+    Plato[0] = {
+        es: {
+            DescriptionItemMenu: "Tomate cebolla",
+            DescriptionItemsItemMenu: "Tomate, ceboola y Aceite",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Chilena"
+        },
+        fr: {
+            DescriptionItemMenu: "Tomate Oignon",
+            DescriptionItemsItemMenu: "Tomate, oignon, huile d'olive",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Chilien"
+        },
+        pt: {
+            DescriptionItemMenu: "Tomate Cebola",
+            DescriptionItemsItemMenu: "Tomate, Cebola e azeite",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Chilena"
+        }
+    };
+}
+
+function ItemMenuB() {
+    Plato[1] = {
+        es: {
+            DescriptionItemMenu: "Tomate",
+            DescriptionItemsItemMenu: "tomate solo",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Tomate Solo"
+        },
+        fr: {
+            DescriptionItemMenu: "Tomate",
+            DescriptionItemsItemMenu: "Tomate",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Tomate"
+        },
+        pt: {
+            DescriptionItemMenu: "Tomate",
+            DescriptionItemsItemMenu: "Sol Tomate",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Sol Tomate"
+        }
+    };
+}
+
+
+function ItemMenuC() {
+    Plato[2] = {
+        es: {
+            DescriptionItemMenu: "Cazuela",
+            DescriptionItemsItemMenu: "Cazuela",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Cazuela"
+        },
+        fr: {
+            DescriptionItemMenu: "Issue du mélange de la cuisine espagnole traditionnelle et locale, la cazuela est un bouillon de bœuf, de poulet ou de fruits de mer agrémenté de pommes de terre, de potirons ou de maïs.",
+            DescriptionItemsItemMenu: "bœuf , oignon,morceau de potiron, épis de maïs,pommes de terre par personne, verre de riz, poivron,  verre de haricot blanc,  œuf, du persilde, l’origan,de l’huile d’olive, de la coriandre fraîche",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Cazuela"
+        },
+        pt: {
+            DescriptionItemMenu: "Após a mistura de cozinha tradicional espanhola e local, cazuela é um caldo de carne , frango ou batatas decorado frutos do mar , abóbora ou milho ",
+            DescriptionItemsItemMenu: "carne , a cebola, o pedaço de abóbora, espiga de milho , batatas por pessoa , copo de arroz , pimenta , vidro feijão branco , ovo, persilde , orégano , azeite, coentro fresco",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Cazuela"
+        }
+    };
+}
+
+function ItemMenuD() {
+    Plato[3] = {
+        es: {
+            DescriptionItemMenu: "Humita",
+            DescriptionItemsItemMenu: "Humieta",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Humita"
+        },
+        fr: {
+            DescriptionItemMenu: "Humita, Maïs à la chilienne ",
+            DescriptionItemsItemMenu: "épis de maïs frais (avec leurs feuilles), oignons, petit piment rouge,tiges de basilic frais, Huile de tournesol , lait, Sel, poivre",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Humitas, Maïs à la chilienne"
+        },
+        pt: {
+            DescriptionItemMenu: "Pamonha Chilena",
+            DescriptionItemsItemMenu: "Milho na espiga com a palha, Cebola picada, Pimentão vermelho picado, Tomate concassé, Tomate salada, Açúcar refinado, Páprica picante, Canela, Cominho, Manteiga, Fundo de legumes, Sal, Qb, Barbante",
+            PriceItemsItemMenu: "2500",
+            PositionOrder: 0,
+            NameItemMenu: "Humitas, Pamonha Chilena"
+        }
+    };
+}
+
+
+function getData(menu) {
+
+};

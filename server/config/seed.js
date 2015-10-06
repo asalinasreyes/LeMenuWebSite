@@ -54,10 +54,15 @@ PriceList.create({
 
 });
 
+
+console.log('*************************************************************')
 // Chile Traduccion Ingles Frances
 require('./seed1');
+console.log('*************************************************************')
+    
 
-//* Brasil Traduccion Ingles Frances
+
+/* Brasil Traduccion Ingles Frances
 var Brasil= require('./seed5');
 Brasil.index();
 Brasil.index();
@@ -72,6 +77,8 @@ require('./seed3');
 
 //Menus Upload Sin Pagos No  Grupos
 require('./seed4');
+*/
+
 
 //Creacion de usuarios del Sistema
 require('./seedUsers');
