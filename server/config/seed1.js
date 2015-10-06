@@ -19,7 +19,7 @@ var StringName = uuid.v1();
 
 var RestaurantChile = {
     name: 'Chile Seed1 ',
-    address: 'street name ' + StringName,
+    address: 'street name ' ,
     country: 'cl',
     city: 'santiago',
     language: 'es',
@@ -30,7 +30,7 @@ var RestaurantChile = {
 
 
 var MenuRestaurantChile = {
-    name: 'Verano - ' + StringName,
+    name: 'Verano - ' ,
     active: true,
     language: ['pt', 'fr'],
     files: []
@@ -107,8 +107,8 @@ User.create(newUser, function(err, userinfo) {
                         ItemsInMenu: [Plato[2].es, Plato[3].es]
                     }]
                 }, function(err, parentQueue) {
-                    var copyMenu = extend(parentQueue.MenuDetail,{}); 
-                    translateFR(copyMenu);
+
+                    translateFR(extend(parentQueue.MenuDetail, {}));
                     QueueProcess.create({
                         Menuid: menu._id,
                         LanguagesTo: 'fr',
@@ -118,22 +118,21 @@ User.create(newUser, function(err, userinfo) {
                         IsParent: false,
                         IsDoneTranslate: true,
                         Parentid: parentQueue._id,
-                        MenuDetail: copyMenu
-                    }, function(err, listquee) {});
-                    
-                    var copyMenu = extend(parentQueue.MenuDetail,{}); 
-                    translatePT(copyMenu);
-                    QueueProcess.create({
-                        Menuid: menu._id,
-                        LanguagesTo: 'en',
-                        Restaurantid: restaurant._id,
-                        LanguagesFrom: 'es',
-                        IsReadyToTranslate: true,
-                        IsParent: false,
-                        IsDoneTranslate: true,
-                        Parentid: parentQueue._id,
-                        MenuDetail: copyMenu
-                    }, function(err, listquee) {});
+                        MenuDetail: parentQueue.MenuDetail
+                    }, function(err, listquee) {
+                        translatePT(extend(parentQueue.MenuDetail, {}));
+                        QueueProcess.create({
+                            Menuid: menu._id,
+                            LanguagesTo: 'pt',
+                            Restaurantid: restaurant._id,
+                            LanguagesFrom: 'es',
+                            IsReadyToTranslate: true,
+                            IsParent: false,
+                            IsDoneTranslate: true,
+                            Parentid: parentQueue._id,
+                            MenuDetail: parentQueue.MenuDetail
+                        }, function(err, listquee) {});
+                    });
                 });
             });
         });
@@ -142,6 +141,7 @@ User.create(newUser, function(err, userinfo) {
 
 
 function translateFR(group) {
+    console.log('1- FR *********************', group)
     for (var ii = 0; ii < group.length; ii++) {
         for (var i = 0; i < group[ii].ItemsInMenu.length; i++) {
             for (var iz = 0; iz < Plato.length; iz++) {
@@ -153,11 +153,13 @@ function translateFR(group) {
             };
         };
     };
+    console.log('2- FR *********************', group)
 }
 
 
 function translatePT(group) {
 
+    console.log('3- PT *********************', group)
     for (var ii = 0; ii < group.length; ii++) {
         for (var i = 0; i < group[ii].ItemsInMenu.length; i++) {
             for (var iz = 0; iz < Plato.length; iz++) {
@@ -169,6 +171,7 @@ function translatePT(group) {
             };
         };
     };
+    console.log('4- PT *********************', group)
 }
 
 function ItemMenuA() {
