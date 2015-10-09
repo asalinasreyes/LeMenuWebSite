@@ -388,6 +388,11 @@ module.exports = function(grunt) {
           cwd: '<%= yeoman.client %>/',
           dest: '<%= yeoman.dist %>/public/',
           src: 'google4f6022ebd0f73df0.html'
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.client %>/',
+          dest: '<%= yeoman.dist %>/public/',
+          src: 'loaderio-996f22a5e4a56eaac0b5429c48be2d2d.txt'
         }]
       },
       styles: {
