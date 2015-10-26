@@ -16,7 +16,7 @@ User.create({
         userid: usernew._id,
         languages: ['es', 'en', 'pt', 'fr']
     }, function(err, newtranslator) {
-        console.log('Traductor Creado', usernew, newtranslator);
+        //console.log('Traductor Creado', usernew, newtranslator);
     })
 });
 
@@ -40,6 +40,6 @@ User.create({
     email: 'admin@admin.com',
     password: 'admin'
 }, function() {
-    console.log('Creo el admin Default');
+    //console.log('Creo el admin Default');
 });
 

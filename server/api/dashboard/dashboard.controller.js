@@ -50,7 +50,7 @@ exports.index = function(req, res) {
                 }
             }], function(err, result) {
                 var sumTotalPayed = 0;
-                console.log('total pagado es', result);
+                //console.log('total pagado es', result);
                 for (var i = 0; i < result.length; i++) {
                     if (result[i]._id == 'success') {
                         sumTotalPayed = result[i].Total;
@@ -62,9 +62,9 @@ exports.index = function(req, res) {
     }, function(err, dashboardinfo) {
         if (err) {
             return res.json(200, err);
-        };
-        console.log('resultado ', dashboardinfo);
-        return res.json(200, dashboardinfo);
+        }
+        //return res.json(200, dashboardinfo);
+         return  res.status(200).json(dashboardinfo);
     });
 };
 

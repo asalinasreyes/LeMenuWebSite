@@ -25,14 +25,14 @@ describe('User Model', function() {
     });
   });
 
-  it('should begin with no users', function(done) {
+  it('No users', function(done) {
     User.find({}, function(err, users) {
       users.should.have.length(0);
       done();
     });
   });
 
-  it('should fail when saving a duplicate user', function(done) {
+  it('Deberia fallar al guardar un usuario duplicado', function(done) {
     user.save(function() {
       var userDup = new User(user);
       userDup.save(function(err) {

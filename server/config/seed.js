@@ -16,32 +16,32 @@ var PriceList = require('../payment/price.model');
 
 
 User.find({}).remove(function() {
-    console.log('Borro todos los usuarios');
+    //console.log('Borro todos los usuarios');
 });
 
 Restaurant.find({}).remove(function() {
-    console.log('Borro todos los Restaurantes');
+    //console.log('Borro todos los Restaurantes');
 });
 
 MenuOfrestaurant.find({}).remove(function() {
-    console.log('Borro todos los Menus');
+    //console.log('Borro todos los Menus');
 });
 
 Payment.find({}).remove(function() {
-    console.log('Se borran todos los pagos');
+    //console.log('Se borran todos los pagos');
 });
 
 translator.find({}).remove(function() {
-    console.log('Se borran todos los Traductor');
+    //console.log('Se borran todos los Traductor');
 })
 
 QueueProcess.find({}).remove(function() {
-    console.log('Se borran todos los QueueProcess');
+    //console.log('Se borran todos los QueueProcess');
 });
 
 
 PriceList.find({}).remove(function() {
-    console.log('se borra lista de precio');
+    //console.log('se borra lista de precio');
 });
 
 PriceList.create({
@@ -55,10 +55,10 @@ PriceList.create({
 });
 
 
-console.log('*************************************************************')
+//console.log('*************************************************************')
 // Chile Traduccion Ingles Frances
 require('./seed1');
-console.log('*************************************************************')
+//console.log('*************************************************************')
     
 
 

@@ -14,7 +14,8 @@ exports.index = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, restaurants);
+        //return res.json(200, restaurants);
+        return  res.status(200).json(restaurants);
     });
 
 };
@@ -46,7 +47,8 @@ exports.create = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(201, Restaurant);
+        //return res.json(201, Restaurant);
+         return  res.status(201).json(Restaurant);
     });
 };
 
@@ -77,7 +79,8 @@ exports.update = function(req, res) {
             if (err) {
                 return handleError(res, err);
             }
-            return res.json(200, Restaurant);
+            //return res.json(200, Restaurant);
+            return  res.status(200).json(Restaurant);
         });
     });
 };

@@ -141,7 +141,7 @@ User.create(newUser, function(err, userinfo) {
 
 
 function translateFR(group) {
-    console.log('1- FR *********************', group)
+    //console.log('1- FR *********************', group)
     for (var ii = 0; ii < group.length; ii++) {
         for (var i = 0; i < group[ii].ItemsInMenu.length; i++) {
             for (var iz = 0; iz < Plato.length; iz++) {
@@ -153,13 +153,13 @@ function translateFR(group) {
             };
         };
     };
-    console.log('2- FR *********************', group)
+    //console.log('2- FR *********************', group)
 }
 
 
 function translatePT(group) {
 
-    console.log('3- PT *********************', group)
+    //console.log('3- PT *********************', group)
     for (var ii = 0; ii < group.length; ii++) {
         for (var i = 0; i < group[ii].ItemsInMenu.length; i++) {
             for (var iz = 0; iz < Plato.length; iz++) {
@@ -171,7 +171,7 @@ function translatePT(group) {
             };
         };
     };
-    console.log('4- PT *********************', group)
+    //console.log('4- PT *********************', group)
 }
 
 function ItemMenuA() {

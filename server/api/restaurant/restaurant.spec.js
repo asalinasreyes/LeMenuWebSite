@@ -8,7 +8,7 @@ var UserOwner = require('../../auth/authed-agent')('owner');
 
 var restaurantCreated = null;
 
-var newRestaurant = {
+var firstRestaurant = {
   name: 'Best Restaurant',
   address: 'street name',
   country: 'chile',
@@ -17,6 +17,19 @@ var newRestaurant = {
   Tags: ['chile', 'peruana'],
   urlgoogleMap: 'AnyWhere'
 };
+
+var secondRestaurant = {
+  name: 'Best Restaurant',
+  address: 'street name',
+  country: 'argentina',
+  city: 'BS',
+  language: 'SP',
+  Tags: ['tipica'],
+  urlgoogleMap: 'AnyWhere'
+};
+
+
+
 
 
 
@@ -49,7 +62,7 @@ describe('GET /api/restaurants', function() {
   it('Crea 1 Restaurant', function(done) {
     UserOwner
       .post('/api/restaurants')
-      .send(newRestaurant)
+      .send(firstRestaurant)
       .expect(201)
       .end(function(err, res) {
         if (err) return done(err);
@@ -59,10 +72,10 @@ describe('GET /api/restaurants', function() {
       });
   });
 
-  it('Crea segundo Restaurant', function(done) {
+  it('Crea 2 Restaurant', function(done) {
     UserOwner
       .post('/api/restaurants')
-      .send(newRestaurant)
+      .send(secondRestaurant)
       .expect(201)
       .end(function(err, res) {
         if (err) return done(err);
@@ -79,10 +92,12 @@ describe('GET /api/restaurants', function() {
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
-        res.body.should.be.instanceof(Array).and.have.lengthOf(2);;
+        res.body.should.be.instanceof(Array).and.have.lengthOf(2);
         done();
       });
   });
+
+
 
   it('Busca Restaurant por ID', function(done) {
     UserOwner
@@ -90,8 +105,7 @@ describe('GET /api/restaurants', function() {
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
-        //res.body._id.should.equal(restaurantCreated._id);
-        //res.body.created_at.should.equal(restaurantCreated.created_at);
+        res.body._id.should.equal(restaurantCreated._id);
         done();
       });
   });
@@ -100,7 +114,6 @@ describe('GET /api/restaurants', function() {
   it('Actualiza Primer restaurante', function(done) {
     var changename = 'change name restaurant';
     restaurantCreated.name = changename;
-
     UserOwner
       .put('/api/restaurants/' + restaurantCreated._id)
       .send(restaurantCreated)
@@ -126,7 +139,6 @@ describe('GET /api/restaurants', function() {
   it('Actualiza Primer restaurante No Autorizado', function(done) {
     var changename = 'change name restaurant';
     restaurantCreated.name = changename;
-
     request(app)
       .put('/api/restaurants/' + restaurantCreated._id)
       .send(restaurantCreated)

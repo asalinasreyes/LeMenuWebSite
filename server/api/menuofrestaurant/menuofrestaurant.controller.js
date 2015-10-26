@@ -13,7 +13,8 @@ exports.index = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, menuofrestaurants);
+        //return res.json(200, menuofrestaurants);
+        return  res.status(200).json(menuofrestaurants);
     });
 };
 
@@ -44,7 +45,8 @@ exports.create = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(201, menuofrestaurant);
+        res.status(201).json(menuofrestaurant);
+        //return res.json(201, menuofrestaurant);
     });
 };
 

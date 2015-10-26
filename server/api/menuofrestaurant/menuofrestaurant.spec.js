@@ -57,7 +57,7 @@ describe('GET /api/restaurants/menu', function() {
   });
 
 
-  it('Lista vacia de restaurantes', function(done) {
+  it('Lista vacia de restaurantes/menu', function(done) {
     UserOwner
       .get(PathToService)
       .expect(200)
@@ -78,7 +78,6 @@ describe('GET /api/restaurants/menu', function() {
         restaurantCreated = res.body;
         res.body.should.have.property('_id');
         done();
-
       });
   });
 
@@ -115,7 +114,7 @@ describe('GET /api/restaurants/menu', function() {
       });
   })
 
-  it('Lista con 2 Menu Asociada', function(done) {
+  it('Lista con 2 Menu Asociados', function(done) {
     UserOwner
       .get(PathToService)
       .expect(200)
@@ -126,6 +125,4 @@ describe('GET /api/restaurants/menu', function() {
         done();
       });
   })
-
-
 });
