@@ -11,7 +11,7 @@ angular.module('leMeNuApp')
             }
         }
     })
-    .controller('MainCtrl', function($scope, $http) {
+    .controller('MainCtrl', function($scope) {
         $scope.myInterval = 5000;
         var path = '/assets/images/staticname/';
         $scope.slides = [{

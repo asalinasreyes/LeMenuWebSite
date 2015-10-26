@@ -3,7 +3,7 @@
 describe('Controller: OwnerCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('leMeNuApp'));
+  beforeEach(module('ngCookies','pascalprecht.translate', 'leMeNuApp'));
 
   var OwnerCtrl, scope;
 
@@ -15,7 +15,7 @@ describe('Controller: OwnerCtrl', function () {
     });
   }));
 
-  it('should ...', function () {
+  it('Contructor OwnerCtrl, valida inicializacion', function () {
     expect(1).toEqual(1);
   });
 });
