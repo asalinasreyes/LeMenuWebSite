@@ -11,10 +11,9 @@ angular.module('leMeNuApp')
     $scope.RestaurantSelectedInfo = myCache.get("oneresto");
     var languageEnabled = $scope.RestaurantSelectedInfo.language;
     
-    $scope.listPossibleLang  =ListAllow.LanguagesAllow;
+    $scope.listPossibleLang  = ListAllow.LanguagesAllow;
 
     $scope.showRequiredLanguages = function() {
-
         if (!$scope.cartMenu.hasOwnProperty('language')) {
             return true;
         }
@@ -72,6 +71,10 @@ angular.module('leMeNuApp')
         }
     };
 
+
+    $scope.removeImg = function(indexImage){
+       $scope.listFilesPhotoUpload.splice(indexImage, 1);
+    };
     $scope.isEnableButtonSave = function() {
         var statusButtonSave = true;
         if (!$scope.cartMenu.$invalid) {
