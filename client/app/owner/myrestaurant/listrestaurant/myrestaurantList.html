@@ -1,5 +1,5 @@
-<div class="row" ng-controller="MyRestaurantOwnerListCtrl">
-    <button type="button" class="btn btn-default" ng-click="goNew()">{{'myresto.badd' | translate}} <i class="fa fa-plus"></i> </button>
+<div class="row listresto" ng-controller="MyRestaurantOwnerListCtrl">
+    <img src="../assets/images/staticname/plus1.png" alt="" class="btn btn-default" ng-click="goNew()">
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6" ng-repeat="oneresto in ListRestaurants">
             <div class="well well-sm">
@@ -25,32 +25,11 @@
                                 <br>
                                 <i class="glyphicon glyphicon-gift"></i>{{oneresto.createdat | date:'fullDate' }}</p>
                         </div>
-                        <div class="btn-group">
-                            <div class="btn-group" dropdown is-open="status.isopen">
-                                <button type="button" class="btn btn-primary btn-options" dropdown-toggle ng-disabled="disabled">
-                                    {{'myresto.list.boptions' | translate}} <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
-                                    <li role="menuitem">
-                                        <a href="#" ng-click="editrestaurant(oneresto)">
-                                        <i class="fa fa-edit"></i>
-                                        {{'myresto.list.bedit' | translate}}</a>
-                                    </li>
-                                    <li role="menuitem">
-                                        <a href="#" ng-click="addMenu(oneresto)">
-                                            <i class="fa fa-plus"></i>
-                                            {{'myresto.list.baddmenu' | translate}}
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li role="menuitem" ng-hide="existMenus(oneresto)">
-                                        <a href="#" ng-click="goListMenus(oneresto)">
-                                            {{'myresto.list.blistmenu' | translate}}
-                                            <i class="fa fa-list"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="btn-group group-button-opt-resto">
+                            <button type="button" ng-click="editrestaurant(oneresto)" class="btn btn-warning"><i class="fa fa-edit"></i> {{'myresto.list.bedit' | translate}}</button>
+                            <button type="button" class="btn btn-success" ng-click="addMenu(oneresto)"><i class="fa fa-plus"></i> {{'myresto.list.baddmenu' | translate}}</button>
+                            <button type="button" ng-click="goListMenus(oneresto)" ng-hide="existMenus(oneresto)" class="btn btn-info">{{'myresto.list.blistmenu' | translate}}
+                                <i class="fa fa-list"></i></button>
                         </div>
                     </div>
                 </div>

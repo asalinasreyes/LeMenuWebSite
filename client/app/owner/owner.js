@@ -22,5 +22,10 @@ angular.module('leMeNuApp')
                 url: '/mymenu',
                 templateUrl: 'app/owner/mymenu/mymenu.html',
                 controller: 'MyRestaurantOwnerMenuCtrl'
+            })
+            .state('owner.translations', {
+                url: '/translations',
+                templateUrl: 'app/owner/translation/translation.html',
+                controller: 'translationCtrl'
             });
     });

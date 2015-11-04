@@ -36,7 +36,7 @@ angular.module('leMeNuApp')
             }
         };
         $scope.oneImage = function(resto) {
-            var defaultImgLogo = 'https://placehold.it/380x500';
+            var defaultImgLogo = '../assets/images/staticname/yourLogo.png';
             if (resto.imglogo)
                 defaultImgLogo = resto.imglogo;
             return defaultImgLogo;

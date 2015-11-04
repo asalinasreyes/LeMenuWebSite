@@ -21,7 +21,8 @@
         "lhome": "Inicio",
         "ldashboard": "Escritorio",
         "lmyrestaurants": "Mis Restaurantes",
-        "lmypays": "Mis Pagos"
+        "lmypays": "Mis Pagos",
+        "translations": "Traducciones"
     },
     "account": {
         "login": {
@@ -128,7 +129,7 @@
         "paymethod": "Metodo Pago:",
         "date": "Fecha:",
         "descripcions": "Detalle del cobro",
-        "item": "Descripcion",
+        "item": "Descripción",
         "price": "Precio Unitario",
         "qty": "Cantidad",
         "linetotal": "Total",
@@ -139,19 +140,19 @@
         "list": {
             "hdatecreatepay": "Fecha Pago",
             "hdatecreatemenu": "Fecha Menu",
-            "hdescription": "Descripcion",
+            "hdescription": "Descripción",
             "hstatus": "Estado",
             "hamount": "Monto",
-            "translate": "Traduccion de  ",
-            "numberpage": ", paginas",
-            "to": "a los siguientes idiomas"
+            "translate": "Traducción de ",
+            "numberpage": "pagina(s)",
+            "to": "a"
 
         }
     },
     "admin": {
         "navbar": {
             "adminuser": "Usuarios",
-            "dashboard":"dashboard"
+            "dashboard": "dashboard"
         },
         "newtranslator": {
             "title": "Nuevo Traductor",
@@ -168,8 +169,8 @@
             "msgSuccess": "Usuario Creado",
             "msgError": "Se produjo un error"
         },
-        "edittranslator":{
-            "msgSuccess":"Traductor Actualizado",
+        "edittranslator": {
+            "msgSuccess": "Traductor Actualizado",
             "bsubmit": "Actualizar"
         }
     },
@@ -180,32 +181,51 @@
             "llangto": "Traducir A",
             "llistLang": "Detalle de Idiomas Seleccionados",
             "lnumberPage": "Numero Total de Paginas",
-            "yourareBusy":"Tienes otra traduccion en proceso",
-            "takesuccess":"Operacion Completada con existo!",
-            "btake":"Es mio!"
+            "yourareBusy": "Tienes otra traduccion en proceso",
+            "takesuccess": "Operacion Completada con existo!",
+            "btake": "Es mio!"
         },
-        "navbartra":{
-            "workinProgress":"Traducciendo"
+        "navbartra": {
+            "workinProgress": "Traducciendo"
         },
-        "edit":{
-            "baddGroup":"Nueva seccion",
-            "beditGroup":"Editar",
-            "bdelGroup":"Borrar",
-            "bsaveGroup":"Guardar",
-            "bcancelGroup":"Cancelar",
-            "hsections":"Secciones en Menu",
-            "lnamesection":"Nombre Seccion",
-            "bback":"Volver",
-            "bnew":"Agregar"
+        "edit": {
+            "baddGroup": "Nueva seccion",
+            "beditGroup": "Editar",
+            "bdelGroup": "Borrar",
+            "bsaveGroup": "Guardar",
+            "bcancelGroup": "Cancelar",
+            "hsections": "Secciones en Menu",
+            "lnamesection": "Nombre Seccion",
+            "bback": "Volver",
+            "bnew": "Agregar"
         },
-        "newItemMenu":{
-            "pNameItemMenu":"Nombre Plato",
-            "pDescriptionItemMenu":"Descripcion Plato",
-            "pDescriptionItemsItemMenu":"Composicion del plato",
-            "pPriceItemsItemMenu":"Precio"
+        "newItemMenu": {
+            "pNameItemMenu": "Nombre Plato",
+            "pDescriptionItemMenu": "Descripcion Plato",
+            "pDescriptionItemsItemMenu": "Composicion del plato",
+            "pPriceItemsItemMenu": "Precio"
         }
     },
     "errores": {
         "emailalreayinuse": "El email especificado ya se encuentra creado."
+    },
+    "success": "Pago Exitoso",
+    "pending-paypal": "Pendiente Pago Paypal",
+    "cancel": "Pago No realizado",
+    "es": "Español",
+    "fr": "Francés",
+    "en": "Inglés",
+    "us": "Inglés",
+    "pt": "Portugués",
+    "br": "Portugués",
+    "translation": {
+        "list": {
+            "menuname": "Menu",
+            "restoname": "Restaurante",
+            "languageto": "Traducción a",
+            "IsDoneTranslate": "Terminada",
+            "StartTranslate": "Fecha Inicio",
+            "EndTranslate": "Fecha Termino"
+        }
     }
 }

@@ -8,7 +8,7 @@ angular.module('leMeNuApp')
   		}else if (data.role=='translator') {
   			$state.go(data.role);
   		}else{
-  		  $state.go('owner');
+  		  $state.go('owner.resto.list');
   		}
   	});
   }]);

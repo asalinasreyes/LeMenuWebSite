@@ -1,22 +1,12 @@
 <div class="container" ng-controller="PaymentownerCtrl">
 <div ui-view>
-    <div class="row">
+alexis.salinas.reyes-buyer-1@gmail.com
+    <div class="row" >
         <div class="col-xs-12">
             <div class="invoice-title">
                 <h2>{{'preinvoice.invoice' | translate}}</h2>
             </div>
             <hr>
-            <div class="row">
-                <div class="col-xs-6">
-                    <address>
-                    <strong>{{'preinvoice.invoice' | translate}}</strong><br>
-                        Name<br>
-                        Email<br>
-                    </address>
-                </div>
-                <div class="col-xs-6 text-right">
-                </div>
-            </div>
             <div class="row">
                 <div class="col-xs-6">
                     <address>
@@ -40,8 +30,8 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>{{'preinvoice.descripcions' | translate}}</strong></h3>
                 </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
+                <div class="panel-body payment-bg">
+                    <div class="table-responsive" >
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
@@ -53,7 +43,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="language in paymentMenuSeleted.language">
-                                    <td>{{language}} </td>
+                                    <td> {{language | translate}}, ({{language}}) </td>
                                     <td class="text-center">{{ infopayment.priceBypage }} </td>
                                     <td class="text-center">{{ infopayment.numberPage }} </td>
                                     <td class="text-right">{{ infopayment.TotalLine }}</td>

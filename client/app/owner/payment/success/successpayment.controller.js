@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('PaymentownerSuccesCtrl', function($scope,Auth) {
-    	$scope.texto = "hollaaa exito!";
+    .controller('PaymentownerSuccesCtrl', function($scope,Auth, $state ) {
+    	//$state.go('owner.resto');
     	
+    	$state.go('owner.payment.list');
     });

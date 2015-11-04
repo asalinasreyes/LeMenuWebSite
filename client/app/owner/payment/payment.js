@@ -6,6 +6,6 @@ angular.module('leMeNuApp')
             .state('owner.payment', {
                 url: '/payment',
                 templateUrl: 'app/owner/payment/payment.html',
-                controller:'PaymentownerCtrl'
+                controller: 'PaymentownerCtrl'
             });
     });

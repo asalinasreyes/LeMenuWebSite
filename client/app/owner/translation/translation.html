@@ -1,0 +1,30 @@
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>{{'translation.list.menuname' | translate}} </th>
+                <th>{{'translation.list.restoname' | translate}} </th>
+                <th>{{'translation.list.languageto' | translate}} </th>
+                <th>{{'translation.list.IsDoneTranslate' | translate}} </th>
+                <th>{{'translation.list.StartTranslate' | translate}} </th>
+                <th>{{'translation.list.EndTranslate' | translate}} </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="translate in ListTranslation">
+                <td>{{translate.Menuid.name}} </td>
+                <td>{{translate.Restaurantid.name}} </td>
+                <td>{{translate.LanguagesTo | translate}} </td>
+                <td>{{translate.IsDoneTranslate}} </td>
+                <td>{{translate.StartTranslate}} </td>
+                <td>{{translate.EndTranslate}} </td>
+                <td>
+                    <button class="btn btn-success" ng-show="translate.IsDoneTranslate" ng-click="download(translate)">
+                    <i class="fa fa-download"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

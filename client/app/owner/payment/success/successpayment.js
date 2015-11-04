@@ -6,6 +6,7 @@ angular.module('leMeNuApp')
             .state('owner.payment.success', {
                 url: '/success',
                 templateUrl: 'app/owner/payment/success/successpayment.html',
-                controller:'PaymentownerSuccesCtrl'
+                controller: 'PaymentownerSuccesCtrl'
             });
     });
+

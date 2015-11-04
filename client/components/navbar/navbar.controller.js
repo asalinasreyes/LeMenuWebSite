@@ -2,10 +2,7 @@
 
 angular.module('leMeNuApp')
   .controller('NavbarCtrl', function ($scope, $location, $translate, $filter,tmhDynamicLocale, Auth, ListAllow) {
-    $scope.menu = [{
-      'title': 'navbar.lhome',
-      'link': '/'
-    }];
+    $scope.menu = [];
 
     $scope.languageEnable={};
     $scope.LanguagesAllow = ListAllow.LanguagesAllow;

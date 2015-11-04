@@ -13,11 +13,14 @@
 		<tr ng-repeat="pay in listpayments">
 			<td>{{pay.createdat | date : format : shortDate }}</td>
 			<td>{{pay.menuid.createdat | date : format : shortDate }}</td>
-			<td>{{'payment.list.translate' | translate}} {{pay.menuid.files.length}}
+			<td>{{'payment.list.translate' | translate}}{{pay.menuid.files.length}}
 			{{'payment.list.numberpage' | translate}}
 			{{'payment.list.to' | translate}}
-			 {{pay.menuid.language.toString()}}</td>
-			<td>{{pay.state}}</td>
+			 <label ng-repeat="lang in pay.menuid.language" class="badge">
+			 	{{lang | translate}}
+			 </label>
+			 </td>
+			<td>{{pay.state | translate}}</td>
 			<td>{{pay.amount}}</td>
 		</tr>
 	</tbody>

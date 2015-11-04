@@ -1,20 +1,16 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
-
-
-
-
+    Schema = mongoose.Schema;
 
 var ItemInMenuModellanguageSchema = new Schema({
 
-    NameItemMenu:String,
-    DescriptionItemMenu:String,
-    DescriptionItemsItemMenu:String,
-    PriceItemsItemMenu:String,
-    FullDescriptionItemMenu:String,
-    PositionOrder:Number,
+    NameItemMenu: String,
+    DescriptionItemMenu: String,
+    DescriptionItemsItemMenu: String,
+    PriceItemsItemMenu: String,
+    FullDescriptionItemMenu: String,
+    PositionOrder: Number,
 
     ParentMenuId: {
         type: Schema.ObjectId,
@@ -34,11 +30,11 @@ var ItemInMenuModellanguageSchema = new Schema({
 });
 
 var GroupMenuModellanguageSchema = new Schema({
-    NameGroupInMenu:String,
-    EnableName:Boolean,
-    State:Number,
-    PositionOrder:Number,
-    ItemsInMenu:[ItemInMenuModellanguageSchema],
+    NameGroupInMenu: String,
+    EnableName: Boolean,
+    State: Number,
+    PositionOrder: Number,
+    ItemsInMenu: [ItemInMenuModellanguageSchema],
     userid: {
         type: Schema.ObjectId,
         ref: 'User'
@@ -53,36 +49,34 @@ var GroupMenuModellanguageSchema = new Schema({
 
 
 var QueueProcessSchema = new Schema({
-	Menuid: {
-		type: Schema.ObjectId,
-		ref: 'Menu'
-	},
-	Restaurantid: {
-		type: Schema.ObjectId,
-		ref: 'Restaurant'
-	},
-	Createdat: {
-		type: Date,
-		default: Date.now
-	},
-	MenuDetail:[GroupMenuModellanguageSchema],
-	LanguagesTo: String,
-	LanguagesFrom: String,
-	StartTranslate: Date,
-	EndTranslate: Date,
-	UserTranslateid: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	},
-	Parentid: {
-		type: Schema.ObjectId,
-		ref: 'QueueProcess'
-	},
-	IsReadyToTranslate: Boolean,
-	IsDoneTranslate: Boolean,
-	IsParent: Boolean
+    Menuid: {
+        type: Schema.ObjectId,
+        ref: 'Menu'
+    },
+    Restaurantid: {
+        type: Schema.ObjectId,
+        ref: 'Restaurant'
+    },
+    Createdat: {
+        type: Date,
+        default: Date.now
+    },
+    MenuDetail: [GroupMenuModellanguageSchema],
+    LanguagesTo: String,
+    LanguagesFrom: String,
+    StartTranslate: Date,
+    EndTranslate: Date,
+    UserTranslateid: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
+    Parentid: {
+        type: Schema.ObjectId,
+        ref: 'QueueProcess'
+    },
+    IsReadyToTranslate: Boolean,
+    IsDoneTranslate: Boolean,
+    IsParent: Boolean
 });
 
 module.exports = mongoose.model('QueueProcess', QueueProcessSchema);
-
-

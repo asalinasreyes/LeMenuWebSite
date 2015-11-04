@@ -28,8 +28,6 @@ angular.module('leMeNuApp')
                 } catch (e) {
 
                 }
-
-
             };
         };
 

@@ -5,7 +5,7 @@ var queueProcess = require('../../../payment/QueueProcess.model');
 var translator = require('../translatorlanguage.model');
 var restaurant = require('../../restaurant/restaurant.model');
 
-// Get list Queue Translate Pending
+// Obtine la lista de trabajos en estado pendiente
 exports.index = function(req, res) {
 
     var ObjectId = require('mongoose').Types.ObjectId;
@@ -55,6 +55,9 @@ exports.ImWorkingOnIt = function(req, res) {
 };
 
 
+/*
+Actualiza la informacion de una traduccion
+*/
 exports.updateTranslateMenuAndItemTranslate = function(req, res) {
 
     var ObjectId = require('mongoose').Types.ObjectId;
@@ -120,6 +123,7 @@ exports.updateAndTakeTranslatoasOwn = function(req, res) {
 };
 
 // Update status One Item in Queue in process, if is the parent let child ready to translate 
+/* Marca un trabajo como  completada */
 exports.FinnishedTranslation = function(req, res) {
 
     var ObjectId = require('mongoose').Types.ObjectId;

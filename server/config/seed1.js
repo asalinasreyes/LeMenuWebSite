@@ -81,7 +81,7 @@ User.create(newUser, function(err, userinfo) {
                 order_id: 'String2',
                 payment_id: 'String1',
                 state: 'success',
-                amount: 11,
+                amount: 22,
                 description: 'Pago ' + StringName,
                 userid: userinfo._id,
                 Restaurantid: restaurant._id,
