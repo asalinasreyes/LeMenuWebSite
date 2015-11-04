@@ -12,11 +12,17 @@ angular.module('leMeNuApp')
 
     $scope.RestaurantSelectedInfo = $scope.RestaurantSelectedInfo;
     $scope.cartMenuSelected = $scope.RestaurantSelectedInfo.ItemMenuSelected;
-    
-    if ($scope.cartMenuSelected.hasOwnProperty('status') && $scope.cartMenuSelected.status=='success') {
+
+    if ($scope.cartMenuSelected.hasOwnProperty('status') && $scope.cartMenuSelected.status == 'success') {
         $scope.disabledAll = true;
         $scope.isUploading = true;
     };
+
+
+    $scope.removeImg = function(indexImage) {
+        $scope.listFilesPhotoUpload.splice(indexImage, 1);
+    };
+
 
     $scope.listFilesPhotoUpload = $scope.RestaurantSelectedInfo.ItemMenuSelected.files;
 
@@ -24,8 +30,8 @@ angular.module('leMeNuApp')
     $scope.listPossibleLang = ListAllow.LanguagesAllow;
     var languageEnabled = $scope.RestaurantSelectedInfo.language;
 
-    $scope.disableLang = function(oneOption){
-        return oneOption.locale == languageEnabled ;
+    $scope.disableLang = function(oneOption) {
+        return oneOption.locale == languageEnabled;
     };
 
     $scope.showRequiredLanguages = function() {
@@ -78,15 +84,19 @@ angular.module('leMeNuApp')
         }
     };
 
+
     $scope.isEnableButtonSave = function() {
         var statusButtonSave = true;
         if (!$scope.cartMenuSelected.$invalid) {
             if (!$scope.isUploading) {
-                statusButtonSave = false;
+                if ($scope.listFilesPhotoUpload.length > 0) {
+                    statusButtonSave = false;
+                };
             };
         }
         return statusButtonSave;
     };
+
 
     $scope.back = function() {
         $state.go('owner.mymenu.listmenu', {}, {
