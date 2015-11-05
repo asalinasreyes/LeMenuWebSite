@@ -5,7 +5,6 @@
                 <th>{{'translation.list.menuname' | translate}} </th>
                 <th>{{'translation.list.restoname' | translate}} </th>
                 <th>{{'translation.list.languageto' | translate}} </th>
-                <th>{{'translation.list.IsDoneTranslate' | translate}} </th>
                 <th>{{'translation.list.StartTranslate' | translate}} </th>
                 <th>{{'translation.list.EndTranslate' | translate}} </th>
                 <th></th>
@@ -16,13 +15,14 @@
                 <td>{{translate.Menuid.name}} </td>
                 <td>{{translate.Restaurantid.name}} </td>
                 <td>{{translate.LanguagesTo | translate}} </td>
-                <td>{{translate.IsDoneTranslate}} </td>
                 <td>{{translate.StartTranslate}} </td>
                 <td>{{translate.EndTranslate}} </td>
                 <td>
-                    <button class="btn btn-success" ng-show="translate.IsDoneTranslate" ng-click="download(translate)">
-                    <i class="fa fa-download"></i>
+                    <button class="btn btn-success" ng-show="translate.IsDoneTranslate" ng-disabled="isFileCreated(translate)" ng-click="download(translate)">
+                        <i class="fa fa-cog"></i>{{'translation.list.makefile' | translate}}
                     </button>
+                    <a href="{{getFilePath(translate)}}" ng-show="isFileCreated(translate)" target="_blank">
+                        <i class="fa fa-download"></i></a>
                 </td>
             </tr>
         </tbody>

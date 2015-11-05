@@ -4,9 +4,15 @@ angular.module('leMeNuApp')
     .controller('TranslatorEditItemMenuCtrl', function($scope, $window, Queue, $stateParams, $modal) {
         var modalInstance = null;
 
+        $scope.isParent = false;
+
+
         function getInfoInprocess() {
             Queue.ImWorkingOnIt({}, function(data) {
                 $scope.TranslateItem = data[0];
+
+                $scope.isParent = data[0].IsParent;
+
                 $scope.getcssFlag = 'flag-icon-' + $scope.TranslateItem.LanguagesTo;
                 $scope.workingOver = $scope.TranslateItem.MenuDetail[$stateParams.index];
                 if (!$scope.workingOver.ItemsInMenu) {

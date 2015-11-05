@@ -7,11 +7,11 @@
                     <h3 class="panel-title">{{'account.login.title' | translate}}</h3>
                 </div>
                 <div class="panel-body">
-                {{users}}
+                    {{users}}
                     <form class="form" name="form" ng-submit="login(form)" novalidate>
                         <div class="form-group">
                             <label>{{'account.login.lemail' | translate}}</label>
-                            <input type="email" name="email" class="form-control"   placeholder = "{{'account.login.phemail' | translate}}" ng-model="user.email" required>
+                            <input type="email" name="email" class="form-control" placeholder="{{'account.login.phemail' | translate}}" ng-model="user.email" required>
                         </div>
                         <div class="form-group">
                             <label>{{'account.login.lpassword' | translate}}</label>
@@ -28,7 +28,7 @@
                         </div>
                         <div>
                             <button class="btn btn-inverse btn-lg btn-login" type="submit">
-                                 {{'account.login.bsubmit' | translate}}
+                                {{'account.login.bsubmit' | translate}}
                             </button>
                             <a class="btn btn-default btn-lg btn-register" href="/signup">
                               {{'account.login.register' | translate}}

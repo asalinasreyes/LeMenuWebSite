@@ -107,6 +107,7 @@ exports.updateAndTakeTranslatoasOwn = function(req, res) {
                         return res.send(404);
                     }
                     queueProcessInfo.UserTranslateid = user_id;
+                    queueProcessInfo.StartTranslate = Date.now();
                     queueProcessInfo.save(function(err) {
                         if (err) {
                             return handleError(res, err);
@@ -157,6 +158,7 @@ exports.FinnishedTranslation = function(req, res) {
             }, function(err, doc) {});
         };
         menu.IsDoneTranslate = true;
+        menu.EndTranslate = Date.now();
 
         menu.save(function(err) {
             if (err) {

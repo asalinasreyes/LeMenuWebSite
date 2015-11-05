@@ -225,7 +225,8 @@
             "languageto": "Traducción a",
             "IsDoneTranslate": "Terminada",
             "StartTranslate": "Fecha Inicio",
-            "EndTranslate": "Fecha Termino"
+            "EndTranslate": "Fecha Termino",
+            "makefile": "Crear Archivo"
         }
     }
 }

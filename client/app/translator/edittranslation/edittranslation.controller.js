@@ -2,9 +2,12 @@
 
 angular.module('leMeNuApp')
     .controller('TranslatorEditCtrl', function($scope, Queue, $filter, $http, $state) {
+        
+        $scope.isParent = false;
 
         Queue.ImWorkingOnIt({}, function(data) {
             $scope.TranslateItem = data[0];
+            $scope.isParent = data[0].IsParent;
             if (!$scope.TranslateItem.MenuDetail) {
             $scope.TranslateItem.MenuDetail =[];    
             };

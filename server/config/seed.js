@@ -57,7 +57,7 @@ PriceList.create({
 
 //console.log('*************************************************************')
 // Chile Traduccion Ingles Frances
-require('./seed1');
+//require('./seed1');
 //console.log('*************************************************************')
     
 

@@ -59,7 +59,7 @@
                             </form>
                             <div class="buttons" ng-show="!rowform.$visible">
                                 <button class="btn btn-primary pull-right" ng-click="rowform.$show()"><span class="fa fa-edit "></span>{{'translator.edit.beditGroup' | translate}}</button>
-                                <button class="btn btn-danger" ng-click="removegroup($index)">{{'translator.edit.bdelGroup' | translate}}<span class="fa fa-trash"></span></button>
+                                <button class="btn btn-danger" ng-show="isParent" ng-click="removegroup($index)">{{'translator.edit.bdelGroup' | translate}}<span class="fa fa-trash"></span></button>
                             </div>
                         </td>
                         <td>

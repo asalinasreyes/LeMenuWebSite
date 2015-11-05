@@ -2,11 +2,12 @@
     <button type="button" class="btn btn-info pull-left" ng-click="goBack()">
         <span class="fa fa-home "></span> {{'translator.edit.bback' | translate}}
     </button>
-    <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>   
+    <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
     <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">
         <span class="fa fa-plus "></span> {{'translator.edit.bnew' | translate}}
     </button>
 </div>
+
 <div class="row" ng-repeat="itemmenu in workingOver.ItemsInMenu">
     <div class="menu well">
         <div class="row">
@@ -46,15 +47,15 @@
         </form>
         <div class="buttons" ng-show="!rowform.$visible">
             <button class="btn btn-primary pull-right" ng-click="rowform.$show()"><span class="fa fa-edit "></span>{{'translator.edit.beditGroup' | translate}}</button>
-            <button class="btn btn-danger" ng-click="removeItemMenu($index)">{{'translator.edit.bdelGroup' | translate}}<span class="fa fa-trash"></span></button>
+            <button class="btn btn-danger" ng-show="isParent" ng-click="removeItemMenu($index)">{{'translator.edit.bdelGroup' | translate}}<span class="fa fa-trash"></span></button>
         </div>
     </div>
 </div>
 <div class="row" ng-show="showBottonButton()">
-        <button type="button" class="btn btn-info pull-left" ng-click="goBack()">
+    <button type="button" class="btn btn-info pull-left" ng-click="goBack()">
         <span class="fa fa-home "></span> {{'translator.edit.bback' | translate}}
     </button>
-    <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>   
+    <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
     <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">
         <span class="fa fa-plus "></span> {{'translator.edit.bnew' | translate}}
     </button>
