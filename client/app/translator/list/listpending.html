@@ -18,7 +18,7 @@
                 <th> {{'translator.list.lcreated' | translate}} </th>
                 <th> {{'translator.list.llangfrom' | translate}} </th>
                 <th> {{'translator.list.llangto' | translate}} </th>
-                <th> {{'translator.list.llistLang' | translate}} </th>
+
                 <th> {{'translator.list.lnumberPage' | translate}} </th>
                 <th></th>
             </tr>
@@ -26,9 +26,9 @@
         <tbody>
             <tr ng-repeat="queue in ListQueue">
                 <td>{{queue.Createdat}}</td>
-                <td>{{queue.LanguagesFrom}}</td>
-                <td>{{queue.LanguagesTo}}</td>
-                <td>{{queue.Menuid.language.toString()}}</td>
+                <td>{{queue.LanguagesFrom | translate}} </td>
+                <td>{{queue.LanguagesTo | translate}}</td>
+                
                 <td>{{queue.Menuid.files.length}}</td>
                 <td>
                     <button ng-click="take(queue, $index)">{{'translator.list.btake' | translate}} </button>

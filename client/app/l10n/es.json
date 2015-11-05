@@ -183,7 +183,7 @@
             "lnumberPage": "Numero Total de Paginas",
             "yourareBusy": "Tienes otra traduccion en proceso",
             "takesuccess": "Operacion Completada con existo!",
-            "btake": "Es mio!"
+            "btake": "Iniciar Traducción!"
         },
         "navbartra": {
             "workinProgress": "Traducciendo"
@@ -218,6 +218,7 @@
     "us": "Inglés",
     "pt": "Portugués",
     "br": "Portugués",
+    "cl":"Shíleno",
     "translation": {
         "list": {
             "menuname": "Menu",

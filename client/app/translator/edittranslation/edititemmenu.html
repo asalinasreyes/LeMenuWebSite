@@ -1,9 +1,9 @@
 <div class="row">
-    <button type="button" class="btn btn-info pull-left" ng-click="goBack()">
+    <button type="button"  ng-disabled="disabledButton" class="btn btn-info pull-left" ng-click="goBack()">
         <span class="fa fa-home "></span> {{'translator.edit.bback' | translate}}
     </button>
     <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
-    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">
+    <button type="button"  ng-disabled="disabledButton" class="btn btn-success pull-right" ng-click="addItemInGroud()">
         <span class="fa fa-plus "></span> {{'translator.edit.bnew' | translate}}
     </button>
 </div>
@@ -52,11 +52,11 @@
     </div>
 </div>
 <div class="row" ng-show="showBottonButton()">
-    <button type="button" class="btn btn-info pull-left" ng-click="goBack()">
+    <button type="button" class="btn btn-info pull-left" ng-click="goBack()" ng-disabled="disabledButton">
         <span class="fa fa-home "></span> {{'translator.edit.bback' | translate}}
     </button>
     <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
-    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()">
+    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()" ng-disabled="disabledButton">
         <span class="fa fa-plus "></span> {{'translator.edit.bnew' | translate}}
     </button>
 </div>
