@@ -78,29 +78,26 @@ exports.createTranslator = function(req, res, next) {
 
 /// Update Translator Name, Email and Languages
 exports.UpdateTranslator = function(req, res, next) {
-    console.log('requeest', req.body);
-    User.findById(req.body.userid, function(err, userdata){
+    User.findById(req.body.userid, function(err, userdata) {
         if (err) {
             if (err) return validationError(res, err);
-        };
+        }
         userdata.name = req.body.name;
         userdata.email = req.body.email;
         userdata.save(function(err, data) {
             if (err) {
-                if (err) return validationError(res, err);
-            };
-            console.log('update user', data);
-        });
-
-        Translator.findById(req.body.translateid, function(err, tranlatordata) {
-            if (err) {
-                if (err) return validationError(res, err);
-            };
-            tranlatordata.languages = req.body.languages;
-            tranlatordata.save(function(err, data) {
-                console.log('translator update', data);
+                return validationError(res, err);
+            }
+            Translator.findById(req.body.translateid, function(err, tranlatordata) {
+                if (err) {
+                    if (err) return validationError(res, err);
+                };
+                tranlatordata.languages = req.body.languages;
+                tranlatordata.save(function(err, data) {
+                    console.log('translator update', data);
+                });
+                res.json(200, {});
             });
-            res.json(200, {});
         });
     });
 };

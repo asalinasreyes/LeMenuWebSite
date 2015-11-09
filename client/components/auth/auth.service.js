@@ -136,6 +136,13 @@ angular.module('leMeNuApp')
         return currentUser.role === 'admin';
       },
 
+      isTranlator: function() {
+        return currentUser.role === 'translator';
+      },
+      isOwner: function() {
+        return currentUser.role === 'Owner';
+      },
+
       /**
        * Get auth token
        */

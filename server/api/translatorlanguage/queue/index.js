@@ -8,6 +8,8 @@ var router = express.Router();
 
 router.get('/', auth.hasRole('translate') , controller.index);
 router.get('/ImWorkingOnIt', auth.hasRole('translate') , controller.ImWorkingOnIt);
+router.get('/GetListTranslationDone', auth.hasRole('translate') , controller.GetListTranslationDone);
+
 
 
 router.post('/menuAndItems',auth.hasRole('translate'), controller.updateTranslateMenuAndItemTranslate);

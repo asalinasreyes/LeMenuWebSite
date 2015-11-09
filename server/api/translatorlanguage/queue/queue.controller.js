@@ -55,6 +55,27 @@ exports.ImWorkingOnIt = function(req, res) {
 };
 
 
+///Lista las traducciones que he terminado
+exports.GetListTranslationDone = function(req, res) {
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var user_id = new ObjectId(req.user._id);
+
+    queueProcess.find({
+            IsReadyToTranslate: true,
+            UserTranslateid: user_id,
+            IsDoneTranslate: true
+        })
+        .populate('Menuid', 'files language mame')
+        .populate('Restaurantid')
+        .exec(function(err, ListqueueProcess) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, ListqueueProcess);
+        });
+};
+
+
 /*
 Actualiza la informacion de una traduccion
 */

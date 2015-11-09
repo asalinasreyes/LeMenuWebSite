@@ -23,8 +23,10 @@
                     </button>
                     <a href="{{getFilePath(translate)}}" ng-show="isFileCreated(translate)" target="_blank">
                         <i class="fa fa-download"></i></a>
+                    <button class="btn btn-warning" ng-show="translate.IsDoneTranslate" ng-click="viewTranslation(translate)"><i class="fa fa-eye"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
+    {{viewMenu }}
 </div>

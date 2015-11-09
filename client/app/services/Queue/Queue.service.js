@@ -26,6 +26,11 @@ angular.module('leMeNuApp')
                 method: 'GET',
                 url: '/api/queue/ImWorkingOnIt',
                 isArray: true
+            },
+            GetListTranslationDone: {
+                method: 'GET',
+                url: '/api/queue/GetListTranslationDone',
+                isArray: true
             }
         });
     });

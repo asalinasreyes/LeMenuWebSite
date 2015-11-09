@@ -4,7 +4,11 @@
     "empty": "",
     "home": {
         "h1home": "Una Solucion",
-        "h3home": "En Desarrollo"
+        "h3home": "En Desarrollo",
+        "header1":"Porque No todos tus clientes entienden tu Menu",
+        "header2":"",
+        "header3":"",
+        "header4":""
     },
     "navbar": {
         "lsignup": "Registrarme",
@@ -183,10 +187,12 @@
             "lnumberPage": "Numero Total de Paginas",
             "yourareBusy": "Tienes otra traduccion en proceso",
             "takesuccess": "Operacion Completada con existo!",
-            "btake": "Iniciar Traducción!"
+            "btake": "Iniciar Traducción!",
+            "doned":"Traducciones realizadas"
         },
         "navbartra": {
-            "workinProgress": "Traducciendo"
+            "workinProgress": "Traducciendo",
+            "mytranslation":"Mis Traducciones"
         },
         "edit": {
             "baddGroup": "Nueva seccion",

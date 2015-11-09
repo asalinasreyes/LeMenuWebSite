@@ -6,6 +6,11 @@ angular.module('leMeNuApp')
 			getFile: {
 				method: 'POST',
 				url: '/api/translationsowner/getFile'
+			},
+			viewTranslation: {
+				method: 'GET',
+				url: '/api/translationsowner/viewTranslation',
+				isArray: true
 			}
 		});
 	});

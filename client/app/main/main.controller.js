@@ -11,17 +11,24 @@ angular.module('leMeNuApp')
             }
         }
     })
-    .controller('MainCtrl', function($scope) {
-        $scope.myInterval = 5000;
-        var path = '/assets/images/staticname/';
-        $scope.slides = [{
-            image:path+'Menu_1.jpg',
-            header:'hadsfsdafasdf'
-        },{
-            image: path+'Menu_2.jpg',
-            header:'ad fasdf'
-        },{
-             image:path+'Menu_3.jpg',
-             header:'asd fsadfadfasdf  asd'
-        }];
-    });
+
+
+.controller('MainCtrl', function($scope, $translate) {
+
+    var lang = $translate.use() || 'es';
+    var pathAssets = '/assets/images/staticname/home/';
+    $scope.myInterval = 8000;
+    $scope.noWrapSlides = true;
+    $scope.slides = [{
+        image: pathAssets + '01LogoFull2.png',
+        text: 'home.header1'
+    }, {
+        image: pathAssets + '02.gif',
+        text: 'home.header1'
+    },{
+        image: pathAssets + lang + '/03.gif',
+        text: 'home.header1'
+    }];
+
+
+});

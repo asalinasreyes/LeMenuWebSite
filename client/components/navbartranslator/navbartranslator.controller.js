@@ -2,10 +2,6 @@
 
 angular.module('leMeNuApp')
   .controller('NavbarTranslatorCtrl', function($scope, $location,$filter, tmhDynamicLocale,$translate, Auth, ListAllow) {
-    $scope.menu = [{
-      'title': 'navbarowner.lhome',
-      'link': '/translator/list'
-    }];
 
     $scope.languageEnable = {};
     $scope.LanguagesAllow = ListAllow.LanguagesAllow;

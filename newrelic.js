@@ -20,6 +20,6 @@ exports.config = {
      * production applications.
      */
     level: 'info',
-    enabled:true
+    enabled:false
   }
 }

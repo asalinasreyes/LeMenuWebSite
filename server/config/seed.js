@@ -55,31 +55,28 @@ PriceList.create({
 });
 
 
-//console.log('*************************************************************')
-// Chile Traduccion Ingles Frances
-require('./seed1');
-//console.log('*************************************************************')
-    
+if (false) {
+    //console.log('*************************************************************')
+    // Chile Traduccion Ingles Frances
+    require('./seed1');
+    //console.log('*************************************************************')
 
 
-/* 
-Brasil Traduccion Ingles Frances
-*/
-var Brasil= require('./seed5');
-Brasil.index();
-Brasil.index();
-Brasil.index(["es","fr"]);
+    /* 
+    Brasil Traduccion Ingles Frances
+    */
+    var Brasil = require('./seed5');
+    Brasil.index();
+    Brasil.index();
+    Brasil.index(["es", "fr"]);
 
-
-//* Chile Traduccion Ingles Portugues
-require('./seed2');
-
-//* Chile Ingles Frances Sin Traduccion
-require('./seed3');
-
-//Menus Upload Sin Pagos No  Grupos
-require('./seed4');
-
+    //* Chile Traduccion Ingles Portugues
+    require('./seed2');
+    //* Chile Ingles Frances Sin Traduccion
+    require('./seed3');
+    //Menus Upload Sin Pagos No  Grupos
+    require('./seed4');
+}
 
 //Creacion de usuarios del Sistema
 require('./seedUsers');

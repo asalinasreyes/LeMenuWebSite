@@ -31,11 +31,12 @@ angular.module('leMeNuApp')
 
 
         $scope.saveItemMenu = function(data, id) {
-            console.log('guardando data', data);
-            Queue.SaveMenuAndItems({
+            var result = Queue.SaveMenuAndItems({
                 infomenuomenu: $scope.TranslateItem
-            }, function(itemsSave) {
+            }, function success() {
                 getInfoInprocess();
+            }, function err(err) {
+                console.log('error', err);
             });
         };
 
@@ -46,10 +47,13 @@ angular.module('leMeNuApp')
 
             Queue.SaveMenuAndItems({
                 infomenuomenu: TranslateItem
-            }, function(data) {
-                getInfoInprocess()
+            }, function success() {
+                getInfoInprocess();
+            }, function err(err) {
                 modalInstance.close();
+                console.log('error', err);
             });
+
         };
 
         $scope.addItemInGroud = function() {

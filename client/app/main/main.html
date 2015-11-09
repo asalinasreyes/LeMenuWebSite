@@ -1,16 +1,19 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div style="height: 405px">
-    <carousel interval="myInterval" disable-animation="true">
-        <slide ng-repeat="slide in slides" active="slide.active">
-            <img ng-src="{{slide.image}}" style="margin:auto;" class="carouselimage">
-            <div class="carousel-caption">
-                <h4>{{slide.header}}</h4>
-            </div>
-        </slide>
-    </carousel>
-</div>
+<section>
+    <div >
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+            <uib-slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" style="margin:auto; height=100% ">
+                <div class="carousel-caption">
+                    <h4>Slide {{$index}}</h4>
+                    <p>{{slide.text | translate }}</p>
+                </div>
+            </uib-slide>
+        </uib-carousel>
+    </div>
+</section>
 
-<footer class="footer">
+<footer >
     <div class="container">
         <p>Software desarollo por Alexis Salinas v0.0.1 |
             <a href="mail:as_asar@hotmail.com">as_asar@hotmail.com</a> |

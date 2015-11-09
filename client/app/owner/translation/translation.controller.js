@@ -2,8 +2,6 @@
 
 angular.module('leMeNuApp')
 	.controller('translationCtrl', function($scope, TranslationOwner) {
-
-
 		$scope.CreatedFiles = [];
 
 		TranslationOwner.query({}, function(data) {
@@ -11,7 +9,9 @@ angular.module('leMeNuApp')
 		});
 
 		$scope.download = function(restoInfo) {
-			TranslationOwner.getFile({restoInfo}, function(data) {
+			TranslationOwner.getFile({
+				restoInfo
+			}, function(data) {
 				$scope.CreatedFiles.push({
 					id: restoInfo._id,
 					language: restoInfo.LanguagesTo,
@@ -27,6 +27,18 @@ angular.module('leMeNuApp')
 				language: row.LanguagesTo
 			});
 			return filesExists.length > 0;
+		};
+
+		$scope.viewTranslation = function(restoInfo) {
+			var queryParams = {
+				queuedID: restoInfo._id,
+				Restaurantid: restoInfo.Restaurantid._id,
+				LanguagesTo: restoInfo.LanguagesTo
+			};
+
+			TranslationOwner.viewTranslation(queryParams, function(data) {
+				$scope.viewMenu = data;
+			});
 		};
 
 		$scope.getFilePath = function(row) {

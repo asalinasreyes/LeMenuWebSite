@@ -1,0 +1,21 @@
+
+    <table class="table table-hover">
+    <caption><h1> {{'translator.list.doned' | translate}} </h1></caption>
+        <thead>
+            <tr>
+                <th> {{'translator.list.lcreated' | translate}} </th>
+                <th> {{'translator.list.llangfrom' | translate}} </th>
+                <th> {{'translator.list.llangto' | translate}} </th>
+                <th> {{'translator.list.lnumberPage' | translate}} </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="queue in listTranslations">
+                <td>{{queue.Createdat}}</td>
+                <td>{{queue.LanguagesFrom | translate}} </td>
+                <td>{{queue.LanguagesTo | translate}}</td>
+
+                <td>{{queue.Menuid.files.length}}</td>
+            </tr>
+        </tbody>
+    </table>

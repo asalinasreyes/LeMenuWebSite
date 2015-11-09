@@ -33,7 +33,6 @@ module.exports = function(config) {
             'client/bower_components/AngularJS-Toaster/toaster.js',
             'client/bower_components/ng-file-upload/ng-file-upload.js',
             'client/bower_components/ng-file-upload-shim/ng-file-upload-shim.js',
-
             'client/bower_components/angular-mocks/angular-mocks.js',
             'client/app/app.js',
             'client/app/**/*.js',

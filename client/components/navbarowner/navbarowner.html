@@ -9,7 +9,7 @@
             </button>
             <a ui-sref="owner.resto.list" class="navbar-brand">LeMenu</a>
         </div>
-        <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+        <div uib-collapse ="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
                 <li> <a ui-sref="owner.resto.list" class="">{{'navbarowner.lmyrestaurants' | translate}}</a>
                 </li>
@@ -23,8 +23,8 @@
                     <p class="navbar-text">{{'navbarowner.lhello' | translate}} {{ getCurrentUser().name }}</p>
                 </li>
                 <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">{{'navbarowner.llogout' | translate}}</a></li>
-                <li dropdown keyboard-nav>
-                    <a href="#" dropdown-toggle class="languagesAllow">
+                <li uib-dropdown uib-keyboard-nav>
+                    <a href="#" uib-dropdown-toggle class="languagesAllow">
                         <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
                         <span class="fa fa-language fa-3x"></span></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="simple-btn-keyboard-nav">

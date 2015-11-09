@@ -2,8 +2,6 @@
 
 angular.module('leMeNuApp')
   .controller('NavbarCtrl', function ($scope, $location, $translate, $filter,tmhDynamicLocale, Auth, ListAllow) {
-    $scope.menu = [];
-
     $scope.languageEnable={};
     $scope.LanguagesAllow = ListAllow.LanguagesAllow;
     $scope.languageEnable = $filter('filter')(ListAllow.LanguagesAllow, { code: $translate.use() })[0];
@@ -12,6 +10,8 @@ angular.module('leMeNuApp')
     $scope.getcssFlag = 'flag-icon-' + $scope.languageEnable.flag;
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.isTranlator = Auth.isTranlator;
+    $scope.isOwner = Auth.isOwner;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
