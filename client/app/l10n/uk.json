@@ -1,6 +1,231 @@
 {
+	"required": "Mandatory Fields",
+	"terrormessage": "Error",
+	"empty": "",
 	"home": {
 		"h1home": "One Solution",
-		"h3home": "Work in progress!"
+		"h3home": "In Developement"
+	},
+	"navbar": {
+		"lsignup": "Register",
+		"llogin": "Enter",
+		"lhello": "Hello!",
+		"llogout": "Exit",
+		"lhome": "Home"
+	},
+	"navbarowner": {
+		"lsignup": "Sign up",
+		"llogin": "Enter",
+		"llogout": "Exit",
+		"lhello": "Hello!",
+		"lhome": "Home",
+		"ldashboard": "Desktop",
+		"lmyrestaurants": "My Restaurants",
+		"lmypays": "My Payments",
+		"translations": "Translations"
+	},
+	"account": {
+		"login": {
+			"title": "Sign in",
+			"lemail": "Enter your email",
+			"lpassword": "Complete password",
+			"phemail": "Your Email yourEmail@dominio.com",
+			"phpassword": "Your  password",
+			"lrequireds": "Please enter your email and password.",
+			"lrequireemail": "Your email is invalid, please verify",
+			"bsubmit": "Enter",
+			"register": "Register",
+			"fblogin": "Sign in with Facebook",
+			"gmlogin": "Sign in with Google+"
+		},
+		"signup": {
+			"title": "Sign in",
+			"yourname": "Your name",
+			"phyourname": "Enter full name",
+			"lrequirename": "Your name is mandatory",
+			"lemailwrong": "Your email is invalid, please verify",
+			"lemail": "Enter your email",
+			"lpassword": "Enter your password",
+			"lpasswordreq3": " The length must be between three characters. ",
+			"phemail": " Your email yourEmail@dominio.com  ",
+			"phpassword": " Your password ",
+			"bsubmit": "Enter",
+			"register": "Register",
+			"fblogin": "Sign in with Facebook",
+			"gmlogin": "Sign in with Google+"
+		}
+	},
+	"myresto": {
+		"badd": "Add",
+		"edit": {
+			"ltitle": "Edit"
+		},
+		"new": {
+			"ltitle": "New Restaurant",
+			"lname": "Name",
+			"phnameresto": "Full name of restaurant",
+			"laddress": "Address",
+			"phaddress": "Street number city, country",
+			"lcountry": "Country",
+			"phcountry": "Select country",
+			"lcity": "City",
+			"phcity": "Enter City",
+			"llangbase": "Native language",
+			"phlangbase": "Complete native language",
+			"lgoogleurl": "Url Google Map",
+			"bback": "Go Back",
+			"save": "Save",
+			"lfieldrequired": "Mandatory Field",
+			"lemailcontact": "Email Info",
+			"phemailcontact": "Email contact",
+			"lurllogo": "Url Logo",
+			"phurllogo": "Full Url logo",
+			"lurlsite": "Url Restaurant",
+			"phurlsite": "Url site"
+		},
+		"list": {
+			"ltitle": "Menus created",
+			"bedit": "Restaurant Info",
+			"bpaypal": "Pay with Paypal",
+			"badd": "Add",
+			"baddmenu": "Add Menu",
+			"blistmenu": "List Menu",
+			"boptions": "Options"
+		}
+	},
+	"menu": {
+		"badd": "Add Menu",
+		"edit": {
+			"ltitle": "Edit Menu",
+			"lname": "Menu Name",
+			"phname": "Summer Menu 2015",
+			"bupload": "Upload Image",
+			"bsave": "Save",
+			"lproccesing": "Uploading Image to Server",
+			"llangallow": "Translate to"
+		},
+		"new": {
+			"ltitle": "Edit Menu",
+			"lname": "Menu Name",
+			"phname": "Automm Menu 2015",
+			"bupload": "Upload Image",
+			"bsave": "Save",
+			"lproccesing": "Uploading Image to Server",
+			"llangallow": "Translate to"
+		},
+		"list": {
+			"ltitle": "Menus in Restaurant",
+			"battachfiles": "Attach files",
+			"bcountfiles": "Qty of Files",
+			"empty": "No menu exists...lets create one",
+			"bedit": "Edit",
+			"bpay": "Pay"
+		}
+	},
+	"preinvoice": {
+		"invoice": "Payment charge",
+		"from": "Under the name of",
+		"paymethod": "Payment Method",
+		"date": "Date",
+		"descripcions": "Detail of charge",
+		"item": "Description",
+		"price": "Unit Price",
+		"qty": "Quantity",
+		"linetotal": "Total",
+		"date": "Date of Payment",
+		"lproccesing": "Processing Payment"
+	},
+	"payment": {
+		"list": {
+			"hdatecreatepay": "Date of Payment",
+			"hdatecreatemenu": "Date of Menu",
+			"hdescription": "Description",
+			"hstatus": "Status",
+			"hamount": "Amount",
+			"translate": "Translate to",
+			"numberpage": "Pages",
+			"to": "to"
+		}
+	},
+	"admin": {
+		"navbar": {
+			"adminuser": "Users",
+			"dashboard": "dashboard"
+		},
+		"newtranslator": {
+			"title": "New Translator",
+			"yourname": "Name",
+			"phyourname": "Complete full name",
+			"lrequirename": "Name is mandatory",
+			"lemailwrong": "The email is incorrect, please validate",
+			"lemail": "Complete email",
+			"lpassword": "Complete password",
+			"lpasswordreq3": "The length must be between three characters",
+			"phemail": "Email Translator email@dominio.com",
+			"phpassword": "Password",
+			"bsubmit": "Create",
+			"msgSuccess": "Created User",
+			"msgError": "Error occurred"
+		},
+		"edittranslator": {
+			"msgSuccess": "Updated Translator",
+			"bsubmit": "Update"
+		}
+	},
+	"translator": {
+		"list": {
+			"lcreated": "Created",
+			"llangfrom": "Translate from",
+			"llangto": "Translate to",
+			"llistLang": "Selected Language Details",
+			"lnumberPage": "Number of total pages",
+			"yourareBusy": "You have another translation in process",
+			"takesuccess": "Succesfull Complete Operation!",
+			"btake": "Start Translation"
+		},
+		"navbartra": {
+			"workinProgress": "Translating"
+		},
+		"edit": {
+			"baddGroup": "New section",
+			"beditGroup": "Edit",
+			"bdelGroup": "Delete",
+			"bsaveGroup": "Save",
+			"bcancelGroup": "Cancel",
+			"hsections": "Menu sections",
+			"lnamesection": "Sections names",
+			"bback": "Go back",
+			"bnew": "Add"
+		},
+		"newItemMenu": {
+			"pNameItemMenu": "Plate name",
+			"pDescriptionItemMenu": "Plate description",
+			"pDescriptionItemsItemMenu": "Plate Composition",
+			"pPriceItemsItemMenu": "Prices"
+		}
+	},
+	"errores": {
+		"emailalreayinuse": "Email Created"
+	},
+	"success": "Succesful Payment",
+	"pending-paypal": "Pending Payment",
+	"cancel": "Cancelled payment",
+	"es": "Spanish",
+	"fr": "French",
+	"en": "English",
+	"us": "English",
+	"pt": "Portuguese",
+	"br": "Portuguese",
+	"cl": "Chilean",
+	"translation": {
+		"list": {
+			"menuname": "Menu",
+			"restoname": "Restaurant",
+			"languageto": "Translation to ",
+			"IsDoneTranslate": "Complete",
+			"StartTranslate": "Initial Date",
+			"EndTranslate": "Finish Date",
+			"makefile": "Create File"
+		}
 	}
 }

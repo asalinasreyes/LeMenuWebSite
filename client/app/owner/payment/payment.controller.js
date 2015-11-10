@@ -40,11 +40,9 @@ angular.module('leMeNuApp')
                     var redirectUrl = response.data.redirectUrl;
                     window.location = redirectUrl;
                 }, function(response) {
-                    console.log('error ', response);
-                    if (response.status == 500) {
+                    if (response.status == 503) {
                         $scope.showError = true;
-                        console.log('error en pago, tipo no reconocido', response.data.type);
-                    };
+                    }
                 });
         };
 

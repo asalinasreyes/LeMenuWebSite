@@ -1,7 +1,233 @@
 {
-	"home": {
-		"h1home": "Uma Solução",
-		"h3home": "em desenvolvimento"
-	}
+    "required": "Campo Obrigatório",
+    "terrormessage": "Erro",
+    "empty": "",
+    "home": {
+        "h1home": "Uma solução",
+        "h3home": "Em desenvolvimento"
+    },
+    "navbar": {
+        "lsignup": "Cadastrar-me",
+        "llogin": "Acessar",
+        "lhello": "Olá!",
+        "llogout": "Sair",
+        "lhome": "Inicio"
+    },
+    "navbarowner": {
+        "lsignup": "Cadastrar-me",
+        "llogin": "Acessar",
+        "llogout": "Sair",
+        "lhello": "Olá!!",
+        "lhome": "Inicio",
+        "ldashboard": "Escritorio",
+        "lmyrestaurants": "Meus Restaurantes",
+        "lmypays": "Meus Pagamentos",
+        "translations": "Traduções"
+    },
+    "account": {
+        "login": {
+            "title": "Inicio sesion",
+            "lemail": "Digite seu email",
+            "lpassword": "Digite sua senha",
+            "phemail": " Seu email SeuEmail@dominio.com",
+            "phpassword": " Sua senha",
+            "lrequireds": "digite seu endereço de e-mail e senha",
+            "lrequireemail": "O email registrado está incorreto",
+            "bsubmit": "Acessar",
+            "register": "Cadastrar-se",
+            "fblogin": "Conectar com Facebook",
+            "gmlogin": "Conectar com Google+"
+        },
+        "signup": {
+            "title": "Início de sessão",
+            "yourname": "Seu nome",
+            "phyourname": "digite seu nome completo",
+            "lrequirename": "Tu nombre es obligatorio",
+            "lemailwrong": "El email parece incorrecto, favor validar",
+            "lemail": "Complete su Email",
+            "lpassword": "Complete password",
+            "lpasswordreq3": "Sua senha deve ter pelo menos 3 caracteres",
+            "phemail": " Seu email yourEmail@dominio.com ",
+            "phpassword": " Sua senha ",
+            "bsubmit": "Acessar",
+            "register": "Cadastrar-se",
+            "fblogin": "Conectar com Facebook",
+            "gmlogin": "Conectar com Google+"
+        }
+    },
+    "myresto": {
+        "badd": "Agregar",
+        "edit": {
+            "ltitle": "Adicionar"
+        },
+        "new": {
+            "ltitle": "Novo Restaurante",
+            "lname": "Nome",
+            "phnameresto": "Nome completo do restaurante",
+            "laddress": "Endereço",
+            "phaddress": "Rua numero cidade, pais",
+            "lcountry": "Pais",
+            "phcountry": "Selecione Pais",
+            "lcity": "Cidade",
+            "phcity": "Digite o nome de sua cidade ",
+            "llangbase": "Língua materna",
+            "phlangbase": "Por favor indique sua língua materna",
+            "lgoogleurl": "Url Google Map",
+            "bback": "Voltar",
+            "save": "Salvar",
+            "lfieldrequired": "Campo obrigatorio ",
+            "lemailcontact": "Email Info",
+            "phemailcontact": "Email Contacto Restaurante",
+            "lurllogo": "URL LOGO",
+            "phurllogo": "URL ao logo",
+            "lurlsite": "Url Restaurante",
+            "phurlsite": "URL website"
 
+        },
+        "list": {
+            "ltitle": "Menus criados",
+            "bedit": "Info Restaurante",
+            "bpaypal": "Complete o pagamento com PayPal ",
+            "badd": "Adicionar um",
+            "baddmenu": "Adicionar cardápios",
+            "blistmenu": "Lista de cardápios",
+            "boptions": "Opções"
+        }
+    },
+    "menu": {
+        "badd": "Adicionar cardápio",
+        "edit": {
+            "ltitle": "Edição do cardápio",
+            "lname": "Nome do Cardápio",
+            "phname": "Exemplo: Menu de Verão 2015. Menu de Outono ",
+            "bupload": "Subir imagem ",
+            "bsave": "Salvar",
+            "lproccesing": "subindo imagem ao servidor",
+            "llangallow": "Traducir a "
+        },
+        "new": {
+            "ltitle": "Edição do cardápio",
+            "lname": "Nome do Cardápio",
+            "phname": "Exemplo: Menu de Verão 2015. Menu de Outono ",
+            "bupload": "Subir imagem",
+            "bsave": "Salvar",
+            "lproccesing": "Subindo imagem ao servidor",
+            "llangallow": "Traduzir a "
+        },
+        "list": {
+            "ltitle": "Cardápio em restaurantes ",
+            "battachfiles": "Anexar arquivos",
+            "bcountfiles": "Quantidade de arquivos",
+            "empty": "Não existe um menu vamos criar um",
+            "bedit": "Editar",
+            "bpay": "Pagar"
+        }
+    },
+    "preinvoice": {
+        "invoice": "Detalhe cobro ",
+        "from": "Faturar a :",
+        "paymethod": "Métodos de pagamento:",
+        "date": "Data:",
+        "descripcions": "Detalhe cobro ",
+        "item": "Descripción",
+        "price": "Precio Unitario",
+        "qty": "Cantidad",
+        "linetotal": "Total",
+        "date": "Fecha Pago",
+        "lproccesing": "Procesando Pago"
+    },
+    "payment": {
+        "list": {
+            "hdatecreatepay": "Fecha Pago",
+            "hdatecreatemenu": "Fecha Menu",
+            "hdescription": "Descripción",
+            "hstatus": "Estado",
+            "hamount": "Monto",
+            "translate": "Traducción de ",
+            "numberpage": "pagina(s)",
+            "to": "a"
+
+        }
+    },
+    "admin": {
+        "navbar": {
+            "adminuser": "Usuarios",
+            "dashboard": "dashboard"
+        },
+        "newtranslator": {
+            "title": "Novo tradutor",
+            "yourname": "Nome ",
+            "phyourname": "Completar con el nombre completo",
+            "lrequirename": "O  nome é obrigatório",
+            "lemailwrong": "El email parece incorrecto, favor validar",
+            "lemail": "Complete el Email",
+            "lpassword": "Complete password",
+            "lpasswordreq3": "Largo minimo 3 characteres",
+            "phemail": " Email Tradutor Email@dominio.com ",
+            "phpassword": " Asignar senha",
+            "bsubmit": "Criar",
+            "msgSuccess": "usuário criado",
+            "msgError": "Se produjo un error"
+        },
+        "edittranslator": {
+            "msgSuccess": "Tradutor Atualizado",
+            "bsubmit": "Atualizar"
+        }
+    },
+    "translator": {
+        "list": {
+            "lcreated": "Criando",
+            "llangfrom": "Traduzir desde",
+            "llangto": "Traduzir a",
+            "llistLang": " Detalhe dos idiomas selecionados",
+            "lnumberPage": "Numero Total de Paginas",
+            "yourareBusy": "Tienes otra traduccion en proceso",
+            "takesuccess": "Operacion Completada con exito!",
+            "btake": "Iniciar Traduzão!"
+        },
+        "navbartra": {
+            "workinProgress": "Traduzindo"
+        },
+        "edit": {
+            "baddGroup": "Nova seção",
+            "beditGroup": "Editar",
+            "bdelGroup": "Apagar",
+            "bsaveGroup": "Salvar",
+            "bcancelGroup": "Cancelar",
+            "hsections": "Seções do cardápio",
+            "lnamesection": "Nome da seção",
+            "bback": "Voltar",
+            "bnew": "Adicionar"
+        },
+        "newItemMenu": {
+            "pNameItemMenu": "Nome do prato",
+            "pDescriptionItemMenu": "Descrição do prato",
+            "pDescriptionItemsItemMenu": "Composição do prato ",
+            "pPriceItemsItemMenu": "Preços"
+        }
+    },
+    "errores": {
+        "emailalreayinuse": "O email especificado ja foi criado"
+    },
+    "success": "Seu pagamento foi concluído com sucesso",
+    "pending-paypal": "Pagamento PayPal pendiente",
+    "cancel": "Pagamento não realizado",
+    "es": "Espanhol",
+    "fr": "Francês",
+    "en": "Inglês",
+    "us": "Inglês",
+    "pt": "Português",
+    "br": "Português",
+    "cl": "Chileno",
+    "translation": {
+        "list": {
+            "menuname": "Cardápio",
+            "restoname": "Restaurante",
+            "languageto": "Tradução ",
+            "IsDoneTranslate": "completada",
+            "StartTranslate": "Data de início",
+            "EndTranslate": "Data de término ",
+            "makefile": "Criar arquivo"
+        }
+    }
 }

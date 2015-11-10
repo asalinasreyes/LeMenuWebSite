@@ -5,14 +5,22 @@ angular.module('leMeNuApp')
         $scope.ListRestaurants = [];
         $scope.SelectedRestaurant = [];
 
+        $scope.firstTime = true;
+
         $scope.goNew = function() {
             $state.go('owner.resto.new');
         };
+
+        $scope.firstTimeClass =  'listrestofirsttime'; 
 
         $scope.GetListRestaurants = function() {
             Restaurant.query({}, function(listrestaurants) {
                 $scope.ListRestaurants = listrestaurants;
                 RestaurantMenu.query({}, function(listmenu) {
+                    if (listmenu.length > 0) {
+                        $scope.firstTime = false;
+                        $scope.firstTimeClass =  'listresto'; 
+                    }
                     $scope.ListRestaurants.forEach(function(oneThis) {
                         oneThis.ListMenu = $filter('filter')(listmenu, {Restaurantid: oneThis._id});;
                     });
@@ -37,8 +45,9 @@ angular.module('leMeNuApp')
         };
         $scope.oneImage = function(resto) {
             var defaultImgLogo = '../assets/images/staticname/yourLogo.png';
-            if (resto.imglogo)
-                defaultImgLogo = resto.imglogo;
+            if (resto.urllogo){
+                defaultImgLogo = resto.urllogo;
+            }
             return defaultImgLogo;
         };
 
