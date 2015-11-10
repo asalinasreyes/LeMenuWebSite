@@ -34,7 +34,7 @@ angular.module('leMeNuApp')
 
             $translate.use(selectLanguage.code);
 
-            //$window.location.reload();
+            $window.location.reload();
         };
 
         $scope.isActive = function(route) {
