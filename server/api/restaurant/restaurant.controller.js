@@ -43,6 +43,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
 
     req.body.userid = req.user._id;
+    req.body.country = req.body.country.toLowerCase(); 
     Restaurant.create(req.body, function(err, Restaurant) {
         if (err) {
             return handleError(res, err);
@@ -67,6 +68,8 @@ exports.update = function(req, res) {
         delete req.body._id;
     }
 
+
+
     Restaurant.findById(req.params.id, function(err, Restaurant) {
         if (err) {
             return handleError(res, err);
@@ -74,6 +77,8 @@ exports.update = function(req, res) {
         if (!Restaurant) {
             return res.send(404);
         }
+        req.body.country = req.body.country.toLowerCase(); 
+        
         var updated = _.extend(Restaurant, req.body);
         updated.save(function(err) {
             if (err) {
