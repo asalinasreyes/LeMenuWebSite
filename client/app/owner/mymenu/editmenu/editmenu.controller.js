@@ -46,9 +46,7 @@ angular.module('leMeNuApp')
         $scope.cartMenuSelected.files = $scope.listFilesPhotoUpload;
         RestaurantMenu.PUT($scope.cartMenuSelected, function(info) {
             $scope.cartMenuSelected = {};
-            $state.go('owner.resto.list', {}, {
-                reload: true
-            });
+            $state.go('owner.resto.list', {}, {reload: true});
         });
     };
 
@@ -66,13 +64,21 @@ angular.module('leMeNuApp')
                 }).progress(function(evt) {
                     var filename = evt.config.file.name;
                     $scope.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    $scope.isUploading = true;
+                    if ($scope.progressPercentage >= 100) {
+                        $scope.isUploading = false;
+                    } else {
+                        $scope.isUploading = true;
+                    }
                 }).success(function(data, status, headers, config) {
                     $scope.progressPercentage = '';
                     modalInstance.close();
                     if (status == 200) {
                         $scope.isUploading = false;
-                        $scope.listFilesPhotoUpload.push(data);
+                        try {
+                            $scope.listFilesPhotoUpload.push(data);
+                        } catch (e) {
+
+                        }
 
                     } else {
 

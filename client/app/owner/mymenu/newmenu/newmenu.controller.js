@@ -53,7 +53,12 @@ angular.module('leMeNuApp')
                 }).progress(function(evt) {
                     var filename = evt.config.file.name;
                     $scope.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    $scope.isUploading = true;
+                    if ($scope.progressPercentage>=100) {
+                        $scope.isUploading = false;
+                    }else{
+                        $scope.isUploading = true;
+                    }
+                    
                 }).success(function(data, status, headers, config) {
                     $scope.progressPercentage = '';
                     modalInstance.close();

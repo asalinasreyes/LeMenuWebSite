@@ -16,32 +16,27 @@ var PriceListModel = require('../price.model');
 paypal.configure(config.paypal);
 
 
+var ALL_PROCESS_FAKE = true;
+
+
 exports.startPayment = function(req, res) {
     if (req.body.methodpayment != 'paypal') {
         res.send(500, {
             'type': 'paymentNotAllow'
         });
     }
-
-
     var user_id = new ObjectId(req.body.user._id);
     var MenuID = new ObjectId(req.body.menuid);
     var restaurant_id = new ObjectId(req.body.Restaurantid);
     var order_id = uuid.v1();
-
-
     var paymentOrder = new Payment({
         order_id: order_id,
         userid: user_id,
         Restaurantid: restaurant_id,
         menuid: MenuID
     });
-
-    console.log('paypal config', config.paypal);
     var cancelUrl = config.paypal.cancel_url + order_id;
     var successUrl = config.paypal.return_url + order_id;
-
-
 
     PriceListModel.findOne({}, function(err, PriceList) {
         if (err) {
@@ -64,7 +59,6 @@ exports.startPayment = function(req, res) {
         }
 
         MenuModel.findById(MenuID, function(err, MenuInformation) {
-
             if (!MenuInformation) {
                 return res.send(500, {
                     status: 'No Menu Encontrado'
@@ -80,41 +74,17 @@ exports.startPayment = function(req, res) {
             };
 
             var paypalPayment = paypalJsonPayment(cancelUrl, successUrl, InformationPayment.TotalPrice, MenuInformation.language.toString());
-            console.log('paypalPayment', paypalPayment);
             paymentOrder.amount = InformationPayment.TotalPrice;
             paymentOrder.state = 'pending-paypal';
             paymentOrder.save(function(err) {
                 if (err) {
                     res.send(500, err);
                 } else {
-                    paypal.payment.create(paypalPayment, {},
-                        function(err, data) {
-                            if (err) {
-                                res.status(503).send({
-                                    description: 'Error setting paypal payment',
-                                    error: err
-                                });
-                            } else {
-                                if (data && data.links.length > 0) {
-                                    var link = data.links;
-                                    var urlFromPaypalApproval_url = '';
-                                    for (var i = 0; i < link.length; i++) {
-                                        console.log('link paypal', i, link[i].rel, link[i].href);
-                                        if (link[i].rel === 'approval_url') {
-                                            urlFromPaypalApproval_url = link[i].href
-                                        }
-                                    }
-                                    res.send({
-                                        redirectUrl: urlFromPaypalApproval_url
-                                    });
-                                }else{
-                                   res.status(503).send({
-                                    description: 'Error setting paypal payment',
-                                    error: 'OFFLINE'
-                                }); 
-                                }
-                            }
-                        });
+                    if (ALL_PROCESS_FAKE) {
+                        GoPaypalFake(paypalPayment, res, req, order_id);
+                    }else{
+                        GoPaypal();
+                    }
                 }
             });
         });
@@ -123,20 +93,21 @@ exports.startPayment = function(req, res) {
 
 
 exports.orderExecute = function(req, res) {
+    console.log('parametros OrderExecute', req);
     Payment.findOne({
         order_id: req.query.order_id
     }, function(err, paymentOrderSuccess) {
-        console.log('encontro la informacion de pago', paymentOrderSuccess);
-        if (err) return res.send(500, {
-            error: err
-        });
+        if (err) {
+            return res.send(500, {
+                error: err
+            });
+        }
 
         paymentOrderSuccess.state = 'success';
         paymentOrderSuccess.created_success = new Date();
         paymentOrderSuccess.save(function(err) {
 
         });
-        console.log('paymentOrderSuccess', paymentOrderSuccess);
 
         MenuModel.findOne({
                 _id: paymentOrderSuccess.menuid
@@ -175,12 +146,15 @@ exports.orderExecute = function(req, res) {
                         };
                         queueTranslate.push(translateItemQueue);
                     });
-                    console.log('pago QueueProcess');
                     QueueProcess.create(queueTranslate, function(err) {
                         if (err) {
                             res.send(500, err);
                         }
-                        res.redirect('/owner/payment/success');
+                        if (ALL_PROCESS_FAKE) {
+                            res.redirect('/owner/payment/success');
+                        }else{
+                            res.redirect('/owner/payment/success');
+                        }
                     });
                 });
             });
@@ -189,14 +163,17 @@ exports.orderExecute = function(req, res) {
 };
 
 exports.cancelUrl = function(req, res) {
-    console.log('llamando a api paypal order callback orderExecute');
     Payment.findOne({
         order_id: req.query.order_id
     }, function(err, paymentOrderSuccess) {
         paymentOrderSuccess.state = 'cancel';
         paymentOrderSuccess.created_cancel = new Date();
         paymentOrderSuccess.save();
-        res.redirect('/owner/payment/cancel');
+        if (ALL_PROCESS_FAKE) {
+            res.redirect('/owner/payment/cancel');
+        }else{
+            res.redirect('/owner/payment/cancel');
+        }
     });
 
 };
@@ -220,4 +197,42 @@ function paypalJsonPayment(cancelUrl, successUrl, price, description) {
         }]
     };
     return paypalPayment;
-}
+};
+
+
+function GoPaypalFake(paypalPayment, res, req, order_id) {
+    paypalPayment.redirectUrl = '/fakePAYPAL';
+    paypalPayment.TOKEN_Transaction = order_id;
+    return res.status(200).json(paypalPayment);
+
+};
+
+function GoPaypal(paypalPayment, res, req) {
+    paypal.payment.create(paypalPayment, {},
+        function(err, data) {
+            if (err) {
+                res.status(503).send({
+                    description: 'Error setting paypal payment',
+                    error: err
+                });
+            } else {
+                if (data && data.links.length > 0) {
+                    var link = data.links;
+                    var urlFromPaypalApproval_url = '';
+                    for (var i = 0; i < link.length; i++) {
+                        if (link[i].rel === 'approval_url') {
+                            urlFromPaypalApproval_url = link[i].href
+                        }
+                    }
+                    res.send({
+                        redirectUrl: urlFromPaypalApproval_url
+                    });
+                } else {
+                    res.status(503).send({
+                        description: 'Error setting paypal payment',
+                        error: 'OFFLINE'
+                    });
+                }
+            }
+        });
+};

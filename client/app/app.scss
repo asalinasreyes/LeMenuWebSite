@@ -33,3 +33,40 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding-bottom: 0px !important;
     padding-top: 0px !important;
 }
+
+
+
+.fakePAYPAL  .btn-xlarge{
+  position: relative;
+  vertical-align: center;
+  margin: 30px;
+  height: 100x;
+  padding: 48px 48px;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-bottom: 3px solid #9FE8EF;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -3px #9FE8EF;
+  box-shadow: inset 0 -3px #9FE8EF;
+}
+.fakePAYPAL  .success{
+  background: green;
+}
+
+.fakePAYPAL  .cancel{
+  background: red;
+}
+
+
+.fakePAYPAL  .btn-xlarge:active {
+  top: 2px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.fakePAYPAL  .btn-xlarge:hover {
+  background: #45E1E8;
+}

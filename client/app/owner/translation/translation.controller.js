@@ -10,15 +10,20 @@ angular.module('leMeNuApp')
 
 		$scope.download = function(restoInfo) {
 			TranslationOwner.getFile({
-				restoInfo
-			}, function(data) {
-				$scope.CreatedFiles.push({
-					id: restoInfo._id,
-					language: restoInfo.LanguagesTo,
-					fullpath: data.fullpath,
-					filename: data.name
+					restoInfo
+				},
+				function success(data) {
+					var inforesult = {
+						id: restoInfo._id,
+						language: restoInfo.LanguagesTo,
+						fullpath: data.fullpath,
+						filename: data.name
+					};
+					$scope.CreatedFiles.push(inforesult);
+				},
+				function err(err) {
+
 				});
-			});
 		};
 
 		$scope.isFileCreated = function(row) {
@@ -36,9 +41,14 @@ angular.module('leMeNuApp')
 				LanguagesTo: restoInfo.LanguagesTo
 			};
 
-			TranslationOwner.viewTranslation(queryParams, function(data) {
-				$scope.viewMenu = data;
-			});
+			TranslationOwner.viewTranslation(queryParams,
+				function success(data) {
+					$scope.viewMenu = data;
+				},
+				function err(err) {
+
+				});
+
 		};
 
 		$scope.getFilePath = function(row) {
@@ -50,9 +60,9 @@ angular.module('leMeNuApp')
 				});
 				if (filesExists.length > 0) {
 					filename = filesExists[0].fullpath;
-				};
+				}
 			}
 			return filename;
-		}
+		};
 
 	});

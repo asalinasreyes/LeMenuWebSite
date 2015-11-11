@@ -23,7 +23,7 @@ angular.module('leMeNuApp')
                     $scope.workingOver.ItemsInMenu = [];
                 };
             });
-        }
+        };
 
         $scope.goBack = function() {
             $window.history.back();

@@ -111,10 +111,6 @@ exports.viewTranslation = function(req, res) {
     var LanguagesTo = req.query.LanguagesTo;
     var user_id = new ObjectId(req.user._id);
 
-        console.log('queuedID: ', req.query.queuedID);
-    console.log('Restaurantid: ', req.query.Restaurantid);
-    console.log('LanguagesTo: ', req.query.LanguagesTo);
-
 
     /// Busco Resto
     Restaurant.findOne({

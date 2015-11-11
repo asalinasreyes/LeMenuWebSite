@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('PaymentownerCtrl', function($scope, $http, myCache, Auth, $modal, InvoiceInfo) {
+    .controller('PaymentownerCtrl', function($scope, $http, myCache, Auth, $modal, InvoiceInfo, $state) {
         $scope.PriceSubTotal = 12;
         $scope.RestaurantSelectedInfo = myCache.get("oneresto");
         $scope.showError = false;
         $scope.getCurrentUser = Auth.getCurrentUser;
+        var modalInstance=null;
 
         if ($scope.RestaurantSelectedInfo) {
             if ($scope.RestaurantSelectedInfo.ItemMenuSelected != undefined) {
@@ -37,8 +38,18 @@ angular.module('leMeNuApp')
             loadpopup();
             $http.post('api/payment/paypal/startPayment', $scope.infoInformation)
                 .then(function(response) {
-                    var redirectUrl = response.data.redirectUrl;
-                    window.location = redirectUrl;
+                    if (response.data && response.data.redirectUrl) {
+                        if (response.data.redirectUrl == '/fakePAYPAL') {
+                            myCache.set("fakePAYPAL",response.data);
+                            setTimeout(function(){
+                                modalInstance.close();
+                            $state.go('fakePAYPAL');
+                            }, 3000);
+                        } else {
+                            var redirectUrl = response.data.redirectUrl;
+                            window.location = redirectUrl;
+                        }
+                    }
                 }, function(response) {
                     if (response.status == 503) {
                         $scope.showError = true;
@@ -47,7 +58,7 @@ angular.module('leMeNuApp')
         };
 
         function loadpopup() {
-            var modalInstance = $modal.open({
+            modalInstance = $modal.open({
                 templateUrl: 'myModalContentPayment.html',
                 backdrop: 'static'
             });
