@@ -41,18 +41,18 @@ QueueProcess.find({}).remove(function() {
 
 
 PriceList.find({}).remove(function() {
-    //console.log('se borra lista de precio');
+
+    PriceList.create({
+        price: 11,
+        typeserviceid: '1',
+        typeservicedescription: 'todos',
+        validFrom: new Date(),
+        validTo: new Date()
+    }, function(err, data) {
+
+    });
 });
 
-PriceList.create({
-    price: 11,
-    typeserviceid: '1',
-    typeservicedescription: 'todos',
-    validFrom: new Date(),
-    validTo: new Date()
-}, function(err, data) {
-
-});
 
 
 if (false) {

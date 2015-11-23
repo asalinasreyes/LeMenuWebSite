@@ -11,6 +11,10 @@ angular.module('leMeNuApp')
 				method: 'GET',
 				url: '/api/translationsowner/viewTranslation',
 				isArray: true
+			},
+			ApprovedTranslation: {
+				method: 'POST',
+				url: '/api/translationsowner/ApprovedTranslation'
 			}
 		});
 	});

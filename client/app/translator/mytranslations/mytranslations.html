@@ -3,6 +3,7 @@
     <caption><h1> {{'translator.list.doned' | translate}} </h1> </caption>
         <thead>
             <tr>
+                <th>{{'translator.list.hTranslationNumber' | translate}}</th>
                 <th> {{'translator.list.lcreated' | translate}} </th>
                 <th> {{'translator.list.llangfrom' | translate}} </th>
                 <th> {{'translator.list.llangto' | translate}} </th>
@@ -11,6 +12,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="queue in listTranslations">
+            <td> {{'translator.list.TranslationNumber' | translate}} {{queue.TranslationNumber}} </td>
                 <td>{{queue.Createdat}}</td>
                 <td>{{queue.LanguagesFrom | translate}} </td>
                 <td>{{queue.LanguagesTo | translate}}</td>

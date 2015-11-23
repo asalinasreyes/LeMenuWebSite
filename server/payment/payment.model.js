@@ -1,12 +1,17 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema,
+     autoIncrement = require('mongoose-auto-increment');
+
+var config = require('../config/environment');
+var connection = mongoose.createConnection(config.mongo.uri);
+autoIncrement.initialize(connection);
+ 
 
 
 
 var PaymentSchema = new Schema({
-
   order_id: String,
   payment_id: String,
   state: String,
@@ -18,6 +23,11 @@ var PaymentSchema = new Schema({
   createdat: { type: Date, default: Date.now },
   created_success: Date,
   created_cancel: Date
+});
+
+PaymentSchema.plugin(autoIncrement.plugin, {
+  model: 'Payment',
+  field: 'InvoicesNumber'
 });
 
 

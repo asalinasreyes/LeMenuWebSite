@@ -50,6 +50,10 @@ function ReturnFakeImageProcess(req, res) {
   var NewStringName = uuid.v1() + '-' + filename;
   var pathBase = path.normalize(__dirname + '/../../..');
   var pathToDownload = '/client/assets/download/';
+  if (process.env.NODE_ENV=='production') {
+    pathToDownload = '/public/assets/download/';
+  }
+  
   var pathFolderDownloads = path.join(pathBase, pathToDownload, NewStringName);
 
   console.log('image desde ', file.path);

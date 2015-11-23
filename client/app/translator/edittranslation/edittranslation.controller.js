@@ -14,7 +14,6 @@ angular.module('leMeNuApp')
                 };
                 $scope.getcssFlag = 'flag-icon-' + $scope.TranslateItem.LanguagesTo;
                 $scope.selectedImage = $scope.TranslateItem.Menuid.files[0].url;
-                console.log('data menu en traduccion', data);
             }
         });
 

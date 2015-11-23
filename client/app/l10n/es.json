@@ -142,6 +142,7 @@
     },
     "payment": {
         "list": {
+            "hinvoiceNumber":"Numero Factura",
             "hdatecreatepay": "Fecha Pago",
             "hdatecreatemenu": "Fecha Menu",
             "hdescription": "Descripción",
@@ -149,7 +150,8 @@
             "hamount": "Monto",
             "translate": "Traducción de ",
             "numberpage": "pagina(s)",
-            "to": "a"
+            "to": "a",
+            "invoiceNumber":"Nno:"
 
         }
     },
@@ -188,7 +190,9 @@
             "yourareBusy": "Tienes otra traduccion en proceso",
             "takesuccess": "Operacion Completada con existo!",
             "btake": "Iniciar Traducción!",
-            "doned":"Traducciones realizadas"
+            "doned":"Traducciones realizadas",
+            "TranslationNumber":"Nno:",
+            "hTranslationNumber":"Numero Pedido"
         },
         "navbartra": {
             "workinProgress": "Traducciendo",
@@ -233,7 +237,9 @@
             "IsDoneTranslate": "Terminada",
             "StartTranslate": "Fecha Inicio",
             "EndTranslate": "Fecha Termino",
-            "makefile": "Crear Archivo"
+            "makefile": "Crear Archivo",
+            "ApprovedPublish":"Publicar",
+            "Addcomplaint":"Solicitar Correción"
         }
     }
 }

@@ -180,6 +180,7 @@ exports.FinnishedTranslation = function(req, res) {
         };
         menu.IsDoneTranslate = true;
         menu.EndTranslate = Date.now();
+        menu.OwnerApproved = false;
 
         menu.save(function(err) {
             if (err) {

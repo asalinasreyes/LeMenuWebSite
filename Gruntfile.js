@@ -239,7 +239,7 @@ module.exports = function(grunt) {
             '<%= yeoman.dist %>/public/{,*/}*.css',
             '<%= yeoman.dist %>/public/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
             '<%= yeoman.dist %>/public/assets/fonts/*',
-            '!<%= yeoman.dist %>/public/assets/images/staticname/**'
+            '!<%= yeoman.dist %>/public/assets/images/staticname/{,*/}*.*'
           ]
         }
       }
@@ -385,6 +385,11 @@ module.exports = function(grunt) {
           src: '**/*'
         }, {
           expand: true,
+          cwd: '<%= yeoman.client %>/assets/images/staticname/home/',
+          dest: '<%= yeoman.dist %>/public/assets/images/staticname/home/',
+          src: '**/*'
+        }, {
+          expand: true,
           cwd: '<%= yeoman.client %>/',
           dest: '<%= yeoman.dist %>/public/',
           src: 'google4f6022ebd0f73df0.html'
@@ -392,7 +397,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= yeoman.client %>/',
           dest: '<%= yeoman.dist %>/public/',
-          src: 'loaderio-996f22a5e4a56eaac0b5429c48be2d2d.txt'
+          src: 'loaderio-ad050e7bfb6b4bd1b2b61d4613d666d7.txt'
         }]
       },
       styles: {

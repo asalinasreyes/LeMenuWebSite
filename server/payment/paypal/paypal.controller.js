@@ -141,6 +141,7 @@ exports.orderExecute = function(req, res) {
                             LanguagesFrom: oneMenu.Restaurantid.language,
                             IsReadyToTranslate: false,
                             IsDoneTranslate: false,
+                            OwnerApproved:false,
                             Parentid: Parent._id,
                             IsParent: false
                         };

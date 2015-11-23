@@ -5,7 +5,7 @@ angular.module('leMeNuApp')
         $stateProvider
             .state('fakePAYPAL', {
                 url: '/fakePAYPAL',
-                templateUrl: 'app/Mocks/paypal/paypal.html',
+                templateUrl: 'app/mocks/paypal/paypalmock.html',
                 controller: 'PaypalFakeCtrl'
             });
     });

@@ -1,8 +1,13 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema, 
+    autoIncrement = require('mongoose-auto-increment');
 
+var config = require('../config/environment');
+var connection = mongoose.createConnection(config.mongo.uri);
+autoIncrement.initialize(connection);
+ 
 var ItemInMenuModellanguageSchema = new Schema({
 
     NameItemMenu: String,
@@ -76,7 +81,10 @@ var QueueProcessSchema = new Schema({
     },
     IsReadyToTranslate: Boolean,
     IsDoneTranslate: Boolean,
+    OwnerApproved:Boolean,
     IsParent: Boolean
 });
+
+QueueProcessSchema.plugin(autoIncrement.plugin, {model: 'QueueProcess',field: 'TranslationNumber'});
 
 module.exports = mongoose.model('QueueProcess', QueueProcessSchema);

@@ -44,7 +44,9 @@ exports.index = function(req, res) {
             IsReadyToTranslate: '',
             IsDoneTranslate: '',
             Menuid: '',
-            Restaurantid: ''
+            Restaurantid: '',
+            TranslationNumber: '',
+            OwnerApproved: ''
         };
 
         QueueTranslate.find(search, returnFields)
@@ -62,16 +64,11 @@ exports.index = function(req, res) {
 exports.getFile = function(req, res) {
 
     var ObjectId = require('mongoose').Types.ObjectId;
-    var queuedID = new ObjectId(req.body.restoInfo._id);
-    var Restaurantid = new ObjectId(req.body.restoInfo.Restaurantid._id);
-    var LanguagesTo = req.body.restoInfo.LanguagesTo;
+    var queuedID = new ObjectId(req.body._id);
+    var Restaurantid = new ObjectId(req.body.Restaurantid._id);
+    var LanguagesTo = req.body.LanguagesTo;
 
     var user_id = new ObjectId(req.user._id);
-
-    console.log('queuedID: ', req.body.restoInfo._id);
-    console.log('Restaurantid: ', req.body.restoInfo.Restaurantid._id);
-    console.log('LanguagesTo: ', req.body.restoInfo.LanguagesTo);
-
 
     /// Busco Resto
     Restaurant.findOne({
@@ -96,8 +93,10 @@ exports.getFile = function(req, res) {
             ProcessStringToText(filename, dataQueueTranslation.MenuDetail)
             var pathVirtual = '/assets/download/';
             res.status(200).json({
+                _id: queuedID,
                 name: filename,
-                fullpath: pathVirtual + filename
+                fullpath: pathVirtual + filename,
+                LanguagesTo: LanguagesTo
             });
         })
     });
@@ -137,6 +136,57 @@ exports.viewTranslation = function(req, res) {
         })
     });
 };
+
+
+exports.ApprovedTranslation = function(req, res) {
+
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var queuedID = new ObjectId(req.body._id);
+    var Restaurantid = new ObjectId(req.body.Restaurantid._id);
+    var OwnerApproved = req.body.OwnerApproved == true;
+    var LanguagesTo = req.body.LanguagesTo;
+
+    var user_id = new ObjectId(req.user._id);
+
+    /// Busco Resto
+    Restaurant.findOne({
+        'userid': user_id,
+        '_id': Restaurantid
+    }, function(err, restaurants) {
+        if (err) {
+            return handleError(res, err);
+        }
+        var nameResto = restaurants.name;
+        var searchQueue = {
+            _id: queuedID,
+            LanguagesTo: LanguagesTo
+        };
+        QueueTranslate.findOne(searchQueue, {
+            MenuDetail: ''
+        }, function(err, dataQueueTranslation) {
+            if (err) {
+                return handleError(res, err);
+            }
+            dataQueueTranslation.OwnerApproved = OwnerApproved;
+            dataQueueTranslation.save(function(err) {
+                if (err) {
+                    return handleError(res, err);
+                }
+                var filename = nameResto + '-' + LanguagesTo + '.txt';
+                ProcessStringToText(filename, dataQueueTranslation.MenuDetail)
+                var pathVirtual = '/assets/download/';
+                res.status(200).json({
+                    _id: queuedID,
+                    name: filename,
+                    fullpath: pathVirtual + filename,
+                    LanguagesTo: LanguagesTo
+                });
+            });
+        });
+    });
+};
+
+
 
 function handleError(res, err) {
     return res.send(500, err);
