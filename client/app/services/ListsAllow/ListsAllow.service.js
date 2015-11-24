@@ -26,12 +26,6 @@ angular.module('leMeNuApp')
 			flag: 'br',
 			code: 'pt',
 			locale: 'pt'
-		}, {
-			id: 4,
-			name: 'Chileno',
-			flag: 'cl',
-			code: 'cl',
-			locale: 'es'
 		}];
 	
 		return {

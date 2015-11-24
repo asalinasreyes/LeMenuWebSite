@@ -5,10 +5,10 @@
     "home": {
         "h1home": "Una Solucion",
         "h3home": "En Desarrollo",
-        "header1":"Porque No todos tus clientes entienden tu Menu",
-        "header2":"",
-        "header3":"",
-        "header4":""
+        "header1": "Porque No todos tus clientes entienden tu Menu",
+        "header2": "",
+        "header3": "",
+        "header4": ""
     },
     "navbar": {
         "lsignup": "Registrarme",
@@ -142,7 +142,7 @@
     },
     "payment": {
         "list": {
-            "hinvoiceNumber":"Numero Factura",
+            "hinvoiceNumber": "Numero Factura",
             "hdatecreatepay": "Fecha Pago",
             "hdatecreatemenu": "Fecha Menu",
             "hdescription": "Descripción",
@@ -151,7 +151,7 @@
             "translate": "Traducción de ",
             "numberpage": "pagina(s)",
             "to": "a",
-            "invoiceNumber":"Nno:"
+            "invoiceNumber": "Nno:"
 
         }
     },
@@ -183,20 +183,22 @@
     "translator": {
         "list": {
             "lcreated": "Creado",
-            "llangfrom": "Traducir desde",
-            "llangto": "Traducir A",
+            "llangfrom": "Desde",
+            "llangto": "A",
             "llistLang": "Detalle de Idiomas Seleccionados",
             "lnumberPage": "Numero Total de Paginas",
             "yourareBusy": "Tienes otra traduccion en proceso",
             "takesuccess": "Operacion Completada con existo!",
             "btake": "Iniciar Traducción!",
-            "doned":"Traducciones realizadas",
-            "TranslationNumber":"Nno:",
-            "hTranslationNumber":"Numero Pedido"
+            "doned": "Traducciones realizadas",
+            "TranslationNumber": "Nno:",
+            "hTranslationNumber": "Numero Pedido",
+            "htranslationInProcess":"Traduccion Pendiente de completar",
+            "hnamerestaurant":"Restaurante"
         },
         "navbartra": {
             "workinProgress": "Traducciendo",
-            "mytranslation":"Mis Traducciones"
+            "mytranslation": "Mis Traducciones"
         },
         "edit": {
             "baddGroup": "Nueva seccion",
@@ -228,7 +230,9 @@
     "us": "Inglés",
     "pt": "Portugués",
     "br": "Portugués",
-    "cl":"Shíleno",
+    "cl": "Shíleno",
+    "OK": "Aceptar",
+    "CANCEL": "Cancelar",
     "translation": {
         "list": {
             "menuname": "Menu",
@@ -238,8 +242,12 @@
             "StartTranslate": "Fecha Inicio",
             "EndTranslate": "Fecha Termino",
             "makefile": "Crear Archivo",
-            "ApprovedPublish":"Publicar",
-            "Addcomplaint":"Solicitar Correción"
+            "ApprovedPublish": "Publicar",
+            "UnApprovedPublish": "DesPublicar",
+            "Addcomplaint": "Solicitar Correción",
+            "haddComplaint": "Crear Observación",
+            "nostart":"No iniciada",
+            "inProcess":"En proceso de Traducción"
         }
     }
 }

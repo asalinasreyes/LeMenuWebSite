@@ -12,6 +12,11 @@ angular.module('leMeNuApp')
 				url: '/api/translationsowner/viewTranslation',
 				isArray: true
 			},
+			AddComplaint: {
+				method: 'GET',
+				url: '/api/translationsowner/AddComplaint',
+				isArray: false
+			},
 			ApprovedTranslation: {
 				method: 'POST',
 				url: '/api/translationsowner/ApprovedTranslation'

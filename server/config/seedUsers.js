@@ -14,11 +14,13 @@ User.create({
     translator.create({
         active: true,
         userid: usernew._id,
-        languages: ['es', 'en', 'pt', 'fr']
+        languages: ['es', 'en', 'pt', 'fr','us','br']
     }, function(err, newtranslator) {
-        //console.log('Traductor Creado', usernew, newtranslator);
+        
     })
 });
+
+
 
 var StringName = 'owner';
 var newUser = {

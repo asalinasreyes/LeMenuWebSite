@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('leMeNuApp')
-    .controller('translationCtrl', function($scope, TranslationOwner) {
+    .controller('translationCtrl', function($scope, TranslationOwner, $uibModal) {
         $scope.CreatedFiles = [];
 
         TranslationOwner.query({}, function(data) {
@@ -27,8 +27,19 @@ angular.module('leMeNuApp')
                 function err(err) {
 
                 });
-
         };
+
+        $scope.UnApprovedPublish = function(data) {
+            data.OwnerApproved = false;
+            TranslationOwner.ApprovedTranslation(data,
+                function success(dataanwser) {
+                    
+                },
+                function err(err) {
+
+                });
+        };
+        
 
         function SuccessDownload(data) {
             var inforesult = {
@@ -79,4 +90,59 @@ angular.module('leMeNuApp')
             return filename;
         };
 
+
+        $scope.open = function(translationComplaint) {
+            $scope.informationComplaint = translationComplaint;
+            var modalInstance = $uibModal.open({
+                templateUrl: 'Addcomplaint.html',
+                controller: 'ModalInstanceComplaintCtrl',
+                size: '',
+                resolve: {
+                    descripcionComplaint: function() {
+                        return $scope.descripcionComplaint;
+                    }
+                }
+            });
+            modalInstance.result.then(function(complaintText) {
+                var complaintInformation = {
+                    queuedID: $scope.informationComplaint._id,
+                    Restaurantid: $scope.informationComplaint.Restaurantid._id,
+                    LanguagesTo: $scope.informationComplaint.LanguagesTo,
+                    Complaint: complaintText,
+                    OwnerApproved: false
+                };
+
+                TranslationOwner.AddComplaint(complaintInformation,
+                    function success(data) {
+                        $scope.resultComplaint = data;
+                    },
+                    function err(err) {
+
+                    });
+
+            }, function() {
+                $scope.descripcionComplaint = '';
+            });
+        };
+    })
+    .controller('ModalInstanceComplaintCtrl', function($scope, $uibModalInstance) {
+
+        $scope.ok = function() {
+            $uibModalInstance.close($scope.descripcionComplaint);
+        };
+
+        $scope.cancel = function() {
+            $uibModalInstance.dismiss('cancel');
+        };
+
+        $scope.enableButtonOK = function() {
+            var isEnable = false;
+
+            if ($scope.descripcionComplaint) {
+                if ($scope.descripcionComplaint.length > 0) {
+                    isEnable = true;
+                }
+            }
+            return isEnable;
+        }
     });

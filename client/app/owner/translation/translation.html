@@ -3,8 +3,8 @@
         <thead>
             <tr>
                 <th>{{'translator.list.hTranslationNumber' | translate}}</th>
-                <th>{{'translation.list.menuname' | translate}} </th>
                 <th>{{'translation.list.restoname' | translate}} </th>
+                <th>{{'translation.list.menuname' | translate}} </th>
                 <th>{{'translation.list.languageto' | translate}} </th>
                 <th>{{'translation.list.StartTranslate' | translate}} </th>
                 <th>{{'translation.list.EndTranslate' | translate}} </th>
@@ -13,36 +13,55 @@
         </thead>
         <tbody>
             <tr ng-repeat="translate in ListTranslation">
-            <td> {{'translator.list.TranslationNumber' | translate}}   {{translate.TranslationNumber}} </td>
-                <td>{{translate.Menuid.name}} </td>
+                <td> {{'translator.list.TranslationNumber' | translate}} {{translate.TranslationNumber}} </td>
                 <td>{{translate.Restaurantid.name}} </td>
+                <td>{{translate.Menuid.name}} </td>
                 <td>{{translate.LanguagesTo | translate}} </td>
-                <td>{{translate.StartTranslate}} </td>
-                <td>{{translate.EndTranslate}} </td>
                 <td>
-                    
+                    <span ng-hide="translate.StartTranslate">{{'translation.list.nostart' | translate}}</span>
+                    {{translate.StartTranslate | date:'short'}} 
+                </td>
+                <td>
+                    <span ng-show="!translate.EndTranslate && !translate.StartTranslate">----</span>
+                    <span ng-show="!translate.EndTranslate && translate.StartTranslate">{{'translation.list.inProcess' | translate}}</span>
+                    {{translate.EndTranslate | date:'short'}} 
+                </td>
+                <td>
                     <button class="btn btn-success" ng-show="translate.IsDoneTranslate" ng-disabled="isFileCreated(translate)" ng-click="download(translate)">
                         <i class="fa fa-cog"></i>{{'translation.list.makefile' | translate}}
                     </button>
                     <a href="{{getFilePath(translate)}}" ng-show="isFileCreated(translate)" target="_blank">
                         <i class="fa fa-download"></i></a>
                     <button class="btn btn-warning" ng-show="translate.IsDoneTranslate" ng-click="viewTranslation(translate)"><i class="fa fa-eye"></i></button>
-
                     <div ng-show="translate.IsDoneTranslate">
-                        
-                    <button class="btn btn-alert" ng-hide="translate.OwnerApproved"  ng-click="ApprovedPublish(translate)">
-                        {{'translation.list.ApprovedPublish' | translate}}
-                    </button>
-
-                    <button class="btn btn-alert" ng-hide="translate.OwnerApproved">
-                        {{'translation.list.Addcomplaint' | translate}}
-                    </button>
+                    <button class="btn btn-alert" ng-hide="translate.OwnerApproved" ng-click="ApprovedPublish(translate)">
+                            {{'translation.list.ApprovedPublish' | translate}}
+                        </button>
+                        <button class="btn btn-alert" ng-show="translate.OwnerApproved" ng-click="UnApprovedPublish(translate)">
+                            {{'translation.list.UnApprovedPublish' | translate}}
+                        </button>
+                        <button class="btn btn-alert"  ng-click="open(translate)">
+                            {{'translation.list.Addcomplaint' | translate}}
+                        </button>
                     </div>
-
-
                 </td>
             </tr>
         </tbody>
     </table>
     {{viewMenu }}
+
+    <script type="text/ng-template" id="Addcomplaint.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{'translation.list.haddComplaint' | translate}}   </h3>
+        </div>
+        <div class="modal-body">
+            <textarea rows="4" placeholder="" style="width: 100%;" ng-model="descripcionComplaint"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="!enableButtonOK()">{{'OK' | translate}}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">
+                {{'CANCEL' | translate}}
+            </button>
+        </div>
+    </script>
 </div>

@@ -13,7 +13,7 @@
         <tbody>
             <tr ng-repeat="queue in listTranslations">
             <td> {{'translator.list.TranslationNumber' | translate}} {{queue.TranslationNumber}} </td>
-                <td>{{queue.Createdat}}</td>
+                <td>{{queue.Createdat | date:'short'}}</td>
                 <td>{{queue.LanguagesFrom | translate}} </td>
                 <td>{{queue.LanguagesTo | translate}}</td>
 

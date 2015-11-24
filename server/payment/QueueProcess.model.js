@@ -53,6 +53,7 @@ var GroupMenuModellanguageSchema = new Schema({
 
 
 
+
 var QueueProcessSchema = new Schema({
     Menuid: {
         type: Schema.ObjectId,
@@ -84,6 +85,8 @@ var QueueProcessSchema = new Schema({
     OwnerApproved:Boolean,
     IsParent: Boolean
 });
+
+
 
 QueueProcessSchema.plugin(autoIncrement.plugin, {model: 'QueueProcess',field: 'TranslationNumber'});
 

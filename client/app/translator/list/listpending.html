@@ -4,10 +4,20 @@
             <div class="rsvp col-xs-2 col-sm-2">
                 <i>{{InProcess[0].Createdat | date :  'd'  }}</i>
                 <i>{{InProcess[0].Createdat | date:  'MMM'  }}</i>
+                {{'translator.list.lcreated' | translate}}
             </div>
-            <div class="info col-xs-8 col-sm-7">
-                {{InProcess[0].Restaurantid.name}}
-                <div class="visible-xs">{{InProcess[0].Restaurantid.name}}</div>
+            <div class="info col-xs-8 col-sm-7" style="margin-left:50px">
+                <div class="row">
+                    <i>{{'translator.list.htranslationInProcess' | translate}} 
+                    <span class="badge">{{InProcess[0].LanguagesTo | translate}} </span>
+                    </i>
+
+                </div>
+                <div class="row">
+                    <h1>{{InProcess[0].Restaurantid.name}}
+                    <div class="visible-xs">{{InProcess[0].Restaurantid.name}}</div></h1>
+                    <h2>{{'translator.list.hnamerestaurant' | translate}}</h2>
+                </div>
             </div>
         </div>
     </div>
@@ -25,7 +35,7 @@
         <tbody>
             <tr ng-repeat="queue in ListQueue">
                 <td> {{'translator.list.TranslationNumber' | translate}} {{queue.TranslationNumber}} </td>
-                <td>{{queue.Createdat}}</td>
+                <td>{{queue.Createdat | date:'short'}}</td>
                 <td>{{queue.LanguagesFrom | translate}} </td>
                 <td>{{queue.LanguagesTo | translate}}</td>
                 <td>{{queue.Menuid.files.length}}</td>
