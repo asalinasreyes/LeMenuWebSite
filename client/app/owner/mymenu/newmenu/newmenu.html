@@ -17,8 +17,8 @@
                             </label>
                             <div class="col-sm-8">
                                 <select class="form-control options-languages" ng-model="cartMenu.language" required multiple="">
-                                    
-                                    <option ng-repeat="option in listPossibleLang" ng-disabled="disableLang(option)" value="{{option.flag}}">{{option.name}}</option>
+
+                                    <option ng-repeat="option in listPossibleLang"  value="{{option.code}}" ng-disabled="disableLang(option)" >{{option.name}}</option>
 
                                 </select>
                                 <span class="label label-danger" ng-show="showRequiredLanguages()">{{'required' | translate}}</span>
@@ -39,7 +39,9 @@
                             </ul>
                         </div>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-default btn-lg submit" ng-disabled="isEnableButtonSave()" ng-click="SaveNewRestaurantMenu()">
+                            <button type="submit" class="btn btn-default btn-lg submit animated"
+                            ng-class="{shake: !isEnableButtonSave()}"
+                             ng-disabled="isEnableButtonSave()" ng-click="SaveNewRestaurantMenu()">
                                  {{'menu.new.bsave' | translate}}
                             </button>
                         </div>

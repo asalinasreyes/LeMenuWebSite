@@ -14,16 +14,16 @@
                             <small><cite title="">{{oneresto.address}}</small>
                             <br>
                             <small>
-                                <cite title="">{{oneresto.city}}, {{ oneresto.country }} 
+                                <cite title="">{{oneresto.city}}, <span class="flag-icon {{getcssFlag(oneresto.country)}}" style="padding-top: 10px;"></span>
                                     <i class="glyphicon glyphicon-map-marker"></i>
                                 </cite>
                             </small>
                             <p>
                                 <i class="glyphicon glyphicon-maps"></i>{{oneresto.emailcontact}}
                                 <br>
-                                <i class="glyphicon glyphicon-globe"></i><a href="{{oneresto.urlsite}}">{{oneresto.urlsite}}</a>
+                                <i class="glyphicon glyphicon-globe"></i><a href="{{oneresto.urlsite}}">{{'site'| translate}}</a>
                                 <br>
-                                <i class="glyphicon glyphicon-gift"></i>{{oneresto.createdat | date:'fullDate' }}</p>
+                                </i>{{oneresto.createdat | date:'fullDate' }}</p>
                         </div>
                         <div class="btn-group group-button-opt-resto">
                             <button type="button" ng-click="editrestaurant(oneresto)" class="btn btn-warning"><i class="fa fa-edit"></i> {{'myresto.list.bedit' | translate}}</button>

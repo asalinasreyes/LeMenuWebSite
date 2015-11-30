@@ -2,104 +2,108 @@ if (!Countries) {
     var Countries = [];
 };
 Countries['en'] = [{
-        code: "DE",
+        code: "de",
         name: "Alemania"
     }, {
-        code: "AR",
+        code: "ar",
         name: "Argentina"
     }, {
-        code: "AU",
+        code: "au",
         name: "Australia"
     }, {
-        code: "AT",
+        code: "at",
         name: "Austria"
     }, {
-        code: "BR",
+        code: "br",
         name: "Brasil"
     }, {
-        code: "CL",
+        code: "cl",
         name: "Chile"
     }, {
-        code: "CO",
+        code: "co",
         name: "Colombia"
     }, {
-        code: "CR",
+        code: "cr",
         name: "Costa Rica"
     }, {
-        code: "CU",
+        code: "cu",
         name: "Cuba"
     }, {
-        code: "DG",
+        code: "dg",
         name: "Diego Garc\u00eda"
     }, {
-        code: "EC",
+        code: "ec",
         name: "Ecuador"
     }, {
-        code: "SV",
+        code: "sv",
         name: "El Salvador"
     }, {
-        code: "US",
+        code: "us",
         name: "Estados Unidos"
     }, {
-        code: "FR",
+        code: "fr",
         name: "Francia"
     }, {
-        code: "GT",
+        code: "gt",
         name: "Guatemala"
     }, {
-        code: "GF",
+        code: "gf",
         name: "Guayana Francesa"
     }, {
-        code: "GY",
+        code: "gy",
         name: "Guyana"
     }, {
-        code: "HT",
+        code: "ht",
         name: "Hait\u00ed"
     }, {
-        code: "HN",
+        code: "hn",
         name: "Honduras"
     }, {
-        code: "JM",
+        code: "jm",
         name: "Jamaica"
     }, {
-        code: "MX",
+        code: "mx",
         name: "M\u00e9xico"
     }, {
-        code: "PA",
+        code: "pa",
         name: "Panam\u00e1"
     }, {
-        code: "PY",
+        code: "py",
         name: "Paraguay"
     }, {
-        code: "PE",
+        code: "pe",
         name: "Per\u00fa"
     }, {
-        code: "PF",
+        code: "pf",
         name: "Polinesia Francesa"
     }, {
-        code: "PL",
+        code: "pl",
         name: "Polonia"
     }, {
-        code: "PT",
+        code: "pt",
         name: "Portugal"
     }, {
-        code: "PR",
+        code: "pr",
         name: "Puerto Rico"
     }, {
-        code: "GB",
+        code: "gb",
         name: "Reino Unido"
     }, {
-        code: "ZA",
+        code: "za",
         name: "Sud\u00e1frica"
     }, {
-        code: "TT",
+        code: "tt",
         name: "Trinidad y Tobago"
     }, {
-        code: "UY",
+        code: "uy",
         name: "Uruguay"
     }, {
-        code: "VE",
+        code: "ve",
         name: "Venezuela"
+    },{
+        code: "es",
+        name: "España",
+        lang:"es"
     }
 
 ];

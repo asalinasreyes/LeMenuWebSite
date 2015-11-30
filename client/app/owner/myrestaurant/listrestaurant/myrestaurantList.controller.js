@@ -11,7 +11,7 @@ angular.module('leMeNuApp')
             $state.go('owner.resto.new');
         };
 
-        $scope.firstTimeClass =  'listrestofirsttime'; 
+        $scope.firstTimeClass = 'listrestofirsttime';
 
         $scope.GetListRestaurants = function() {
             Restaurant.query({}, function(listrestaurants) {
@@ -19,10 +19,12 @@ angular.module('leMeNuApp')
                 RestaurantMenu.query({}, function(listmenu) {
                     if (listmenu.length > 0) {
                         $scope.firstTime = false;
-                        $scope.firstTimeClass =  'listresto'; 
+                        $scope.firstTimeClass = 'listresto';
                     }
                     $scope.ListRestaurants.forEach(function(oneThis) {
-                        oneThis.ListMenu = $filter('filter')(listmenu, {Restaurantid: oneThis._id});;
+                        oneThis.ListMenu = $filter('filter')(listmenu, {
+                            Restaurantid: oneThis._id
+                        });;
                     });
                 });
             });
@@ -45,7 +47,7 @@ angular.module('leMeNuApp')
         };
         $scope.oneImage = function(resto) {
             var defaultImgLogo = '../assets/images/staticname/yourLogo.png';
-            if (resto.urllogo){
+            if (resto.urllogo) {
                 defaultImgLogo = resto.urllogo;
             }
             return defaultImgLogo;
@@ -60,5 +62,10 @@ angular.module('leMeNuApp')
             myCache.set("oneresto", itemSelected);
             $state.go('owner.mymenu.new');
         };
+
+        $scope.getcssFlag = function(country) {
+            return 'flag-icon-' + country;
+        };
+
         $scope.GetListRestaurants();
     });

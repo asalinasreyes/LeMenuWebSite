@@ -2,117 +2,122 @@ if (!Countries) {
     var Countries = [];
 };
 Countries['fr'] = [{
-        code: "AR",
+        code: "ar",
         name: "Argentina",
         lang:"es"
     }, {
-        code: "AU",
+        code: "au",
         name: "Australia",
         lang:"en"
     }, {
-        code: "BR",
+        code: "br",
         name: "Brasil",
         lang:"pt"
     }, {
-        code: "CL",
+        code: "cl",
         name: "Chili",
         lang:"es"
     }, {
-        code: "CO",
+        code: "co",
         name: "Colombia",
         lang:"es"
     }, {
-        code: "CR",
+        code: "cr",
         name: "Costa Rica",
         lang:"es"
     }, {
-        code: "CU",
+        code: "cu",
         name: "Cuba",
         lang:"es"
     }, {
-        code: "EC",
+        code: "ec",
         name: "Ecuador",
         lang:"es"
     }, {
-        code: "SV",
+        code: "sv",
         name: "El Salvador",
         lang:"es"
     }, {
-        code: "US",
+        code: "us",
         name: "Estados Unidos",
         lang:"en"
     }, {
-        code: "FR",
+        code: "fr",
         name: "Francia",
         lang:"fr"
     }, {
-        code: "GT",
+        code: "gt",
         name: "Guatemala",
         lang:"es"
     }, {
-        code: "GF",
+        code: "gf",
         name: "Guayana Francesa",
         lang:"fr"
     }, {
-        code: "GY",
+        code: "gy",
         name: "Guyana",
         lang:"es"
     }, {
-        code: "HT",
+        code: "ht",
         name: "Hait\u00ed",
         lang:"es"
     }, {
-        code: "HN",
+        code: "hn",
         name: "Honduras",
         lang:"es"
     }, {
-        code: "JM",
+        code: "jm",
         name: "Jamaica",
         lang:"es"
     }, {
-        code: "MX",
+        code: "mx",
         name: "M\u00e9xico",
         lang:"es"
     }, {
-        code: "PA",
+        code: "pa",
         name: "Panam\u00e1",
         lang:"es"
     }, {
-        code: "PY",
+        code: "py",
         name: "Paraguay",
         lang:"es"
     }, {
-        code: "PE",
+        code: "pe",
         name: "Per\u00fa",
         lang:"es"
     }, {
-        code: "PF",
+        code: "pf",
         name: "Polinesia Francesa",
         lang:"fr"
     }, {
-        code: "PL",
+        code: "pl",
         name: "Polonia",
         lang:"es"
     }, {
-        code: "PT",
+        code: "pt",
         name: "Portugal",
         lang:"pt"
     }, {
-        code: "PR",
+        code: "pr",
         name: "Puerto Rico",
         lang:"es"
     }, {
-        code: "GB",
+        code: "gb",
         name: "Reino Unido",
         lang:"es"
     }, {
-        code: "UY",
+        code: "uy",
         name: "Uruguay",
         lang:"es"
     }, {
-        code: "VE",
+        code: "ve",
         name: "Venezuela",
         lang:"es"
+    }, {
+        code: "ve",
+        name: "Espagne",
+        lang:"es"
     }
+	
 
 ];

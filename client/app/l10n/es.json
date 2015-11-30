@@ -2,6 +2,7 @@
     "required": "Campo Obligatorio!",
     "terrormessage": "Error",
     "empty": "",
+    "site":"Ir al Sitio",
     "home": {
         "h1home": "Una Solucion",
         "h3home": "En Desarrollo",
@@ -224,6 +225,7 @@
     "success": "Pago Exitoso",
     "pending-paypal": "Pendiente Pago Paypal",
     "cancel": "Pago No realizado",
+    "close":"Cerrar",
     "es": "Español",
     "fr": "Francés",
     "en": "Inglés",

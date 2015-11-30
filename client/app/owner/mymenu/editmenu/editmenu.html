@@ -38,7 +38,9 @@
                             </ul>
                         </div>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-default btn-lg submit" ng-disabled="isEnableButtonSave()" ng-click="SaveNewRestaurantMenu()">
+                            <button type="submit" class="btn btn-default btn-lg submit" 
+                            ng-class="{shake: !isEnableButtonSave()}"
+                            ng-disabled="isEnableButtonSave()" ng-click="SaveNewRestaurantMenu()">
                                 {{'menu.edit.bsave' | translate}}
                             </button>
                         </div>

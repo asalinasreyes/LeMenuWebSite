@@ -5,6 +5,8 @@ var Restaurant = require('../restaurant/restaurant.model');
 var QueueTranslate = require('../../payment/QueueProcess.model');
 var Complaint = require('../../payment/Complaint.model');
 
+var os = require("os");
+
 
 var http = require('http');
 var fs = require('fs');
@@ -275,11 +277,11 @@ function createText(group) {
         stringGroupAndMenus += (i + 1) + '.-' + group[i].NameGroupInMenu + "\n";
         for (var ii = 0; ii < group[i].ItemsInMenu.length; ii++) {
             var plato = group[i].ItemsInMenu[ii];
-            stringGroupAndMenus += plato.NameItemMenu + "\n ";
+            stringGroupAndMenus += plato.NameItemMenu + "\n";
             stringGroupAndMenus += plato.DescriptionItemMenu + "\n";
             stringGroupAndMenus += plato.DescriptionItemsItemMenu + "\n";
             stringGroupAndMenus += plato.PriceItemsItemMenu || '' + "\n";
-            stringGroupAndMenus += "\n";
+            stringGroupAndMenus += "\n"+ os.EOL;
         };
     }
     return stringGroupAndMenus;

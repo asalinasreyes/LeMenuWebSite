@@ -33,7 +33,7 @@
                             </label>
                             <div class="col-sm-8">
                                 <select class="form-control" ng-model="user.languages" ng-disabled="disabledAll" required multiple="">
-                                    <option ng-repeat="option in listPossibleLang" value="{{option.flag}}">{{option.name}}</option>
+                                    <option ng-repeat="option in listPossibleLang" value="{{option.code}}">{{option.name}}</option>
                                 </select>
                             </div>
                         </div>

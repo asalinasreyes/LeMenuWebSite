@@ -33,13 +33,13 @@ angular.module('leMeNuApp')
             data.OwnerApproved = false;
             TranslationOwner.ApprovedTranslation(data,
                 function success(dataanwser) {
-                    
+
                 },
                 function err(err) {
 
                 });
         };
-        
+
 
         function SuccessDownload(data) {
             var inforesult = {
@@ -66,14 +66,25 @@ angular.module('leMeNuApp')
                 LanguagesTo: restoInfo.LanguagesTo
             };
 
+
+
             TranslationOwner.viewTranslation(queryParams,
                 function success(data) {
                     $scope.viewMenu = data;
+                    var modalInstance = $uibModal.open({
+                        templateUrl: 'viewMenu.html',
+                        controller: 'ModalInstanceViewMenuCtrl',
+                        resolve: {
+                            items: function() {
+                                return data;
+                            },
+                            language: function() {
+                                return restoInfo.LanguagesTo;
+                            }
+                        }
+                    });
                 },
-                function err(err) {
-
-                });
-
+                function err(err) {});
         };
 
         $scope.getFilePath = function(row) {
@@ -91,7 +102,7 @@ angular.module('leMeNuApp')
         };
 
 
-        $scope.open = function(translationComplaint) {
+        $scope.openNewComplaint = function(translationComplaint) {
             $scope.informationComplaint = translationComplaint;
             var modalInstance = $uibModal.open({
                 templateUrl: 'Addcomplaint.html',
@@ -124,6 +135,16 @@ angular.module('leMeNuApp')
                 $scope.descripcionComplaint = '';
             });
         };
+    })
+    .controller('ModalInstanceViewMenuCtrl', function($scope, $uibModalInstance, items, language) {
+        $scope.viewMenu = items;
+
+        $scope.language = language;
+
+        $scope.cancel = function() {
+            $uibModalInstance.dismiss('cancel');
+        };
+
     })
     .controller('ModalInstanceComplaintCtrl', function($scope, $uibModalInstance) {
 

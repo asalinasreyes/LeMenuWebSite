@@ -18,13 +18,11 @@
                 <td>{{translate.Menuid.name}} </td>
                 <td>{{translate.LanguagesTo | translate}} </td>
                 <td>
-                    <span ng-hide="translate.StartTranslate">{{'translation.list.nostart' | translate}}</span>
-                    {{translate.StartTranslate | date:'short'}} 
+                    <span ng-hide="translate.StartTranslate">{{'translation.list.nostart' | translate}}</span> {{translate.StartTranslate | date:'short'}}
                 </td>
                 <td>
                     <span ng-show="!translate.EndTranslate && !translate.StartTranslate">----</span>
-                    <span ng-show="!translate.EndTranslate && translate.StartTranslate">{{'translation.list.inProcess' | translate}}</span>
-                    {{translate.EndTranslate | date:'short'}} 
+                    <span ng-show="!translate.EndTranslate && translate.StartTranslate">{{'translation.list.inProcess' | translate}}</span> {{translate.EndTranslate | date:'short'}}
                 </td>
                 <td>
                     <button class="btn btn-success" ng-show="translate.IsDoneTranslate" ng-disabled="isFileCreated(translate)" ng-click="download(translate)">
@@ -34,13 +32,13 @@
                         <i class="fa fa-download"></i></a>
                     <button class="btn btn-warning" ng-show="translate.IsDoneTranslate" ng-click="viewTranslation(translate)"><i class="fa fa-eye"></i></button>
                     <div ng-show="translate.IsDoneTranslate">
-                    <button class="btn btn-alert" ng-hide="translate.OwnerApproved" ng-click="ApprovedPublish(translate)">
+                        <button class="btn btn-alert" ng-hide="translate.OwnerApproved" ng-click="ApprovedPublish(translate)">
                             {{'translation.list.ApprovedPublish' | translate}}
                         </button>
                         <button class="btn btn-alert" ng-show="translate.OwnerApproved" ng-click="UnApprovedPublish(translate)">
                             {{'translation.list.UnApprovedPublish' | translate}}
                         </button>
-                        <button class="btn btn-alert"  ng-click="open(translate)">
+                        <button class="btn btn-alert" ng-click="openNewComplaint(translate)">
                             {{'translation.list.Addcomplaint' | translate}}
                         </button>
                     </div>
@@ -48,8 +46,29 @@
             </tr>
         </tbody>
     </table>
-    {{viewMenu }}
-
+    <script type="text/ng-template" id="viewMenu.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{language| translate}} </h3>
+        </div>
+        <div class="modal-body">
+            <div id="wrap">
+                <div class="inner">
+                    <div class="row" ng-repeat="group in viewMenu">
+                        <h1>{{group.namegroup}} </h1>
+                        <dl ng-repeat="plat in group.Items">
+                            <dt>{{plat.PriceMenu}}</dt>
+                            <dd><em> <p> {{plat.NameMenu}} </p> <p>{{plat.DescriptionMenu}} </p> <p>{{plat.ItemsMenu}} </p> </em></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" type="button" ng-click="cancel()">
+                {{'close' | translate}}
+            </button>
+        </div>
+    </script>
     <script type="text/ng-template" id="Addcomplaint.html">
         <div class="modal-header">
             <h3 class="modal-title">{{'translation.list.haddComplaint' | translate}}   </h3>

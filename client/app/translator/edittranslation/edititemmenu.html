@@ -3,7 +3,7 @@
         <span class="fa fa-home "></span> {{'translator.edit.bback' | translate}}
     </button>
     <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
-    <button type="button"  ng-disabled="disabledButton" class="btn btn-success pull-right" ng-click="addItemInGroud()">
+    <button type="button"  ng-show="isParent" ng-disabled="disabledButton" class="btn btn-success pull-right" ng-click="addItemInGroud()">
         <span class="fa fa-plus "></span> {{'translator.edit.bnew' | translate}}
     </button>
 </div>
@@ -56,7 +56,7 @@
         <span class="fa fa-home "></span> {{'translator.edit.bback' | translate}}
     </button>
     <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
-    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()" ng-disabled="disabledButton">
+    <button type="button" class="btn btn-success pull-right" ng-click="addItemInGroud()" ng-disabled="disabledButton" ng-show="isParent">
         <span class="fa fa-plus "></span> {{'translator.edit.bnew' | translate}}
     </button>
 </div>
