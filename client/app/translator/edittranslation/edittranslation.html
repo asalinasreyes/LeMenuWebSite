@@ -1,6 +1,6 @@
 <div class="row" ng-show="isShowButtonMoveToNext">
-    <button class="btn btn-default pull-left" ng-click="moveToBackItemInQueue()">back</button>
-    <button class="btn btn-default pull-right" ng-click="moveToNextItemInQueue()">Next</button>
+    <button class="btn btn-default pull-left" ng-click="moveToBackItemInQueue()" ng-show="showMoveBack()">{{'bback' | translate}} </button>
+    <button class="btn btn-default pull-right" ng-click="moveToNextItemInQueue()" ng-show="showMoveNext()">{{'bmovenext' | translate}} </button>
 </div>
 <div class="row" ng-show="TranslateItem.Restaurantid.name">
     <h1>{{TranslateItem.Restaurantid.name }} --> {{TranslateItem.LanguagesTo | translate}} </h1> {{'translator.list.hnamerestaurant' | translate}}

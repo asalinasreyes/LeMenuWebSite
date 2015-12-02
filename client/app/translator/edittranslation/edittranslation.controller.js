@@ -36,11 +36,19 @@ angular.module('leMeNuApp')
         };
 
         $scope.moveToBackItemInQueue = function(){
-            if ($scope.ImWorkingOnItemQueue >1 ) {
+            if ($scope.ImWorkingOnItemQueue >= 1 ) {
                 $scope.ImWorkingOnItemQueue --;
                 ShowWorkingProgressItem($scope.ListQueueInProcess, $scope.ImWorkingOnItemQueue);
             }
         };
+
+        $scope.showMoveBack = function(){
+            return $scope.ImWorkingOnItemQueue != 0;
+        };
+
+        $scope.showMoveNext = function(){
+            return $scope.ImWorkingOnItemQueue != ($scope.ListQueueInProcess.length - 1 );
+        };        
 
 
         $scope.getImage = function() {

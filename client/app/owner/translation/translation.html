@@ -26,12 +26,12 @@
                     <span ng-show="!translate.EndTranslate && translate.StartTranslate">{{'translation.list.inProcess' | translate}}</span> {{translate.EndTranslate | date:'short'}}
                 </td>
                 <td>
-                    <div class="row">
+                    <div class="row" ng-show="showOptionsEndTranslation(translate)">
                         
-                        <button class="btn btn-alert" ng-hide="translate.OwnerApproved" ng-click="ApprovedPublish(translate)">
+                        <button class="btn btn-alert"  ng-hide="translate.OwnerApproved" ng-click="ApprovedPublish(translate)">
                             {{'translation.list.ApprovedPublish' | translate}}
                         </button>
-                        <button class="btn btn-alert" ng-show="translate.OwnerApproved" ng-click="UnApprovedPublish(translate)">
+                        <button class="btn btn-alert"  ng-show="showOptionsEndTranslation(translate)" ng-show="translate.OwnerApproved" ng-click="UnApprovedPublish(translate)">
                             {{'translation.list.UnApprovedPublish' | translate}}
                         </button>
                     </div>
