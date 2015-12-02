@@ -1,11 +1,17 @@
-<div class="row">
-    <h1>{{TranslateItem.Restaurantid.name}} </h1>
-    <p>{{TranslateItem.Menuid.name}} </p>
+<div class="row" ng-show="isShowButtonMoveToNext">
+    <button class="btn btn-default pull-left" ng-click="moveToBackItemInQueue()">back</button>
+    <button class="btn btn-default pull-right" ng-click="moveToNextItemInQueue()">Next</button>
+</div>
+<div class="row" ng-show="TranslateItem.Restaurantid.name">
+    <h1>{{TranslateItem.Restaurantid.name }} --> {{TranslateItem.LanguagesTo | translate}} </h1> {{'translator.list.hnamerestaurant' | translate}}
+</div>
+<div class="alert alert-danger" ng-repeat="complaint in TranslateItem.Complaints">
+    <span>{{complaint.DescriptionComplaint}} </span>
 </div>
 <div class="row">
     <div class="col-md-5 col-lg-5">
         <div class="featured-article">
-            <img ng-src="{{selectedImage}}"  style="width:100%">
+            <img ng-src="{{selectedImage}}" style="width:100%">
             <div class="block-title">
                 <h2>{{TranslateItem.Createdat | date: dateSmall}}</h2>
             </div>
@@ -33,7 +39,7 @@
                         </span>
                         </td>
                         <td>
-                        <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>   
+                            <span class="flag-icon {{getcssFlag}}" style="padding-top: 10px;"></span>
                             <button class="btn btn-default pull-right" ng-click="addGroud()" ng-show="isParent">
                                 <span class="fa fa-plus "></span> {{'translator.edit.baddGroup' | translate}} </button>
                         </td>
@@ -68,7 +74,11 @@
                     </tr>
                 </tbody>
                 <tfoot>
-                    <tr> <td colspan="3"><button type="button" class="btn btn-primary" ng-click="FinnishedTranslation()">Traduccion Lista</button> </td></tr>
+                    <tr>
+                        <td colspan="3">
+                            <button type="button" class="btn btn-primary" ng-click="FinnishedTranslation()">Traduccion Lista</button>
+                        </td>
+                    </tr>
                 </tfoot>
             </table>
         </div>

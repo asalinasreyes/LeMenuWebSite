@@ -11,15 +11,13 @@ var QueueProcess = require('../../payment/QueueProcess.model');
 
 
 Restaurant.find({}).remove(function() {
-  //console.log('Borro todos los Restaurantes');
 });
 
 MenuRestaurant.find({}).remove(function() {
-  //console.log('Borro todos los Menus');
 });
 
 QueueProcess.find({}).remove(function() {
-  //console.log('Se borran todos los QueueProcess');
+
 });
 
 

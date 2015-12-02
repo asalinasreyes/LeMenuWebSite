@@ -10,7 +10,21 @@ angular.module('leMeNuApp')
             },
             FinnishedTranslation: {
                 method: 'POST',
-                url: '/api/queue/FinnishedTranslation/',
+                url: '/api/queue/FinnishedTranslation',
+                params: {
+                    infomenuomenu: '@info'
+                }
+            },
+            StartFixComplaint: {
+                method: 'POST',
+                url: '/api/queue/StartFixComplaint/',
+                params: {
+                    infomenuomenu: '@info'
+                }
+            },
+            CloseComplaint: {
+                method: 'POST',
+                url: '/api/queue/CloseComplaint/',
                 params: {
                     infomenuomenu: '@info'
                 }

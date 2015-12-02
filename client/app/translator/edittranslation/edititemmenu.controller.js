@@ -7,13 +7,17 @@ angular.module('leMeNuApp')
         $scope.isParent = false;
 
         $scope.disabledButton = false;
+        $scope.ImWorkingOnItemQueue = 0;
 
 
         function getInfoInprocess() {
             $scope.disabledButton = true;
             Queue.ImWorkingOnIt({}, function(data) {
-                $scope.TranslateItem = data[0];
-                $scope.isParent = data[0].IsParent;
+
+            $scope.ImWorkingOnItemQueue =  $stateParams.RowEditing;
+            
+                $scope.TranslateItem = data[$scope.ImWorkingOnItemQueue];
+                $scope.isParent = data[$scope.ImWorkingOnItemQueue].IsParent;
 
                 $scope.getcssFlag = 'flag-icon-' + $scope.TranslateItem.LanguagesTo;
                 $scope.workingOver = $scope.TranslateItem.MenuDetail[$stateParams.index];

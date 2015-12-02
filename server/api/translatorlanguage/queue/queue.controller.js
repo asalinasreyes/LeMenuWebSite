@@ -5,6 +5,8 @@ var queueProcess = require('../../../payment/QueueProcess.model');
 var translator = require('../translatorlanguage.model');
 var restaurant = require('../../restaurant/restaurant.model');
 
+var complaintModel = require('../../../payment/Complaint.model');
+
 // Obtine la lista de trabajos en estado pendiente
 exports.index = function(req, res) {
 
@@ -29,7 +31,7 @@ exports.index = function(req, res) {
                 if (err) {
                     return handleError(res, err);
                 }
-                return res.json(200, ListqueueProcess);
+                return res.status(200).json(ListqueueProcess);
             });
     })
 };
@@ -50,7 +52,48 @@ exports.ImWorkingOnIt = function(req, res) {
             if (err) {
                 return handleError(res, err);
             }
-            return res.json(200, ListqueueProcess);
+
+
+            complaintModel.find({
+                    $or: [{
+                        Status: 'open'
+                    }, {
+                        Status: 'done'
+                    }]
+                })
+                .exec(function(err, listComplaint) {
+                    if (err) {
+                        return handleError(res, err);
+                    }
+
+                    var result = ListqueueProcess.map(function(doc) {
+
+                        return ({
+                            _id: doc._id,
+                            UserTranslateid: doc.UserTranslateid,
+                            TranslationNumber: doc.TranslationNumber,
+                            StartTranslate: doc.StartTranslate,
+                            Restaurantid: doc.Restaurantid,
+                            Parentid: doc.Parentid,
+                            OwnerApproved: doc.OwnerApproved,
+                            Menuid: doc.Menuid,
+                            MenuDetail: doc.MenuDetail,
+                            LanguagesTo: doc.LanguagesTo,
+                            LanguagesFrom: doc.LanguagesFrom,
+                            IsReadyToTranslate: doc.IsReadyToTranslate,
+                            IsParent: doc.IsParent,
+                            IsDoneTranslate: doc.IsDoneTranslate,
+                            EndTranslate: doc.EndTranslate,
+                            Createdat: doc.Createdat,
+                            Complaints: _.where(listComplaint, {
+                                QueueTranslationID: doc._id
+                            })
+                        });
+
+                    });
+                    return res.status(200).json(result);
+                });
+            //return res.json(200, ListqueueProcess);
         });
 };
 
@@ -64,14 +107,50 @@ exports.GetListTranslationDone = function(req, res) {
             IsReadyToTranslate: true,
             UserTranslateid: user_id,
             IsDoneTranslate: true
+        }, {
+            TranslationNumber: '',
+            EndTranslate: '',
+            LanguagesFrom: '',
+            LanguagesTo: '',
+            Menuid: ''
         })
-        .populate('Menuid', 'files language mame')
-        .populate('Restaurantid')
+        .populate('Menuid', 'files')
+        .populate('Restaurantid', 'name')
+        .sort({
+            EndTranslate: 'desc'
+        })
         .exec(function(err, ListqueueProcess) {
             if (err) {
                 return handleError(res, err);
             }
-            return res.json(200, ListqueueProcess);
+            complaintModel.find({
+                    $or: [{
+                        Status: 'open'
+                    }, {
+                        Status: 'done'
+                    }]
+                })
+                .exec(function(err, listComplaint) {
+                    if (err) {
+                        return handleError(res, err);
+                    }
+
+                    var result = ListqueueProcess.map(function(doc) {
+
+                        return ({
+                            TranslationNumber: doc.TranslationNumber,
+                            EndTranslate: doc.EndTranslate,
+                            LanguagesFrom: doc.LanguagesFrom,
+                            LanguagesTo: doc.LanguagesTo,
+                            qtyImages: doc.Menuid.files.length,
+                            Complaints: _.where(listComplaint, {
+                                QueueTranslationID: doc._id
+                            })
+                        });
+
+                    });
+                    return res.status(200).json(result);
+                });
         });
 };
 
@@ -101,7 +180,7 @@ exports.updateTranslateMenuAndItemTranslate = function(req, res) {
             if (err) {
                 return handleError(res, err);
             }
-            return res.json(200, menu);
+            return res.status(200).json(menu);
         });
     });
 };
@@ -133,13 +212,14 @@ exports.updateAndTakeTranslatoasOwn = function(req, res) {
                         if (err) {
                             return handleError(res, err);
                         }
-                        return res.json(200, queueProcessInfo);
+                        return res.status(200).json(queueProcessInfo);
                     });
                 });
         } else {
-            return res.json(304, {
+            return res.status(304).json({
                 info: 'Busy'
             });
+
         }
     });
 };
@@ -152,12 +232,11 @@ exports.FinnishedTranslation = function(req, res) {
     var user_id = new ObjectId(req.user._id);
     var menu_id = new ObjectId(req.body.infomenuomenu._id);
 
-    var info = req.body.infomenuomenu;
-
     queueProcess.findOne({
         _id: menu_id,
         UserTranslateid: user_id
     }, function(err, menu) {
+
         if (err) {
             return handleError(res, err);
         }
@@ -166,13 +245,12 @@ exports.FinnishedTranslation = function(req, res) {
         }
 
         if (menu.IsParent == true) {
-            ///agregar aca referencia a node original
             queueProcess.update({
                 IsParent: false,
                 Parentid: menu._id
             }, {
                 IsReadyToTranslate: true,
-                MenuDetail : menu.MenuDetail
+                MenuDetail: menu.MenuDetail
             }, {
                 upsert: true,
                 multi: true
@@ -186,10 +264,77 @@ exports.FinnishedTranslation = function(req, res) {
             if (err) {
                 return handleError(res, err);
             }
-            return res.json(200, menu);
+            return res.status(200).json(menu);
         });
     });
 };
+
+
+exports.StartFixComplaint = function(req, res) {
+
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var user_id = new ObjectId(req.user._id);
+    var queue_id = new ObjectId(req.body.queue_id);
+    var complaint_id = new ObjectId(req.body.complaint_id);
+
+    complaintModel.findOne({
+            _id: complaint_id
+        })
+        .exec(function(err, OneComplaint) {
+            if (err) {
+                return handleError(res, err);
+            }
+
+            OneComplaint.Status = 'done'
+            OneComplaint.save(function(err) {
+                if (err) {
+                    return handleError(res, err);
+                }
+                queueProcess.findOne({
+                    _id: queue_id,
+                    UserTranslateid: user_id
+                }, function(err, menu) {
+                    if (err) {
+                        return handleError(res, err);
+                    }
+
+                    menu.IsDoneTranslate = false;
+                    menu.EndTranslate = Date.now();
+                    menu.save(function(err) {
+                        if (err) {
+                            return handleError(res, err);
+                        }
+                        return res.status(200).json(menu);
+                    });
+                });
+            });
+        });
+};
+
+exports.CloseComplaint = function(req, res) {
+
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var user_id = new ObjectId(req.user._id);
+    var complaint_id = new ObjectId(req.body.complaint_id);
+    complaintModel.findOne({
+            _id: complaint_id
+        })
+        .exec(function(err, OneComplaint) {
+            if (err) {
+                return handleError(res, err);
+            }
+
+            OneComplaint.Status = 'close'
+            OneComplaint.save(function(err) {
+                if (err) {
+                    return handleError(res, err);
+                }
+                return res.json(200);
+            });
+        });
+};
+
+
 
 function handleError(res, err) {
     return res.send(500, err);

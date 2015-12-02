@@ -195,7 +195,9 @@
             "TranslationNumber": "Nno:",
             "hTranslationNumber": "Numero Pedido",
             "htranslationInProcess":"Traduccion Pendiente de completar",
-            "hnamerestaurant":"Restaurante"
+            "hnamerestaurant":"Restaurante",
+            "lended":"Finalizada",
+            "lcomplaints":"Correciones solicitadas"
         },
         "navbartra": {
             "workinProgress": "Traducciendo",
@@ -248,8 +250,11 @@
             "UnApprovedPublish": "DesPublicar",
             "Addcomplaint": "Solicitar Correción",
             "haddComplaint": "Crear Observación",
+            "hdescriptioncomplaint":"Descripción",
             "nostart":"No iniciada",
-            "inProcess":"En proceso de Traducción"
+            "inProcess":"En proceso de Traducción",
+            "bbeginFix":"Iniciar Correción",
+            "bcloseFix":"Cerrar Correción"
         }
     }
 }

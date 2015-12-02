@@ -4,7 +4,6 @@ var _ = require('lodash');
 var Restaurant = require('../restaurant/restaurant.model');
 var QueueTranslate = require('../../payment/QueueProcess.model');
 var Complaint = require('../../payment/Complaint.model');
-
 var os = require("os");
 
 
@@ -58,7 +57,45 @@ exports.index = function(req, res) {
                 TranslationNumber: -1
             })
             .exec(function(err, listQueue) {
-                return res.status(200).json(listQueue);
+
+                Complaint.find({
+                        $or: [{
+                            Status: 'open'
+                        }, {
+                            Status: 'done'
+                        }]
+                    })
+                    .exec(function(err, listComplaint) {
+                        if (err) {
+                            return handleError(res, err);
+                        }
+
+                        var result = listQueue.map(function(doc) {
+
+                            return ({
+
+                                _id: doc._id,
+                                LanguagesTo: doc.LanguagesTo,
+                                StartTranslate: doc.StartTranslate,
+                                EndTranslate: doc.EndTranslate,
+                                IsReadyToTranslate: doc.IsReadyToTranslate,
+                                IsDoneTranslate: doc.IsDoneTranslate,
+                                Menuid: doc.Menuid,
+                                Restaurantid: doc.Restaurantid,
+                                TranslationNumber: doc.TranslationNumber,
+                                OwnerApproved: doc.OwnerApproved,
+                                Complaints: _.where(listComplaint, {
+                                    QueueTranslationID: doc._id
+                                })
+                            });
+
+                        });
+                        return res.status(200).json(result);
+                    });
+
+
+
+                //return res.status(200).json(listQueue);
             });
 
     });
@@ -136,7 +173,6 @@ exports.viewTranslation = function(req, res) {
                 return handleError(res, err);
             }
             var queryInfo = GetGroupsAndItems(dataQueueTranslation.MenuDetail);
-            console.log('resultado de la busqueda queryInfo', queryInfo);
             res.status(200).json(queryInfo);
         })
     });
@@ -281,7 +317,7 @@ function createText(group) {
             stringGroupAndMenus += plato.DescriptionItemMenu + "\n";
             stringGroupAndMenus += plato.DescriptionItemsItemMenu + "\n";
             stringGroupAndMenus += plato.PriceItemsItemMenu || '' + "\n";
-            stringGroupAndMenus += "\n"+ os.EOL;
+            stringGroupAndMenus += "\n" + os.EOL;
         };
     }
     return stringGroupAndMenus;
@@ -311,7 +347,6 @@ function GetGroupsAndItems(group) {
         };
         groupsAndItems.push(groupresponse);
     }
-    console.log(groupsAndItems);
     return groupsAndItems;
 
 };

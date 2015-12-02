@@ -17,7 +17,7 @@
                             </label>
                             <div class="col-sm-8">
                                 <select class="form-control options-languages" ng-model="cartMenuSelected.language" ng-disabled="disabledAll" required multiple="">
-                                    <option ng-repeat="option in listPossibleLang" ng-disabled="disableLang(option)" value="{{option.flag}}">{{option.name}}</option>
+                                    <option ng-repeat="option in listPossibleLang" ng-disabled="disableLang(option)" value="{{option.code}}">{{option.name}}</option>
                                 </select>
                                 <span class="label label-danger" ng-show="showRequiredLanguages()">
                                 {{'required' | translate}}

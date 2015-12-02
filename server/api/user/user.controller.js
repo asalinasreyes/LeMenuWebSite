@@ -68,9 +68,7 @@ exports.createTranslator = function(req, res, next) {
             userid: user._id,
             languages: req.body.languages
         });
-        console.log('translator info', translator);
         translator.save(function(err, translatorinfo) {
-            console.log('Creado', translatorinfo);
         });
         res.json(200, {});
     });
@@ -94,7 +92,6 @@ exports.UpdateTranslator = function(req, res, next) {
                 };
                 tranlatordata.languages = req.body.languages;
                 tranlatordata.save(function(err, data) {
-                    console.log('translator update', data);
                 });
                 res.json(200, {});
             });

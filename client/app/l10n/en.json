@@ -181,7 +181,8 @@
 			"lnumberPage": "Number of total pages",
 			"yourareBusy": "You have another translation in process",
 			"takesuccess": "Succesfull Complete Operation!",
-			"btake": "Start Translation"
+			"btake": "Start Translation",
+			"lended":"Ended"
 		},
 		"navbartra": {
 			"workinProgress": "Translating"

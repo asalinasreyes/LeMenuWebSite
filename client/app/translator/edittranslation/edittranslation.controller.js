@@ -5,17 +5,42 @@ angular.module('leMeNuApp')
 
         $scope.isParent = false;
 
+        $scope.isShowButtonMoveToNext = false;
+        $scope.ListQueueInProcess = [];
+        $scope.ImWorkingOnItemQueue = 0;
+
+
         Queue.ImWorkingOnIt({}, function(data) {
             if (data.length > 0) {
-                $scope.TranslateItem = data[0];
-                $scope.isParent = data[0].IsParent;
-                if (!$scope.TranslateItem.MenuDetail) {
-                    $scope.TranslateItem.MenuDetail = [];
-                };
-                $scope.getcssFlag = 'flag-icon-' + $scope.TranslateItem.LanguagesTo;
-                $scope.selectedImage = $scope.TranslateItem.Menuid.files[0].url;
+                $scope.isShowButtonMoveToNext = data.length >= 2; 
+                $scope.ListQueueInProcess = data;
+                ShowWorkingProgressItem(data, 0);
             }
         });
+
+        function ShowWorkingProgressItem(data, showItemDefault) {
+            $scope.TranslateItem = data[showItemDefault];
+            $scope.isParent = data[showItemDefault].IsParent;
+            if (!$scope.TranslateItem.MenuDetail) {
+                $scope.TranslateItem.MenuDetail = [];
+            }
+            $scope.getcssFlag = 'flag-icon-' + $scope.TranslateItem.LanguagesTo;
+            $scope.selectedImage = $scope.TranslateItem.Menuid.files[0].url;
+        }
+
+        $scope.moveToNextItemInQueue = function(){
+            if ($scope.ImWorkingOnItemQueue < ($scope.ListQueueInProcess.length -1 ) ) {
+                $scope.ImWorkingOnItemQueue ++;
+                ShowWorkingProgressItem($scope.ListQueueInProcess, $scope.ImWorkingOnItemQueue);
+            }
+        };
+
+        $scope.moveToBackItemInQueue = function(){
+            if ($scope.ImWorkingOnItemQueue >1 ) {
+                $scope.ImWorkingOnItemQueue --;
+                ShowWorkingProgressItem($scope.ListQueueInProcess, $scope.ImWorkingOnItemQueue);
+            }
+        };
 
 
         $scope.getImage = function() {
@@ -60,7 +85,8 @@ angular.module('leMeNuApp')
 
         $scope.goEditItem = function(index) {
             $state.go('translator.edit.item', {
-                'index': index
+                'index': index,
+                'RowEditing':$scope.ImWorkingOnItemQueue
             });
         };
 

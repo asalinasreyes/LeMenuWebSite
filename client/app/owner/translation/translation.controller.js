@@ -29,6 +29,14 @@ angular.module('leMeNuApp')
                 });
         };
 
+        $scope.getTypeComplaint = function(complaint) {
+            var nameClass = 'btn-warning';
+            if (complaint.Status == 'open') {
+                nameClass = 'btn-danger';
+            }
+            return nameClass;
+        };
+
         $scope.UnApprovedPublish = function(data) {
             data.OwnerApproved = false;
             TranslationOwner.ApprovedTranslation(data,
@@ -106,7 +114,7 @@ angular.module('leMeNuApp')
             $scope.informationComplaint = translationComplaint;
             var modalInstance = $uibModal.open({
                 templateUrl: 'Addcomplaint.html',
-                controller: 'ModalInstanceComplaintCtrl',
+                controller: 'ModalInstanceAddComplaintCtrl',
                 size: '',
                 resolve: {
                     descripcionComplaint: function() {
@@ -126,6 +134,9 @@ angular.module('leMeNuApp')
                 TranslationOwner.AddComplaint(complaintInformation,
                     function success(data) {
                         $scope.resultComplaint = data;
+                        TranslationOwner.query({}, function(data2) {
+                            $scope.ListTranslation = data2;
+                        });
                     },
                     function err(err) {
 
@@ -146,7 +157,7 @@ angular.module('leMeNuApp')
         };
 
     })
-    .controller('ModalInstanceComplaintCtrl', function($scope, $uibModalInstance) {
+    .controller('ModalInstanceAddComplaintCtrl', function($scope, $uibModalInstance) {
 
         $scope.ok = function() {
             $uibModalInstance.close($scope.descripcionComplaint);

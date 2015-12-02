@@ -50,7 +50,6 @@ exports.index = function(req, res) {
                 }
             }], function(err, result) {
                 var sumTotalPayed = 0;
-                //console.log('total pagado es', result);
                 for (var i = 0; i < result.length; i++) {
                     if (result[i]._id == 'success') {
                         sumTotalPayed = result[i].Total;

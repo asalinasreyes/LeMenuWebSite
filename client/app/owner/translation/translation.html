@@ -41,6 +41,7 @@
                         <button class="btn btn-alert" ng-click="openNewComplaint(translate)">
                             {{'translation.list.Addcomplaint' | translate}}
                         </button>
+                        <button class="btn btn-small" ng-click="showComplaint(complaint)" ng-class="getTypeComplaint(complaint)" ng-repeat="complaint in translate.Complaints"> <i class="fa fa-flag"></i> </button>
                     </div>
                 </td>
             </tr>

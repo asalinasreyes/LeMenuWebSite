@@ -7,7 +7,6 @@ var MenuModel = require('../menuofrestaurant/menuofrestaurant.model');
 // Get price Invoice
 exports.index = function(req, res) {
     var ObjectId = require('mongoose').Types.ObjectId;
-    console.log('consultando req.query.menuid', req.query.menuid);
     var MenuID = new ObjectId(req.query.menuid);
 
     if (!req.query.menuid) {
@@ -15,17 +14,19 @@ exports.index = function(req, res) {
             status: 'required ID'
         });
     }
-    PriceListModel.findOne({}, function(err, PriceList) {
+    PriceListModel.findOne({typeserviceid: '1'}, function(err, PriceList) {
         if (err) {
             return handleError(res, err);
         }
         if (!PriceList) {
+            var oneYear = new Date();
+            oneYear.setMonth(oneYear.getMonth() + 12);
             PriceListModel.create({
                 price: 11,
                 typeserviceid: '1',
-                typeservicedescription: 'todos',
+                typeservicedescription: 'Price by 1 page (Image) transaction',
                 validFrom: new Date(),
-                validTo: new Date()
+                validTo: oneYear
             }, function(err, PriceList) {
                 if (err) {
                     res.send(500, {

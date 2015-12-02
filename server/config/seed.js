@@ -42,12 +42,16 @@ QueueProcess.find({}).remove(function() {
 
 PriceList.find({}).remove(function() {
 
+    var oneYear = new Date();
+    oneYear.setMonth(oneYear.getMonth() + 12);
+
+
     PriceList.create({
         price: 11,
         typeserviceid: '1',
         typeservicedescription: 'todos',
         validFrom: new Date(),
-        validTo: new Date()
+        validTo: oneYear
     }, function(err, data) {
 
     });

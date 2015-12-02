@@ -40,13 +40,11 @@ exports.show = function(req, res) {
 // Creates a new menuofrestaurant in the DB.
 exports.create = function(req, res) {
     req.body.userid = req.user._id;
-    console.log('invocando a Menu create, files', req.body.files);
     Menuofrestaurant.create(req.body, function(err, menuofrestaurant) {        
         if (err) {
             return handleError(res, err);
         }
         res.status(201).json(menuofrestaurant);
-        //return res.json(201, menuofrestaurant);
     });
 };
 

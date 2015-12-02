@@ -22,7 +22,6 @@ cloudinary.config({
 
 
 exports.create = function(req, res) {
-  console.log('UploadImage Process Request', req);
   if (ALL_PROCESS_FAKE) {
     ReturnFakeImageProcess(req, res);
   } else {
@@ -55,11 +54,7 @@ function ReturnFakeImageProcess(req, res) {
   }
   
   var pathFolderDownloads = path.join(pathBase, pathToDownload, NewStringName);
-
-  console.log('image desde ', file.path);
-  console.log('image hasta ', pathFolderDownloads);
   fs.createReadStream(file.path).pipe(fs.createWriteStream(pathFolderDownloads));
-
   return res.json(200, {
     public_id: NewStringName,
     url: '/assets/download/'+NewStringName,

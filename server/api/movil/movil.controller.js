@@ -91,10 +91,7 @@ exports.index = function(req, res) {
                             }
                             var lenArray = listLanguage[doc.Menuid._id].length;
                             listLanguage[doc.Menuid._id][lenArray] = doc.LanguagesTo
-
                         });
-
-                        console.log('listado de idiomas', listLanguage);
 
                         var mylist = result.map(function(doc) {
                             return ({

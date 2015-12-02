@@ -38,18 +38,21 @@ exports.startPayment = function(req, res) {
     var cancelUrl = config.paypal.cancel_url + order_id;
     var successUrl = config.paypal.return_url + order_id;
 
-    PriceListModel.findOne({}, function(err, PriceList) {
+    PriceListModel.findOne({typeserviceid: '1'}, function(err, PriceList) {
         if (err) {
             return handleError(res, err);
         }
 
         if (!PriceList) {
+            var oneYear = new Date();
+            oneYear.setMonth(oneYear.getMonth() + 12);
+
             PriceListModel.create({
                 price: 11,
                 typeserviceid: '1',
-                typeservicedescription: 'todos',
+                typeservicedescription: 'Price by 1 page (Image) transaction',
                 validFrom: new Date(),
-                validTo: new Date()
+                validTo: oneYear
             }, function(err, PriceList) {
                 if (err) {
                     res.send(500, err);
@@ -93,7 +96,6 @@ exports.startPayment = function(req, res) {
 
 
 exports.orderExecute = function(req, res) {
-    console.log('parametros OrderExecute', req);
     Payment.findOne({
         order_id: req.query.order_id
     }, function(err, paymentOrderSuccess) {

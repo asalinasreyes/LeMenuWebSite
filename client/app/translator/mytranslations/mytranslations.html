@@ -1,23 +1,43 @@
-
-    <table class="table table-hover">
-    <caption><h1> {{'translator.list.doned' | translate}} </h1> </caption>
-        <thead>
-            <tr>
-                <th>{{'translator.list.hTranslationNumber' | translate}}</th>
-                <th> {{'translator.list.lcreated' | translate}} </th>
-                <th> {{'translator.list.llangfrom' | translate}} </th>
-                <th> {{'translator.list.llangto' | translate}} </th>
-                <th> {{'translator.list.lnumberPage' | translate}} </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="queue in listTranslations">
+<table class="table table-hover">
+    <caption>
+        <h1> {{'translator.list.doned' | translate}} </h1> </caption>
+    <thead>
+        <tr>
+            <th>{{'translator.list.hTranslationNumber' | translate}}</th>
+            <th> {{'translator.list.lended' | translate}} </th>
+            <th> {{'translator.list.llangfrom' | translate}} </th>
+            <th> {{'translator.list.llangto' | translate}} </th>
+            <th> {{'translator.list.lnumberPage' | translate}} </th>
+            <th> {{'translator.list.lcomplaints' | translate}} </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="queue in listTranslations">
             <td> {{'translator.list.TranslationNumber' | translate}} {{queue.TranslationNumber}} </td>
-                <td>{{queue.Createdat | date:'short'}}</td>
-                <td>{{queue.LanguagesFrom | translate}} </td>
-                <td>{{queue.LanguagesTo | translate}}</td>
+            <td>{{queue.EndTranslate | date:'short'}}</td>
+            <td>{{queue.LanguagesFrom | translate}} </td>
+            <td>{{queue.LanguagesTo | translate}}</td>
+            <td>{{queue.qtyImages}}</td>
+            <td>
+                <button class="btn btn-small" ng-click="showComplaint(complaint)" ng-class="getTypeComplaint(complaint)" ng-repeat="complaint in queue.Complaints"> <i class="fa fa-flag"></i> </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-                <td>{{queue.Menuid.files.length}}</td>
-            </tr>
-        </tbody>
-    </table>
+
+    <script type="text/ng-template" id="Changecomplaint.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{'translation.list.hdescriptioncomplaint' | translate}}   </h3>
+        </div>
+        <div class="modal-body">
+             <p> {{descripcionComplaint}} </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button"  ng-show="showStartComplaint()" ng-click="startFixComplaint()">{{'translation.list.bbeginFix' | translate}}</button>
+            <button class="btn btn-primary" type="button"  ng-show="showCloseComplaint()" ng-click="CloseComplaint()">{{'translation.list.bcloseFix' | translate}}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">
+                {{'close' | translate}}
+            </button>
+        </div>
+    </script>
