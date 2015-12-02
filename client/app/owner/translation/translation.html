@@ -8,7 +8,8 @@
                 <th>{{'translation.list.languageto' | translate}} </th>
                 <th>{{'translation.list.StartTranslate' | translate}} </th>
                 <th>{{'translation.list.EndTranslate' | translate}} </th>
-                <th></th>
+                <th>{{'publishAndUnPublish' | translate}} </th>
+                <th>{{'complaint' | translate}} </th>
             </tr>
         </thead>
         <tbody>
@@ -25,19 +26,27 @@
                     <span ng-show="!translate.EndTranslate && translate.StartTranslate">{{'translation.list.inProcess' | translate}}</span> {{translate.EndTranslate | date:'short'}}
                 </td>
                 <td>
-                    <button class="btn btn-success" ng-show="translate.IsDoneTranslate" ng-disabled="isFileCreated(translate)" ng-click="download(translate)">
-                        <i class="fa fa-cog"></i>{{'translation.list.makefile' | translate}}
-                    </button>
-                    <a href="{{getFilePath(translate)}}" ng-show="isFileCreated(translate)" target="_blank">
-                        <i class="fa fa-download"></i></a>
-                    <button class="btn btn-warning" ng-show="translate.IsDoneTranslate" ng-click="viewTranslation(translate)"><i class="fa fa-eye"></i></button>
-                    <div ng-show="translate.IsDoneTranslate">
+                    <div class="row">
+                        
                         <button class="btn btn-alert" ng-hide="translate.OwnerApproved" ng-click="ApprovedPublish(translate)">
                             {{'translation.list.ApprovedPublish' | translate}}
                         </button>
                         <button class="btn btn-alert" ng-show="translate.OwnerApproved" ng-click="UnApprovedPublish(translate)">
                             {{'translation.list.UnApprovedPublish' | translate}}
                         </button>
+                    </div>
+                    <div class="row">
+                        
+                    <button class="btn btn-success" ng-show="showOptionsEndTranslation(translate)" ng-disabled="isFileCreated(translate)" ng-click="download(translate)">
+                        <i class="fa fa-cog"></i>{{'translation.list.makefile' | translate}}
+                    </button>
+                    <a href="{{getFilePath(translate)}}" ng-show="isFileCreated(translate)" target="_blank">
+                        <i class="fa fa-download"></i></a>
+                    <button class="btn btn-warning" ng-show="showOptionsEndTranslation(translate)" ng-click="viewTranslation(translate)"><i class="fa fa-eye"></i></button>
+                    </div>
+                </td>
+                <td>
+                    <div ng-show="showOptionsEndTranslation(translate)">
                         <button class="btn btn-alert" ng-click="openNewComplaint(translate)">
                             {{'translation.list.Addcomplaint' | translate}}
                         </button>
@@ -85,3 +94,19 @@
         </div>
     </script>
 </div>
+
+    <script type="text/ng-template" id="OwnerViewcomplaint.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{'translation.list.hdescriptioncomplaint' | translate}}   </h3>
+        </div>
+        <div class="modal-body">
+             <p> {{descripcionComplaint}} </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button"  ng-show="showStartComplaint()" ng-click="startFixComplaint()">{{'translation.list.bbeginFix' | translate}}</button>
+            <button class="btn btn-primary" type="button"  ng-show="showCloseComplaint()" ng-click="CloseComplaint()">{{'translation.list.bcloseFix' | translate}}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">
+                {{'close' | translate}}
+            </button>
+        </div>
+    </script>

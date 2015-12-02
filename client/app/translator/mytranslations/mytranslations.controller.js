@@ -35,9 +35,10 @@ angular.module('leMeNuApp')
                     });
                 } else if (resultOption == 'done') {
                     Queue.CloseComplaint({
+                        queue_id: complaint.QueueTranslationID,
                         complaint_id: complaint._id
-                    }, function(data) {
-                        $scope.RefreshList();
+                    }, function() {
+                        $state.go($state.current, {}, {reload: true});
                     });
                 }
             }, function() {

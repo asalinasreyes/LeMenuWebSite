@@ -177,7 +177,7 @@ exports.index = function(req, res) {
                                         plato: doc.ItemsInMenu.map(function(doc) {
                                             listParents.push({
                                                 _id: doc._id,
-                                                Description: doc.DescriptionItemMenu,
+                                                Description: doc.NameItemMenu,
                                                 Restaurantid: restaurantid,
                                                 Price: doc.PriceItemsItemMenu,
                                                 LanguagesFrom: language,

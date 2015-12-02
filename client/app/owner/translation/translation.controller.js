@@ -18,6 +18,15 @@ angular.module('leMeNuApp')
                 });
         };
 
+
+        $scope.showOptionsEndTranslation = function(translate) {
+            var showoption = false;
+            if (translate.EndTranslate && translate.StartTranslate) {
+                showoption = true;
+            };
+            return showoption;
+        };
+
         $scope.ApprovedPublish = function(data) {
             data.OwnerApproved = true;
             TranslationOwner.ApprovedTranslation(data,
@@ -28,6 +37,21 @@ angular.module('leMeNuApp')
 
                 });
         };
+
+
+        $scope.showComplaint = function(complaint) {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'OwnerViewcomplaint.html',
+                controller: 'ModalInstanceMOwnerComplaintCtrl',
+                resolve: {
+                    complaintDetail: function() {
+                        return complaint;
+                    }
+                }
+            });
+        };
+
+
 
         $scope.getTypeComplaint = function(complaint) {
             var nameClass = 'btn-warning';
@@ -177,4 +201,14 @@ angular.module('leMeNuApp')
             }
             return isEnable;
         }
+    })
+    .controller('ModalInstanceMOwnerComplaintCtrl', function($scope, $uibModalInstance, complaintDetail) {
+
+        $scope.complaint = complaintDetail;
+
+        $scope.descripcionComplaint = complaintDetail.DescriptionComplaint;
+
+        $scope.cancel = function() {
+            $uibModalInstance.dismiss('cancel');
+        };
     });

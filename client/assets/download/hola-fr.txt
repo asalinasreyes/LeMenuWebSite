@@ -1,0 +1,11 @@
+1.-list of prices
+hotdog FR
+descripcion completo FR
+composicion completo FR
+650
+
+italiano FR
+descripcion italiano FR
+composicion italiano FR
+750
+

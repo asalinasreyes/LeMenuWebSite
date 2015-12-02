@@ -316,6 +316,8 @@ exports.CloseComplaint = function(req, res) {
     var ObjectId = require('mongoose').Types.ObjectId;
     var user_id = new ObjectId(req.user._id);
     var complaint_id = new ObjectId(req.body.complaint_id);
+    var queue_id = new ObjectId(req.body.queue_id);
+    
     complaintModel.findOne({
             _id: complaint_id
         })
@@ -329,7 +331,27 @@ exports.CloseComplaint = function(req, res) {
                 if (err) {
                     return handleError(res, err);
                 }
-                return res.json(200);
+
+                queueProcess.findOne({
+                    _id: queue_id,
+                    UserTranslateid: user_id
+                }, function(err, menu) {
+                    if (err) {
+                        return handleError(res, err);
+                    }
+
+                    menu.IsDoneTranslate = true;
+                    menu.EndTranslate = Date.now();
+                    menu.save(function(err) {
+                        if (err) {
+                            return handleError(res, err);
+                        }
+                        return res.status(200).json(menu);
+                    });
+                });
+
+
+                
             });
         });
 };

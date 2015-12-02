@@ -3,6 +3,8 @@
     "terrormessage": "Error",
     "empty": "",
     "site":"Ir al Sitio",
+    "complaint":"Observaciones",
+    "publishAndUnPublish":"Publicar / DesPublicar",
     "home": {
         "h1home": "Una Solucion",
         "h3home": "En Desarrollo",
