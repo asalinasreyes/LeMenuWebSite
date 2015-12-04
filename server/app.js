@@ -11,9 +11,12 @@ var config = require('./config/environment');
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
+
+console.log('ambiente de ejecucion :',process.env.NODE_ENV);
+console.log('Borrar Base Activo ',config.seedDB);
 // Populate DB with sample data
 if(config.seedDB) {
-  console.log('seedDB es ',config.seedDB);
+
  require('./config/seed'); 
 }
 

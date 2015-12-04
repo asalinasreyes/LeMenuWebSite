@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Observaciones Registrados</h3>
+            </div>
+            <div class="panel-body">
+                <input type="text" class="form-control" ng-model="filtroComplaint" placeholder="Filtra Observaciones" />
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Creado</th>
+                        <th>Restaurante</th>
+                        <th>Pais</th>
+                        <th>Ciudad </th>
+                        <th>Estado</th>
+                        <th>Desde</th>
+                        <th>A</th>
+                        <th>Descripción</th>
+                        <th>Traductor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="one in listacomplaint | filter: filtroComplaint">
+                        <td>{{one.ComplainNumber}} </td>
+                        <td>{{one.Createdat | date:'shortDate'}} </td>
+                        <td>{{one.Restoname}} </td>
+                        <td>
+                            <span class="flag-icon" style="padding-left: 10px;" ng-class="getflagByCode(one.country)"></span> {{one.nameCountry}} 
+                        </td>
+                        <td>{{one.Restocity}}</td>
+                        <td>{{one.State}} </td>
+                        <td>{{one.LanguagesFrom | translate}} </td>
+                        <td>{{one.LanguagesTo | translate}} </td>
+                        <td>{{one.DescriptionComplaint}} </td>
+                        <td>{{one.user}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+<div class="ct-chart"></div>
+</div>
+<div class="ct-chart2"></div>
+
+<div class="ct-frutas"></div>
+
+
+<div google-chart chart="chartObject" style="height:600px; width:100%;"></div>

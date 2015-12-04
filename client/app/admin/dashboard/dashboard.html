@@ -1,60 +1,189 @@
 <div id="dashboard">
-
-<div class="row">
-<button type="button" class="btn btn-warning" ng-click="clearDatabase()">Borrar Base DAtos</button>
-</div>
     <div class="row">
-        <div class="col-sm-3">
-            <div class="hero-widget well well-sm">
-                <div class="icon">
-                     <i class="fa fa-industry"></i>
-                </div>
-                <div class="text">
-                    <var>{{information.qtyRestaurant}} </var>
-                    <label class="text-muted">Numero Restaurantes</label>
-                </div>
-                    <div class="options">
+        <button type="button" class="btn btn-warning" ng-click="clearDatabase()" style="display:none">Borrar Base DAtos</button>
+    </div>
+    <uib-accordion close-others="oneAtATime">
+        <uib-accordion-group heading="Pagos" is-open="true">
+            <uib-accordion-heading>
+                Pagos <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+            </uib-accordion-heading>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-industry"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.qtyRestaurantPayed}} </var>
+                            <label class="text-muted">Numero Restaurantes</label>
+                        </div>
+                        <div class="options">
+                        </div>
                     </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-usd"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.TotalPay}} </var>
+                            <label class="text-muted">Total Pagado USD </label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-money"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.qtyPayed}} </var>
+                            <label class="text-muted">Numero de Pagos</label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-language"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.qtyTranslationPayed}} </var>
+                            <label class="text-muted">Numero Traducciones</label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="hero-widget well well-sm">
-                <div class="icon">
-                     <i class="fa fa-usd"></i>
+        </uib-accordion-group>
+        <uib-accordion-group>
+            <uib-accordion-heading>
+                Restaurantes <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+            </uib-accordion-heading>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-industry"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.qtyRestaurant}} </var>
+                            <label class="text-muted">Total de Restaurantes</label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
                 </div>
-                <div class="text">
-                    <var>{{information.TotalPay}} </var>
-                    <label class="text-muted">Total Pagado USD </label>
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-flag"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.QtyCountries.length}} </var>
+                            <label class="text-muted">Total de Paises</label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
                 </div>
-                <div class="options">
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="text">
+                            <var>Paises</var>
+                        </div>
+                        <span class="badge" ng-repeat="lang in information.QtyCountries">{{nameCountry(lang)}} <span class="flag-icon" style="padding-left: 10px;" ng-class="getflagByID(lang)"></span><span class="badge">{{lang.count}} </span></span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <table class="table table-hover">
+                            <legend>Ultimos 5 Restaurantes Registrados</legend>
+                            <thead>
+                                <tr>
+                                    <th>Creado</th>
+                                    <th>Nombre</th>
+                                    <th>Pais</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="one in listaResto">
+                                    <td>{{one.createdat | date:'shortDate'}} </td>
+                                    <td>{{one.name}} </td>
+                                    <td>
+                                        <span class="flag-icon" style="padding-left: 10px;" ng-class="getflagByCode(one.country)"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="hero-widget well well-sm">
-                <div class="icon">
-                     <i class="fa fa-money"></i>
+        </uib-accordion-group>
+        <uib-accordion-group>
+            <uib-accordion-heading>
+                Menus <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+            </uib-accordion-heading>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-cutlery"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.qtyMenus}} </var>
+                            <label class="text-muted">Menus Creados</label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
                 </div>
-                <div class="text">
-                    <var>{{information.qtyPayed}} </var>
-                    <label class="text-muted">Numero de Pagos</label>
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-industry"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.qtyRestaurantNotMenu}} </var>
+                            <label class="text-muted">Restaurantes Sin Menu</label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
                 </div>
-                <div class="options">
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-credit-card"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.qtyMenuNoPagados}} </var>
+                            <label class="text-muted">Menus No Pagados</label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="hero-widget well well-sm">
+                        <div class="icon">
+                            <i class="fa fa-credit-card"></i>
+                        </div>
+                        <div class="text">
+                            <var>{{information.qtyMenuNoPagadosIntentoPago}} </var>
+                            <label class="text-muted">Menus intento Pago</label>
+                        </div>
+                        <div class="options">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="hero-widget well well-sm">
-                <div class="icon">
-                     <i class="fa fa-language"></i>
-                </div>
-                <div class="text">
-                    <var>{{information.qtyTranslationPayed}} </var>
-                    <label class="text-muted">Numero Traducciones</label>
-                </div>
-                <div class="options">
-                </div>
-            </div>
-        </div>
-    
+        </uib-accordion-group>
+    </uib-accordion>
 </div>

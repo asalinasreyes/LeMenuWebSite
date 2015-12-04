@@ -17,5 +17,16 @@ angular.module('leMeNuApp')
                 url: '/home',
                 templateUrl: 'app/admin/dashboard/dashboard.html',
                 controller: 'AdminDashboardCtrl'
-            });
+            })
+            .state('admin.restaurants', {
+                url: '/restaurants',
+                templateUrl: 'app/admin/dashboard/listrestaurants/listrestaurants.html',
+                controller: 'AdminListRestaurantsCtrl'
+            })
+            .state('admin.complaint', {
+                url: '/complaints',
+                templateUrl: 'app/admin/dashboard/listcomplaints/listcomplaints.html',
+                controller: 'AdminListComplaintCtrl'
+            })
+            ;
     });

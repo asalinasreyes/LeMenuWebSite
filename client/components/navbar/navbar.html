@@ -22,6 +22,17 @@
                      {{'admin.navbar.dashboard' | translate}}   
                     </a>
                 </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/dashboard')}">
+                    <a ui-sref="admin.restaurants">
+                     Restaurantes
+                    </a>
+                </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/dashboard')}">
+                    <a ui-sref="admin.complaint">
+                     Observaciones
+                    </a>
+                </li>
+
             </ul>
             <ul class="nav navbar-nav" ng-show="isOwner()">
                 <li> <a ui-sref="owner.resto.list">{{'navbarowner.lmyrestaurants' | translate}}</a>

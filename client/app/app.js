@@ -13,7 +13,8 @@ angular.module('leMeNuApp', [
         'tmh.dynamicLocale',
         'LocalStorageModule',
         'toaster',
-        'xeditable'
+        'xeditable',
+        'googlechart'
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider
