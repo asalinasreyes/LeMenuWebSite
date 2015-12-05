@@ -10,13 +10,15 @@ var MenuModel = require('../../api/menuofrestaurant/menuofrestaurant.model');
 var restaurant = require('../../api/restaurant/restaurant.model');
 var ObjectId = require('mongoose').Types.ObjectId;
 var paypal = require('paypal-rest-sdk');
+var config = require('../../config/environment');
 
 var PriceListModel = require('../price.model');
 
 paypal.configure(config.paypal);
 
 
-var ALL_PROCESS_FAKE = true;
+console.log('Paypal fake es ', config.ALL_PROCESS_FAKE);
+var fake_process = config.ALL_PROCESS_FAKE;
 
 
 exports.startPayment = function(req, res) {
@@ -83,7 +85,7 @@ exports.startPayment = function(req, res) {
                 if (err) {
                     res.send(500, err);
                 } else {
-                    if (ALL_PROCESS_FAKE) {
+                    if (fake_process) {
                         GoPaypalFake(paypalPayment, res, req, order_id);
                     }else{
                         GoPaypal();
@@ -153,7 +155,7 @@ exports.orderExecute = function(req, res) {
                         if (err) {
                             res.send(500, err);
                         }
-                        if (ALL_PROCESS_FAKE) {
+                        if (fake_process) {
                             res.redirect('/owner/payment/success');
                         }else{
                             res.redirect('/owner/payment/success');
@@ -172,7 +174,7 @@ exports.cancelUrl = function(req, res) {
         paymentOrderSuccess.state = 'cancel';
         paymentOrderSuccess.created_cancel = new Date();
         paymentOrderSuccess.save();
-        if (ALL_PROCESS_FAKE) {
+        if (fake_process) {
             res.redirect('/owner/payment/cancel');
         }else{
             res.redirect('/owner/payment/cancel');

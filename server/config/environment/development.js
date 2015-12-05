@@ -3,11 +3,13 @@
 // Development specific configuration
 // ==================================
 module.exports = {
-  // MongoDB connection options
+  
   mongo: {
-    uri: 'mongodb://localhost/lemenu-dev'
+    //uri: 'mongodb://localhost/lemenu-dev'
+    uri: 'mongodb://localhost/sabado5DicTest3'
   },
 
   seedDB: false,
-  seedOnlyUser: true
+  seedOnlyUser: true,
+  ALL_PROCESS_FAKE:true
 };

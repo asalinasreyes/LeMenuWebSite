@@ -21,5 +21,6 @@ module.exports = {
             'mongodb://localhost/lemenu'
     },
     seedDB: false,
-    seedOnlyUser: false
+    seedOnlyUser: false,
+    ALL_PROCESS_FAKE:true
 };

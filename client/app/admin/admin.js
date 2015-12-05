@@ -23,6 +23,11 @@ angular.module('leMeNuApp')
                 templateUrl: 'app/admin/dashboard/listrestaurants/listrestaurants.html',
                 controller: 'AdminListRestaurantsCtrl'
             })
+            .state('admin.restaurants.menus', {
+                url: '/menus/:restaurant',
+                templateUrl: 'app/admin/dashboard/listmenus/listmenus.html',
+                controller: 'AdminListMenusCtrl'
+            })
             .state('admin.complaint', {
                 url: '/complaints',
                 templateUrl: 'app/admin/dashboard/listcomplaints/listcomplaints.html',

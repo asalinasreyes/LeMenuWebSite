@@ -23,6 +23,9 @@ exports.index = function(req, res) {
             LanguagesTo: {
                 '$in': translateUser.languages
             },
+            LanguagesFrom: {
+                '$in': translateUser.languages
+            },
             UserTranslateid: {
                 $exists: false
             }

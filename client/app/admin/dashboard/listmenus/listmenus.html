@@ -1,0 +1,99 @@
+<table class="table table-bordered table-hover">
+<caption><h1>Restaurante</h1></caption>
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Dirección</th>
+			<th>País</th>
+			<th>Ciudad</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="oneresto in Restaurant">
+			<td>{{oneresto.name}} </td>
+			<td>{{oneresto.address}} </td>
+			<td>{{oneresto.country | translate }} </td>
+			<td>{{oneresto.city}} </td>
+			<td>{{oneresto.email}} </td>
+		</tr>
+	</tbody>
+</table>
+<table class="table table-hover table-bordered ">
+    <caption><h1>Menus</h1></caption>
+    <thead>
+        <tr>
+            <th>Nombre Menu</th>
+            <th>Fecha Creación</th>
+            <th>Idiomas</th>
+            <th>Imagenes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="menu in listMenu">
+            <td>{{menu.name}} </td>
+            <td>{{menu.createdat | date: 'shortDate'}} </td>
+            <td>
+                <label ng-repeat="lang in menu.language" class="badge">
+                    {{lang | translate}}
+                </label>
+            </td>
+            <td>
+                {{menu.files.length}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-hover table-bordered ">
+    <caption><h1>Traducciones Solicitadas</h1></caption>
+    <thead>
+        <tr>
+            <th>{{'translator.list.hTranslationNumber' | translate}}</th>
+            <th>{{'translation.list.languageto' | translate}} </th>
+            <th>{{'translation.list.StartTranslate' | translate}} </th>
+            <th>{{'translation.list.EndTranslate' | translate}} </th>
+            <th>{{'publishAndUnPublish' | translate}} </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="translate in ListTranslation">
+            <td> {{'translator.list.TranslationNumber' | translate}} {{translate.TranslationNumber}} </td>
+            <td>{{translate.LanguagesTo | translate}} </td>
+            <td>
+                <span ng-hide="translate.StartTranslate">{{'translation.list.nostart' | translate}}</span> {{translate.StartTranslate | date:'short'}}
+            </td>
+            <td>
+                <span ng-show="!translate.EndTranslate && !translate.StartTranslate">----</span>
+                <span ng-show="!translate.EndTranslate && translate.StartTranslate">{{'translation.list.inProcess' | translate}}</span> {{translate.EndTranslate | date:'shortDate'}}
+            </td>
+            <td>
+                <label ng-hide="translate.OwnerApproved">
+                    Publicado
+                </label>
+                <label ng-show="translate.OwnerApproved">
+                    No Publicado
+                </label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <caption>
+        <h1>Observaciones</h1></caption>
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>Observación</th>
+            <th>Estado</th>
+            <th>Creado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="complaint in ListComplaint">
+            <td>{{complaint.ComplainNumber}} </td>
+            <td>{{complaint.DescriptionComplaint}} </td>
+            <td>{{complaint.Status}} </td>
+            <td>{{complaint.Createdat | date:'shortDate' }} </td>
+        </tr>
+    </tbody>
+</table>

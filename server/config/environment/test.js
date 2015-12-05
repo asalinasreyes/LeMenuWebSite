@@ -8,5 +8,6 @@ module.exports = {
     uri: 'mongodb://localhost/lemenu-test'
   },
   seedDB: false,
-  seedOnlyUser: true
+  seedOnlyUser: true,
+  ALL_PROCESS_FAKE:true
 };

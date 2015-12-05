@@ -1,7 +1,10 @@
 'use strict';
 
 
-var ALL_PROCESS_FAKE = true;
+var config = require('../../config/environment');
+
+console.log('Fake process es ',config.ALL_PROCESS_FAKE);
+var fake_process = config.ALL_PROCESS_FAKE;
 var fs = require('fs');
 var uuid = require('node-uuid');
 var path = require('path');
@@ -22,7 +25,7 @@ cloudinary.config({
 
 
 exports.create = function(req, res) {
-  if (ALL_PROCESS_FAKE) {
+  if (fake_process) {
     ReturnFakeImageProcess(req, res);
   } else {
     ProcessImageCloudinary(req, res);

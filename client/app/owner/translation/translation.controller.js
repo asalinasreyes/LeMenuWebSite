@@ -57,6 +57,8 @@ angular.module('leMeNuApp')
             var nameClass = 'btn-warning';
             if (complaint.Status == 'open') {
                 nameClass = 'btn-danger';
+            }else if (complaint.Status == 'close') {
+                nameClass = 'btn-success';
             }
             return nameClass;
         };

@@ -177,6 +177,42 @@ exports.GetListMenus = function(req, res) {
     }
 };
 
+exports.GetListMenusByIDResto = function(req, res) {
+
+
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var restaurantid = new ObjectId(req.query.idResto);
+
+    Restaurant.find({
+        _id: restaurantid
+    }, function(err, InfoResto) {
+
+        MenuOfrestaurant.find({
+            Restaurantid: restaurantid
+        }, function(err, ListMenu) {
+            if (err) {
+                return res.status(404).json(err);
+            }
+            QueueSchemaProcess.find({
+                Restaurantid: restaurantid,
+                IsParent: false
+            }, function(err, ListQueue) {
+                ComplaintSchema.find({
+                    Restaurantid: restaurantid
+                }, function(err, ListComplaint) {
+                    return res.status(200).json({
+                        ListMenu: ListMenu,
+                        ListQueue: ListQueue,
+                        ListComplaint: ListComplaint,
+                        InfoResto:InfoResto
+                    });
+                });
+            })
+        });
+    });
+};
+
+
 exports.GetListPayments = function(req, res) {
     if (req.body.onlyTop && req.body.onlyTop == 'true') {
         PaymentSchemaInfo.find({}).sort({
@@ -227,7 +263,7 @@ exports.GetListComplaint = function(req, res) {
                             State: doc.Status,
                             LanguagesTo: doc.QueueTranslationID.LanguagesTo,
                             LanguagesFrom: doc.QueueTranslationID.LanguagesFrom,
-                            user:users[0].name
+                            user: users[0].name
 
                         });
                     });

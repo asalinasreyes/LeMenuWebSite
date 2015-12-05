@@ -21,6 +21,11 @@ angular.module('leMeNuApp')
                 onlyTop: '@onlyTop',
                 isArray: true
             },
+            MenusByIDResto: {
+                method: 'GET',
+                url: '/api/dashboardinfo/MenusByIDResto',
+                idResto: '@idResto'
+            },
             Payment: {
                 method: 'GET',
                 url: '/api/dashboardinfo/Payments',

@@ -1,0 +1,17 @@
+1.-Carnes Brochetas
+Paquete  brochetas
+Paquete  brochetas simple
+Carne en brocheta
+10
+
+5 Brochetas
+Brochetas Descripcion
+
+13
+
+Brochetas carnes nobles
+Fina seleccion de carnes de lo mejor de brasil.
+Presentadas en 6 brochetas
+
+15
+

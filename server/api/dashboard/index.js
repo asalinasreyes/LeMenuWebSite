@@ -9,6 +9,7 @@ var router = express.Router();
 router.get('/', auth.hasRole('admin'), controller.index);
 router.get('/Restaurants', auth.hasRole('admin'), controller.GetListRestaurants);
 router.get('/Menus', auth.hasRole('admin'), controller.GetListMenus);
+router.get('/MenusByIDResto', auth.hasRole('admin'), controller.GetListMenusByIDResto);
 router.get('/Payments', auth.hasRole('admin'), controller.GetListPayments);
 router.get('/Complaint', auth.hasRole('admin'), controller.GetListComplaint);
 

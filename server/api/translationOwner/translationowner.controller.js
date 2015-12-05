@@ -58,14 +58,7 @@ exports.index = function(req, res) {
             })
             .exec(function(err, listQueue) {
 
-                Complaint.find({
-                        $or: [{
-                            Status: 'open'
-                        }, {
-                            Status: 'done'
-                        }]
-                    })
-                    .exec(function(err, listComplaint) {
+                Complaint.find({}).exec(function(err, listComplaint) {
                         if (err) {
                             return handleError(res, err);
                         }

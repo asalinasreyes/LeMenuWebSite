@@ -81,6 +81,7 @@
     "karma-requirejs": "~0.2.1",
     "karma-script-launcher": "~0.1.0",
     "mongoose-auto-increment": "^5.0.1",
+    "nodemailer": "^1.10.0",
     "open": "~0.0.4",
     "q": "^1.4.1",
     "requirejs": "~2.1.11",
