@@ -7,7 +7,9 @@ var restaurant = require('../../restaurant/restaurant.model');
 
 var complaintModel = require('../../../payment/Complaint.model');
 
-// Obtine la lista de trabajos en estado pendiente
+var sendMail = require('../../mailer/mailer.controller');
+
+// Obtiene la lista de trabajos en estado pendiente
 exports.index = function(req, res) {
 
     var ObjectId = require('mongoose').Types.ObjectId;
@@ -215,6 +217,7 @@ exports.updateAndTakeTranslatoasOwn = function(req, res) {
                         if (err) {
                             return handleError(res, err);
                         }
+                        sendMail.StartTranslation(queueProcessInfo.Restaurantid.userid, queueProcessInfo.LanguagesFrom);
                         return res.status(200).json(queueProcessInfo);
                     });
                 });
@@ -236,40 +239,43 @@ exports.FinnishedTranslation = function(req, res) {
     var menu_id = new ObjectId(req.body.infomenuomenu._id);
 
     queueProcess.findOne({
-        _id: menu_id,
-        UserTranslateid: user_id
-    }, function(err, menu) {
+            _id: menu_id,
+            UserTranslateid: user_id
+        })
+        .populate('Restaurantid')
+        .exec(function(err, menu) {
 
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!menu) {
-            return res.send(404);
-        }
-
-        if (menu.IsParent == true) {
-            queueProcess.update({
-                IsParent: false,
-                Parentid: menu._id
-            }, {
-                IsReadyToTranslate: true,
-                MenuDetail: menu.MenuDetail
-            }, {
-                upsert: true,
-                multi: true
-            }, function(err, doc) {});
-        };
-        menu.IsDoneTranslate = true;
-        menu.EndTranslate = Date.now();
-        menu.OwnerApproved = false;
-
-        menu.save(function(err) {
             if (err) {
                 return handleError(res, err);
             }
-            return res.status(200).json(menu);
+            if (!menu) {
+                return res.send(404);
+            }
+
+            if (menu.IsParent == true) {
+                queueProcess.update({
+                    IsParent: false,
+                    Parentid: menu._id
+                }, {
+                    IsReadyToTranslate: true,
+                    MenuDetail: menu.MenuDetail
+                }, {
+                    upsert: true,
+                    multi: true
+                }, function(err, doc) {});
+            };
+            menu.IsDoneTranslate = true;
+            menu.EndTranslate = Date.now();
+            menu.OwnerApproved = false;
+
+            menu.save(function(err) {
+                if (err) {
+                    return handleError(res, err);
+                }
+                sendMail.DoneTranslation(menu.Restaurantid.userid, menu.LanguagesFrom);
+                return res.status(200).json(menu);
+            });
         });
-    });
 };
 
 
@@ -320,7 +326,7 @@ exports.CloseComplaint = function(req, res) {
     var user_id = new ObjectId(req.user._id);
     var complaint_id = new ObjectId(req.body.complaint_id);
     var queue_id = new ObjectId(req.body.queue_id);
-    
+
     complaintModel.findOne({
             _id: complaint_id
         })
@@ -338,7 +344,9 @@ exports.CloseComplaint = function(req, res) {
                 queueProcess.findOne({
                     _id: queue_id,
                     UserTranslateid: user_id
-                }, function(err, menu) {
+                })
+                .populate('Restaurantid')
+                .exec(function(err, menu) {
                     if (err) {
                         return handleError(res, err);
                     }
@@ -349,12 +357,12 @@ exports.CloseComplaint = function(req, res) {
                         if (err) {
                             return handleError(res, err);
                         }
+                        
+                        sendMail.ComplaintClose(menu.Restaurantid.userid, menu.LanguagesFrom);
+
                         return res.status(200).json(menu);
                     });
                 });
-
-
-                
             });
         });
 };

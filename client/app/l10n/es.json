@@ -1,12 +1,4 @@
 {
-    "required": "Campo Obligatorio!",
-    "terrormessage": "Error",
-    "empty": "",
-    "site":"Ir al Sitio",
-    "complaint":"Observaciones",
-    "publishAndUnPublish":"Publicar / DesPublicar",
-    "bback":"Volver",
-    "bmovenext":"Siguiente",
     "home": {
         "h1home": "Una Solucion",
         "h3home": "En Desarrollo",
@@ -90,8 +82,11 @@
             "lurllogo": "Url Logo",
             "phurllogo": "Full Url al logo",
             "lurlsite": "Url Restaurante",
-            "phurlsite": "Url de su sitio Web"
-
+            "phurlsite": "Url de su sitio Web",
+            "helpmeailcontact":"Complete con el email al cual los clientes se pueden contactar al restaurate",
+            "helpurllog":"Complete con la ruta http al logo de su sitio, ejemplo https://www.sitio.com/logo.png",
+            "helpurl" :"Complete con la ruta http a su sitio, ejemplo https://www.miRestaurante.com/",
+            "helpgoogle":"Busque su sitio en google map, luego copie la ruta aca"
         },
         "list": {
             "ltitle": "Menus Creados",
@@ -142,7 +137,6 @@
         "price": "Precio Unitario",
         "qty": "Cantidad",
         "linetotal": "Total",
-        "date": "Fecha Pago",
         "lproccesing": "Procesando Pago"
     },
     "payment": {
@@ -157,7 +151,6 @@
             "numberpage": "pagina(s)",
             "to": "a",
             "invoiceNumber": "Nno:"
-
         }
     },
     "admin": {
@@ -241,6 +234,14 @@
     "cl": "Shíleno",
     "OK": "Aceptar",
     "CANCEL": "Cancelar",
+    "required": "Campo Obligatorio!",
+    "terrormessage": "Error",
+    "empty": "",
+    "site":"Ir al Sitio",
+    "complaint":"Observaciones",
+    "publishAndUnPublish":"Publicar / DesPublicar",
+    "bback":"Volver",
+    "bmovenext":"Siguiente",
     "translation": {
         "list": {
             "menuname": "Menu",

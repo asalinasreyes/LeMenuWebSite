@@ -12,6 +12,10 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var paypal = require('paypal-rest-sdk');
 var config = require('../../config/environment');
 
+var sendMail = require('../../api/mailer/mailer.controller');
+
+
+
 var PriceListModel = require('../price.model');
 
 paypal.configure(config.paypal);
@@ -88,7 +92,7 @@ exports.startPayment = function(req, res) {
                     if (fake_process) {
                         GoPaypalFake(paypalPayment, res, req, order_id);
                     }else{
-                        GoPaypal();
+                        GoPaypal(paypalPayment, res, req);
                     }
                 }
             });
@@ -152,9 +156,12 @@ exports.orderExecute = function(req, res) {
                         queueTranslate.push(translateItemQueue);
                     });
                     QueueProcess.create(queueTranslate, function(err) {
+
                         if (err) {
                             res.send(500, err);
                         }
+
+                        sendMail.PaymentDone(oneMenu.Restaurantid.userid, oneMenu.Restaurantid.language);
                         if (fake_process) {
                             res.redirect('/owner/payment/success');
                         }else{

@@ -29,6 +29,8 @@ angular.module('leMeNuApp')
 
 
 
+/*
+
         var options = {
             width: 300,
             height: 200
@@ -90,5 +92,5 @@ angular.module('leMeNuApp')
     $scope.chartObject.options = {
         'title': 'How Much Pizza I Ate Last Night'
     };
-
+*/
     });

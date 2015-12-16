@@ -254,6 +254,7 @@ exports.GetListComplaint = function(req, res) {
 
                         return ({
                             Complaintid: doc._id,
+                            Restaurantid:doc.Restaurantid._id,
                             ComplainNumber: doc.ComplainNumber,
                             Createdat: doc.Createdat,
                             RestoCountry: doc.Restaurantid.country,

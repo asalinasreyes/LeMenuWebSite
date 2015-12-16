@@ -3,7 +3,7 @@ if (!Countries) {
 };
 Countries['en'] = [{
         code: "de",
-        name: "Alemania"
+        name: "Germany"
     }, {
         code: "ar",
         name: "Argentina"
@@ -15,7 +15,7 @@ Countries['en'] = [{
         name: "Austria"
     }, {
         code: "br",
-        name: "Brasil"
+        name: "Brazil"
     }, {
         code: "cl",
         name: "Chile"
@@ -29,26 +29,23 @@ Countries['en'] = [{
         code: "cu",
         name: "Cuba"
     }, {
-        code: "dg",
-        name: "Diego Garc\u00eda"
-    }, {
         code: "ec",
         name: "Ecuador"
     }, {
         code: "sv",
-        name: "El Salvador"
+        name: "The Salvador"
     }, {
         code: "us",
-        name: "Estados Unidos"
+        name: "United States"
     }, {
         code: "fr",
-        name: "Francia"
+        name: "France"
     }, {
         code: "gt",
         name: "Guatemala"
     }, {
         code: "gf",
-        name: "Guayana Francesa"
+        name: "French Guiana"
     }, {
         code: "gy",
         name: "Guyana"
@@ -75,10 +72,10 @@ Countries['en'] = [{
         name: "Per\u00fa"
     }, {
         code: "pf",
-        name: "Polinesia Francesa"
+        name: "French Polynesia"
     }, {
         code: "pl",
-        name: "Polonia"
+        name: "Poland"
     }, {
         code: "pt",
         name: "Portugal"
@@ -87,13 +84,13 @@ Countries['en'] = [{
         name: "Puerto Rico"
     }, {
         code: "gb",
-        name: "Reino Unido"
+        name: "United Kingdom"
     }, {
         code: "za",
         name: "Sud\u00e1frica"
     }, {
         code: "tt",
-        name: "Trinidad y Tobago"
+        name: "Trinidad and Tobago"
     }, {
         code: "uy",
         name: "Uruguay"
@@ -102,7 +99,7 @@ Countries['en'] = [{
         name: "Venezuela"
     },{
         code: "es",
-        name: "España",
+        name: "Spain",
         lang:"es"
     }
 

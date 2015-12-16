@@ -3,6 +3,8 @@
         <thead>
             <tr>
                 <th>{{'payment.list.hinvoiceNumber' | translate}}</th>
+                <th>{{'translation.list.restoname' | translate}}</th>
+                <th>{{'translation.list.menuname' | translate}}</th>
                 <th>{{'payment.list.hdatecreatepay' | translate}} </th>
                 <th>{{'payment.list.hdatecreatemenu' | translate}} </th>
                 <th>{{'payment.list.hdescription' | translate}} </th>
@@ -13,6 +15,10 @@
         <tbody>
             <tr ng-repeat="pay in listpayments">
                 <td> {{'payment.list.invoiceNumber' | translate}} {{pay.InvoicesNumber}} </td>
+                
+                <td> {{pay.Restaurantid.name}} </td>
+                <td> {{pay.menuid.name}} </td>
+
                 <td>{{pay.createdat | date : format : shortDate }}</td>
                 <td>{{pay.menuid.createdat | date : format : shortDate }}</td>
                 <td>{{'payment.list.translate' | translate}}{{pay.menuid.files.length}} {{'payment.list.numberpage' | translate}} {{'payment.list.to' | translate}}

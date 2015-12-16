@@ -20,6 +20,7 @@
                         <th>A</th>
                         <th>Descripción</th>
                         <th>Traductor</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,11 @@
                         <td>{{one.LanguagesTo | translate}} </td>
                         <td>{{one.DescriptionComplaint}} </td>
                         <td>{{one.user}} </td>
+                        <td>
+                            <a ui-sref="admin.restaurants.menus({restaurant:one.Restaurantid})" class="btn btn-warning"><i class="fa fa-eye"></i>
+                                Ver Detalle
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

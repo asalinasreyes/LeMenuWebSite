@@ -4,7 +4,10 @@ var _ = require('lodash');
 var Restaurant = require('../restaurant/restaurant.model');
 var QueueTranslate = require('../../payment/QueueProcess.model');
 var Complaint = require('../../payment/Complaint.model');
+var sendMail = require('../mailer/mailer.controller');
+
 var os = require("os");
+
 
 
 var http = require('http');
@@ -59,32 +62,32 @@ exports.index = function(req, res) {
             .exec(function(err, listQueue) {
 
                 Complaint.find({}).exec(function(err, listComplaint) {
-                        if (err) {
-                            return handleError(res, err);
-                        }
+                    if (err) {
+                        return handleError(res, err);
+                    }
 
-                        var result = listQueue.map(function(doc) {
+                    var result = listQueue.map(function(doc) {
 
-                            return ({
+                        return ({
 
-                                _id: doc._id,
-                                LanguagesTo: doc.LanguagesTo,
-                                StartTranslate: doc.StartTranslate,
-                                EndTranslate: doc.EndTranslate,
-                                IsReadyToTranslate: doc.IsReadyToTranslate,
-                                IsDoneTranslate: doc.IsDoneTranslate,
-                                Menuid: doc.Menuid,
-                                Restaurantid: doc.Restaurantid,
-                                TranslationNumber: doc.TranslationNumber,
-                                OwnerApproved: doc.OwnerApproved,
-                                Complaints: _.where(listComplaint, {
-                                    QueueTranslationID: doc._id
-                                })
-                            });
-
+                            _id: doc._id,
+                            LanguagesTo: doc.LanguagesTo,
+                            StartTranslate: doc.StartTranslate,
+                            EndTranslate: doc.EndTranslate,
+                            IsReadyToTranslate: doc.IsReadyToTranslate,
+                            IsDoneTranslate: doc.IsDoneTranslate,
+                            Menuid: doc.Menuid,
+                            Restaurantid: doc.Restaurantid,
+                            TranslationNumber: doc.TranslationNumber,
+                            OwnerApproved: doc.OwnerApproved,
+                            Complaints: _.where(listComplaint, {
+                                QueueTranslationID: doc._id
+                            })
                         });
-                        return res.status(200).json(result);
+
                     });
+                    return res.status(200).json(result);
+                });
 
 
 
@@ -218,7 +221,13 @@ exports.AddComplaint = function(req, res) {
                 if (err) {
                     res.send(500, err);
                 }
-                res.status(200).json(complaint);
+                QueueTranslate.findOne({
+                    _id: queuedID
+                }, function(err, queueInfo) {
+                    sendMail.ComplaintCreated(user_id, queueInfo.UserTranslateid, LanguagesTo);
+                    res.status(200).json(complaint);
+                });
+
             });
         });
     });
@@ -261,6 +270,28 @@ exports.ApprovedTranslation = function(req, res) {
                     return handleError(res, err);
                 }
                 if (OwnerApproved) {
+                    /// Despublica cualquier menu del restaurante antes publicao    
+
+                    QueueTranslate.findOne({
+                        _id: queuedID
+                    }, function(err, infoQueue) {
+                        console.log('menu id es ', infoQueue);
+                        QueueTranslate.update({
+                            Restaurantid: Restaurantid,
+                            Menuid: {
+                                $ne: infoQueue.Menuid
+                            }
+                        }, {
+                            OwnerApproved: false
+                        }, {
+                            upsert: true,
+                            multi: true
+                        }, function(err, doc) {
+                            console.log('actualizo ', doc);
+                        });
+                    });
+
+
                     var filename = nameResto + '-' + LanguagesTo + '.txt';
                     ProcessStringToText(filename, dataQueueTranslation.MenuDetail)
                     var pathVirtual = '/assets/download/';
@@ -283,6 +314,8 @@ exports.ApprovedTranslation = function(req, res) {
 function handleError(res, err) {
     return res.send(500, err);
 };
+
+
 
 
 function ProcessStringToText(filename, groupAndMenus) {

@@ -1,7 +1,4 @@
 {
-    "required": "Campo Obrigatório",
-    "terrormessage": "Erro",
-    "empty": "",
     "home": {
         "h1home": "Uma solução",
         "h3home": "Em desenvolvimento"
@@ -82,7 +79,6 @@
             "phurllogo": "URL ao logo",
             "lurlsite": "Url Restaurante",
             "phurlsite": "URL website"
-
         },
         "list": {
             "ltitle": "Menus criados",
@@ -133,8 +129,9 @@
         "price": "Precio Unitario",
         "qty": "Cantidad",
         "linetotal": "Total",
-        "date": "Fecha Pago",
-        "lproccesing": "Procesando Pago"
+        "date2": "Fecha Pago",
+        "lproccesing": "Procesando Pago",
+        "descripcions": "Coleção detalhe"
     },
     "payment": {
         "list": {
@@ -146,7 +143,6 @@
             "translate": "Traducción de ",
             "numberpage": "pagina(s)",
             "to": "a"
-
         }
     },
     "admin": {
@@ -183,10 +179,18 @@
             "lnumberPage": "Numero Total de Paginas",
             "yourareBusy": "Tienes otra traduccion en proceso",
             "takesuccess": "Operacion Completada con exito!",
-            "btake": "Iniciar Traduzão!"
+            "btake": "Iniciar Traduzão!",
+            "doned": "Traducciones realizadas",
+            "TranslationNumber": "Nno:",
+            "hTranslationNumber": "Numero Pedido",
+            "htranslationInProcess": "Traduccion Pendiente de completar",
+            "hnamerestaurant": "Restaurante",
+            "lended": "Finalizada",
+            "lcomplaints": "Correciones solicitadas"
         },
         "navbartra": {
-            "workinProgress": "Traduzindo"
+            "workinProgress": "Traduzindo",
+            "mytranslation": "Minhas Traducciones"
         },
         "edit": {
             "baddGroup": "Nova seção",
@@ -209,6 +213,9 @@
     "errores": {
         "emailalreayinuse": "O email especificado ja foi criado"
     },
+    "required": "Campo Obrigatório",
+    "terrormessage": "Erro",
+    "empty": "",
     "success": "Seu pagamento foi concluído com sucesso",
     "pending-paypal": "Pagamento PayPal pendiente",
     "cancel": "Pagamento não realizado",
@@ -219,6 +226,14 @@
     "pt": "Português",
     "br": "Português",
     "cl": "Chileno",
+    "close": "Fechado",
+    "OK": "Aceitar",
+    "CANCEL": "Cancelar",
+    "site": "Ir para o Site",
+    "complaint": "Observações",
+    "publishAndUnPublish": "Publicar / DesPublicar",
+    "bback": "Retorno",
+    "bmovenext": "próximo",
     "translation": {
         "list": {
             "menuname": "Cardápio",
@@ -227,7 +242,16 @@
             "IsDoneTranslate": "completada",
             "StartTranslate": "Data de início",
             "EndTranslate": "Data de término ",
-            "makefile": "Criar arquivo"
+            "makefile": "Criar arquivo",
+            "ApprovedPublish": "Publicar",
+            "UnApprovedPublish": "DesPublicar",
+            "Addcomplaint": "Solicitar Correción",
+            "haddComplaint": "Crear Observación",
+            "hdescriptioncomplaint": "Descripción",
+            "nostart": "No iniciada",
+            "inProcess": "En proceso de Traducción",
+            "bbeginFix": "Iniciar Correción",
+            "bcloseFix": "Cerrar Correción"
         }
     }
 }

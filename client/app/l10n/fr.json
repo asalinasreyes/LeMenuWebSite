@@ -1,7 +1,261 @@
-	{
-
-		"home": {
-			"h1home": "Une Solution",
-			"h3home": "développement"
-		}
-	}
+{
+    "home": {
+        "h1home": "Una Solucion",
+        "h3home": "En Desarrollo",
+        "header1": "Porque No todos tus clientes entienden tu Menu",
+        "header2": "",
+        "header3": "",
+        "header4": ""
+    },
+    "navbar": {
+        "lsignup": "Registrarme",
+        "llogin": "Ingresar",
+        "lhello": "Hola!",
+        "llogout": "Salir",
+        "lhome": "Inicio"
+    },
+    "navbarowner": {
+        "lsignup": "Registrarme",
+        "llogin": "Ingresar",
+        "llogout": "Salir",
+        "lhello": "Hola!",
+        "lhome": "Inicio",
+        "ldashboard": "Escritorio",
+        "lmyrestaurants": "Mis Restaurantes",
+        "lmypays": "Mis Pagos",
+        "translations": "Traducciones"
+    },
+    "account": {
+        "login": {
+            "title": "Inicio sesion",
+            "lemail": "Complete su Email",
+            "lpassword": "Complete password",
+            "phemail": " Your Email yourEmail@dominio.com ",
+            "phpassword": " Your  password",
+            "lrequireds": "Please enter your email and password.",
+            "lrequireemail": "El email parece incorrecto, favor validar",
+            "bsubmit": "Ingresar",
+            "register": "Registrarme",
+            "fblogin": "Connect with Facebook",
+            "gmlogin": "Connect with Google+"
+        },
+        "signup": {
+            "title": "Inicio sesion",
+            "yourname": "Tu nombre",
+            "phyourname": "Completa con tu nombre completo",
+            "lrequirename": "Tu nombre es obligatorio",
+            "lemailwrong": "El email parece incorrecto, favor validar",
+            "lemail": "Complete su Email",
+            "lpassword": "Complete password",
+            "lpasswordreq3": "Largo minimo 3 characteres",
+            "phemail": " Tu email yourEmail@dominio.com ",
+            "phpassword": " Tu password ",
+            "bsubmit": "Ingresar",
+            "register": "Registrarme",
+            "fblogin": "Connect with Facebook",
+            "gmlogin": "Connect with Google+"
+        }
+    },
+    "myresto": {
+        "badd": "Agregar",
+        "edit": {
+            "ltitle": "Editando"
+        },
+        "new": {
+            "ltitle": "Nuevo Restaurante",
+            "lname": "Nombre",
+            "phnameresto": "Nombre completo del restaurante",
+            "laddress": "Direccion",
+            "phaddress": "Calle numero Ciudad, pais",
+            "lcountry": "Pais",
+            "phcountry": "Selecione Pais",
+            "lcity": "Ciudad",
+            "phcity": "Ingrese Ciudad",
+            "llangbase": "Idioma Materno",
+            "phlangbase": "Complete idioma materno",
+            "lgoogleurl": "Url Google Map",
+            "bback": "Volver",
+            "save": "Guardar",
+            "lfieldrequired": "Campo obligatorio",
+            "lemailcontact": "Email Info",
+            "phemailcontact": "Email Contacto/Informacion Restaurant",
+            "lurllogo": "Url Logo",
+            "phurllogo": "Full Url al logo",
+            "lurlsite": "Url Restaurante",
+            "phurlsite": "Url de su sitio Web"
+        },
+        "list": {
+            "ltitle": "Menus Creados",
+            "bedit": "info Restaurante",
+            "bpaypal": "Paga con Paypal",
+            "badd": "Agregar uno",
+            "baddmenu": "Agregar Menu",
+            "blistmenu": "Lista Menu",
+            "boptions": "Optiones"
+        }
+    },
+    "menu": {
+        "badd": "Agregar Menu",
+        "edit": {
+            "ltitle": "Edicion del menu",
+            "lname": "Nombre del Menu",
+            "phname": "Ejemplo: Menu Verano 2015, Menu Otono",
+            "bupload": "Subir Imagen",
+            "bsave": "Guardar",
+            "lproccesing": "Subiendo Imagen al servidor",
+            "llangallow": "Traducir a  "
+        },
+        "new": {
+            "ltitle": "Edicion del menu",
+            "lname": "Nombre del Menu",
+            "phname": "Ejemplo: Menu Verano 2015, Menu Otono",
+            "bupload": "Subir Imagen",
+            "bsave": "Guardar",
+            "lproccesing": "Subiendo Imagen al servidor",
+            "llangallow": "Traducir a "
+        },
+        "list": {
+            "ltitle": "Menus en Restaurante ",
+            "battachfiles": "Adjuntar Archivos",
+            "bcountfiles": "Cantidad Archivos ",
+            "empty": "No existe un menu... vamos a crear uno",
+            "bedit": "Editar",
+            "bpay": "Pagar"
+        }
+    },
+    "preinvoice": {
+        "invoice": "Detalle Cobro",
+        "from": "A nombre de :",
+        "paymethod": "Metodo Pago:",
+        "date": "Fecha:",
+        "descripcions": "Detalle del cobro",
+        "item": "Descripción",
+        "price": "Precio Unitario",
+        "qty": "Cantidad",
+        "linetotal": "Total",
+        "lproccesing": "Procesando Pago"
+    },
+    "payment": {
+        "list": {
+            "hinvoiceNumber": "Numero Factura",
+            "hdatecreatepay": "Fecha Pago",
+            "hdatecreatemenu": "Fecha Menu",
+            "hdescription": "Descripción",
+            "hstatus": "Estado",
+            "hamount": "Monto",
+            "translate": "Traducción de ",
+            "numberpage": "pagina(s)",
+            "to": "a",
+            "invoiceNumber": "Nno:"
+        }
+    },
+    "admin": {
+        "navbar": {
+            "adminuser": "Usuarios",
+            "dashboard": "dashboard"
+        },
+        "newtranslator": {
+            "title": "Nuevo Traductor",
+            "yourname": "Nombre",
+            "phyourname": "Completar con el nombre completo",
+            "lrequirename": "Nombre es obligatorio",
+            "lemailwrong": "El email parece incorrecto, favor validar",
+            "lemail": "Complete el Email",
+            "lpassword": "Complete password",
+            "lpasswordreq3": "Largo minimo 3 characteres",
+            "phemail": " Email Traductor Email@dominio.com ",
+            "phpassword": " Asignar Password  ",
+            "bsubmit": "Crear",
+            "msgSuccess": "Usuario Creado",
+            "msgError": "Se produjo un error"
+        },
+        "edittranslator": {
+            "msgSuccess": "Traductor Actualizado",
+            "bsubmit": "Actualizar"
+        }
+    },
+    "translator": {
+        "list": {
+            "lcreated": "Creado",
+            "llangfrom": "Desde",
+            "llangto": "A",
+            "llistLang": "Detalle de Idiomas Seleccionados",
+            "lnumberPage": "Numero Total de Paginas",
+            "yourareBusy": "Tienes otra traduccion en proceso",
+            "takesuccess": "Operacion Completada con existo!",
+            "btake": "Iniciar Traducción!",
+            "doned": "Traducciones realizadas",
+            "TranslationNumber": "Nno:",
+            "hTranslationNumber": "Numero Pedido",
+            "htranslationInProcess":"Traduccion Pendiente de completar",
+            "hnamerestaurant":"Restaurante",
+            "lended":"Finalizada",
+            "lcomplaints":"Correciones solicitadas"
+        },
+        "navbartra": {
+            "workinProgress": "Traducciendo",
+            "mytranslation": "Mis Traducciones"
+        },
+        "edit": {
+            "baddGroup": "Nueva seccion",
+            "beditGroup": "Editar",
+            "bdelGroup": "Borrar",
+            "bsaveGroup": "Guardar",
+            "bcancelGroup": "Cancelar",
+            "hsections": "Secciones en Menu",
+            "lnamesection": "Nombre Seccion",
+            "bback": "Volver",
+            "bnew": "Agregar"
+        },
+        "newItemMenu": {
+            "pNameItemMenu": "Nombre Plato",
+            "pDescriptionItemMenu": "Descripcion Plato",
+            "pDescriptionItemsItemMenu": "Composicion del plato",
+            "pPriceItemsItemMenu": "Precio"
+        }
+    },
+    "errores": {
+        "emailalreayinuse": "El email especificado ya se encuentra creado."
+    },
+    "success": "Pago Exitoso",
+    "pending-paypal": "Pendiente Pago Paypal",
+    "cancel": "Pago No realizado",
+    "close":"Cerrar",
+    "es": "Español",
+    "fr": "Francés",
+    "en": "Inglés",
+    "us": "Inglés",
+    "pt": "Portugués",
+    "br": "Portugués",
+    "cl": "Shíleno",
+    "OK": "Aceptar",
+    "CANCEL": "Cancelar",
+    "required": "Campo Obligatorio!",
+    "terrormessage": "Error",
+    "empty": "",
+    "site":"Ir al Sitio",
+    "complaint":"Observaciones",
+    "publishAndUnPublish":"Publicar / DesPublicar",
+    "bback":"Volver",
+    "bmovenext":"Siguiente",
+    "translation": {
+        "list": {
+            "menuname": "Menu",
+            "restoname": "Restaurante",
+            "languageto": "Traducción a",
+            "IsDoneTranslate": "Terminada",
+            "StartTranslate": "Fecha Inicio",
+            "EndTranslate": "Fecha Termino",
+            "makefile": "Crear Archivo",
+            "ApprovedPublish": "Publicar",
+            "UnApprovedPublish": "DesPublicar",
+            "Addcomplaint": "Solicitar Correción",
+            "haddComplaint": "Crear Observación",
+            "hdescriptioncomplaint":"Descripción",
+            "nostart":"No iniciada",
+            "inProcess":"En proceso de Traducción",
+            "bbeginFix":"Iniciar Correción",
+            "bcloseFix":"Cerrar Correción"
+        }
+    }
+}

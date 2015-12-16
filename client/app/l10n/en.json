@@ -1,10 +1,11 @@
 {
-	"required": "Mandatory Fields",
-	"terrormessage": "Error",
-	"empty": "",
 	"home": {
 		"h1home": "One Solution",
-		"h3home": "In Developement"
+		"h3home": "In Developement",
+	    "header1": "Because not all your customers understand your Menu",
+        "header2": "",
+        "header3": "",
+        "header4": ""
 	},
 	"navbar": {
 		"lsignup": "Register",
@@ -126,7 +127,6 @@
 		"invoice": "Payment charge",
 		"from": "Under the name of",
 		"paymethod": "Payment Method",
-		"date": "Date",
 		"descripcions": "Detail of charge",
 		"item": "Description",
 		"price": "Unit Price",
@@ -137,6 +137,7 @@
 	},
 	"payment": {
 		"list": {
+		    "hinvoiceNumber": "Invoice Number",
 			"hdatecreatepay": "Date of Payment",
 			"hdatecreatemenu": "Date of Menu",
 			"hdescription": "Description",
@@ -144,7 +145,8 @@
 			"hamount": "Amount",
 			"translate": "Translate to",
 			"numberpage": "Pages",
-			"to": "to"
+			"to": "to",
+			"invoiceNumber": "N:"
 		}
 	},
 	"admin": {
@@ -182,9 +184,16 @@
 			"yourareBusy": "You have another translation in process",
 			"takesuccess": "Succesfull Complete Operation!",
 			"btake": "Start Translation",
-			"lended":"Ended"
+			"lended":"Ended",
+            "TranslationNumber": "N",
+            "doned": "Translations Done",
+            "hTranslationNumber": "Id Translation",
+            "htranslationInProcess":"Translation in status Pending",
+            "hnamerestaurant":"Restaurant",
+            "lcomplaints":"Complaints"
 		},
 		"navbartra": {
+		    "mytranslation": "My Translations",
 			"workinProgress": "Translating"
 		},
 		"edit": {
@@ -211,13 +220,24 @@
 	"success": "Succesful Payment",
 	"pending-paypal": "Pending Payment",
 	"cancel": "Cancelled payment",
-	"es": "Spanish",
+    "close": "Close",
+    "es": "Spanish",
 	"fr": "French",
 	"en": "English",
 	"us": "English",
 	"pt": "Portuguese",
 	"br": "Portuguese",
 	"cl": "Chilean",
+	"OK": "Acept",
+    "CANCEL": "Cancel",
+	"required": "Mandatory Fields",
+	"terrormessage": "Error",
+	"empty": "",
+	"site": "Go to Site",
+    "complaint": "Complaints",
+    "publishAndUnPublish":"Publish / unPublish",
+    "bback":"Back",
+    "bmovenext":"Next",
 	"translation": {
 		"list": {
 			"menuname": "Menu",
@@ -226,7 +246,16 @@
 			"IsDoneTranslate": "Complete",
 			"StartTranslate": "Initial Date",
 			"EndTranslate": "Finish Date",
-			"makefile": "Create File"
+			"makefile": "Create File",
+			"Addcomplaint": "Add Complaint",
+            "ApprovedPublish": "Publish",
+            "bbeginFix": "Begin Complaint",
+            "bcloseFix": "Close Complaint",
+            "haddComplaint": "Create Complaint",
+            "hdescriptioncomplaint": "Description",
+            "inProcess": "In translation process",
+            "nostart": "No started",
+            "UnApprovedPublish": "UnPublish"
 		}
 	}
 }
