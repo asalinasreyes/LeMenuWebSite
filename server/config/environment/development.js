@@ -6,10 +6,10 @@ module.exports = {
   
   mongo: {
     //uri: 'mongodb://localhost/lemenu-dev'
-    uri: 'mongodb://localhost/sabado5DicTest3'
+    uri: 'mongodb://localhost/Martes22'
   },
 
   seedDB: false,
   seedOnlyUser: true,
-  ALL_PROCESS_FAKE:true
+  ALL_PROCESS_FAKE:false
 };

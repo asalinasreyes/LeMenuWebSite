@@ -1,9 +1,8 @@
-1.-Prix
+1.-Les list du prix
 Le Hot Dog chiliens
 Pain de hot dog
-Kcnaki
-Avocat
-Sauce américaine et mayonnaise ketchup, mayonnaise, moutarde à votre goût
+Kcnaki, Avocat, Sauce américaine et mayonnaise ketchup, mayonnaise, moutarde à votre goût
+Fix
 
 650
 
@@ -16,7 +15,7 @@ Sauce américaine et mayonnaise. ketchup, mayonnaise, moutarde à votre goût
 
 750
 
-dinamico
+Dinamico
 Pain de hot dog
 Tomate
 Choucroute

@@ -135,14 +135,16 @@
     },
     "payment": {
         "list": {
+            "hinvoiceNumber": "Numero Fatura",
             "hdatecreatepay": "Fecha Pago",
             "hdatecreatemenu": "Fecha Menu",
-            "hdescription": "Descripción",
+            "hdescription": "descrição",
             "hstatus": "Estado",
-            "hamount": "Monto",
-            "translate": "Traducción de ",
+            "hamount": "Pagamento",
+            "translate": "Tradução de",
             "numberpage": "pagina(s)",
-            "to": "a"
+            "to": "A",
+            "invoiceNumber": "Nno:"
         }
     },
     "admin": {
@@ -245,13 +247,13 @@
             "makefile": "Criar arquivo",
             "ApprovedPublish": "Publicar",
             "UnApprovedPublish": "DesPublicar",
-            "Addcomplaint": "Solicitar Correción",
-            "haddComplaint": "Crear Observación",
-            "hdescriptioncomplaint": "Descripción",
+            "Addcomplaint": "Correção Pedido",
+            "haddComplaint": "Crear Correção",
+            "hdescriptioncomplaint": "Descrição",
             "nostart": "No iniciada",
             "inProcess": "En proceso de Traducción",
-            "bbeginFix": "Iniciar Correción",
-            "bcloseFix": "Cerrar Correción"
+            "bbeginFix": "Começo Correção",
+            "bcloseFix": "Cerrar Correção"
         }
     }
 }
