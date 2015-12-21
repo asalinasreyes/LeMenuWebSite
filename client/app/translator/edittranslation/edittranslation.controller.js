@@ -15,7 +15,9 @@ angular.module('leMeNuApp')
                 $scope.isShowButtonMoveToNext = data.length >= 2; 
                 $scope.ListQueueInProcess = data;
                 ShowWorkingProgressItem(data, 0);
-            }
+            } else {
+                $scope.notpendingTranslation= true;
+            };
         });
 
         function ShowWorkingProgressItem(data, showItemDefault) {

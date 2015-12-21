@@ -78,7 +78,11 @@
             "lurllogo": "URL LOGO",
             "phurllogo": "URL ao logo",
             "lurlsite": "Url Restaurante",
-            "phurlsite": "URL website"
+            "phurlsite": "URL website",
+            "helpmeailcontact": "Complete con el email al cual los clientes se pueden contactar al restaurate",
+            "helpurllog": "Complete con la ruta http al logo de su sitio, ejemplo https://www.sitio.com/logo.png",
+            "helpurl": "Complete con la ruta http a su sitio, ejemplo https://www.miRestaurante.com/",
+            "helpgoogle": "Busque su sitio en google map, luego copie la ruta aca"
         },
         "list": {
             "ltitle": "Menus criados",
@@ -174,7 +178,7 @@
     },
     "translator": {
         "list": {
-            "lcreated": "Criando",
+            "lcreated": "Criado",
             "llangfrom": "Traduzir desde",
             "llangto": "Traduzir a",
             "llistLang": " Detalhe dos idiomas selecionados",
@@ -255,5 +259,8 @@
             "bbeginFix": "Começo Correção",
             "bcloseFix": "Cerrar Correção"
         }
-    }
+    },
+    "nopendingwork": "Sem tradução em processo",
+    "notqueuePending": "Não Traduções em circulação",
+    "transpending":"Traduções pendentes"
 }

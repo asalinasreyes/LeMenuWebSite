@@ -6,6 +6,7 @@ angular.module('leMeNuApp')
 
 		Queue.query({}, function(data) {
 			$scope.ListQueue = data;
+			$scope.notqueuePending = $scope.ListQueue==0;
 		});
 
 		Queue.ImWorkingOnIt( function(data){

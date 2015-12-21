@@ -11,5 +11,5 @@ module.exports = {
 
   seedDB: false,
   seedOnlyUser: true,
-  ALL_PROCESS_FAKE:true
+  ALL_PROCESS_FAKE:false
 };

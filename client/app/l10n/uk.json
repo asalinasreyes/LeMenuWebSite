@@ -227,5 +227,7 @@
 			"EndTranslate": "Finish Date",
 			"makefile": "Create File"
 		}
-	}
+	},
+	   "nopendingwork": "No translation in process",
+    "notqueuePending": "No pending translations"
 }

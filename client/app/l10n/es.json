@@ -83,7 +83,7 @@
             "phurllogo": "Full Url al logo",
             "lurlsite": "Url Restaurante",
             "phurlsite": "Url de su sitio Web",
-            "helpmeailcontact":"Complete con el email al cual los clientes se pueden contactar al restaurate",
+            "helpmeailcontact":"Complete con el email al cual los clientes se pueden contactar al restaurante",
             "helpurllog":"Complete con la ruta http al logo de su sitio, ejemplo https://www.sitio.com/logo.png",
             "helpurl" :"Complete con la ruta http a su sitio, ejemplo https://www.miRestaurante.com/",
             "helpgoogle":"Busque su sitio en google map, luego copie la ruta aca"
@@ -261,5 +261,8 @@
             "bbeginFix":"Iniciar Correción",
             "bcloseFix":"Cerrar Correción"
         }
-    }
+    },
+    "nopendingwork":"No hay nada hasta hora",
+    "notqueuePending":"No hay Traducciones pendientes",
+    "transpending":"Traducciones Pendientes"
 }

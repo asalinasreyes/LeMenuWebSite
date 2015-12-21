@@ -22,10 +22,13 @@
         </div>
     </div>
     <table class="table table-hover">
-    <caption><h2>Traducciones Pendientes</h2></caption>
+    <caption><h2>{{'transpending' | translate }} </h2></caption>
         <thead>
             <tr>
                 <th>{{'translator.list.hTranslationNumber' | translate}}</th>
+                <th> {{'translation.list.restoname' | translate}} </th>
+                <th> {{'translation.list.menuname' | translate}} </th>
+
                 <th> {{'translator.list.lcreated' | translate}} </th>
                 <th> {{'translator.list.llangfrom' | translate}} </th>
                 <th> {{'translator.list.llangto' | translate}} </th>
@@ -35,7 +38,10 @@
         </thead>
         <tbody>
             <tr ng-repeat="queue in ListQueue">
+
                 <td> {{'translator.list.TranslationNumber' | translate}} {{queue.TranslationNumber}} </td>
+                <td>{{queue.Restaurantid.name}}</td>
+                <td>{{queue.Menuid.name}}</td>
                 <td>{{queue.Createdat | date:'short'}}</td>
                 <td>{{queue.LanguagesFrom | translate}} </td>
                 <td>{{queue.LanguagesTo | translate}}</td>
@@ -46,6 +52,8 @@
             </tr>
         </tbody>
     </table>
+    <div class="alert alert-warning" ng-show="notqueuePending" > {{'notqueuePending' | translate }} </div>
+
     <script type="text/ng-template" id="notification.html">
         <h4>{{messageToaster | translate}}</h4>
     </script>
