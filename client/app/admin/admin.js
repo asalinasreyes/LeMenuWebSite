@@ -18,6 +18,11 @@ angular.module('leMeNuApp')
                 templateUrl: 'app/admin/dashboard/dashboard.html',
                 controller: 'AdminDashboardCtrl'
             })
+            .state('admin.translations', {
+                url: '/translations',
+                templateUrl: 'app/admin/admintranslation/admtranslation.html',
+                controller: 'admtranslationCtrl'
+            })
             .state('admin.restaurants', {
                 url: '/restaurants',
                 templateUrl: 'app/admin/dashboard/listrestaurants/listrestaurants.html',

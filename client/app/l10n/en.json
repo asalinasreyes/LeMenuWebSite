@@ -264,5 +264,6 @@
     },
     "nopendingwork": "No translation in process",
     "notqueuePending": "No pending translations",
-    "transpending":"Pending translations"
+    "transpending":"Pending translations",
+    "donetranslate":"Translation Done!"
 }

@@ -32,6 +32,16 @@ angular.module('leMeNuApp')
                 onlyTop: '@onlyTop',
                 isArray: true
             },
+            GetListTranslations:{
+                method: 'GET',
+                url: '/api/dashboardinfo/GetListTranslations',
+                isArray: true
+            },
+            viewTranslation:{
+                method: 'GET',
+                url: '/api/dashboardinfo/viewTranslation',
+                isArray: true
+            },
             Complaints: {
                 method: 'GET',
                 url: '/api/dashboardinfo/Complaint',

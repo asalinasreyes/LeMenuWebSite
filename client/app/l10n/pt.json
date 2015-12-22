@@ -262,5 +262,6 @@
     },
     "nopendingwork": "Sem tradução em processo",
     "notqueuePending": "Não Traduções em circulação",
-    "transpending":"Traduções pendentes"
+    "transpending":"Traduções pendentes",
+    "donetranslate":"Traduções feita"
 }

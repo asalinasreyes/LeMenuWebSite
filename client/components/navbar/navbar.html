@@ -32,6 +32,11 @@
                      Observaciones
                     </a>
                 </li>
+                <li ng-show="isAdmin()" ng-class="{active: isActive('/dashboard')}">
+                    <a ui-sref="admin.translations">
+                     Traducciones
+                    </a>
+                </li>
 
             </ul>
             <ul class="nav navbar-nav" ng-show="isOwner()">

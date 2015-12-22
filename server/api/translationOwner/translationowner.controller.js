@@ -275,7 +275,6 @@ exports.ApprovedTranslation = function(req, res) {
                     QueueTranslate.findOne({
                         _id: queuedID
                     }, function(err, infoQueue) {
-                        console.log('menu id es ', infoQueue);
                         QueueTranslate.update({
                             Restaurantid: Restaurantid,
                             Menuid: {

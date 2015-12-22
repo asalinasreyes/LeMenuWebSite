@@ -1,26 +1,16 @@
-1.-Les list du prix
-Le Hot Dog chiliens
-Pain de hot dog
-Kcnaki, Avocat, Sauce américaine et mayonnaise ketchup, mayonnaise, moutarde à votre goût
-Fix
+1.-Les Prix
+completo FR
+
 
 650
 
-Italien (hotdog)
-Pain de hot dog
-Kcnaki
-Tomates
-Avocat
-Sauce américaine et mayonnaise. ketchup, mayonnaise, moutarde à votre goût
+italiano
+
 
 750
 
 Dinamico
-Pain de hot dog
-Tomate
-Choucroute
-Avocat
-Sauce verte et mayonnaise. ketchup, mayonnaise, moutarde à votre goût.
+
 
 850
 

@@ -105,7 +105,6 @@ exports.index = function(req, res) {
                     }
 
                 }], function(err, QtyMenuPayed) {
-                    console.log('menus pagados:', QtyMenuPayed);
                     return callback(err, qtyMenu - QtyMenuPayed.length);
                 });
             });
@@ -309,6 +308,127 @@ exports.clearDatabase = function(req, res) {
             };
             return res.status(200).json(clarAll);
         });
+};
+
+
+exports.GetListTranslations = function(req, res) {
+    var ObjectId = require('mongoose').Types.ObjectId;
+    Restaurant.find({
+    }, {
+        _id: 1
+    }, function(err, restaurants) {
+        if (err) {
+            return handleError(res, err);
+        }
+        var arrayResto = [];
+        restaurants.map(function(resto) {
+            var restoID = new ObjectId(resto._id);
+            arrayResto.push(restoID);
+        });
+
+
+        QueueSchemaProcess.find({})
+            .populate('UserTranslateid','name')
+            .populate('Menuid')
+            .populate('Restaurantid', 'name country')
+            .sort({
+                TranslationNumber: -1
+            })
+            .exec(function(err, listQueue) {
+
+                ComplaintSchema.find({}).exec(function(err, listComplaint) {
+                    if (err) {
+                        return handleError(res, err);
+                    }
+
+                    var result = listQueue.map(function(doc) {
+
+                        return ({
+
+                            _id: doc._id,
+                            LanguagesFrom: doc.LanguagesFrom,
+                            LanguagesTo: doc.LanguagesTo,
+                            StartTranslate: doc.StartTranslate,
+                            EndTranslate: doc.EndTranslate,
+                            IsReadyToTranslate: doc.IsReadyToTranslate,
+                            IsDoneTranslate: doc.IsDoneTranslate,
+                            country: doc.Restaurantid.country,
+                            Menuid: doc.Menuid,
+                            Restaurantid: doc.Restaurantid,
+                            TranslationNumber: doc.TranslationNumber,
+                            OwnerApproved: doc.OwnerApproved,
+                            userid:doc.UserTranslateid,
+                            Complaints: _.where(listComplaint, {
+                                QueueTranslationID: doc._id
+                            })
+                        });
+
+                    });
+                    return res.status(200).json(result);
+                });
+            });
+    });
+};
+
+
+exports.viewTranslation = function(req, res) {
+
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var queuedID = new ObjectId(req.query.queuedID);
+    var Restaurantid = new ObjectId(req.query.Restaurantid);
+    var LanguagesTo = req.query.LanguagesTo;
+
+
+
+    /// Busco Resto
+    Restaurant.findOne({
+        '_id': Restaurantid
+    }, function(err, restaurants) {
+        if (err) {
+            return handleError(res, err);
+        }
+        var nameResto = restaurants.name;
+        var searchQueue = {
+            _id: queuedID,
+            LanguagesTo: LanguagesTo
+        };
+        QueueSchemaProcess.findOne(searchQueue, {
+            MenuDetail: ''
+        }, function(err, dataQueueTranslation) {
+            if (err) {
+                return handleError(res, err);
+            }
+            var queryInfo = GetGroupsAndItems(dataQueueTranslation.MenuDetail);
+            res.status(200).json(queryInfo);
+        })
+    });
+};
+
+function GetGroupsAndItems(group) {
+    var groupresponse = {
+        namegroup: '',
+        Items: []
+    };
+    var groupsAndItems = [];
+    for (var i = 0; i < group.length; i++) {
+        groupresponse = {
+            namegroup: '',
+            Items: []
+        };
+        groupresponse.namegroup = group[i].NameGroupInMenu;
+        for (var ii = 0; ii < group[i].ItemsInMenu.length; ii++) {
+            var plato = group[i].ItemsInMenu[ii];
+            var menu = {};
+            menu.NameMenu = plato.NameItemMenu;
+            menu.DescriptionMenu = plato.DescriptionItemMenu;
+            menu.ItemsMenu = plato.DescriptionItemsItemMenu;
+            menu.PriceMenu = plato.PriceItemsItemMenu;
+            groupresponse.Items.push(menu);
+        };
+        groupsAndItems.push(groupresponse);
+    }
+    return groupsAndItems;
+
 };
 
 

@@ -264,5 +264,6 @@
     },
     "nopendingwork":"No hay nada hasta hora",
     "notqueuePending":"No hay Traducciones pendientes",
-    "transpending":"Traducciones Pendientes"
+    "transpending":"Traducciones Pendientes",
+    "donetranslate":"Traducción Lista"
 }

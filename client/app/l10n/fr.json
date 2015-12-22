@@ -225,12 +225,12 @@
     "pending-paypal": "En attendant le paiement",
     "cancel": "Paiement pas fait",
     "close": "Fermer",
-    "es": "Español",
-    "fr": "Francés",
-    "en": "Inglés",
-    "us": "Inglés",
-    "pt": "Portugués",
-    "br": "Portugués",
+    "es": "Espagnol",
+    "fr": "Français",
+    "en": "Anglais",
+    "us": "Anglais",
+    "pt": "Portugais",
+    "br": "Portugais",
     "cl": "Shíleno",
     "OK": "Accepter",
     "CANCEL": "Annuler",
@@ -264,5 +264,6 @@
     },
     "nopendingwork": "Rien jusqu'à présent",
     "notqueuePending": "Il n'y a pas de traductions en suspens",
-    "transpending": "Traductions en attente"
+    "transpending": "Traductions en attente",
+    "donetranslate":"Traduction faite"
 }
