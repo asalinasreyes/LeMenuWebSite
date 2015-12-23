@@ -286,7 +286,6 @@ exports.ApprovedTranslation = function(req, res) {
                             upsert: true,
                             multi: true
                         }, function(err, doc) {
-                            console.log('actualizo ', doc);
                         });
                     });
 

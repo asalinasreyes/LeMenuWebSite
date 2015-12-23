@@ -249,8 +249,6 @@ exports.GetListComplaint = function(req, res) {
                         var users = _.where(listUser, {
                             _id: doc.QueueTranslationID.UserTranslateid
                         });
-                        console.log(users);
-
                         return ({
                             Complaintid: doc._id,
                             Restaurantid:doc.Restaurantid._id,

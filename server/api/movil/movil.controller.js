@@ -194,9 +194,11 @@ exports.index = function(req, res) {
         },
         function(err, restaurantsInfo) {
             if (err) {
-                return res.json(200, err);
+                //return res.json(200, err);
+                return res.status(200).json(err);
             };
-            return res.json(200, restaurantsInfo);
+            return res.status(200).json(restaurantsInfo);
+            //return res.json(200, restaurantsInfo);
         });
 
 };

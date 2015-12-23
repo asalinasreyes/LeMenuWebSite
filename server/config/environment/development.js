@@ -6,7 +6,7 @@ module.exports = {
   
   mongo: {
     //uri: 'mongodb://localhost/lemenu-dev'
-    uri: 'mongodb://localhost/Martes223'
+    uri: 'mongodb://localhost/Martes225'
   },
 
   seedDB: false,

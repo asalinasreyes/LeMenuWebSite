@@ -65,8 +65,6 @@ exports.DoneTranslation = function(OwnerID, language) {
 
 
 exports.ComplaintCreated = function(OwnerID, TranslatorID, language) {
-
-	console.log('valores complaint ', OwnerID, TranslatorID, language);
     usersSchema.findOne({
         _id: OwnerID
     }, function(err, ownerUser) {
