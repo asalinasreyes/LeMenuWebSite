@@ -1,4 +1,4 @@
-Prerequitos
+Prerrequisitos
 Tener instalado nodejs y MongoDB corriendo. 
 npm install yo, grunt-cli, bower
 
