@@ -5,11 +5,10 @@
 module.exports = {
   
   mongo: {
-    //uri: 'mongodb://localhost/lemenu-dev'
-    uri: 'mongodb://localhost/Martes225'
+    uri: 'mongodb://localhost/lemenu-dev'
   },
 
-  seedDB: false,
+  seedDB: true,
   seedOnlyUser: true,
   ALL_PROCESS_FAKE:true
 };
